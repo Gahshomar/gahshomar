@@ -1,64 +1,69 @@
 <!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Persian Calendar : A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment." />
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Persian Calendar by 183amir</title>
+    <title>Persian Calendar</title>
   </head>
 
   <body>
 
-    <header>
-      <div class="container">
-        <h1>Persian Calendar</h1>
-        <h2>A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment.</h2>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/183amir/persian-calendar">View on GitHub</a>
 
-        <section id="downloads">
-          <a href="https://github.com/183amir/persian-calendar/zipball/master" class="btn">Download as .zip</a>
-          <a href="https://github.com/183amir/persian-calendar/tarball/master" class="btn">Download as .tar.gz</a>
-          <a href="https://github.com/183amir/persian-calendar" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
-      </div>
-    </header>
+          <h1 id="project_title">Persian Calendar</h1>
+          <h2 id="project_tagline">A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment.</h2>
 
-    <div class="container">
-      <section id="main_content">
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/183amir/persian-calendar/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/183amir/persian-calendar/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="persian-calendar" class="anchor" href="#persian-calendar"><span class="octicon octicon-link"></span></a>Persian Calendar</h1>
 
-<p>A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity 
+<p>A Persian (Jalali/Farsi) calendar which provides a basic app-indicator in Unity 
 Desktop Environment.</p>
 
 <h1>
 <a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
 
-<p>Python 2</p>
+<p>python-appindicator</p>
 
 <p>Khayyam python package (<a href="http://pythonhosted.org/Khayyam/">http://pythonhosted.org/Khayyam/</a>)</p>
 
 <h1>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
-<p>First make sure <em>Khayyam</em> is installed:</p>
+<p>First make sure <em>Khayyam</em> and <em>python-appindicator</em> is installed:</p>
 
-<pre><code>sudo apt-get install python-pip
+<pre><code>sudo apt-get install python-pip python-appindicator
 sudo pip install Khayyam
 </code></pre>
 
-<p>Clone the repository:</p>
+<p>Download Persian calendar:</p>
 
 <pre><code>cd ~
-git clone https://github.com/183amir/persian-calendar.git
+wget -O persian-calendar.tar.gz https://github.com/183amir/persian-calendar/tarball/master
+mkdir persian-calendar
+tar -xf persian-calendar.tar.gz -C persian-calendar --strip-components 1
 cd persian-calendar
 chmod +x persian-calendar.py
 </code></pre>
 
-<p>Now press Alt+F2 and run the program from there:</p>
+<p>Now press Alt+F2 and run the program from there by pasting the below command:</p>
 
 <pre><code>~/persian-calendar/persian-calendar.py
 </code></pre>
@@ -82,11 +87,20 @@ chmod +x persian-calendar.py
 <pre><code>Persian Calendar Indicator
 </code></pre>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+<h1>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h1>
 
-<p>Having troubles? Contact me at <em><a href="mailto:183.amir@gmail.com">183.amir@gmail.com</a></em>.</p>
+<p>Having troubles? Fill an issue at <em><a href="https://github.com/183amir/persian-calendar">https://github.com/183amir/persian-calendar</a></em>
+or Contact me at <em><a href="mailto:183.amir@gmail.com">183.amir@gmail.com</a></em>.</p>
       </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Persian Calendar maintained by <a href="https://github.com/183amir">183amir</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
     </div>
 
               <script type="text/javascript">
@@ -99,6 +113,7 @@ chmod +x persian-calendar.py
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
