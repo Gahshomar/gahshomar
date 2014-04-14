@@ -78,8 +78,11 @@ finally:
   # write the default settings if it does not exist
   write_default_settings()
 
-## indicator category 
-exec('INDICATOR_CATEGORY = appindicator.CATEGORY_' + INDICATOR_CATEGORY)
+## indicator category
+if INDICATOR_CATEGORY in ['SYSTEM_SERVICES','APPLICATION_STATUS','COMMUNICATIONS','HARDWARE','OTHER',]:
+  exec('INDICATOR_CATEGORY = appindicator.CATEGORY_' + INDICATOR_CATEGORY)
+else:
+  exec('INDICATOR_CATEGORY = appindicator.CATEGORY_HARDWARE')
 
 
 NUM_DICT = {'0':'۰',
