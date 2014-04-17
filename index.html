@@ -38,9 +38,9 @@
 Desktop Environment.</p>
 
 <h1>
-<a name="screen-shot" class="anchor" href="#screen-shot"><span class="octicon octicon-link"></span></a>Screen-shot</h1>
+<a name="screenshot" class="anchor" href="#screenshot"><span class="octicon octicon-link"></span></a>Screenshot</h1>
 
-<p><img src="http://i57.tinypic.com/90xdas.png" alt="screen shot"></p>
+<p><img src="http://i57.tinypic.com/11izgn7.png" alt="screenshot"></p>
 
 <h1>
 <a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
@@ -58,7 +58,7 @@ Desktop Environment.</p>
 sudo pip install Khayyam
 </code></pre>
 
-<p>Download Persian calendar:</p>
+<p>Download Persian calendar (make sure all steps run successfully):</p>
 
 <pre><code>cd ~
 wget -O persian-calendar.tar.gz https://github.com/183amir/persian-calendar/tarball/master
@@ -73,6 +73,9 @@ chmod +x persian-calendar.py
 <pre><code>~/persian-calendar/persian-calendar.py
 </code></pre>
 
+<h1>
+<a name="run-at-startup" class="anchor" href="#run-at-startup"><span class="octicon octicon-link"></span></a>Run at startup</h1>
+
 <p>To make the program run when you login:</p>
 
 <p>In Ubuntu, run <em>Startup Applications</em> and press add</p>
@@ -82,9 +85,9 @@ chmod +x persian-calendar.py
 <pre><code>persian-calendar
 </code></pre>
 
-<p>Command:</p>
+<p>Command (you should replace USERNAME with your username:</p>
 
-<pre><code>/usr/bin/env python ~/persian-calendar/persian-calendar.py
+<pre><code>/usr/bin/python /home/USERNAME/persian-calendar/persian-calendar.py
 </code></pre>
 
 <p>Comment:</p>
