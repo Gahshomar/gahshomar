@@ -5,6 +5,11 @@ A Persian (Jalali/Farsi) calendar which provides a basic app-indicator in Unity
 Desktop Environment.
 
 
+Screen-shot
+================
+![alt tag](data/Screenshot.png)
+
+
 Requirements
 ================
 
@@ -12,9 +17,6 @@ python-appindicator
 
 Khayyam python package (http://pythonhosted.org/Khayyam/)
 
-Screen-shot
-================
-![alt tag](data/Screenshot.png)
 
 Installation
 ================
