@@ -5,9 +5,9 @@ A Persian (Jalali/Farsi) calendar which provides a basic app-indicator in Unity
 Desktop Environment.
 
 
-Screen-shot
+Screenshot
 ================
-![alt tag](data/Screenshot.png)
+![screenshot](data/Screenshot.png)
 
 
 Requirements
@@ -26,7 +26,7 @@ First make sure *Khayyam* and *python-appindicator* is installed:
     sudo apt-get install python-pip python-appindicator
     sudo pip install Khayyam
 
-Download Persian calendar:
+Download Persian calendar (make sure all steps run successfully):
 
     cd ~
     wget -O persian-calendar.tar.gz https://github.com/183amir/persian-calendar/tarball/master
@@ -39,6 +39,10 @@ Now press Alt+F2 and run the program from there by pasting the below command:
 
     ~/persian-calendar/persian-calendar.py
 
+
+Run at startup
+================
+
 To make the program run when you login:
 
 In Ubuntu, run *Startup Applications* and press add
@@ -47,9 +51,9 @@ Name:
 
     persian-calendar
 
-Command:
+Command (you should replace USERNAME with your username:
 
-    /usr/bin/env python ~/persian-calendar/persian-calendar.py
+    /usr/bin/python /home/USERNAME/persian-calendar/persian-calendar.py
 
 Comment:
 
