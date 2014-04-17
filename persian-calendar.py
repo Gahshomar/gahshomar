@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 # Persian (Jalali/Farsi) Calendar which provides an app indicator for the Unity Desktop Environment.
 # requires python 2.3 (maybe 2.7) and above
@@ -29,7 +29,7 @@ import appindicator
 import khayyam
 
 default_settings = {# do not modify this, modify ~/.config/persian-calendar/settings
-'PING_FREQUENCY' : 10, # In seconds; the frequency of updating the date
+'PING_FREQUENCY' : 3, # In seconds; the frequency of updating the date
 'DATE_FORMAT' : u'%A، %d %B %Y', # Day of the week, day month year
 'ICON_NAME' : "persian-calendar-{day}", # name of the icon file
 'ICON_FOLDER_DARK' : "data/icons/ubuntu-mono-dark", # name of the icon file
@@ -42,8 +42,17 @@ default_settings = {# do not modify this, modify ~/.config/persian-calendar/sett
 # HARDWARE
 # OTHER
 }
-
 CONFIG_FILE_PATH = os.path.join(os.path.expanduser("~"), '.config', 'persian-calendar', 'settings')
+
+# get the full path of the file
+if os.path.dirname(sys.argv[0]) != ".":
+    if sys.argv[0][0] == "/":
+        full_path = os.path.dirname(sys.argv[0])
+    else:
+        full_path = os.getcwd() + "/" + os.path.dirname(sys.argv[0])
+else:
+    full_path = os.getcwd()
+sys.path.insert(0, os.path.dirname(full_path))
 
 def read_settings():
   with open(CONFIG_FILE_PATH) as f:
@@ -157,7 +166,7 @@ Directive    Meaning
 class PersianCalendar:
   def __init__(self):
     self.date = JalaliDate.today()
-    self.base_folder = os.path.join(os.path.dirname(sys.argv[0]))
+    self.base_folder = full_path
     self.icon_name = ICON_NAME
     self.icon_folder = ICON_FOLDER_DARK
     self.ind = appindicator.Indicator("persian-calendar-indicator",
@@ -168,6 +177,7 @@ class PersianCalendar:
 
     self.menu_setup()
     self.ind.set_menu(self.menu)
+    # self.iterator = 0
 
   def menu_setup(self):
     self.menu = gtk.Menu()
@@ -175,11 +185,11 @@ class PersianCalendar:
     self.today_item = gtk.MenuItem('Today')
     self.today_item.show()
     
-    self.quit_item = gtk.MenuItem("Quit")
+    self.quit_item = gtk.MenuItem("خروج")
     self.quit_item.connect("activate", self.quit)
     self.quit_item.show()
 
-    self.toggle_icon_item = gtk.MenuItem("Toggle Icon Color")
+    self.toggle_icon_item = gtk.MenuItem("تغییر رنگ نقشک")
     self.toggle_icon_item.connect("activate", self.toggle_icon)
     self.toggle_icon_item.show()
 
@@ -188,9 +198,8 @@ class PersianCalendar:
     self.menu.append(self.quit_item)
 
   def main(self):
-    self.change_time()
-    gtk.timeout_add(PING_FREQUENCY * 1000, self.change_time)
-    gtk.main()
+    self.update_interface()
+    gtk.timeout_add(PING_FREQUENCY * 1000, self.update_interface)
 
   def quit(self, widget):
     sys.exit(0)
@@ -198,23 +207,36 @@ class PersianCalendar:
   def get_date(self, frmt=DATE_FORMAT):
     return self.date.strftime(frmt)
 
+  def update_interface(self):
+    self.change_time()
+    self.set_icon()
+    # self.iterator += 1
+    # if self.iterator > 30:
+    #   self.iterator = 1
+    # print('INFO:: updated the interface!')
+    # we should return True to make sure this function get's called again and again
+    return True
+
   def change_time(self):
     self.date = JalaliDate.today()
+    # self.date.day += self.iterator
     self.today_item.set_label(self.get_date())
-    self.set_icon()
 
   def set_icon(self):
+    # print(os.path.join(self.base_folder, self.icon_folder))
     self.ind.set_icon_theme_path(os.path.join(self.base_folder, self.icon_folder))
     self.ind.set_icon(self.icon_name.format(day=self.date.day))
 
-  def toggle_icon(self, widget):
+  def toggle_icon(self, *args):
     if self.icon_folder == ICON_FOLDER_DARK:
       self.icon_folder = ICON_FOLDER_LIGHT
     else:
       self.icon_folder = ICON_FOLDER_DARK
     self.set_icon()
+    print('INFO:: icon toggled!', self.icon_folder)
 
 
 if __name__ == "__main__":
   indicator = PersianCalendar()
   indicator.main()
+  gtk.main()
