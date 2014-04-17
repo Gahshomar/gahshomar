@@ -12,6 +12,9 @@ python-appindicator
 
 Khayyam python package (http://pythonhosted.org/Khayyam/)
 
+Screen-shot
+================
+![alt tag](data/Screenshot.png)
 
 Installation
 ================
