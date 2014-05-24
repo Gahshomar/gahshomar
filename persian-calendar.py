@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 # Persian (Jalali/Farsi) Calendar which provides an app indicator for the Unity Desktop Environment.
 # requires python 2.3 (maybe 2.7) and above
