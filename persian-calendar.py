@@ -1,8 +1,8 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
-# Persian (Jalali/Farsi) Calendar which provides an app indicator for the Unity Desktop Environment.
-# requires python 2.3 (maybe 2.7) and above
-# should work on python 3 too if you have the Khayyam library available
+# Persian (Jalali/Farsi) Calendar which provides an app indicator.
+# requires python 2.3 (it has been tested on 2.7 only) and 
+# above but not python 3.
 
 # Copyright (C) 2014  Amir Mohammadi <183.amir@gmail.com>
 
@@ -25,6 +25,7 @@ import os
 import re
 import gtk
 import appindicator
+from pprint import pprint
 
 import khayyam
 
@@ -34,6 +35,8 @@ default_settings = {# do not modify this, modify ~/.config/persian-calendar/sett
 'ICON_NAME' : "persian-calendar-{day}", # name of the icon file
 'ICON_FOLDER_DARK' : "data/icons/ubuntu-mono-dark", # name of the icon file
 'ICON_FOLDER_LIGHT' : "data/icons/ubuntu-mono-light", # if you are using a light theme, you can use this icon
+'DEFAULT_ICON_FOLDER' : 'data/icons/ubuntu-mono-dark',
+'DEBUG': False,
 
 'INDICATOR_CATEGORY' : 'HARDWARE',
 # SYSTEM_SERVICES
@@ -71,7 +74,7 @@ def write_default_settings():
       pass
   try:
     with open(CONFIG_FILE_PATH, 'w') as f:
-      f.write(repr(default_settings))
+      pprint(default_settings, f)
   except Exception:
     pass
 
@@ -168,7 +171,7 @@ class PersianCalendar:
     self.date = JalaliDate.today()
     self.base_folder = full_path
     self.icon_name = ICON_NAME
-    self.icon_folder = ICON_FOLDER_DARK
+    self.icon_folder = DEFAULT_ICON_FOLDER
     self.ind = appindicator.Indicator("persian-calendar-indicator",
                        self.icon_name.format(day=self.date.day),
                        INDICATOR_CATEGORY,
@@ -223,17 +226,26 @@ class PersianCalendar:
     self.today_item.set_label(self.get_date())
 
   def set_icon(self):
-    # print(os.path.join(self.base_folder, self.icon_folder))
+    if DEBUG:
+      print('INFO:: icon folder:', os.path.join(self.base_folder, self.icon_folder))
     self.ind.set_icon_theme_path(os.path.join(self.base_folder, self.icon_folder))
     self.ind.set_icon(self.icon_name.format(day=self.date.day))
 
   def toggle_icon(self, *args):
     if self.icon_folder == ICON_FOLDER_DARK:
       self.icon_folder = ICON_FOLDER_LIGHT
+      DEFAULT_ICON_FOLDER = ICON_FOLDER_LIGHT
     else:
       self.icon_folder = ICON_FOLDER_DARK
+      DEFAULT_ICON_FOLDER = ICON_FOLDER_DARK
     self.set_icon()
-    print('INFO:: icon toggled!', self.icon_folder)
+    if DEBUG:
+      print('INFO:: icon toggled!', self.icon_folder)
+    try:
+      default_settings['DEFAULT_ICON_FOLDER'] = DEFAULT_ICON_FOLDER
+      write_default_settings()
+    except Exception:
+      pass
 
 
 if __name__ == "__main__":
