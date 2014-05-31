@@ -1,8 +1,7 @@
 Persian Calendar
 ================
 
-A Persian (Jalali/Farsi) calendar which provides a basic app-indicator in Unity 
-Desktop Environment.
+A Persian (Jalali/Farsi) calendar which provides a basic appindicator.
 
 
 Screenshot
@@ -20,6 +19,8 @@ Khayyam python package (http://pythonhosted.org/Khayyam/)
 
 Installation
 ================
+
+Note: Arch Linux users can install it from AUR (https://aur.archlinux.org/packages/persian-calendar/)
 
 First make sure *Khayyam* and *python-appindicator* is installed:
 
