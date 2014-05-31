@@ -2,6 +2,8 @@ Persian Calendar
 ================
 
 A Persian (Jalali/Farsi) calendar which provides a basic appindicator.
+(It has been tested on Unity, Gnome-shell, and XFCE but it should run on all
+Desktop Environment as long as you have the libappindicator.)
 
 
 Screenshot
@@ -29,16 +31,19 @@ First make sure *Khayyam* and *python-appindicator* is installed:
 
 Download Persian calendar (make sure all steps run successfully):
 
-    cd ~
+    sudo mkdir -p /opt/persian-calendar
+    sudo chmod 775 /opt/persian-calendar
     wget -O persian-calendar.tar.gz https://github.com/183amir/persian-calendar/tarball/master
-    mkdir persian-calendar
-    tar -xf persian-calendar.tar.gz -C persian-calendar --strip-components 1
-    cd persian-calendar
-    chmod +x persian-calendar.py
+    sudo tar -xf persian-calendar.tar.gz -C /opt/persian-calendar --strip-components 1
+    sudo install -Dm644 /opt/persian-calendar/persian-calendar.desktop /usr/share/applications/persian-calendar.desktop
+    sudo install -Dm644 /opt/persian-calendar/data/icons/ubuntu-mono-dark/persian-calendar-`date +%d`.png /usr/share/pixmaps/persian-calendar.png
+    sudo install -D -m644 /opt/persian-calendar/LICENSE /usr/share/licenses/persian-calendar/LICENSE
+    sudo chmod +x /opt/persian-calendar/persian-calendar.py
 
-Now press Alt+F2 and run the program from there by pasting the below command:
+Note: you can run the application from your applications menu (where you find your installed apps). 
+Or, you could press Alt+F2 and run this command:
 
-    ~/persian-calendar/persian-calendar.py
+    /opt/persian-calendar/persian-calendar.py
 
 
 Run at startup
@@ -46,20 +51,7 @@ Run at startup
 
 To make the program run when you login:
 
-In Ubuntu, run *Startup Applications* and press add
-
-Name:
-
-    persian-calendar
-
-Command (you should replace USERNAME with your username:
-
-    /usr/bin/python /home/USERNAME/persian-calendar/persian-calendar.py
-
-Comment:
-
-    Persian Calendar Indicator
-
+    cp /usr/share/applications/persian-calendar.desktop ~/.config/autostart/
 
 Support or Contact
 ================
