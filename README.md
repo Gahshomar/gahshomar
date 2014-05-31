@@ -36,7 +36,7 @@ Download Persian calendar (make sure all steps run successfully):
     wget -O persian-calendar.tar.gz https://github.com/183amir/persian-calendar/tarball/master
     sudo tar -xf persian-calendar.tar.gz -C /opt/persian-calendar --strip-components 1
     sudo install -Dm644 /opt/persian-calendar/persian-calendar.desktop /usr/share/applications/persian-calendar.desktop
-    sudo install -Dm644 /opt/persian-calendar/data/icons/ubuntu-mono-dark/persian-calendar-`date +%d`.png /usr/share/pixmaps/persian-calendar.png
+    sudo install -Dm644 /opt/persian-calendar/data/icons/ubuntu-mono-dark/persian-calendar-`date +%-d`.png /usr/share/pixmaps/persian-calendar.png
     sudo install -D -m644 /opt/persian-calendar/LICENSE /usr/share/licenses/persian-calendar/LICENSE
     sudo chmod +x /opt/persian-calendar/persian-calendar.py
 
