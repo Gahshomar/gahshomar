@@ -2,7 +2,9 @@
 
 from gi.repository import Gtk, Gdk, Gio
 
-from my_calendar import PersianCalendar, GeorgianCalendar
+from my_calendar import PersianCalendar, GeorgianCalendar, date_to_georgian,\
+    add_months, add_years
+from months_widget import PersianMonthsWidget, GeorgianMonthsWidget
 
 
 class CalendarWidget(Gtk.Box):
@@ -13,6 +15,9 @@ class CalendarWidget(Gtk.Box):
         self.setup_header()
         self.setup_tobbar()
         self.setup_grid()
+        self.connect_date_buttons()
+        self.connect_month_arrow()
+        self.connect_year_arrow()
 
     def setup_year_entry(self):
         self.header.year = Gtk.Entry()
@@ -24,6 +29,41 @@ class CalendarWidget(Gtk.Box):
                                  Gio.ThemedIcon(name='list-add'))
         year.set_icon_activatable(Gtk.EntryIconPosition.PRIMARY, True)
         year.set_icon_activatable(Gtk.EntryIconPosition.SECONDARY, True)
+
+    def setup_month_popup(self):
+        months = list(self.get_months())
+        month_label = months[self.date.month-1]
+        self.header.month = Gtk.Button(label=month_label)
+        self.header.month.set_size_request(150, -1)
+        self.header.pack_start(self.header.month, False, True, 0)
+        self.header.month.connect('button-press-event',
+                                  self.display_months, self.date)
+
+    def display_months(self, *args):
+        date = args[-1]
+        win = Gtk.Window(Gtk.WindowType.POPUP)
+        months = self.MonthWidget(date)
+        win.add(months)
+        win.set_position(Gtk.WindowPosition.MOUSE)
+        # win.set_decorated(False)
+        win.show_all()
+        self.month_widget = months
+        self.month_widget_win = win
+        self.connect_month_buttons()
+
+    def connect_month_buttons(self):
+        months = self.month_widget
+        button_list = months.grid.button_list
+        for button, _, i in button_list:
+            button.connect("button-press-event",
+                           self.month_button_pressed, i, months.date)
+
+    def month_button_pressed(self, *args):
+        month, date = args[-2:]
+        date = date.replace(month=month)
+        date = date_to_georgian(date)
+        self.month_widget_win.close()
+        self.parent.handler.update_everything(date)
 
     def setup_header(self):
         self.header = Gtk.Box()
@@ -38,27 +78,14 @@ class CalendarWidget(Gtk.Box):
         else:
             self.header.pack_start(btr, False, False, 0)
         # months
-        self.header.month = Gtk.ComboBoxText()
-        self.header.pack_start(self.header.month, False, True, 0)
-        for i, month in enumerate(self.get_months()):
-            self.header.month.append(str(i+1), month)
-        self.header.month.set_active_id(str(self.date.month))
+        self.setup_month_popup()
         if self.rtl:
             self.header.pack_start(btr, False, False, 0)
         else:
             self.header.pack_start(btl, False, False, 0)
         # years
         self.setup_year_entry()
-        # self.header.year = Gtk.Label(label=self.date.strftime('%Y'))
-        # # year buttons
-        # btr = Gtk.Button.new_from_icon_name('list-add', 0)
-        # btl = Gtk.Button.new_from_icon_name('list-remove', 0)
-        # self.header.btly = btl
-        # self.header.btry = btr
-
-        # self.header.pack_end(self.header.btry, False, False, 0)
         self.header.pack_end(self.header.year, False, True, 0)
-        # self.header.pack_end(self.header.btly, False, False, 0)
 
     def setup_tobbar(self):
         self.topbarbox = Gtk.Box()
@@ -79,7 +106,7 @@ class CalendarWidget(Gtk.Box):
     def setup_grid(self):
         self.gen_grid_mat()
         self.grid = Gtk.Grid()
-        self.pack_start(self.grid, False, True, 0)
+        self.pack_start(self.grid, True, True, 0)
         self.grid.set_column_homogeneous(True)
         self.grid.set_column_spacing(spacing=10)
         self.grid.set_row_homogeneous(True)
@@ -100,12 +127,61 @@ class CalendarWidget(Gtk.Box):
                 self.grid.attach(button, i, j, 1, 1)
                 self.grid.button_list.append((button, date, i, j))
 
+    def connect_date_buttons(self):
+        button_list = self.grid.button_list
+        for button, date, i, j in button_list:
+            button.connect("button-press-event",
+                           self.date_button_pressed, (i, j, date))
+
+    def date_button_pressed(self, *args):
+        date = date_to_georgian(args[-1][-1])
+        self.parent.handler.update_everything(date)
+
+    def connect_year_arrow(self):
+        self.header.year.connect("icon-press",
+                                 self.year_arrow_pressed)
+        self.header.year.connect('activate',
+                                 self.year_entered, self.date)
+
+    def year_entered(self, yearEntry, date):
+        year = yearEntry.get_text()
+        try:
+            year = int(year)
+        except Exception:
+            year = date.year
+        date = date_to_georgian(date.replace(year=year))
+        self.parent.handler.update_everything(date)
+
+    def year_arrow_pressed(self, yera, icon_pos, event):
+        if icon_pos == Gtk.EntryIconPosition.PRIMARY:
+            date = add_years(self.parent.date, -1)
+        else:
+            date = add_years(self.parent.date, 1)
+        self.parent.handler.update_everything(date)
+
+    def connect_month_arrow(self):
+        # left arrow
+        self.header.btl.connect("button-press-event",
+                                self.month_arrow_pressed, 'l')
+        # right arrow
+        self.header.btr.connect("button-press-event",
+                                self.month_arrow_pressed, 'r')
+
+    def month_arrow_pressed(self, *args):
+        l_r = args[-1]
+        if l_r == 'r':
+            date = add_months(self.parent.date, -1)
+        else:
+            date = add_months(self.parent.date, 1)
+        self.parent.handler.update_everything(date)
+
 
 class PersianCalendarWidget(CalendarWidget, PersianCalendar):
     """docstring for PersianCalendarWidget"""
     def __init__(self, date=None, rtl=True):
         PersianCalendar.__init__(self, date)
         self.rtl = rtl
+        self.MonthWidget = PersianMonthsWidget
         CalendarWidget.__init__(self)
 
 
@@ -114,22 +190,5 @@ class GeorgianCalendarWidget(CalendarWidget, GeorgianCalendar):
     def __init__(self, date=None, rtl=False):
         GeorgianCalendar.__init__(self, date)
         self.rtl = rtl
+        self.MonthWidget = GeorgianMonthsWidget
         CalendarWidget.__init__(self)
-
-
-class MainWindow(Gtk.Window):
-
-    def __init__(self):
-        super().__init__(title='Calendar Widgets')
-        hbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=20)
-        self.add(hbox)
-        hbox.pack_start(PersianCalendarWidget(), True, True, 0)
-        # hbox.pack_start(PersianCalendarWidget(rtl=False), True, True, 0)
-        hbox.pack_start(GeorgianCalendarWidget(), True, True, 0)
-
-if __name__ == '__main__':
-    win = MainWindow()
-    win.connect("delete-event", Gtk.main_quit)
-    win.set_icon_name("calendar")
-    win.show_all()
-    Gtk.main()
