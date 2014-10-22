@@ -41,15 +41,20 @@ class CalendarWidget(Gtk.Box):
 
     def display_months(self, *args):
         date = args[-1]
-        win = Gtk.Window(Gtk.WindowType.POPUP)
+        win = Gtk.Window(Gtk.WindowType.TOPLEVEL)  # POPUP or TOPLEVEL
         months = self.MonthWidget(date)
         win.add(months)
         win.set_position(Gtk.WindowPosition.MOUSE)
-        # win.set_decorated(False)
+        win.set_decorated(False)
+        win.connect('focus-out-event', self.destroy_months_win)
         win.show_all()
+        # win.set_transient_for(self.parent)
         self.month_widget = months
         self.month_widget_win = win
         self.connect_month_buttons()
+
+    def destroy_months_win(self, *args):
+        self.month_widget_win.destroy()
 
     def connect_month_buttons(self):
         months = self.month_widget
@@ -101,7 +106,9 @@ class CalendarWidget(Gtk.Box):
             self.topbarbox.pack_start(label, True, True, 0)
 
         self.topbarbox.override_background_color(Gtk.StateFlags.NORMAL,
-                                                 Gdk.RGBA(red=0, green=0))
+                                                 Gdk.RGBA(red=74/255,
+                                                          green=144/255,
+                                                          blue=217/255))
 
     def setup_grid(self):
         self.gen_grid_mat()

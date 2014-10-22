@@ -8,7 +8,9 @@ class EventsHandler(object):
         self.calendars = parent.calendars
         self.parent = parent
 
-    def update_everything(self, date):
+    def update_everything(self, date=None):
+        if date is None:
+            date = self.parent.date
         self.parent.date = date
         self.update_calendars(date)
         self.update_day_widgets(date)
@@ -25,5 +27,3 @@ class EventsHandler(object):
         for dayw in self.parent.day_widgets:
             dayw.destroy()
             dayw.__init__(date)
-
-

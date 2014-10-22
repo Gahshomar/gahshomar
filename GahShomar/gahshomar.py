@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
-from os.path import join, split
-from gi.repository import Gtk, Gio, GdkPixbuf
+from gi.repository import Gtk, GLib
 import khayyam
 import datetime
 
 from calendar_widget import PersianCalendarWidget, GeorgianCalendarWidget
 from day_widget import PersianDayWidget, GeorgianDayWidget
 from events_handler import EventsHandler
+
+# get the full path of the file
+import os
+import sys
+if os.path.dirname(sys.argv[0]) != '.':
+    if sys.argv[0][0] == '/':
+        FULL_PATH = os.path.dirname(sys.argv[0])
+    else:
+        FULL_PATH = os.getcwd() + '/' + os.path.dirname(sys.argv[0])
+else:
+    FULL_PATH = os.getcwd()
 
 
 class MainWindow(Gtk.Window):
@@ -17,15 +27,17 @@ class MainWindow(Gtk.Window):
             date = datetime.date.today()
         self.date = date
 
+        self.full_path = FULL_PATH
+
         pday = PersianDayWidget()
         gday = GeorgianDayWidget()
-        self.day_widgets = [gday, pday]
+        self.day_widgets = [pday, gday]
 
         pcal = PersianCalendarWidget(khayyam.JalaliDate.from_date(date))
         pcal.parent = self
         gcal = GeorgianCalendarWidget(date)
         gcal.parent = self
-        self.calendars = [gcal, pcal]
+        self.calendars = [pcal, gcal]
         self.handler = EventsHandler(self)
 
         self.main_grid = Gtk.Grid()
@@ -37,6 +49,9 @@ class MainWindow(Gtk.Window):
         main_grid.set_row_spacing(spacing=20)
 
         self.draw_interface()
+
+        # update interface every 5 seconds
+        GLib.timeout_add_seconds(5, self.handler.update_everything)
 
     def draw_interface(self):
         main_grid = self.main_grid
@@ -51,21 +66,7 @@ class MainWindow(Gtk.Window):
         hb = Gtk.HeaderBar()
         hb.props.show_close_button = True
         hb.props.title = 'گاه شمار'
-        button = Gtk.Button()
-        path = split(__file__)[0]
-        name = '../data/icons/ubuntu-mono-light/persian-calendar-{}.png'
-        name = name.format(khayyam.JalaliDate.today().day)
-        path = join(path, name)
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file(path)
-        scale = 15
-        print(513//scale)
-        pixbuf = pixbuf.scale_simple(475//scale, 513//scale, GdkPixbuf.InterpType.BILINEAR)
-        image = Gtk.Image.new_from_pixbuf(pixbuf)
-        # image.set_pixel_size(1)
-        # image.set_pixel_size(Gtk.IconSize.LARGE_TOOLBAR)
-        # icon = Gio.ThemedIcon(name="go-home")
-        # image = Gtk.Image.new_from_gicon(icon, Gtk.IconSize.LARGE_TOOLBAR)
-        button.add(image)
+        button = Gtk.Button(label='امروز')
         button.connect("clicked", self.set_today)
         hb.pack_start(button)
         self.set_titlebar(hb)
