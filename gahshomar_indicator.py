@@ -20,7 +20,7 @@ import os
 import datetime
 from gi.repository import AppIndicator3 as AppIndicator
 from gi.repository import Gtk, GObject
-import khayyam
+import khayyam3
 
 
 class GahShomarIndicator(GObject.GObject):
@@ -70,7 +70,7 @@ class GahShomarIndicator(GObject.GObject):
     def get_date(self, date, frmt=None):
         if frmt is None:
             frmt = self.parent.config['AppIndicator']['date_format']
-        return khayyam.JalaliDate.from_date(date).strftime(frmt)
+        return khayyam3.JalaliDate.from_date(date).strftime(frmt)
 
     def quit(self, widget):
         Gtk.main_quit()
@@ -83,7 +83,7 @@ class GahShomarIndicator(GObject.GObject):
         self.ind.set_icon_theme_path(
             os.path.join(self.base_folder, self.icon_folder))
         self.ind.set_icon(self.icon_name.format(
-            day=khayyam.JalaliDate.from_date(self.date).day))
+            day=khayyam3.JalaliDate.from_date(self.date).day))
 
     def toggle_main_win(self, *args):
         if self.parent.visible:

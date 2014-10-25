@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Persian Calendar
 Comment=A Persian (Jalali/Farsi) calendar which provides a basic appindicator
-Exec=/opt/persian-calendar/persian-calendar.py
+Exec=/opt/persian-calendar/gahshomar -m
 Icon=persian-calendar
 Terminal=false
 Type=Application

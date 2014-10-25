@@ -18,7 +18,7 @@
 
 from calendar import Calendar, monthrange
 import datetime
-import khayyam
+import khayyam3
 import calendar
 
 from jalali_date_persian_numbers import JalaliDatePersianNumbers
@@ -29,7 +29,7 @@ def add_years(date, years):
 
 
 def date_to_georgian(date):
-    if isinstance(date, khayyam.JalaliDate):
+    if isinstance(date, khayyam3.JalaliDate):
         return date.to_date()
     return date
 
@@ -133,10 +133,10 @@ class PersianCalendar(MyCalendar):
     """docstring for PersianCalendar"""
     def __init__(self, date=None, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # khayyam.JalaliDate.__init__(self)
+        # khayyam3.JalaliDate.__init__(self)
         if date is None:
-            date = khayyam.JalaliDate.today()
-        date = khayyam.JalaliDate.from_date(date_to_georgian(date))
+            date = khayyam3.JalaliDate.today()
+        date = khayyam3.JalaliDate.from_date(date_to_georgian(date))
         date = JalaliDatePersianNumbers(date.year, date.month, date.day)
         # print(date, date.strftime('%d'))
         self.date = date
@@ -148,7 +148,7 @@ class PersianCalendar(MyCalendar):
         return ['ش', '۱ش', '۲ش', '۳ش', '۴ش', '۵ش', 'آ']
 
     def get_months(self):
-        return khayyam.jalali_date.PERSIAN_MONTH_NAMES.values()
+        return khayyam3.jalali_date.PERSIAN_MONTH_NAMES.values()
 
 
 class GeorgianCalendar(MyCalendar):

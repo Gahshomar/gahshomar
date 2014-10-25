@@ -19,7 +19,7 @@
 
 import datetime
 from gi.repository import Gtk, GLib
-import khayyam
+import khayyam3
 
 from calendar_widget import PersianCalendarWidget, GeorgianCalendarWidget
 from day_widget import PersianDayWidget, GeorgianDayWidget
@@ -43,7 +43,7 @@ class MainWindow(Gtk.Window):
         gday = GeorgianDayWidget()
         self.day_widgets = [pday, gday]
 
-        pcal = PersianCalendarWidget(khayyam.JalaliDate.from_date(date))
+        pcal = PersianCalendarWidget(khayyam3.JalaliDate.from_date(date))
         pcal.parent = self
         gcal = GeorgianCalendarWidget(date)
         gcal.parent = self
