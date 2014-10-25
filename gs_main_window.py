@@ -58,14 +58,14 @@ class MainWindow(Gtk.Window):
         # main_grid.set_row_homogeneous(True)
         main_grid.set_row_spacing(spacing=20)
 
+        # setup appindicator
+        self.visible = True
+        self.setup_appindicator()
+        
         self.draw_interface()
 
         # update interface every 5 seconds
         GLib.timeout_add_seconds(5, self.handler.update_everything)
-
-        # setup appindicator
-        self.visible = True
-        self.setup_appindicator()
 
     def draw_interface(self):
         main_grid = self.main_grid
@@ -78,11 +78,18 @@ class MainWindow(Gtk.Window):
     def setup_header_bar(self):
         # set header bar
         hb = Gtk.HeaderBar()
-        hb.props.show_close_button = True
+        hb.props.show_close_button = False
         hb.props.title = 'گاه شمار'
+
+        close_button = Gtk.Button.new_from_icon_name(
+            'window-close', Gtk.IconSize.LARGE_TOOLBAR)
+        close_button.connect('clicked', self.ind.toggle_main_win)
+        hb.pack_end(close_button)
+
         button = Gtk.Button(label='امروز')
         button.connect("clicked", self.set_today)
         hb.pack_end(button)
+
         # sett_button = Gtk.Button.new_from_icon_name(
         #     'preferences-system', Gtk.IconSize.LARGE_TOOLBAR)
         # sett_button.connect('clicked', self.on_settings_clicked)
