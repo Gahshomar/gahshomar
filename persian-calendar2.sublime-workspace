@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"lis",
+				"listbox	(statement)"
+			],
+			[
+				"gs_se",
+				"gs_settings_page	(module)"
+			],
+			[
+				"gs_",
+				"gs_main_window	(module)"
+			],
+			[
+				"gl",
+				"globals	(function)"
+			],
+			[
+				"con",
+				"config"
+			],
+			[
+				"str",
+				"strip"
+			],
+			[
+				"co",
+				"config_default	(statement)"
+			],
+			[
+				"pr",
+				"print	(function)"
+			],
+			[
+				"ar",
+				"args	(statement)"
+			],
+			[
+				"to",
+				"toggle_main_win	(function)"
+			],
+			[
+				"t",
+				"toggle_main_win	(function)"
+			],
+			[
+				"tod",
+				"today"
+			],
+			[
+				"da",
+				"datetime	(module)"
+			],
+			[
+				"__",
+				"__init__"
+			],
+			[
+				"de",
+				"destroy"
+			],
+			[
+				"pa",
+				"parent"
+			],
+			[
+				"gah",
+				"gahshomar-indicator	(import)"
+			],
+			[
+				"ca",
+				"CATEGORY_"
+			],
+			[
 				"std",
 				"stdin	(class)"
 			],
@@ -16,16 +88,8 @@
 				"iterator"
 			],
 			[
-				"da",
-				"day"
-			],
-			[
 				"ch",
 				"change_time"
-			],
-			[
-				"tod",
-				"today_item"
 			],
 			[
 				"lati",
@@ -56,10 +120,6 @@
 				"lock"
 			],
 			[
-				"pr",
-				"print"
-			],
-			[
 				"me",
 				"messages_item"
 			],
@@ -75,9 +135,13 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 92.0,
+		"height": 352.0,
 		"selected_items":
 		[
+			[
+				"togg",
+				"View: Toggle Minimap"
+			],
 			[
 				"remo",
 				"Package Control: Remove Package"
@@ -151,10 +215,6 @@
 				"Git: Status"
 			],
 			[
-				"togg",
-				"View: Toggle Minimap"
-			],
-			[
 				"la",
 				"Package Control: List Packages"
 			],
@@ -167,7 +227,7 @@
 				"LaTeXTools: View PDF"
 			]
 		],
-		"width": 449.0
+		"width": 647.0
 	},
 	"console":
 	{
@@ -236,8 +296,59 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/home/amir/git/persian-calendar",
+		"/home/amir/git/persian-calendar/GahShomar"
+	],
 	"file_history":
 	[
+		"/home/amir/git/python-bloatpad/bloatpad.py",
+		"/home/amir/git/persian-calendar/GahShomar/gahshomar",
+		"/home/amir/Downloads/AUR/persian-calendar/PKGBUILD",
+		"/home/amir/git/persian-calendar/GahShomar/gahshomar.py",
+		"/home/amir/git/khayyam3/setup.py",
+		"/home/amir/git/khayyam3/doc/install.rst",
+		"/home/amir/git/khayyam3/doc/jalalicalendar.rst",
+		"/home/amir/git/khayyam3/doc/make.bat",
+		"/home/amir/git/khayyam3/doc/Makefile",
+		"/home/amir/git/khayyam3/doc/tutorial.rst",
+		"/home/amir/git/khayyam3/build/lib/khayyam3/__init__.py",
+		"/home/amir/git/khayyam3/doc/api.rst",
+		"/home/amir/git/khayyam3/doc/conf.py",
+		"/home/amir/git/khayyam3/doc/index.rst",
+		"/home/amir/Downloads/AUR/Downloads/python2-khayyam/PKGBUILD",
+		"/home/amir/git/khayyam3/khayyam3/__init__.py",
+		"/home/amir/git/khayyam3/createdoc",
+		"/home/amir/git/khayyam3/khayyam/jalali_date.py",
+		"/home/amir/git/khayyam3/khayyam/jalali_datetime.py",
+		"/home/amir/git/khayyam3/khayyam/tehran_timezone.py",
+		"/home/amir/git/khayyam3/tests/jalali_date_test.py",
+		"/home/amir/git/khayyam3/tests/jalali_datetime_test.py",
+		"/home/amir/git/khayyam3/tests/teh_tz_test.py",
+		"/home/amir/git/khayyam3/README.md",
+		"/home/amir/git/khayyam3/README.txt",
+		"/home/amir/git/khayyam3/build/lib/khayyam/jalali_date.py",
+		"/home/amir/git/khayyam3/build/lib/khayyam/jalali_datetime.py",
+		"/home/amir/git/khayyam3/build/lib/khayyam/tehran_timezone.py",
+		"/home/amir/git/persian-calendar/GahShomar/gahshomar_indicator.py",
+		"/home/amir/git/persian-calendar/GahShomar/test.py",
+		"/home/amir/git/persian-calendar/GahShomar/gs_main_window.py",
+		"/home/amir/git/persian-calendar/GahShomar/gs_settings_page.py",
+		"/home/amir/git/persian-calendar/GahShomar/gs_settings.py",
+		"/home/amir/.config/persian-calendar/settings.conf",
+		"/home/amir/git/persian-calendar/GahShomar/events_handler.py",
+		"/home/amir/git/persian-calendar/GahShomar/day_widget.py",
+		"/home/amir/git/persian-calendar/GahShomar/persian-calendar.py",
+		"/home/amir/git/persian-calendar/GahShomar/calendar_widget.py",
+		"/home/amir/git/persian-calendar/GahShomar/my_calendar.py",
+		"/home/amir/git/persian-calendar/GahShomar/months_widget.py",
+		"/home/amir/git/persian-calendar/GahShomar/jalali_date_persian_numbers.py",
+		"/home/amir/git/persian-calendar/GahShomar/__init__.py",
+		"/home/amir/.config/persian-calendar/settings (copy).conf",
+		"/var/abs/extra/tcl/PKGBUILD",
+		"/home/amir/Downloads/AUR/moka-icon-theme/PKGBUILD",
+		"/home/amir/git/persian-calendar/GahShomar/persian-calendar.py.bak",
 		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/Constrained_structural_maximum_a_posteriori_linear_regression_(CSMAPLR)_Algorithm.tex",
 		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/Proposed_Algorithms.tex",
 		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/refs_hts.bib",
@@ -319,63 +430,18 @@
 		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/MS_Thesis.lof",
 		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/MS_Thesis.blg",
 		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/MS_Thesis.bbl",
-		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/MS_Thesis.aux",
-		"/home/amir/.config/sublime-text-3/Packages/LaTeXTools/latex_cite_completions.py",
-		"/home/amir/.config/sublime-text-3/Packages/LaTeXTools/README.markdown",
-		"/home/amir/.config/sublime-text-3/Packages/User/LaTeXTools.sublime-settings",
-		"/home/amir/.config/sublime-text-3/Packages/LaTeXTools/latex_ref_completions.py",
-		"/media/sdc2/Dropbox/IEEETSALP_BCAT/bcat-knn-presentation/tasks.txt",
-		"/media/sdb2/tmp/Dtr1000/Elham_ProcessingRaysFromMATfiles.m",
-		"/media/sdb2/tmp/Dtr1000/Elham_ProcessingRaysFromMATfiles.py",
-		"/home/amir/Dropbox/MS_Thesis/.gitignore",
-		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/Introduction.tex",
-		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/Introduction.jrnl.tex",
-		"/home/amir/.config/sublime-text-3/Packages/LaTeXTools/Default (Linux).sublime-keymap",
-		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/MS_Thesis.sublime-project",
-		"/home/amir/Dropbox/IEEETSALP_BCAT/bcat_jrnl.v22.cenk.tex",
-		"/etc/modules",
-		"/usr/share/icons/Moka/index.theme",
-		"/usr/share/icons/Faba/index.theme",
-		"/usr/share/icons/ubuntu-mono-light/index.theme",
-		"/home/amir/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/amir/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/amir/git/persian-calendar/persian-calendar.py",
-		"/home/amir/.config/persian-calendar/settings",
-		"/usr/local/lib/python2.7/dist-packages/khayyam/jalali_date.py",
-		"/home/amir/Downloads/Installs/Khayyam-0.9/setup.py",
-		"/home/amir/Downloads/Installs/Khayyam-0.9/tests/jalali_date_test.py",
-		"/home/amir/Downloads/Installs/Khayyam-0.9/tests/jalali_datetime_test.py",
-		"/home/amir/persian-calendar/view.qml",
-		"/home/amir/persian-calendar/main.py",
-		"/home/amir/git/tuts4pyside/quit_prog/quitter.ui",
-		"/home/amir/git/tuts4pyside/quit_prog/ui_quitter.py",
-		"/home/amir/git/tuts4pyside/quit_prog/quitter.py",
-		"/home/amir/git/tuts4pyside/quit_prog/quitter_alt.py",
-		"/home/amir/git/tuts4pyside/about_box/about.ui",
-		"/home/amir/git/persian-calendar/README.md",
-		"/home/amir/git/debiandocmenu/bin/debiandocmenu",
-		"/home/amir/Sick-Beard-ThePirateBay/init.ubuntu",
-		"/home/amir/git/persian-calendar/LICENSE",
-		"/home/amir/git/persian-calendar/data/icon_generator.py",
-		"/home/amir/git/persian-calendar/fix_author.sh",
-		"/home/amir/git/debiandocmenu/debiandocmenu/PreferencesDebiandocmenuDialog.py",
-		"/home/amir/git/debiandocmenu/debiandocmenu/__init__.py",
-		"/home/amir/git/debiandocmenu/debiandocmenu/debiandocmenuconfig.py",
-		"/home/amir/git/debiandocmenu/debiandocmenu/AboutDebiandocmenuDialog.py",
-		"/home/amir/git/tseliot-hamster-appindicator-037dd2e/hamster-indicator",
-		"/usr/local/lib/python2.7/dist-packages/khayyam/algorithms.py",
-		"/home/amir/git/tseliot-hamster-appindicator-037dd2e/install-icons.sh",
-		"/home/amir/Untitled0.ipynb"
+		"/home/amir/Dropbox/MS_Thesis/OzU_Thesis/MS_Thesis.aux"
 	],
 	"find":
 	{
-		"height": 43.0
+		"height": 44.0
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 170.0,
 		"where_history":
 		[
+			"/home/amir/git/khayyam3",
 			"<open folders>",
 			"<open files>",
 			"/home/amir/git/indicator-datetime"
@@ -386,6 +452,26 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"0.9",
+			"Khayyam3",
+			"khayyam",
+			"Khayyam",
+			"khayyam",
+			"False",
+			"pack_start",
+			"Gtk.Box",
+			"ListBox",
+			"config_default",
+			"  ",
+			":",
+			",",
+			"\"",
+			"'",
+			"quit_item",
+			"gtk",
+			"  ",
+			"full_path",
+			"PersianCalendar",
 			"Section",
 			"-",
 			"--",
@@ -448,6 +534,13 @@
 		"regex": false,
 		"replace_history":
 		[
+			"khayyam3",
+			"Khayyam3",
+			"Khayyam",
+			"khayyam",
+			"    ",
+			"Gtk",
+			"    ",
 			" ",
 			"\\b{\\Lambda}",
 			"{Markov}"
@@ -468,7 +561,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 24.0
+		"height": 33.0
 	},
 	"input":
 	{
@@ -497,6 +590,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 160.0
+	},
 	"output.find_results":
 	{
 		"height": 112.0
@@ -504,7 +601,7 @@
 	"project": "persian-calendar2.sublime-project",
 	"replace":
 	{
-		"height": 48.0
+		"height": 82.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -599,8 +696,8 @@
 	"settings":
 	{
 	},
-	"show_minimap": false,
-	"show_open_files": false,
+	"show_minimap": true,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 360.0,
