@@ -51,7 +51,7 @@ if __name__ == '__main__':
     from gs_main_window import MainWindow
     win = MainWindow(FULL_PATH, config)
     win.connect('delete-event', Gtk.main_quit)
-    win.set_icon_name('calendar')
+    win.set_icon_name('persian-calendar')
     win.show_all()
     if args.no_main_window:
         win.ind.toggle_main_win()
