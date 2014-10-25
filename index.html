@@ -2,9 +2,9 @@
 <html>
 
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Persian Calendar : A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment." />
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Persian Calendar : A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment.">
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
@@ -35,48 +35,45 @@
 <a name="persian-calendar" class="anchor" href="#persian-calendar"><span class="octicon octicon-link"></span></a>Persian Calendar</h1>
 
 <p>A Persian (Jalali/Farsi) calendar which provides a basic appindicator.
-(It has been tested on Unity, Gnome-shell, and XFCE but it should run on all
-Desktop Environment as long as you have the libappindicator.)</p>
+(It has been tested on Unity, Gnome-shell, XFCE, and KDE (see the Wiki in github) but it should run on all Desktop Environment as long as you have the libappindicator.)</p>
 
 <h1>
 <a name="screenshot" class="anchor" href="#screenshot"><span class="octicon octicon-link"></span></a>Screenshot</h1>
 
-<p><img src="http://i57.tinypic.com/11izgn7.png" alt="screenshot"></p>
+<p><img src="https://github.com/183amir/persian-calendar/raw/master/data/Screenshot.png" alt="screenshot"></p>
 
 <h1>
 <a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
 
-<p>python-appindicator</p>
+<p>python3-appindicator</p>
 
-<p>Khayyam python package (<a href="http://pythonhosted.org/Khayyam/">http://pythonhosted.org/Khayyam/</a>)</p>
+<p>Khayyam3 python package (<a href="https://pypi.python.org/pypi/Khayyam3">https://pypi.python.org/pypi/Khayyam3</a>)</p>
 
 <h1>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
 <p>Note: Arch Linux users can install it from AUR (<a href="https://aur.archlinux.org/packages/persian-calendar/">https://aur.archlinux.org/packages/persian-calendar/</a>)</p>
 
-<p>First make sure <em>Khayyam</em> and <em>python-appindicator</em> is installed:</p>
+<h1>
+<a name="ubuntu-installation" class="anchor" href="#ubuntu-installation"><span class="octicon octicon-link"></span></a>Ubuntu Installation</h1>
 
-<pre><code>sudo apt-get install python-pip python-appindicator
-sudo pip install Khayyam
+<p>First make sure <em>Khayyam3</em> and <em>python-appindicator</em> is installed:</p>
+
+<pre><code>sudo apt-get install python3-pip python3-appindicator
+sudo pip3 install Khayyam3
 </code></pre>
 
 <p>Download Persian calendar (make sure all steps run successfully):</p>
 
-<pre><code>sudo mkdir -p /opt/persian-calendar
+<pre><code>sudo rm -rf /opt/persian-calendar
+sudo mkdir -p /opt/persian-calendar
 sudo chmod 775 /opt/persian-calendar
 wget -O persian-calendar.tar.gz https://github.com/183amir/persian-calendar/tarball/master
 sudo tar -xf persian-calendar.tar.gz -C /opt/persian-calendar --strip-components 1
-sudo install -Dm644 /opt/persian-calendar/persian-calendar.desktop /usr/share/applications/persian-calendar.desktop
+sudo install -Dm644 /opt/persian-calendar/data/persian-calendar.desktop /usr/share/applications/persian-calendar.desktop
 sudo install -Dm644 /opt/persian-calendar/data/icons/ubuntu-mono-dark/persian-calendar-`date +%-d`.png /usr/share/pixmaps/persian-calendar.png
 sudo install -D -m644 /opt/persian-calendar/LICENSE /usr/share/licenses/persian-calendar/LICENSE
-sudo chmod +x /opt/persian-calendar/persian-calendar.py
-</code></pre>
-
-<p>Note: you can run the application from your applications menu (where you find your installed apps). 
-Or, you could press Alt+F2 and run this command:</p>
-
-<pre><code>/opt/persian-calendar/persian-calendar.py
+sudo chmod +x /opt/persian-calendar/gahshomar
 </code></pre>
 
 <h1>
