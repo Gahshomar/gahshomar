@@ -1,33 +1,43 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# Copyright (C) 2014    Amir Mohammadi <183.amir@gmail.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.    See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+import datetime
 from gi.repository import Gtk, GLib
 import khayyam
-import datetime
 
 from calendar_widget import PersianCalendarWidget, GeorgianCalendarWidget
 from day_widget import PersianDayWidget, GeorgianDayWidget
 from events_handler import EventsHandler
-
-# get the full path of the file
-import os
-import sys
-if os.path.dirname(sys.argv[0]) != '.':
-    if sys.argv[0][0] == '/':
-        FULL_PATH = os.path.dirname(sys.argv[0])
-    else:
-        FULL_PATH = os.getcwd() + '/' + os.path.dirname(sys.argv[0])
-else:
-    FULL_PATH = os.getcwd()
+from gahshomar_indicator import GahShomarIndicator
+from gs_settings_page import SettingsWindow
 
 
 class MainWindow(Gtk.Window):
-
-    def __init__(self, date=None):
+    def __init__(self, FULL_PATH, config, date=None):
         super().__init__(title='گاه شمار')
         if date is None:
             date = datetime.date.today()
         self.date = date
 
+        # config values
         self.full_path = FULL_PATH
+        self.config = config
 
         pday = PersianDayWidget()
         gday = GeorgianDayWidget()
@@ -53,6 +63,10 @@ class MainWindow(Gtk.Window):
         # update interface every 5 seconds
         GLib.timeout_add_seconds(5, self.handler.update_everything)
 
+        # setup appindicator
+        self.visible = True
+        self.setup_appindicator()
+
     def draw_interface(self):
         main_grid = self.main_grid
         for i, v in enumerate(self.day_widgets):
@@ -68,15 +82,19 @@ class MainWindow(Gtk.Window):
         hb.props.title = 'گاه شمار'
         button = Gtk.Button(label='امروز')
         button.connect("clicked", self.set_today)
-        hb.pack_start(button)
+        hb.pack_end(button)
+        # sett_button = Gtk.Button.new_from_icon_name(
+        #     'preferences-system', Gtk.IconSize.LARGE_TOOLBAR)
+        # sett_button.connect('clicked', self.on_settings_clicked)
+        # hb.pack_end(sett_button)
         self.set_titlebar(hb)
+
+    def on_settings_clicked(self, button):
+        sett_win = SettingsWindow(self)
+        sett_win.show_all()
 
     def set_today(self, *args):
         self.handler.update_everything(datetime.date.today())
 
-if __name__ == '__main__':
-    win = MainWindow()
-    win.connect("delete-event", Gtk.main_quit)
-    win.set_icon_name("calendar")
-    win.show_all()
-    Gtk.main()
+    def setup_appindicator(self):
+        self.ind = GahShomarIndicator(self, self.date)
