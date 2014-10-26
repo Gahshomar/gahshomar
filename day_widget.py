@@ -41,8 +41,6 @@ class DayWidget(Gtk.Box):
         day.set_markup("<span size='large'>"+text+'</span>')
 
 
-
-
 class PersianDayWidget(DayWidget, PersianCalendar):
     """docstring for PersianDayWidget"""
     def __init__(self, date=None):

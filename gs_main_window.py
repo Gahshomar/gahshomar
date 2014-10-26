@@ -30,7 +30,7 @@ from gs_settings_page import SettingsWindow
 
 class MainWindow(Gtk.Window):
     def __init__(self, FULL_PATH, config, date=None):
-        super().__init__(title='گاه شمار')
+        super().__init__(title='گاه‌شمار')
         if date is None:
             date = datetime.date.today()
         self.date = date
@@ -79,7 +79,7 @@ class MainWindow(Gtk.Window):
         # set header bar
         hb = Gtk.HeaderBar()
         hb.props.show_close_button = False
-        hb.props.title = 'گاه شمار'
+        hb.props.title = 'گاه‌شمار'
 
         close_button = Gtk.Button.new_from_icon_name(
             'window-close', Gtk.IconSize.LARGE_TOOLBAR)

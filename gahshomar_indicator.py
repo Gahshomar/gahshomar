@@ -55,7 +55,7 @@ class GahShomarIndicator(GObject.GObject):
         self.today_item = Gtk.MenuItem()
         self.today_item.show()
 
-        self.toggle_main_window = Gtk.MenuItem("گاه شمار")
+        self.toggle_main_window = Gtk.MenuItem("گاه‌شمار")
         self.toggle_main_window.connect("activate", self.toggle_main_win)
         self.toggle_main_window.show()
 
@@ -76,7 +76,8 @@ class GahShomarIndicator(GObject.GObject):
         Gtk.main_quit()
 
     def update(self):
-        self.today_item.set_label(self.get_date(datetime.date.today()))
+        self.date = datetime.date.today()
+        self.today_item.set_label(self.get_date(self.date))
         self.set_icon()
 
     def set_icon(self):
