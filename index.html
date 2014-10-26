@@ -1,36 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Persian Calendar : A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment.">
+    <title>Persian Calendar by 183amir</title>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Persian Calendar</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Persian Calendar</h1>
+        <p class="header">A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment.</p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/183amir/persian-calendar">View on GitHub</a>
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/183amir/persian-calendar/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/183amir/persian-calendar/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/183amir/persian-calendar">View On GitHub</a></li>
+        </ul>
 
-          <h1 id="project_title">Persian Calendar</h1>
-          <h2 id="project_tagline">A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment.</h2>
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/183amir">183amir</a></p>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/183amir/persian-calendar/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/183amir/persian-calendar/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+      </header>
+      <section>
         <h1>
 <a name="persian-calendar" class="anchor" href="#persian-calendar"><span class="octicon octicon-link"></span></a>Persian Calendar</h1>
 
@@ -45,8 +44,6 @@
 <h1>
 <a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
 
-<p>python3-appindicator</p>
-
 <p>Khayyam3 python package (<a href="https://pypi.python.org/pypi/Khayyam3">https://pypi.python.org/pypi/Khayyam3</a>)</p>
 
 <h1>
@@ -57,9 +54,9 @@
 <h1>
 <a name="ubuntu-installation" class="anchor" href="#ubuntu-installation"><span class="octicon octicon-link"></span></a>Ubuntu Installation</h1>
 
-<p>First make sure <em>Khayyam3</em> and <em>python-appindicator</em> is installed:</p>
+<p>First make sure <em>Khayyam3</em> is installed:</p>
 
-<pre><code>sudo apt-get install python3-pip python3-appindicator
+<pre><code>sudo apt-get install python3-pip
 sudo pip3 install Khayyam3
 </code></pre>
 
@@ -90,17 +87,12 @@ sudo chmod +x /opt/persian-calendar/gahshomar
 <p>Having troubles? Fill an issue at <em><a href="https://github.com/183amir/persian-calendar">https://github.com/183amir/persian-calendar</a></em>
 or Contact me at <em><a href="mailto:183.amir@gmail.com">183.amir@gmail.com</a></em>.</p>
       </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Persian Calendar maintained by <a href="https://github.com/183amir">183amir</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer>
+        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-
-              <script type="text/javascript">
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		          <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -110,7 +102,6 @@ or Contact me at <em><a href="mailto:183.amir@gmail.com">183.amir@gmail.com</a><
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
-
 
   </body>
 </html>
