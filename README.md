@@ -13,8 +13,6 @@ Screenshot
 Requirements
 ================
 
-python3-appindicator
-
 Khayyam3 python package (https://pypi.python.org/pypi/Khayyam3)
 
 
@@ -27,9 +25,9 @@ Note: Arch Linux users can install it from AUR (https://aur.archlinux.org/packag
 Ubuntu Installation
 ================
 
-First make sure *Khayyam3* and *python-appindicator* is installed:
+First make sure *Khayyam3* is installed:
 
-    sudo apt-get install python3-pip python3-appindicator
+    sudo apt-get install python3-pip
     sudo pip3 install Khayyam3
 
 Download Persian calendar (make sure all steps run successfully):
