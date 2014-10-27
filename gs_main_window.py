@@ -107,6 +107,9 @@ class MainWindow(Gtk.Window):
         self.handler.update_everything(datetime.date.today())
 
     def toggle_main_win(self, *args):
+        if not USE_IND:
+            return
+
         if self.visible:
             self.hide()
             self.visible = False
