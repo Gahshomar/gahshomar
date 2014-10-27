@@ -18,14 +18,20 @@
 
 import os
 import datetime
-from gi.repository import AppIndicator3 as AppIndicator
 from gi.repository import Gtk, GObject
 import khayyam3
+try:
+    from gi.repository import AppIndicator3 as AppIndicator
+    USE_IND = True
+except ImportError:
+    USE_IND = False
 
 
 class GahShomarIndicator(GObject.GObject):
     def __init__(self, parent, date=None):
         super().__init__()
+        if not USE_IND:
+            return
         if date is None:
             date = datetime.date.today()
         self.date = date
@@ -56,7 +62,7 @@ class GahShomarIndicator(GObject.GObject):
         self.today_item.show()
 
         self.toggle_main_window = Gtk.MenuItem("گاه‌شمار")
-        self.toggle_main_window.connect("activate", self.toggle_main_win)
+        self.toggle_main_window.connect("activate", self.parent.toggle_main_win)
         self.toggle_main_window.show()
 
         self.quit_item = Gtk.MenuItem("خروج")
@@ -76,6 +82,8 @@ class GahShomarIndicator(GObject.GObject):
         Gtk.main_quit()
 
     def update(self):
+        if not USE_IND:
+            return
         self.date = datetime.date.today()
         self.today_item.set_label(self.get_date(self.date))
         self.set_icon()
@@ -85,11 +93,3 @@ class GahShomarIndicator(GObject.GObject):
             os.path.join(self.base_folder, self.icon_folder))
         self.ind.set_icon(self.icon_name.format(
             day=khayyam3.JalaliDate.from_date(self.date).day))
-
-    def toggle_main_win(self, *args):
-        if self.parent.visible:
-            self.parent.hide()
-            self.parent.visible = False
-        else:
-            self.parent.show()
-            self.parent.visible = True

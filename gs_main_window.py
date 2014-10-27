@@ -24,7 +24,7 @@ import khayyam3
 from calendar_widget import PersianCalendarWidget, GeorgianCalendarWidget
 from day_widget import PersianDayWidget, GeorgianDayWidget
 from events_handler import EventsHandler
-from gahshomar_indicator import GahShomarIndicator
+from gahshomar_indicator import GahShomarIndicator, USE_IND
 from gs_settings_page import SettingsWindow
 
 
@@ -61,7 +61,7 @@ class MainWindow(Gtk.Window):
         # setup appindicator
         self.visible = True
         self.setup_appindicator()
-        
+
         self.draw_interface()
 
         # update interface every 5 seconds
@@ -78,13 +78,16 @@ class MainWindow(Gtk.Window):
     def setup_header_bar(self):
         # set header bar
         hb = Gtk.HeaderBar()
-        hb.props.show_close_button = False
         hb.props.title = 'گاه‌شمار'
 
-        close_button = Gtk.Button.new_from_icon_name(
-            'window-close', Gtk.IconSize.LARGE_TOOLBAR)
-        close_button.connect('clicked', self.ind.toggle_main_win)
-        hb.pack_end(close_button)
+        if USE_IND:
+            hb.props.show_close_button = False
+            close_button = Gtk.Button.new_from_icon_name(
+                'window-close', Gtk.IconSize.LARGE_TOOLBAR)
+            close_button.connect('clicked', self.toggle_main_win)
+            hb.pack_end(close_button)
+        else:
+            hb.props.show_close_button = True
 
         button = Gtk.Button(label='امروز')
         button.connect("clicked", self.set_today)
@@ -102,6 +105,14 @@ class MainWindow(Gtk.Window):
 
     def set_today(self, *args):
         self.handler.update_everything(datetime.date.today())
+
+    def toggle_main_win(self, *args):
+        if self.visible:
+            self.hide()
+            self.visible = False
+        else:
+            self.show()
+            self.visible = True
 
     def setup_appindicator(self):
         self.ind = GahShomarIndicator(self, self.date)

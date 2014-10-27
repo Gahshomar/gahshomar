@@ -54,5 +54,5 @@ if __name__ == '__main__':
     win.set_icon_name('persian-calendar')
     win.show_all()
     if args.no_main_window:
-        win.ind.toggle_main_win()
+        win.toggle_main_win()
     Gtk.main()
