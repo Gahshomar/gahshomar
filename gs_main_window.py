@@ -139,7 +139,7 @@ class MainWindow(Gtk.ApplicationWindow):
             self.hide()
             self.visible = False
         else:
-            self.show()
+            self.show_all()
             self.visible = True
 
     def setup_appindicator(self):
