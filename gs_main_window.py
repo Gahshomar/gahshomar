@@ -166,6 +166,8 @@ class GahShomar(Gtk.Application):
         win = MainWindow(self, self.FULL_PATH, self.config)
         if not self.minimized:
             win.show_all()
+        else:
+            win.visible = False
         self.win = win
 
     def activate(self, data=None):
