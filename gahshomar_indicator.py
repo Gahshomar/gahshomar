@@ -19,7 +19,7 @@
 import os
 import datetime
 from gi.repository import Gtk, GObject
-import khayyam3
+import khayyam
 try:
     from gi.repository import AppIndicator3 as AppIndicator
     USE_IND = True
@@ -76,10 +76,10 @@ class GahShomarIndicator(GObject.GObject):
     def get_date(self, date, frmt=None):
         if frmt is None:
             frmt = self.parent.config['AppIndicator']['date_format']
-        return khayyam3.JalaliDate.from_date(date).strftime(frmt)
+        return khayyam.JalaliDate.from_date(date).strftime(frmt)
 
     def quit(self, widget):
-        Gtk.main_quit()
+        self.parent.app.quit()
 
     def update(self):
         if not USE_IND:
@@ -92,4 +92,4 @@ class GahShomarIndicator(GObject.GObject):
         self.ind.set_icon_theme_path(
             os.path.join(self.base_folder, self.icon_folder))
         self.ind.set_icon(self.icon_name.format(
-            day=khayyam3.JalaliDate.from_date(self.date).day))
+            day=khayyam.JalaliDate.from_date(self.date).day))

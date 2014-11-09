@@ -17,10 +17,10 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-# get the full path of the file
 import os
 import sys
 
+# get the full path of the file
 if os.path.dirname(sys.argv[0]) != '.':
     if sys.argv[0][0] == '/':
         FULL_PATH = os.path.dirname(sys.argv[0])
@@ -47,12 +47,6 @@ if args.verbose:
 
 
 if __name__ == '__main__':
-    from gi.repository import Gtk
-    from gs_main_window import MainWindow
-    win = MainWindow(FULL_PATH, config)
-    win.connect('delete-event', Gtk.main_quit)
-    win.set_icon_name('persian-calendar')
-    win.show_all()
-    if args.no_main_window:
-        win.toggle_main_win()
-    Gtk.main()
+    from gs_main_window import GahShomar
+    app = GahShomar(FULL_PATH, config, args.no_main_window)
+    r = app.run()

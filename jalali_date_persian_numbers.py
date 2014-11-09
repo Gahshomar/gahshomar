@@ -16,7 +16,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-import khayyam3
+import khayyam
 import collections
 import re
 
@@ -58,7 +58,7 @@ def _replace_if_match(data, pattern, new):
         return data
 
 
-class JalaliDatePersianNumbers(khayyam3.JalaliDate):
+class JalaliDatePersianNumbers(khayyam.JalaliDate):
     """JalaliDate class with Persian numbers"""
 
     def strftime(self, frmt):

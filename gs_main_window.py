@@ -18,8 +18,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 import datetime
-from gi.repository import Gtk, GLib
-import khayyam3
+from gi.repository import Gtk, GLib, Gio
+import khayyam
 
 from calendar_widget import PersianCalendarWidget, GeorgianCalendarWidget
 from day_widget import PersianDayWidget, GeorgianDayWidget
@@ -28,9 +28,31 @@ from gahshomar_indicator import GahShomarIndicator, USE_IND
 from gs_settings_page import SettingsWindow
 
 
-class MainWindow(Gtk.Window):
-    def __init__(self, FULL_PATH, config, date=None):
-        super().__init__(title='گاه‌شمار')
+MENU_XML = """
+<interface>
+  <menu id='app-menu'>
+    <section>
+      <item>
+        <attribute name='label' translatable='yes'>_About</attribute>
+        <attribute name='action'>app.about</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name='label' translatable='yes'>_Quit</attribute>
+        <attribute name='action'>app.quit</attribute>
+        <attribute name='accel'>&lt;Primary&gt;q</attribute>
+      </item>
+    </section>
+  </menu>
+</interface>
+"""
+
+
+class MainWindow(Gtk.ApplicationWindow):
+    def __init__(self, application, FULL_PATH, config, date=None):
+        super().__init__(title='گاه‌شمار', application=application)
+
         if date is None:
             date = datetime.date.today()
         self.date = date
@@ -38,12 +60,13 @@ class MainWindow(Gtk.Window):
         # config values
         self.full_path = FULL_PATH
         self.config = config
+        self.app = application
 
         pday = PersianDayWidget()
         gday = GeorgianDayWidget()
         self.day_widgets = [pday, gday]
 
-        pcal = PersianCalendarWidget(khayyam3.JalaliDate.from_date(date))
+        pcal = PersianCalendarWidget(khayyam.JalaliDate.from_date(date))
         pcal.parent = self
         gcal = GeorgianCalendarWidget(date)
         gcal.parent = self
@@ -66,6 +89,8 @@ class MainWindow(Gtk.Window):
 
         # update interface every 5 seconds
         GLib.timeout_add_seconds(5, self.handler.update_everything)
+
+        self.set_icon_name('persian-calendar')
 
     def draw_interface(self):
         main_grid = self.main_grid
@@ -119,3 +144,46 @@ class MainWindow(Gtk.Window):
 
     def setup_appindicator(self):
         self.ind = GahShomarIndicator(self, self.date)
+
+
+class GahShomar(Gtk.Application):
+    def __init__(self, FULL_PATH, config, minimized=False):
+        Gtk.Application.__init__(
+            self, application_id="com.mohammadi.calendar.gahshomar",
+            inactivity_timeout=3000, register_session=True)
+        self.FULL_PATH = FULL_PATH
+        self.config = config
+        self.minimized = minimized
+        self.connect("startup", self.startup)
+        self.connect("activate", self.activate)
+
+    def about_activated(self, action, data=None, dialog=None):
+        dialog.set_transient_for(self.win)
+        dialog.run()
+        dialog.destroy()
+
+    def new_window(self):
+        win = MainWindow(self, self.FULL_PATH, self.config)
+        if not self.minimized:
+            win.show_all()
+        self.win = win
+
+    def activate(self, data=None):
+        self.new_window()
+
+    def startup(self, data=None):
+        builder = Gtk.Builder()
+        builder.add_from_file('about_page.glade')
+        dialog = builder.get_object('aboutdialog1')
+
+        action = Gio.SimpleAction(name="about")
+        action.connect("activate", self.about_activated, dialog)
+        self.add_action(action)
+
+        action = Gio.SimpleAction(name="quit")
+        action.connect("activate", lambda a, b: self.quit())
+        self.add_action(action)
+
+        builder = Gtk.Builder()
+        builder.add_from_string(MENU_XML)
+        self.set_app_menu(builder.get_object("app-menu"))
