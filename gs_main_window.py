@@ -19,7 +19,6 @@
 
 import datetime
 from gi.repository import Gtk, GLib, Gio
-import khayyam
 
 from calendar_widget import PersianCalendarWidget, GeorgianCalendarWidget
 from day_widget import PersianDayWidget, GeorgianDayWidget
