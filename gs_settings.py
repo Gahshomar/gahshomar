@@ -121,6 +121,7 @@ except Exception:
 finally:
     # write the default settings if it does not exist
     write_default_settings()
+    config.CONFIG_FILE_PATH = CONFIG_FILE_PATH
 
 # remove old config file
 try:

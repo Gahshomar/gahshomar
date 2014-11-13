@@ -35,6 +35,10 @@ MENU_XML = """
         <attribute name='label' translatable='yes'>_About</attribute>
         <attribute name='action'>app.about</attribute>
       </item>
+      <item>
+        <attribute name='label' translatable='yes'>_Preferences</attribute>
+        <attribute name='action'>app.preferences</attribute>
+      </item>
     </section>
     <section>
       <item>
@@ -215,6 +219,11 @@ class GahShomar(Gtk.Application):
         dialog.run()
         dialog.destroy()
 
+    def preferences_activated(self, action, data=None, path=None):
+        args = ['xdg-open', '{}'.format(path)]
+        import subprocess
+        subprocess.Popen(args)
+
     def new_window(self):
         win = MainWindow(self, self.FULL_PATH, self.config)
         if not self.minimized:
@@ -233,6 +242,11 @@ class GahShomar(Gtk.Application):
 
         action = Gio.SimpleAction(name="about")
         action.connect("activate", self.about_activated, dialog)
+        self.add_action(action)
+
+        action = Gio.SimpleAction(name="preferences")
+        action.connect("activate", self.preferences_activated,
+                       self.config.CONFIG_FILE_PATH)
         self.add_action(action)
 
         action = Gio.SimpleAction(name="quit")
