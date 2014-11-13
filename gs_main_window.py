@@ -141,37 +141,61 @@ class MainWindow(Gtk.ApplicationWindow):
         self.connect('style-set', self.set_icon_)
 
     def draw_interface(self):
+        # check if unity is running
+        import os
+        xdg_current_desktop = os.environ.get('XDG_CURRENT_DESKTOP').lower()
+
+        if 'unity' in xdg_current_desktop:
+            offset = 1
+        else:
+            offset = 0
         main_grid = self.main_grid
         for i, v in enumerate(self.day_widgets):
-            main_grid.attach(v, i, 0, 1, 1)
+            main_grid.attach(v, i, 0+offset, 1, 1)
         for i, v in enumerate(self.calendars):
-            main_grid.attach(v, i, 1, 1, 1)
+            main_grid.attach(v, i, 1+offset, 1, 1)
         # main_grid.attach(Gtk.VSeparator(), 1, 0, 1, 2)
-        self.setup_header_bar()
+        self.setup_header_bar(xdg_current_desktop)
 
-    def setup_header_bar(self):
-        # set header bar
-        hb = Gtk.HeaderBar()
-        hb.props.title = 'گاه‌شمار'
+    def setup_header_bar(self, xdg_current_desktop=''):
 
-        if USE_IND:
-            hb.props.show_close_button = False
-            close_button = Gtk.Button.new_from_icon_name(
-                'window-close-symbolic', Gtk.IconSize.BUTTON)
-            close_button.connect('clicked', self.toggle_main_win)
-            hb.pack_end(close_button)
+        today_button = Gtk.Button(label='امروز')
+        today_button.connect("clicked", self.set_today)
+        close_button = Gtk.Button.new_from_icon_name(
+            'window-close-symbolic', Gtk.IconSize.BUTTON)
+        close_button.connect('clicked', self.toggle_main_win)
+
+        if 'unity' in xdg_current_desktop:
+            toolbar = Gtk.Toolbar()
+            tb_today = Gtk.ToolButton.new(today_button)
+            tb_today.connect("clicked", self.set_today)
+            toolbar.add(tb_today)
+            sep = Gtk.SeparatorToolItem()
+            sep.set_expand(True)
+            sep.set_draw(False)
+            toolbar.add(sep)
+            tb_close = Gtk.ToolButton.new(close_button)
+            tb_close.connect('clicked', self.toggle_main_win)
+            toolbar.add(tb_close)
+            self.main_grid.attach(toolbar, 0, 0, 2, 1)
         else:
-            hb.props.show_close_button = True
+            # set header bar
+            hb = Gtk.HeaderBar()
+            hb.props.title = 'گاه‌شمار'
 
-        button = Gtk.Button(label='امروز')
-        button.connect("clicked", self.set_today)
-        hb.pack_end(button)
+            if USE_IND:
+                hb.props.show_close_button = False
+                hb.pack_end(close_button)
+            else:
+                hb.props.show_close_button = True
 
-        # sett_button = Gtk.Button.new_from_icon_name(
-        #     'preferences-system', Gtk.IconSize.LARGE_TOOLBAR)
-        # sett_button.connect('clicked', self.on_settings_clicked)
-        # hb.pack_end(sett_button)
-        self.set_titlebar(hb)
+            hb.pack_end(today_button)
+
+            # sett_button = Gtk.Button.new_from_icon_name(
+            #     'preferences-system', Gtk.IconSize.LARGE_TOOLBAR)
+            # sett_button.connect('clicked', self.on_settings_clicked)
+            # hb.pack_end(sett_button)
+            self.set_titlebar(hb)
 
     def on_settings_clicked(self, button):
         sett_win = SettingsWindow(self)

@@ -93,11 +93,11 @@ class CalendarWidget(Gtk.Box):
         self.pack_start(self.header, False, False, 5)
         # month buttons
         if self.rtl:
-            rtlt = '-rtl'
+            rtlt = ('next', 'previous')
         else:
-            rtlt = ''
-        btl = Gtk.Button.new_from_icon_name('go-next-symbolic'+rtlt, 0)
-        btr = Gtk.Button.new_from_icon_name('go-previous-symbolic'+rtlt, 0)
+            rtlt = ('previous', 'next')
+        btl = Gtk.Button.new_from_icon_name('go-{}-symbolic'.format(rtlt[1]), 0)
+        btr = Gtk.Button.new_from_icon_name('go-{}-symbolic'.format(rtlt[0]), 0)
         self.header.btl = btl
         self.header.btr = btr
         if self.rtl:
