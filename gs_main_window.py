@@ -220,8 +220,15 @@ class GahShomar(Gtk.Application):
         dialog.destroy()
 
     def preferences_activated(self, action, data=None, path=None):
-        args = ['xdg-open', '{}'.format(path)]
+        import sys
         import subprocess
+        if sys.platform.startswith('win32'):
+            xdgopen = 'start'
+        if sys.platform.startswith('darwin'):
+            xdgopen = 'open'
+        else:
+            xdgopen = 'xdg-open'
+        args = [xdgopen, '{}'.format(path)]
         subprocess.Popen(args)
 
     def new_window(self):
