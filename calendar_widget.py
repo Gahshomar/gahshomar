@@ -16,7 +16,7 @@
 # with this program; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
-from gi.repository import Gtk, Gdk, Gio
+from gi.repository import Gtk, Gio
 
 from my_calendar import PersianCalendar, GeorgianCalendar, date_to_georgian,\
     add_months, add_years
@@ -29,8 +29,8 @@ class CalendarWidget(Gtk.Box):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
         # self.set_border_width(10)
         self.setup_header()
-        self.setup_tobbar()
         self.setup_grid()
+        # self.setup_tobbar()
         self.connect_date_buttons()
         self.connect_month_arrow()
         self.connect_year_arrow()
@@ -40,9 +40,9 @@ class CalendarWidget(Gtk.Box):
         self.header.year.set_text(self.date.strftime('%Y'))
         year = self.header.year
         year.set_icon_from_gicon(Gtk.EntryIconPosition.PRIMARY,
-                                 Gio.ThemedIcon(name='list-remove'))
+                                 Gio.ThemedIcon(name='list-remove-symbolic'))
         year.set_icon_from_gicon(Gtk.EntryIconPosition.SECONDARY,
-                                 Gio.ThemedIcon(name='list-add'))
+                                 Gio.ThemedIcon(name='list-add-symbolic'))
         year.set_icon_activatable(Gtk.EntryIconPosition.PRIMARY, True)
         year.set_icon_activatable(Gtk.EntryIconPosition.SECONDARY, True)
 
@@ -90,8 +90,12 @@ class CalendarWidget(Gtk.Box):
         self.header = Gtk.Box()
         self.pack_start(self.header, False, False, 5)
         # month buttons
-        btl = Gtk.Button.new_from_icon_name('list-add', 0)
-        btr = Gtk.Button.new_from_icon_name('list-remove', 0)
+        if self.rtl:
+            rtlt = '-rtl'
+        else:
+            rtlt = ''
+        btl = Gtk.Button.new_from_icon_name('go-next-symbolic'+rtlt, 0)
+        btr = Gtk.Button.new_from_icon_name('go-previous-symbolic'+rtlt, 0)
         self.header.btl = btl
         self.header.btr = btr
         if self.rtl:
@@ -109,36 +113,46 @@ class CalendarWidget(Gtk.Box):
         self.header.pack_end(self.header.year, False, True, 0)
 
     def setup_tobbar(self):
-        self.topbarbox = Gtk.Box()
-        self.pack_start(self.topbarbox, False, True, 10)
+        # self.topbarbox = Gtk.Box()
+        # self.topbarbox.set_homogeneous(True)
+        # self.topbarbox.override_background_color(Gtk.StateFlags.NORMAL,
+        #                                          Gdk.RGBA(red=74/255,
+        #                                                   green=144/255,
+        #                                                   blue=217/255))
+        # self.pack_start(self.topbarbox, False, True, 10)
         rtl = -1 if self.rtl else 1
         week_days = self.get_week_days()[::rtl]
         # print(week_days, rtl)
-        for week_day in week_days:
+        for i, week_day in enumerate(week_days):
             label = Gtk.Label(None)
-            label.set_markup("<span foreground='#FFFFFF'>"+week_day+'</span>')
+            label.set_markup(
+                "<span foreground='#4A90D9'>" +  # background='#4A90D9'
+                week_day + '</span>')
+            label.set_halign(Gtk.Align.CENTER)
             # label.override_color(Gtk.StateFlags.NORMAL,
             #     Gdk.RGBA(red=0, green=0, blue=1.0, alpha=1.0))
-            self.topbarbox.pack_start(label, True, True, 0)
-
-        self.topbarbox.override_background_color(Gtk.StateFlags.NORMAL,
-                                                 Gdk.RGBA(red=74/255,
-                                                          green=144/255,
-                                                          blue=217/255))
+            # self.topbarbox.pack_start(label, True, True, 0)
+            self.grid.attach(label, i, 0, 1, 1)
+        # self.grid.override_background_color(
+        #     Gtk.StateFlags.NORMAL, Gdk.RGBA(
+        #         red=74/255, green=144/255, blue=217/255))
 
     def setup_grid(self):
         self.gen_grid_mat()
         self.grid = Gtk.Grid()
         self.pack_start(self.grid, True, True, 0)
         self.grid.set_column_homogeneous(True)
-        self.grid.set_column_spacing(spacing=10)
+        self.grid.set_column_spacing(spacing=0)
         self.grid.set_row_homogeneous(True)
         self.grid.set_row_spacing(spacing=10)
         # self.grid.connect('set-focus-child', self.grid_pressed, None)
         self.grid.button_list = []
         for j, row in enumerate(self.grid_mat):
             for i, (date, day) in enumerate(row):
-                button = Gtk.Button(label=day)
+                label = Gtk.Label()
+                label.set_markup(day)
+                button = Gtk.Button()
+                button.set_image(label)
                 button.set_relief(Gtk.ReliefStyle.NONE)
                 button.date = date
                 if date == self.date:
@@ -147,8 +161,9 @@ class CalendarWidget(Gtk.Box):
                     button.set_relief(Gtk.ReliefStyle.HALF)
                 # button.connect("button-press-event",
                 #                self.grid_pressed, (i, j, date))
-                self.grid.attach(button, i, j, 1, 1)
+                self.grid.attach(button, i, j+1, 1, 1)
                 self.grid.button_list.append((button, date, i, j))
+        self.setup_tobbar()
 
     def connect_date_buttons(self):
         button_list = self.grid.button_list

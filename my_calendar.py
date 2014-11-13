@@ -126,7 +126,11 @@ class MyCalendar(Calendar):
                 else:
                     delta_time = datetime.timedelta(days=i+j*7+delta)
                 date = self.date+delta_time
-                self.grid_mat[j][i] = (date, date.strftime('%d'))
+                if date.month == self.date.month:
+                    text = '<span fgcolor="black">{}</span>'
+                else:
+                    text = '<span fgcolor="gray">{}</span>'
+                self.grid_mat[j][i] = (date, text.format(date.strftime('%d')))
 
 
 class PersianCalendar(MyCalendar):

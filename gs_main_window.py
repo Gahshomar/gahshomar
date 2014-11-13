@@ -153,7 +153,7 @@ class MainWindow(Gtk.ApplicationWindow):
         if USE_IND:
             hb.props.show_close_button = False
             close_button = Gtk.Button.new_from_icon_name(
-                'window-close', Gtk.IconSize.LARGE_TOOLBAR)
+                'window-close-symbolic', Gtk.IconSize.BUTTON)
             close_button.connect('clicked', self.toggle_main_win)
             hb.pack_end(close_button)
         else:
