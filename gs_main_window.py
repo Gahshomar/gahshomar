@@ -60,7 +60,7 @@ ABOUT_PAGE = '''
     <property name="comments" translatable="yes">گاه‌شمار (تقویم) ایرانی</property>
     <property name="website">http://183amir.github.io/persian-calendar/</property>
     <property name="authors">Amir Mohammadi</property>
-    <property name="logo">data/icons/persian-calendar-logo.png</property>
+    <property name="logo">{FULL_PATH}/data/icons/persian-calendar-logo.png</property>
     <property name="license_type">gpl-2-0</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="aboutdialog-vbox1">
@@ -228,7 +228,7 @@ class GahShomar(Gtk.Application):
 
     def startup(self, data=None):
         builder = Gtk.Builder()
-        builder.add_from_string(ABOUT_PAGE)
+        builder.add_from_string(ABOUT_PAGE.format(FULL_PATH=self.FULL_PATH))
         dialog = builder.get_object('aboutdialog1')
 
         action = Gio.SimpleAction(name="about")
