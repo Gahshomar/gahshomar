@@ -191,10 +191,10 @@ class MainWindow(Gtk.ApplicationWindow):
         self.ind = GahShomarIndicator(self, self.date)
 
     def set_icon_(self, *args):
-        day = khayyam.JalaliDate.today().day
+        # day = khayyam.JalaliDate.today().day
         icon = Gtk.IconTheme.load_icon(
             Gtk.IconTheme(),
-            self.config['Global']['icon_name'].format(day=day),
+            'persian-calendar-logo',
             512, 0)
         self.set_icon(icon)
 
