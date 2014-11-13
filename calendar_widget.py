@@ -28,7 +28,9 @@ class CalendarWidget(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
         # self.set_border_width(10)
+        self.set_size_request(450, -1)
         self.setup_header()
+        self.setup_tobbar()
         self.setup_grid()
         # self.setup_tobbar()
         self.connect_date_buttons()
@@ -113,26 +115,28 @@ class CalendarWidget(Gtk.Box):
         self.header.pack_end(self.header.year, False, True, 0)
 
     def setup_tobbar(self):
-        # self.topbarbox = Gtk.Box()
-        # self.topbarbox.set_homogeneous(True)
+        self.topbarbox = Gtk.Box()
+        self.topbarbox.set_homogeneous(True)
         # self.topbarbox.override_background_color(Gtk.StateFlags.NORMAL,
         #                                          Gdk.RGBA(red=74/255,
         #                                                   green=144/255,
         #                                                   blue=217/255))
-        # self.pack_start(self.topbarbox, False, True, 10)
+        self.pack_start(self.topbarbox, False, True, 10)
+        self.pack_start(Gtk.HSeparator(), False, False, 0)
         rtl = -1 if self.rtl else 1
         week_days = self.get_week_days()[::rtl]
         # print(week_days, rtl)
-        for i, week_day in enumerate(week_days):
+        for i, (week_day, tooltip) in enumerate(week_days):
             label = Gtk.Label(None)
             label.set_markup(
                 "<span foreground='#4A90D9'>" +  # background='#4A90D9'
                 week_day + '</span>')
-            label.set_halign(Gtk.Align.CENTER)
+            label.set_tooltip_markup(tooltip)
+            # label.set_halign(Gtk.Align.CENTER)
             # label.override_color(Gtk.StateFlags.NORMAL,
             #     Gdk.RGBA(red=0, green=0, blue=1.0, alpha=1.0))
-            # self.topbarbox.pack_start(label, True, True, 0)
-            self.grid.attach(label, i, 0, 1, 1)
+            self.topbarbox.pack_start(label, True, True, 0)
+            # self.grid.attach(label, i, 0, 1, 1)
         # self.grid.override_background_color(
         #     Gtk.StateFlags.NORMAL, Gdk.RGBA(
         #         red=74/255, green=144/255, blue=217/255))
@@ -163,7 +167,6 @@ class CalendarWidget(Gtk.Box):
                 #                self.grid_pressed, (i, j, date))
                 self.grid.attach(button, i, j+1, 1, 1)
                 self.grid.button_list.append((button, date, i, j))
-        self.setup_tobbar()
 
     def connect_date_buttons(self):
         button_list = self.grid.button_list

@@ -149,7 +149,9 @@ class PersianCalendar(MyCalendar):
         self.first_day_of_month = self.get_first_day_month()
 
     def get_week_days(self):
-        return ['ش', '۱ش', '۲ش', '۳ش', '۴ش', '۵ش', 'آ']
+        return [('ش', 'شنبه'), ('۱ش', 'یک‌شنبه'), ('۲ش', 'دو‌شنبه'),
+                ('۳ش', 'سه‌شنبه'), ('۴ش', 'چهار‌شنبه'),
+                ('۵ش', 'پنج‌شنبه'), ('آ', 'آدینه')]
 
     def get_months(self):
         return khayyam.jalali_date.PERSIAN_MONTH_NAMES.values()
@@ -169,7 +171,9 @@ class GeorgianCalendar(MyCalendar):
         self.first_day_of_month = self.get_first_day_month()
 
     def get_week_days(self):
-        return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        return [('Mon', 'Monday'), ('Tue', 'Tuesday'), ('Wed', 'Wednesday'),
+                ('Thu', 'Thursday'), ('Fri', 'Friday'), ('Sat', 'Saturday'),
+                ('Sun', 'Sunday')]
 
     def get_months(self):
         return calendar.month_name[1:]

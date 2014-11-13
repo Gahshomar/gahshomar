@@ -146,6 +146,7 @@ class MainWindow(Gtk.ApplicationWindow):
             main_grid.attach(v, i, 0, 1, 1)
         for i, v in enumerate(self.calendars):
             main_grid.attach(v, i, 1, 1, 1)
+        # main_grid.attach(Gtk.VSeparator(), 1, 0, 1, 2)
         self.setup_header_bar()
 
     def setup_header_bar(self):
