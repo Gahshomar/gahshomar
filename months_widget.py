@@ -29,8 +29,10 @@ class MonthsWidget(Gtk.Box):
         self.setup_grid()
 
     def setup_grid(self):
+        self.frame = Gtk.Frame()
         self.grid = Gtk.Grid()
-        self.pack_start(self.grid, False, True, 0)
+        self.frame.add(self.grid)
+        self.pack_start(self.frame, False, True, 0)
         self.grid.set_column_homogeneous(True)
         self.grid.set_column_spacing(spacing=10)
         self.grid.set_row_homogeneous(True)
@@ -40,6 +42,8 @@ class MonthsWidget(Gtk.Box):
             button = Gtk.Button(label=month)
             if i+1 == self.date.month:
                 button.set_relief(Gtk.ReliefStyle.HALF)
+                self.grid.set_focus_child(button)
+                # button.grab_focus()
             else:
                 button.set_relief(Gtk.ReliefStyle.NONE)
             if self.rtl:

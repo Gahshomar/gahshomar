@@ -52,22 +52,22 @@ class CalendarWidget(Gtk.Box):
         self.header.month = Gtk.Button(label=month_label)
         self.header.month.set_size_request(150, -1)
         self.header.pack_start(self.header.month, False, True, 0)
-        self.header.month.connect('button-press-event',
+        self.header.month.connect('clicked',
                                   self.display_months, self.date)
 
     def display_months(self, *args):
         date = args[-1]
         win = Gtk.Window(Gtk.WindowType.TOPLEVEL)  # POPUP or TOPLEVEL
+        win.set_transient_for(self.parent)
         months = self.MonthWidget(date)
         win.add(months)
         win.set_position(Gtk.WindowPosition.MOUSE)
         win.set_decorated(False)
         win.connect('focus-out-event', self.destroy_months_win)
-        win.show_all()
-        # win.set_transient_for(self.parent)
         self.month_widget = months
         self.month_widget_win = win
         self.connect_month_buttons()
+        win.show_all()
 
     def destroy_months_win(self, *args):
         self.month_widget_win.destroy()
@@ -76,7 +76,7 @@ class CalendarWidget(Gtk.Box):
         months = self.month_widget
         button_list = months.grid.button_list
         for button, _, i in button_list:
-            button.connect("button-press-event",
+            button.connect("clicked",
                            self.month_button_pressed, i, months.date)
 
     def month_button_pressed(self, *args):
@@ -159,7 +159,7 @@ class CalendarWidget(Gtk.Box):
                     # button.override_color(Gtk.StateFlags.ACTIVE,
                     #                       Gdk.RGBA(red=0, green=0))
                     button.set_relief(Gtk.ReliefStyle.HALF)
-                # button.connect("button-press-event",
+                # button.connect("clicked",
                 #                self.grid_pressed, (i, j, date))
                 self.grid.attach(button, i, j+1, 1, 1)
                 self.grid.button_list.append((button, date, i, j))
@@ -168,7 +168,7 @@ class CalendarWidget(Gtk.Box):
     def connect_date_buttons(self):
         button_list = self.grid.button_list
         for button, date, i, j in button_list:
-            button.connect("button-press-event",
+            button.connect("clicked",
                            self.date_button_pressed, (i, j, date))
 
     def date_button_pressed(self, *args):
@@ -199,10 +199,10 @@ class CalendarWidget(Gtk.Box):
 
     def connect_month_arrow(self):
         # left arrow
-        self.header.btl.connect("button-press-event",
+        self.header.btl.connect("clicked",
                                 self.month_arrow_pressed, 'l')
         # right arrow
-        self.header.btr.connect("button-press-event",
+        self.header.btr.connect("clicked",
                                 self.month_arrow_pressed, 'r')
 
     def month_arrow_pressed(self, *args):
