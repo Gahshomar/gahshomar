@@ -60,7 +60,7 @@ ABOUT_PAGE = '''
     <property name="comments" translatable="yes">گاه‌شمار (تقویم) ایرانی</property>
     <property name="website">http://183amir.github.io/persian-calendar/</property>
     <property name="authors">Amir Mohammadi</property>
-    <property name="logo">data/icons/persian-calendar-logo.svg</property>
+    <property name="logo">data/icons/persian-calendar-logo.png</property>
     <property name="license_type">gpl-2-0</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="aboutdialog-vbox1">
