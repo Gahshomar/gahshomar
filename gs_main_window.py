@@ -167,13 +167,13 @@ class MainWindow(Gtk.ApplicationWindow):
 
         if 'unity' in xdg_current_desktop:
             toolbar = Gtk.Toolbar()
-            tb_today = Gtk.ToolButton.new(today_button)
-            tb_today.connect("clicked", self.set_today)
-            toolbar.add(tb_today)
             sep = Gtk.SeparatorToolItem()
             sep.set_expand(True)
             sep.set_draw(False)
             toolbar.add(sep)
+            tb_today = Gtk.ToolButton.new(today_button)
+            tb_today.connect("clicked", self.set_today)
+            toolbar.add(tb_today)
             tb_close = Gtk.ToolButton.new(close_button)
             tb_close.connect('clicked', self.toggle_main_win)
             toolbar.add(tb_close)
