@@ -194,7 +194,7 @@ class MainWindow(Gtk.ApplicationWindow):
         # day = khayyam.JalaliDate.today().day
         icon = Gtk.IconTheme.load_icon(
             Gtk.IconTheme(),
-            'persian-calendar-logo',
+            'persian-calendar',
             512, 0)
         self.set_icon(icon)
 
