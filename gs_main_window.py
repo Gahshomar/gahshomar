@@ -184,6 +184,7 @@ class MainWindow(Gtk.ApplicationWindow):
             self.hide()
             self.visible = False
         else:
+            self.show_all()
             self.present()
             self.visible = True
 
