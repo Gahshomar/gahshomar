@@ -28,7 +28,7 @@ class CalendarWidget(Gtk.Box):
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL)
         # self.set_border_width(10)
-        self.set_size_request(450, -1)
+        # self.set_size_request(400, -1)
         self.setup_header()
         self.setup_tobbar()
         self.setup_grid()
