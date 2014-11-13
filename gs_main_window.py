@@ -24,7 +24,7 @@ import khayyam
 from calendar_widget import PersianCalendarWidget, GeorgianCalendarWidget
 from day_widget import PersianDayWidget, GeorgianDayWidget
 from events_handler import EventsHandler
-from gahshomar_indicator import GahShomarIndicator, USE_IND
+from gs_indicator import GahShomarIndicator, USE_IND
 from gs_settings_page import SettingsWindow
 
 
@@ -48,6 +48,51 @@ MENU_XML = """
 </interface>
 """
 
+ABOUT_PAGE = '''
+<interface>
+  <object class="GtkAboutDialog" id="aboutdialog1">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">درباره برنامه</property>
+    <property name="type_hint">dialog</property>
+    <property name="program_name">گاه‌شمار</property>
+    <property name="version">3.0.4</property>
+    <property name="copyright" translatable="yes">Amir Mohammadi &lt;183.amir@gmail.com&gt;</property>
+    <property name="comments" translatable="yes">گاه‌شمار (تقویم) ایرانی</property>
+    <property name="website">http://183amir.github.io/persian-calendar/</property>
+    <property name="authors">Amir Mohammadi</property>
+    <property name="logo">data/icons/persian-calendar-logo.svg</property>
+    <property name="license_type">gpl-2-0</property>
+    <child internal-child="vbox">
+      <object class="GtkBox" id="aboutdialog-vbox1">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox" id="aboutdialog-action_area1">
+            <property name="can_focus">False</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <placeholder/>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
+'''
+
 
 class MainWindow(Gtk.ApplicationWindow):
     def __init__(self, application, FULL_PATH, config, date=None):
@@ -66,7 +111,7 @@ class MainWindow(Gtk.ApplicationWindow):
         gday = GeorgianDayWidget()
         self.day_widgets = [pday, gday]
 
-        pcal = PersianCalendarWidget(khayyam.JalaliDate.from_date(date))
+        pcal = PersianCalendarWidget(date)
         pcal.parent = self
         gcal = GeorgianCalendarWidget(date)
         gcal.parent = self
@@ -90,7 +135,7 @@ class MainWindow(Gtk.ApplicationWindow):
         # update interface every 5 seconds
         GLib.timeout_add_seconds(5, self.handler.update_everything)
 
-        self.set_icon_name('persian-calendar')
+        self.connect('style-set', self.set_icon_)
 
     def draw_interface(self):
         main_grid = self.main_grid
@@ -139,11 +184,19 @@ class MainWindow(Gtk.ApplicationWindow):
             self.hide()
             self.visible = False
         else:
-            self.show_all()
+            self.present()
             self.visible = True
 
     def setup_appindicator(self):
         self.ind = GahShomarIndicator(self, self.date)
+
+    def set_icon_(self, *args):
+        day = khayyam.JalaliDate.today().day
+        icon = Gtk.IconTheme.load_icon(
+            Gtk.IconTheme(),
+            self.config['Global']['icon_name'].format(day=day),
+            512, 0)
+        self.set_icon(icon)
 
 
 class GahShomar(Gtk.Application):
@@ -175,7 +228,7 @@ class GahShomar(Gtk.Application):
 
     def startup(self, data=None):
         builder = Gtk.Builder()
-        builder.add_from_file('about_page.glade')
+        builder.add_from_string(ABOUT_PAGE)
         dialog = builder.get_object('aboutdialog1')
 
         action = Gio.SimpleAction(name="about")

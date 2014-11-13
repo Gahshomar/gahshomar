@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Created on Apr 13, 2014
 
@@ -10,6 +11,11 @@ for a in *dark*.png; do convert -trim -transparent "rgb(83, 81, 73)" "$a" "$a"; 
 for a in *dark*.png; do convert -transparent "rgb(84, 82, 74)" "$a" "$a"; done
 '''
 import matplotlib.pyplot as plt; plt.rcdefaults()
+# import matplotlib
+# matplotlib.rc('font', **{'sans-serif' : 'Arial',
+#                            'family' : 'sans-serif'})
+import matplotlib.font_manager as fm
+elham = fm.FontProperties(fname='/usr/share/fonts/truetype/ttf-farsiweb/koodak.ttf')
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -18,22 +24,24 @@ import matplotlib.lines as mlines
 import matplotlib.patches as mpatches
 from matplotlib.collections import PatchCollection
 
-BLACK = np.array((83, 81, 73)) / 255
-GRAY = np.array((223, 219, 210)) / 255
+# BLACK = np.array((83, 81, 73)) / 255
+# GRAY = np.array((223, 219, 210)) / 255
+# DARK = 'dark'
 
-# BLACK = np.array((223, 218, 216)) / 255
-# GRAY = np.array((60, 60, 60)) / 255
+BLACK = np.array((223, 218, 216)) / 255
+GRAY = np.array((60, 60, 60)) / 255
+DARK = 'light'
 
-NUM_DICT = {'0':'۰',
-            '1':'۱',
-            '2':'۲',
-            '3':'۳',
-            '4':'۴',
-            '5':'۵',
-            '6':'۶',
-            '7':'۷',
-            '8':'۸',
-            '9':'۹'}
+NUM_DICT = {'0':u'۰',
+            '1':u'۱',
+            '2':u'۲',
+            '3':u'۳',
+            '4':u'۴',
+            '5':u'۵',
+            '6':u'۶',
+            '7':u'۷',
+            '8':u'۸',
+            '9':u'۹'}
 def latinN2PersianN(num):
   num = repr(num)
   numP = ''
@@ -45,8 +53,14 @@ def latinN2PersianN(num):
   return numP
 
 def label(xy, text):
+  print(text)
   y = xy[1]  # shift y-value for label so that it's below the artist
-  plt.text(xy[0], y, text, ha="center", family='sans', size=250, color=BLACK)
+  if text[0] == '۱':
+    ts = 0
+  else:
+    ts = 0
+  plt.text(xy[0]-0+ts, y+20, text, fontproperties=elham,
+  size=240, ha="center", color=BLACK) #, family='cursive'
 
 def main():
   for i in range(1,32):
@@ -68,7 +82,7 @@ def main():
     small2_y = sec_y + sec_hight + padding
     grid = np.array([[ 0, 0], [ 0, sec_y], [x_pad_small, y_small], [w - x_pad_small - small_width, y_small],
                      [x_pad_small, small2_y], [w - x_pad_small - small_width, small2_y]])
-    print(grid)
+    # print(grid)
     
     patches = []
     
@@ -113,7 +127,10 @@ def main():
     plt.axis('equal')
     plt.axis('off')
   
-    fig.savefig('/home/amir/git/persian-calendar/icons/persian-calendar-dark-theme-{}.png'.format(i), 
-                bbox_inches='tight', transparent=True)
+    fig.set_size_inches(5.12,5.12)
+    fig.savefig('icons/Folder/persian-calendar-{dark}-theme-{i}.png'.format(i=i, dark=DARK), 
+                transparent=True)
+                # bbox_inches='tight', transparent=True)
+    plt.close()
 if __name__ == '__main__':
   main()

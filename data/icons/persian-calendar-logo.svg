@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   version="1.1"
+   width="64"
+   height="64"
+   id="svg2">
+  <metadata
+     id="metadata53">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <style
+       type="text/css"
+       id="style6" />
+  </defs>
+  <g
+     transform="matrix(0.16391432,0,0,0.16391432,-22.49959,-3.2798398)"
+     id="figure_1"
+     style="stroke-linecap:butt;stroke-linejoin:round">
+    <g
+       id="patch_1"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <path
+         d="m 0,467.821 625.293,0 L 625.293,0 0,0 z"
+         id="path10"
+         style="fill:none;stroke-linecap:butt;stroke-linejoin:round" />
+    </g>
+    <g
+       id="axes_1"
+       style="stroke-linecap:butt;stroke-linejoin:round">
+      <g
+         id="PatchCollection_1"
+         style="stroke-linecap:butt;stroke-linejoin:round">
+        <defs
+           id="defs14">
+          <path
+             d="m 175.807,-72.1852 315.977,0 q 12.343,0 12.343,-12.3428 l 0,-187.611 q 0,-12.343 -12.343,-12.343 l -315.977,0 q -12.343,0 -12.343,12.343 l 0,187.611 q 0,12.3428 12.343,12.3428 z"
+             id="C0_0_a71243c33b"
+             style="stroke-linecap:butt;stroke-linejoin:round" />
+          <path
+             d="m 220.858,-412.046 52.457,0 q 0.185,0 0.185,-0.185 l 0,-27.154 q 0,-0.185 -0.185,-0.185 l -52.457,0 q -0.185,0 -0.185,0.185 l 0,27.154 q 0,0.185 0.185,0.185 z"
+             id="C0_1_ec5c40310a"
+             style="stroke-linecap:butt;stroke-linejoin:round" />
+          <path
+             d="m 394.275,-412.046 52.457,0 q 0.186,0 0.186,-0.185 l 0,-27.154 q 0,-0.185 -0.186,-0.185 l -52.457,0 q -0.185,0 -0.185,0.185 l 0,27.154 q 0,0.185 0.185,0.185 z"
+             id="C0_2_1e88dcf122"
+             style="stroke-linecap:butt;stroke-linejoin:round" />
+          <path
+             d="m 175.807,-305.465 315.977,0 q 12.343,0 12.343,-12.343 l 0,-82.08 q 0,-12.343 -12.343,-12.343 l -315.977,0 q -12.343,0 -12.343,12.343 l 0,82.08 q 0,12.343 12.343,12.343 z"
+             id="C0_3_5c11a4303b"
+             style="stroke-linecap:butt;stroke-linejoin:round" />
+          <path
+             d="m 220.858,-357.737 52.457,0 q 0.185,0 0.185,-0.185 l 0,-54.309 q 0,-0.185 -0.185,-0.185 l -52.457,0 q -0.185,0 -0.185,0.185 l 0,54.309 q 0,0.185 0.185,0.185 z"
+             id="C0_4_f03f7a9e09"
+             style="stroke-linecap:butt;stroke-linejoin:round" />
+          <path
+             d="m 394.275,-357.737 52.457,0 q 0.186,0 0.186,-0.185 l 0,-54.309 q 0,-0.185 -0.186,-0.185 l -52.457,0 q -0.185,0 -0.185,0.185 l 0,54.309 q 0,0.185 0.185,0.185 z"
+             id="C0_5_8a8f3a8366"
+             style="stroke-linecap:butt;stroke-linejoin:round" />
+        </defs>
+        <g
+           clip-path="url(#p2c294c52c1)"
+           id="g22"
+           style="stroke-linecap:butt;stroke-linejoin:round">
+          <use
+             id="use24"
+             style="fill:#dfdbd2;stroke:#dfdbd2;stroke-linecap:butt;stroke-linejoin:round"
+             x="0"
+             y="467.82062"
+             width="625"
+             height="467"
+             xlink:href="#C0_0_a71243c33b" />
+        </g>
+        <g
+           clip-path="url(#p2c294c52c1)"
+           id="g26"
+           style="stroke-linecap:butt;stroke-linejoin:round">
+          <use
+             id="use28"
+             style="fill:#dfdbd2;stroke:#dfdbd2;stroke-linecap:butt;stroke-linejoin:round"
+             x="0"
+             y="467.82062"
+             width="625"
+             height="467"
+             xlink:href="#C0_1_ec5c40310a" />
+        </g>
+        <g
+           clip-path="url(#p2c294c52c1)"
+           id="g30"
+           style="stroke-linecap:butt;stroke-linejoin:round">
+          <use
+             id="use32"
+             style="fill:#dfdbd2;stroke:#dfdbd2;stroke-linecap:butt;stroke-linejoin:round"
+             x="0"
+             y="467.82062"
+             width="625"
+             height="467"
+             xlink:href="#C0_2_1e88dcf122" />
+        </g>
+        <g
+           clip-path="url(#p2c294c52c1)"
+           id="g34"
+           style="stroke-linecap:butt;stroke-linejoin:round">
+          <use
+             id="use36"
+             style="fill:#dfdbd2;stroke:#dfdbd2;stroke-linecap:butt;stroke-linejoin:round"
+             x="0"
+             y="467.82062"
+             width="625"
+             height="467"
+             xlink:href="#C0_3_5c11a4303b" />
+        </g>
+        <g
+           clip-path="url(#p2c294c52c1)"
+           id="g38"
+           style="stroke-linecap:butt;stroke-linejoin:round">
+          <use
+             id="use40"
+             style="fill:#535149;stroke:#535149;stroke-linecap:butt;stroke-linejoin:round"
+             x="0"
+             y="467.82062"
+             width="625"
+             height="467"
+             xlink:href="#C0_4_f03f7a9e09" />
+        </g>
+        <g
+           clip-path="url(#p2c294c52c1)"
+           id="g42"
+           style="stroke-linecap:butt;stroke-linejoin:round">
+          <use
+             id="use44"
+             style="fill:#535149;stroke:#535149;stroke-linecap:butt;stroke-linejoin:round"
+             x="0"
+             y="467.82062"
+             width="625"
+             height="467"
+             xlink:href="#C0_5_8a8f3a8366" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <defs
+     id="defs46">
+    <clipPath
+       id="p2c294c52c1">
+      <rect
+         width="576"
+         height="432"
+         x="42.092499"
+         y="13.006875"
+         id="rect49"
+         style="stroke-linecap:butt;stroke-linejoin:round" />
+    </clipPath>
+  </defs>
+  <text
+     x="21.952463"
+     y="56.579453"
+     id="text3011"
+     xml:space="preserve"
+     style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
+       x="21.952463"
+       y="56.579453"
+       id="tspan3013">۸</tspan></text>
+</svg>
