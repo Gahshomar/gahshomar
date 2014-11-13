@@ -122,7 +122,7 @@ class CalendarWidget(Gtk.Box):
         #                                                   green=144/255,
         #                                                   blue=217/255))
         self.pack_start(self.topbarbox, False, True, 10)
-        self.pack_start(Gtk.HSeparator(), False, False, 0)
+        # self.pack_start(Gtk.HSeparator(), False, False, 0)
         rtl = -1 if self.rtl else 1
         week_days = self.get_week_days()[::rtl]
         # print(week_days, rtl)
@@ -148,7 +148,7 @@ class CalendarWidget(Gtk.Box):
         self.grid.set_column_homogeneous(True)
         self.grid.set_column_spacing(spacing=0)
         self.grid.set_row_homogeneous(True)
-        self.grid.set_row_spacing(spacing=10)
+        self.grid.set_row_spacing(spacing=0)
         # self.grid.connect('set-focus-child', self.grid_pressed, None)
         self.grid.button_list = []
         for j, row in enumerate(self.grid_mat):
