@@ -39,8 +39,8 @@ Download Persian calendar (make sure all steps run successfully):
     sudo tar -xf persian-calendar.tar.gz -C /opt/persian-calendar --strip-components 1
     rm persian-calendar.tar.gz
     sudo install -Dm644 /opt/persian-calendar/data/persian-calendar.desktop /usr/share/applications/persian-calendar.desktop
-    install -Dm644 /opt/persian-calendar/data/icons/days/persian-calendar-dark-theme-8.png /usr/share/pixmaps/persian-calendar.png
-    install -Dm644 /opt/persian-calendar/data/icons/days/* /usr/share/pixmaps/
+    sudo install -Dm644 /opt/persian-calendar/data/icons/days/persian-calendar-dark-theme-8.png /usr/share/pixmaps/persian-calendar.png
+    sudo install -Dm644 /opt/persian-calendar/data/icons/days/* /usr/share/pixmaps/
     sudo install -D -m644 /opt/persian-calendar/LICENSE /usr/share/licenses/persian-calendar/LICENSE
     sudo chmod +x /opt/persian-calendar/gahshomar
 
