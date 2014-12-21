@@ -1,17 +1,11 @@
 Gahshomar (گاه‌شمار)
 ================
-A Persian (Jalali/Farsi) calendar which provides a basic appindicator.
+A Persian (Jalali/Farsi) calendar.
 
 
 Screenshot
 ================
-![screenshot](data/Screenshot.png)
-
-
-Requirements
-================
-Khayyam python package (https://pypi.python.org/pypi/Khayyam)
-Yapsy python package (https://pypi.python.org/pypi/Yapsy)
+![screenshot](src/data/Screenshot.png)
 
 
 Installation
