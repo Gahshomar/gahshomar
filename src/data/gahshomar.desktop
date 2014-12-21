@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gahshomar
+Comment=A Persian (Jalali/Farsi) calendar which provides a basic appindicator
+Exec=gahshomar -m
+Icon=gahshomar
+Terminal=false
+Type=Application
+Categories=Productivity;
+Name[en_US]=Gahshomar
+Name[fa]=گاه‌شمار

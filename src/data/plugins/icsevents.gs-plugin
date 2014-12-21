@@ -1,0 +1,9 @@
+[Core]
+Name = ics event viewer
+Module = icsevents
+
+[Documentation]
+Author = Amir Mohammadi
+Version = 1.0
+Website = 
+Description = Adds ics events to the calendar.
