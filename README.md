@@ -15,4 +15,4 @@ See the ![Wiki](https://github.com/Gahshomar/gahshomar/wiki/Installation)
 
 Support or Contact
 ================
-Having troubles? Fill an issue at *https://github.com/Gahshomar/gahshomar*.
+Having troubles? Fill an issue at *https://github.com/Gahshomar/gahshomar/issues*.
