@@ -59,7 +59,7 @@ class Handler:
             dark = 'light'
         else:
             dark = 'alpha'
-        text = 'persian-calendar-{}-theme-'.format(dark) + '{day}'
+        text = 'gahshomar-{}-theme-'.format(dark) + '{day}'
         self.app.config['AppIndicator']['icon_name'] = text
         logger.debug(
             "Changed config['AppIndicator']['icon_name'] to {}".format(text))

@@ -41,7 +41,7 @@ version = 3.2
 [AppIndicator]
 
 # name of the icon file (change "dark" to "light" to change the color of icons)
-icon_name = persian-calendar-dark-theme-{day}
+icon_name = gahshomar-dark-theme-{day}
 
 # Day of the week, day month year
 date_format = %A، %d %B %Y
@@ -50,6 +50,7 @@ date_format = %A، %d %B %Y
 # COMMUNICATIONS HARDWARE  OTHER
 indicator_category = APPLICATION_STATUS
 '''
+
 
 class GSConfigParser(SafeConfigParser):
     """A GSConfigParser for reading and writing the settings"""

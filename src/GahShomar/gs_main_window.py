@@ -62,9 +62,9 @@ ABOUT_PAGE = '''
     <property name="version">3.0.4</property>
     <property name="copyright" translatable="yes">Amir Mohammadi &lt;183.amir@gmail.com&gt;</property>
     <property name="comments" translatable="yes">گاه‌شمار (تقویم) ایرانی</property>
-    <property name="website">http://183amir.github.io/persian-calendar/</property>
+    <property name="website">http://183amir.github.io/gahshomar/</property>
     <property name="authors">Amir Mohammadi</property>
-    <property name="logo">{FULL_PATH}/data/icons/persian-calendar-logo.png</property>
+    <property name="logo">{FULL_PATH}/data/icons/gahshomar-logo.png</property>
     <property name="license_type">gpl-2-0</property>
     <child internal-child="vbox">
       <object class="GtkBox" id="aboutdialog-vbox1">
@@ -242,7 +242,7 @@ class MainWindow(Gtk.ApplicationWindow):
         # day = khayyam.JalaliDate.today().day
         icon = Gtk.IconTheme.load_icon(
             Gtk.IconTheme(),
-            'persian-calendar',
+            'gahshomar',
             512, 0)
         self.set_icon(icon)
 
