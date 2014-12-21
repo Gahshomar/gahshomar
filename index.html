@@ -1,98 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Persian Calendar by 183amir</title>
+    <meta name="description" content="Gahshomar : A Persian (Jalali/Farsi) calendar for the Linux Desktop Enviornment.">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Gahshomar</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Persian Calendar</h1>
-        <p class="header">A Persian (Jalali/Farsi) calendar which provides a basic app indicator in Unity Desktop Environment.</p>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/183amir/persian-calendar/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/183amir/persian-calendar/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/183amir/persian-calendar">View On GitHub</a></li>
-        </ul>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Gahshomar/gahshomar">View on GitHub</a>
 
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/183amir">183amir</a></p>
+          <h1 id="project_title">Gahshomar</h1>
+          <h2 id="project_tagline">A Persian (Jalali/Farsi) calendar for the Linux Desktop Enviornment.</h2>
 
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Gahshomar/gahshomar/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Gahshomar/gahshomar/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
 
-      </header>
-      <section>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
-<a name="persian-calendar" class="anchor" href="#persian-calendar"><span class="octicon octicon-link"></span></a>Persian Calendar</h1>
+<a id="gahshomar-گاهشمار" class="anchor" href="#gahshomar-%DA%AF%D8%A7%D9%87%D8%B4%D9%85%D8%A7%D8%B1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gahshomar (گاه‌شمار)</h1>
 
-<p>A Persian (Jalali/Farsi) calendar which provides a basic appindicator.
-(It has been tested on Unity, Gnome-shell, XFCE, and KDE (see the Wiki in github) but it should run on all Desktop Environment as long as you have the libappindicator.)</p>
-
-<h1>
-<a name="screenshot" class="anchor" href="#screenshot"><span class="octicon octicon-link"></span></a>Screenshot</h1>
-
-<p><img src="https://github.com/183amir/persian-calendar/raw/master/data/Screenshot.png" alt="screenshot"></p>
+<p>A Persian (Jalali/Farsi) calendar.</p>
 
 <h1>
-<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h1>
+<a id="screenshot" class="anchor" href="#screenshot" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screenshot</h1>
 
-<p>Khayyam3 python package (<a href="https://pypi.python.org/pypi/Khayyam3">https://pypi.python.org/pypi/Khayyam3</a>)</p>
-
-<h1>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
-
-<p>Note: Arch Linux users can install it from AUR (<a href="https://aur.archlinux.org/packages/persian-calendar/">https://aur.archlinux.org/packages/persian-calendar/</a>)</p>
+<p><img src="https://github.com/Gahshomar/gahshomar/raw/master/src/data/Screenshot.png" alt="screenshot"></p>
 
 <h1>
-<a name="ubuntu-installation" class="anchor" href="#ubuntu-installation"><span class="octicon octicon-link"></span></a>Ubuntu Installation</h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
 
-<p>First make sure <em>Khayyam3</em> is installed:</p>
-
-<pre><code>sudo apt-get install python3-pip
-sudo pip3 install Khayyam3
-</code></pre>
-
-<p>Download Persian calendar (make sure all steps run successfully):</p>
-
-<pre><code>sudo rm -rf /opt/persian-calendar
-sudo mkdir -p /opt/persian-calendar
-sudo chmod 775 /opt/persian-calendar
-wget -O persian-calendar.tar.gz https://github.com/183amir/persian-calendar/tarball/master
-sudo tar -xf persian-calendar.tar.gz -C /opt/persian-calendar --strip-components 1
-sudo install -Dm644 /opt/persian-calendar/data/persian-calendar.desktop /usr/share/applications/persian-calendar.desktop
-sudo install -Dm644 /opt/persian-calendar/data/icons/ubuntu-mono-dark/persian-calendar-`date +%-d`.png /usr/share/pixmaps/persian-calendar.png
-sudo install -D -m644 /opt/persian-calendar/LICENSE /usr/share/licenses/persian-calendar/LICENSE
-sudo chmod +x /opt/persian-calendar/gahshomar
-</code></pre>
+<p>See the Wiki</p>
 
 <h1>
-<a name="run-at-startup" class="anchor" href="#run-at-startup"><span class="octicon octicon-link"></span></a>Run at startup</h1>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h1>
 
-<p>To make the program run when you login:</p>
-
-<pre><code>cp /usr/share/applications/persian-calendar.desktop ~/.config/autostart/
-</code></pre>
-
-<h1>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h1>
-
-<p>Having troubles? Fill an issue at <em><a href="https://github.com/183amir/persian-calendar">https://github.com/183amir/persian-calendar</a></em>
-or Contact me at <em><a href="mailto:183.amir@gmail.com">183.amir@gmail.com</a></em>.</p>
+<p>Having troubles? Fill an issue at <em><a href="https://github.com/Gahshomar/gahshomar">https://github.com/Gahshomar/gahshomar</a></em>.</p>
       </section>
-      <footer>
-        <p><small>Hosted on <a href="http://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Gahshomar maintained by <a href="https://github.com/Gahshomar">Gahshomar</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		          <script type="text/javascript">
+
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -102,6 +71,7 @@ or Contact me at <em><a href="mailto:183.amir@gmail.com">183.amir@gmail.com</a><
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
