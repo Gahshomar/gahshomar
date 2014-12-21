@@ -10,7 +10,7 @@ Screenshot
 
 Installation
 ================
-See the Wiki
+See the ![Wiki](https://github.com/Gahshomar/gahshomar/wiki/Installation)
 
 
 Support or Contact
