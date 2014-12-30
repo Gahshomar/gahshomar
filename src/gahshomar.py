@@ -85,4 +85,5 @@ if __name__ == '__main__':
     from GahShomar.gs_main_window import GahShomar
     app = GahShomar(FULL_PATH, config, args.no_main_window)
     app.APP_NAME = APP_NAME
-    r = app.run()
+    exit_status = app.run()
+    sys.exit(exit_status)

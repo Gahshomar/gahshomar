@@ -43,7 +43,7 @@ import functools
 def debug(fn):
     def wrapper(*args, **kwargs):
         print(fn.__name__, 'called!')
-        print(sorted(args), tuple(sorted(kwargs.items())))
+        print(args, tuple(kwargs.items()))
         res = fn(*args, **kwargs)
         print(res)
         return res

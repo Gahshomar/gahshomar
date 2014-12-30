@@ -120,7 +120,7 @@ class SettingsWindow(object):
         """
         nb = self.notebook_settings
         self._plugin_list = PluginList(nb)
-        self._plugin_list.refresh()
+        # self._plugin_list.refresh() # do not call refresh here!
         nb.append_page(self._plugin_list, Gtk.Label('Plugins'))
         # '# debug'
         # nb.set_current_page(2)
@@ -153,6 +153,6 @@ class SettingsWindow(object):
         self.combobox_indicator_category.set_active(tree_iter)
 
     def get_dialog(self):
-        self.__init__(self.app)
-        # self._plugin_list.refresh()
+        self.refresh()
+        self._plugin_list.refresh()
         return self.dialog

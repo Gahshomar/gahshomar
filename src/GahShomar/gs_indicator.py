@@ -61,20 +61,22 @@ class GahShomarIndicator(GObject.GObject):
         self.menu.set_halign(Gtk.Align.CENTER)
 
         self.today_item = Gtk.MenuItem('امروز')
-        self.today_item.set_right_justified(True)
+        # self.today_item.set_right_justified(True)
+        self.today_item.set_halign(Gtk.Align.END)
         self.today_item.show()
         self.today_item.set_halign(Gtk.Align.CENTER)
         label = self.today_item.get_children()[0]
         label.set_halign(Gtk.Align.CENTER)
 
         self.toggle_main_window = Gtk.MenuItem("گاه‌شمار")
-        self.toggle_main_window.set_right_justified(True)
+        # self.toggle_main_window.set_right_justified(True)
+        self.toggle_main_window.set_hexpand(True)
+        self.toggle_main_window.set_halign(Gtk.Align.END)
         self.toggle_main_window.connect("activate", self.parent.toggle_main_win)
         self.toggle_main_window.show()
-        self.toggle_main_window.set_halign(Gtk.Align.CENTER)
         self.toggle_main_window.set_state_flags(Gtk.StateFlags.DIR_RTL, False)
         label = self.toggle_main_window.get_children()[0]
-        label.set_halign(Gtk.Align.CENTER)
+        label.set_halign(Gtk.Align.END)
         label.set_state_flags(Gtk.StateFlags.DIR_RTL, False)
 
         self.quit_item = Gtk.MenuItem("خروج")

@@ -19,6 +19,7 @@
 import datetime
 import logging
 logger = logging.getLogger(__name__)
+
 from gi.repository import Gtk, GLib, Gio
 
 from .gs_calendar_widget import PersianCalendarWidget, GeorgianCalendarWidget
@@ -33,15 +34,15 @@ MENU_XML = """
   <menu id='app-menu'>
     <section>
       <item>
-        <attribute name='label' translatable='yes'>_About</attribute>
-        <attribute name='action'>app.about</attribute>
-      </item>
-      <item>
         <attribute name='label' translatable='yes'>_Preferences</attribute>
         <attribute name='action'>app.preferences</attribute>
       </item>
     </section>
     <section>
+      <item>
+        <attribute name='label' translatable='yes'>_About</attribute>
+        <attribute name='action'>app.about</attribute>
+      </item>
       <item>
         <attribute name='label' translatable='yes'>_Quit</attribute>
         <attribute name='action'>app.quit</attribute>
@@ -147,11 +148,14 @@ class MainWindow(Gtk.ApplicationWindow):
         # set the icon for the window
         self.connect('style-set', self.set_icon_)
 
+        # initialize the settings page
+        self.gs_settings_win = gs_settings_page.SettingsWindow(self.app)
+
+        # finally load the plugins
         try:
             self.plugin_manager = GSPluginManager(self)
         except Exception:
             logger.exception(Exception)
-        self.gs_settings_win = gs_settings_page.SettingsWindow(self.app)
 
     def draw_interface(self):
 
@@ -162,8 +166,8 @@ class MainWindow(Gtk.ApplicationWindow):
             self.offset = 0
         # logger.debug('main_grid self.offset is {}'.format(self.offset))
         main_grid = self.main_grid
-        for _ in range(len(self.calendars)+1):
-            main_grid.remove_column(0)
+        # for _ in range(len(self.calendars)):
+        #     main_grid.remove_column(0)
         for i, v in enumerate(self.day_widgets):
             main_grid.attach(v, i, 0+self.offset, 1, 1)
         for i, v in enumerate(self.calendars):
@@ -240,10 +244,17 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def set_icon_(self, *args):
         # day = khayyam.JalaliDate.today().day
-        icon = Gtk.IconTheme.load_icon(
-            Gtk.IconTheme(),
-            'gahshomar',
-            512, 0)
+        try:
+            icon = Gtk.IconTheme.load_icon(
+                Gtk.IconTheme(),
+                'gahshomar',
+                512, 0)
+        except Exception:
+            # logger.exception(Exception)
+            icon = Gtk.IconTheme.load_icon(
+                Gtk.IconTheme(),
+                'persian-calendar',
+                512, 0)
         self.set_icon(icon)
 
 
