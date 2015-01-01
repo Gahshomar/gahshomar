@@ -5,22 +5,20 @@
 
   <info>
     <link type="guide" xref="index" group="#first"/>
-    <revision pkgversion="4.0.0" date="2015-01-01" status="review"/>
+    <revision pkgversion="4.0" date="2015-01-01" status="review"/>
 
     <credit type="author">
       <name>Amir Mohammadi</name>
       <email its:translate="no">183.amir@gmail.com</email>
-      <years>2014</years>
+      <years>2015</years>
     </credit>
 
     <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
 
-    <desc>A simple and elegant replacement for using files to show the music
-    directory.</desc>
+    <desc>A simple and elegant calendar.</desc>
   </info>
 
-  <title>Introduction to Music</title>
-    <p>A simple and elegant replacement for using files to show the music
-    directory.</p>
+  <title>Introduction to Gahshomar</title>
+    <p>A simple and elegant calendar.</p>
 
 </page>

@@ -3,9 +3,9 @@
 HELP_ID = gahshomar
 
 HELP_FILES = \
-        introduction.page \
         index.page \
-        legal.xml
+        legal.xml \
+        introduction.page
 
 HELP_MEDIA = \
         figures/gahshomar.png
