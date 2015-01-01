@@ -1,0 +1,27 @@
+{
+	"build_systems":
+	[
+		{
+			"cmd":
+			[
+				"python",
+				"-u",
+				"/home/amir/git/gahshomar/gahshomar.in",
+				"-v"
+			],
+			"name": "GahShomar",
+			"selector": "source.python"
+		}
+	],
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/home/amir/git/gnome-music"
+		}
+	]
+}

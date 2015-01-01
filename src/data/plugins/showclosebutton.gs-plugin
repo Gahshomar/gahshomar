@@ -1,9 +1,0 @@
-[Core]
-Name = Disable the header bar
-Module = showclosebutton
-
-[Documentation]
-Author = Amir Mohammadi
-Version = 1.0
-Website = 
-Description = Adds a close button to the main window.

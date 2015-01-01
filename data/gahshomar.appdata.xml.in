@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+ <id type="desktop">gahshomar.desktop</id>
+ <licence>CC0</licence>
+ <_name>Gahshomar</_name>
+ <_summary>A Persian/Jalali/Farsi calendar</_summary>
+ <description>
+  <_p>
+   Gahshomar makes it easy for you to keep track of two different calendars.
+  </_p>
+ </description>
+ <screenshots>
+  <screenshot type="default" width="1348" height="647">https://github.com/Gahshomar/gahshomar/raw/master/data/Screenshot.png</screenshot>
+ </screenshots>
+ <url type="homepage">http://gahshomar.github.io/gahshomar</url>
+ <updatecontact>183.amir@gmail.com</updatecontact>
+</application>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="gahshomar">
+  <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkAboutDialog" id="about_dialog">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="program_name" translatable="yes">Gahshomar</property>
+    <property name="version">@PACKAGE_VERSION@</property>
+    <property name="copyright" translatable="yes">Copyright © 2014 Gahshomar Developers</property>
+    <property name="comments" translatable="yes">A Persian/Jalali/Farsi calendar application.</property>
+    <property name="website">@PACKAGE_URL@</property>
+    <property name="website_label" translatable="yes">Visit Gahshomar website</property>
+    <property name="license_type">gpl-3-0</property>
+    <property name="authors">Amir Mohammadi &lt;183.amir@gmail.com&gt;</property>
+    <property name="logo_icon_name">gahshomar</property>
+  </object>
+</interface>

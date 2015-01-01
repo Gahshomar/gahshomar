@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+
+import argparse
+import gettext
+import locale
+import logging
+logger = logging.getLogger(__file__)
+import os
+from os.path import join, dirname, exists, abspath
+import signal
+import sys
+
+# Make sure we'll find the pygobject module, even in JHBuild
+sys.path.insert(1, '@pyexecdir@')
+# Make sure we'll find the gahshomar module, even in JHBuild
+sys.path.insert(1, '@pythondir@')
+
+from gi.repository import Gio
+import gahshomar
+
+localedir = '@localedir@'
+srcdir = abspath(join(dirname(gahshomar.__file__), '..'))
+if exists(join(srcdir, 'gahshomar.doap')):
+    print('Running from source tree, using local files')
+    pkgdatadir = join(srcdir, 'data')
+    libgd_libdir = join(srcdir, 'libgd', '.libs')
+    libgd_typelibdir = join(srcdir, 'libgd')
+    # if not os.environ.get('GSETTINGS_SCHEMA_DIR'):
+    os.environ['GSETTINGS_SCHEMA_DIR'] = pkgdatadir
+else:
+    pkgdatadir = '@pkgdatadir@'
+    libgd_libdir = '@pkglibdir@'
+    libgd_typelibdir = '@pkglibdir@/girepository-1.0'
+
+
+def install_excepthook():
+    """ Make sure we exit when an unhandled exception occurs. """
+    from gi.repository import Gtk
+    old_hook = sys.excepthook
+
+    def new_hook(etype, evalue, etb):
+        old_hook(etype, evalue, etb)
+        while Gtk.main_level():
+            Gtk.main_quit()
+        sys.exit()
+    sys.excepthook = new_hook
+
+if __name__ == "__main__":
+    install_excepthook()
+    # argument parser
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-m', "--no-main-window",
+                        help='does not display the main window',
+                        action="store_true")
+    parser.add_argument('-d', "--debug",
+                        help='prints debugging info',
+                        action="store_true")
+    args = parser.parse_args()
+
+    # remove extra argv for Gtk
+    for v in ['-m', '-d', '--no-main-window', '--debug']:
+        if v in sys.argv:
+            sys.argv.remove(v)
+
+    # change the logging information.
+    if args.debug:
+        logging.basicConfig(level=logging.DEBUG,
+                            format='%(asctime)s %(levelname)s\t%(filename)s:'
+                            '%(lineno)d \t%(message)s',
+                            datefmt='%H:%M:%S')
+        logger.debug('Debugging options enabled.')
+    else:
+        logging.basicConfig(level=logging.WARN,
+                            format='%(asctime)s %(levelname)s\t%(filename)s:'
+                            '%(lineno)d \t%(message)s',
+                            datefmt='%H:%M:%S')
+
+    locale.bindtextdomain('gahshomar', localedir)
+    locale.textdomain('gahshomar')
+    gettext.bindtextdomain('gahshomar', localedir)
+    gettext.textdomain('gahshomar')
+
+    resource = Gio.resource_load(join(pkgdatadir, 'gahshomar.gresource'))
+    Gio.Resource._register(resource)
+
+    from gahshomar.application import Application
+    app = Application(args.no_main_window)
+    signal.signal(signal.SIGINT, signal.SIG_DFL)
+    exit_status = app.run(sys.argv)
+    sys.exit(exit_status)

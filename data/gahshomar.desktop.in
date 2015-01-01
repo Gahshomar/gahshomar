@@ -1,0 +1,11 @@
+[Desktop Entry]
+_Name=Gahshomar
+_GenericName=Calendar
+_Comment=View Georgian and Persian calendars
+Icon=gahshomar
+Exec=gah-shomar
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Productivty;Calendar;
+_Keywords=Calendar;Persian;Gahshomar;Jalali;
+StartupNotify=true

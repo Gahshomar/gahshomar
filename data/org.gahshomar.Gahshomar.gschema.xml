@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+    <schema path="/org/gahshomar/Gahshomar/" id="org.gahshomar.Gahshomar" gettext-domain="gahshomar">
+        <key type="s" name="persian-date-format">
+            <default>"%A، %d %B %Y"</default>
+            <summary>Persian date format</summary>
+            <description>The way that full date is displayed.</description>
+        </key>
+        <key type="s" name="georgian-date-format">
+            <default>"%A, %d %B %Y"</default>
+            <summary>Georgian date format</summary>
+            <description>The way that full date is displayed.</description>
+        </key>
+        <key type="ai" name="window-size">
+            <default>[768, 600]</default>
+            <summary>Window size</summary>
+            <description>Window size (width and height).</description>
+        </key>
+        <key type="ai" name="window-position">
+            <default>[]</default>
+            <summary>Window position</summary>
+            <description>Window position (x and y).</description>
+        </key>
+        <key type="b" name="window-maximized">
+            <default>true</default>
+            <summary>Window maximized</summary>
+            <description>Window maximized state.</description>
+        </key>
+    </schema>
+</schemalist>
