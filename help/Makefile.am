@@ -1,6 +1,6 @@
 @YELP_HELP_RULES@
 
-HELP_ID = gnome-music
+HELP_ID = gahshomar
 
 HELP_FILES = \
         introduction.page \
