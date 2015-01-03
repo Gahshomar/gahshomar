@@ -47,20 +47,22 @@ def install_excepthook():
 
 if __name__ == "__main__":
     install_excepthook()
+
+    locale.bindtextdomain('gahshomar', localedir)
+    locale.textdomain('gahshomar')
+    gettext.bindtextdomain('gahshomar', localedir)
+    gettext.textdomain('gahshomar')
+    from gettext import gettext as _
+
     # argument parser
     parser = argparse.ArgumentParser()
     parser.add_argument('-m', "--no-main-window",
-                        help='does not display the main window',
+                        help=_('do not display the main window'),
                         action="store_true")
     parser.add_argument('-d', "--debug",
-                        help='prints debugging info',
+                        help=_('print debugging info'),
                         action="store_true")
-    args = parser.parse_args()
-
-    # remove extra argv for Gtk
-    for v in ['-m', '-d', '--no-main-window', '--debug']:
-        if v in sys.argv:
-            sys.argv.remove(v)
+    args, unknown = parser.parse_known_args()
 
     # change the logging information.
     if args.debug:
@@ -75,16 +77,11 @@ if __name__ == "__main__":
                             '%(lineno)d \t%(message)s',
                             datefmt='%H:%M:%S')
 
-    locale.bindtextdomain('gahshomar', localedir)
-    locale.textdomain('gahshomar')
-    gettext.bindtextdomain('gahshomar', localedir)
-    gettext.textdomain('gahshomar')
-
     resource = Gio.resource_load(join(pkgdatadir, 'gahshomar.gresource'))
     Gio.Resource._register(resource)
 
     from gahshomar.application import Application
     app = Application(args.no_main_window)
     signal.signal(signal.SIGINT, signal.SIG_DFL)
-    exit_status = app.run(sys.argv)
+    exit_status = app.run(unknown)
     sys.exit(exit_status)

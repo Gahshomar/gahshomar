@@ -37,12 +37,13 @@ class Handler(object):
         self.app = app
 
     @log
-    def on_StartupSwitch_notify_active(self, startup_switch, data=None):
+    def on_StartupSwitch_state_set(self, startup_switch, data=None):
         if startup_switch.get_state():
             try:
                 os.remove(AUTOSTART_DESKTOPFILE_PATH)
             except Exception:
-                logger.warning('', exc_info=True)
+                # logger.warning('', exc_info=True)
+                logger.exception(Exception)
         else:
             try:
                 with open(AUTOSTART_DESKTOPFILE_PATH, 'w') as f:
@@ -67,7 +68,7 @@ class SettingsWindow(Gtk.Window):
         super().__init__(title=_('Gahshomar Preferences'))
         self.app = app
         self.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
-        self.set_default_size(300, 150)
+        self.resize(600, 300)
 
         builder = Gtk.Builder()
         builder.add_from_resource('/org/gahshomar/Gahshomar/settings-page.ui')
