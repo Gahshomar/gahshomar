@@ -30,7 +30,7 @@ from gahshomar import log
 class Window(Gtk.ApplicationWindow):
 
     @log
-    def __init__(self, app):
+    def __init__(self, app, minimized=False):
         self.app = app
         Gtk.ApplicationWindow.__init__(self,
                                        application=app,
@@ -65,12 +65,16 @@ class Window(Gtk.ApplicationWindow):
 
         self.connect("window-state-event", self._on_window_state_event)
         self.connect("configure-event", self._on_configure_event)
-        self.connect("delete-event", self.toggle_main_win)
+        self.connect("delete-event", self.hide_main_win)
         # set the icon for the window
         self.connect('style-set', self.set_icon_)
         self._setup_view()
 
-        self.show_all()
+        if minimized:
+            self.visible = False
+        else:
+            self.visible = True
+            self.show()
 
     @log
     def _on_configure_event(self, widget, event):
@@ -101,7 +105,6 @@ class Window(Gtk.ApplicationWindow):
         self.handler = self.app.handler
 
         self.main_grid = Gtk.Grid()
-        self.main_grid.show_all()
         self.add(self.main_grid)
         self.main_grid.set_column_homogeneous(True)
         self.main_grid.set_column_spacing(spacing=18)
@@ -113,8 +116,8 @@ class Window(Gtk.ApplicationWindow):
         for i, v in enumerate(self.calendars):
             self.main_grid.attach(v, i, 1 + self.offset, 1, 1)
 
-       # setup appindicator
-        self.visible = True
+        self.main_grid.show()
+        # setup appindicator
         # self.setup_appindicator()
 
         # check if unity is running
@@ -127,7 +130,6 @@ class Window(Gtk.ApplicationWindow):
         # GLib.timeout_add_seconds(int(self.config['Global']['ping_frequency']),
         #                          self.handler.update_everything)
 
-
         # # finally load the plugins
         # try:
         #     self.plugin_manager = GSPluginManager(self)
@@ -139,9 +141,9 @@ class Window(Gtk.ApplicationWindow):
         # xdg_current_desktop = self.xdg_current_desktop
         today_button = Gtk.Button(label=_('Today'))
         today_button.connect("clicked", self.set_today)
-        close_button = Gtk.Button.new_from_icon_name(
-            'window-close-symbolic', Gtk.IconSize.BUTTON)
-        close_button.connect('clicked', self.toggle_main_win)
+        # close_button = Gtk.Button.new_from_icon_name(
+        #     'window-close-symbolic', Gtk.IconSize.BUTTON)
+        # close_button.connect('clicked', self.toggle_main_win)
 
         if False:  # 'unity' in xdg_current_desktop:
             toolbar = Gtk.Toolbar()
@@ -169,7 +171,7 @@ class Window(Gtk.ApplicationWindow):
             #     self.hb.props.show_close_button = True
 
             self.hb.pack_start(today_button)
-
+            self.hb.show_all()
             self.set_titlebar(self.hb)
 
     @log
@@ -177,17 +179,8 @@ class Window(Gtk.ApplicationWindow):
         self.handler.update_everything(date=datetime.date.today())
 
     @log
-    def toggle_main_win(self, *args):
-        # if not USE_IND:
-        #     return
-
-        if self.visible:
-            self.hide()
-            self.visible = False
-        else:
-            self.show_all()
-            self.present()
-            self.visible = True
+    def hide_main_win(self, *args):
+        self.hide()
         return True
 
     # def setup_appindicator(self):

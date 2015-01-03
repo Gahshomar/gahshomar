@@ -21,9 +21,7 @@ from calendar import Calendar, monthrange
 import datetime
 from gettext import gettext as _
 
-import khayyam
-
-from gahshomar.jalali_date_persian_numbers import JalaliDatePersianNumbers
+import gahshomar.khayyam as khayyam
 from gahshomar import log
 
 
@@ -148,7 +146,10 @@ class MyCalendar(Calendar):
                     text = '<span fgcolor="black">{}</span>'
                 else:
                     text = '<span fgcolor="gray">{}</span>'
-                self.grid_mat[j][i] = (date, text.format(date.strftime('%d')))
+                d = date.strftime('%d')
+                if d[0] == '0' or d[0] == '۰':
+                    d = d[1:]
+                self.grid_mat[j][i] = (date, text.format(d))
 
 
 class PersianCalendar(MyCalendar):
@@ -171,7 +172,6 @@ class PersianCalendar(MyCalendar):
     @log
     def get_date(self, date):
         date = khayyam.JalaliDate.from_date(date_to_georgian(date))
-        date = JalaliDatePersianNumbers(date.year, date.month, date.day)
         return date
 
     @log

@@ -6,7 +6,7 @@
 			[
 				"python",
 				"-u",
-				"/home/amir/git/gahshomar/gahshomar.in",
+				"/home/amir/git/gahshomar/gah-shomar.in",
 				"-d"
 			],
 			"name": "GahShomar",

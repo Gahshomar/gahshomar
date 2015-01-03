@@ -15,14 +15,15 @@
 # You should have received a copy of the GNU General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from gi.repository import Gtk, Gio, GLib  # , Notify, Gdk
+from gi.repository import Gtk, Gio, GLib, Gdk  # , Notify
 from gettext import gettext as _
-from gahshomar.window import Window
-# from gahshomar.mpris import MediaPlayer2Service
-# from gahshomar.notification import NotificationManager
-from gahshomar import log
 import logging
 logger = logging.getLogger(__name__)
+
+from gahshomar.window import Window
+from gahshomar.indicator import Indicator
+from gahshomar import log
+from gahshomar.settings_page import SettingsWindow
 
 
 class EventsHandler(object):
@@ -57,6 +58,8 @@ class Application(Gtk.Application):
         self._window = None
         self.minimized = minimized
         self.handler = EventsHandler()
+        # the appindicator
+        self.appind = None
 
     @log
     def build_app_menu(self):
@@ -71,21 +74,21 @@ class Application(Gtk.Application):
         aboutAction.connect('activate', self.about)
         self.add_action(aboutAction)
 
-        # helpAction = Gio.SimpleAction.new('help', None)
-        # helpAction.connect('activate', self.help)
-        # self.add_action(helpAction)
+        helpAction = Gio.SimpleAction.new('help', None)
+        helpAction.connect('activate', self.help)
+        self.add_action(helpAction)
 
-        # preferencesAction = Gio.SimpleAction.new('preferences', None)
-        # preferencesAction.connect('activate', self.preferences)
-        # self.add_action(preferencesAction)
+        preferencesAction = Gio.SimpleAction.new('preferences', None)
+        preferencesAction.connect('activate', self.preferences)
+        self.add_action(preferencesAction)
 
         quitAction = Gio.SimpleAction.new('quit', None)
         quitAction.connect('activate', self.quit)
         self.add_action(quitAction)
 
-    # @log
-    # def help(self, action, param):
-    #     Gtk.show_uri(None, "help:gahshomar", Gdk.CURRENT_TIME)
+    @log
+    def help(self, action, param):
+        Gtk.show_uri(None, "help:gahshomar", Gdk.CURRENT_TIME)
 
     @log
     def about(self, action, param):
@@ -101,25 +104,36 @@ class Application(Gtk.Application):
         dialog.destroy()
 
     @log
-    def do_startup(self):
-        Gtk.Application.do_startup(self)
-
-        # Notify.init(_("Gahshomar"))
-
-        self.build_app_menu()
-
-    @log
     def quit(self, action=None, param=None):
         self._window.destroy()
 
     @log
+    def preferences(self, action=None, param=None):
+        setting_win = SettingsWindow(self)
+        setting_win.set_transient_for(self._window)
+        setting_win.show()
+
+    @log
+    def do_startup(self):
+        Gtk.Application.do_startup(self)
+        # Notify.init(_("Gahshomar"))
+        self.build_app_menu()
+
+    @log
     def do_activate(self):
         if not self._window:
-            self._window = Window(self)
+            self._window = Window(self, self.minimized)
             # self.service = MediaPlayer2Service(self)
             # if self.settings.get_value('notifications'):
             #     self._notifications = NotificationManager(self._window.player)
-            # if not self.minimized:
-            self._window.present()
+            if not self.minimized:
+                self._window.present()
+            else:
+                # make sure you hide the window only in the startup
+                self.minimized = False
         else:
             self._window.present()
+
+        # the appindicator
+        if not self.appind:
+            self.appind = Indicator(self)

@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+# ACLOCAL_AMFLAGS = -I m4
 NULL =
 
 bin_SCRIPTS = gah-shomar

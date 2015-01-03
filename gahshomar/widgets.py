@@ -55,6 +55,7 @@ class DayWidget(Gtk.Box):
         # self.ui.get_object('DayWidgetLabel').set_label(_(text))
         self.ui.get_object('DayWidgetLabel').set_markup(
             "<span size='large'>"+_(text)+'</span>')
+        self.show_all()
 
 
 class PersianDayWidget(DayWidget, PersianCalendar):
@@ -141,6 +142,7 @@ class MonthsWidget(Gtk.Box):
                 self.grid.set_focus_child(button)
             else:
                 button.set_relief(Gtk.ReliefStyle.NONE)
+        self.show_all()
 
     @log
     def month_button_pressed(self, *args):
@@ -214,14 +216,15 @@ class CalendarWidget(Gtk.Box):
             date = self.date
         self.date = self.get_date(date)
 
-        self.setup_days_grid()
-
         month_label = self.get_months()[self.date.month-1]
         self.MonthLabel.set_label(_(month_label))
 
         self.YearEntry.set_text(_(self.date.strftime('%Y')))
 
         self.setup_weekdays()
+
+        self.show_all()
+        self.setup_days_grid()
 
     @log
     def setup_days_grid(self):

@@ -10,7 +10,6 @@ gahshomar/application.py
 gahshomar/calendar.py
 gahshomar/indicator.py
 gahshomar/__init__.py
-gahshomar/jalali_date_persian_numbers.py
 gahshomar/plugin_manager.py
 gahshomar/settings_page.py
 gahshomar/widgets.py

@@ -1,3 +1,5 @@
+SUBDIRS = khayyam
+
 appdir = $(pythondir)/gahshomar/
 
 app_PYTHON = \
@@ -8,6 +10,16 @@ app_PYTHON = \
 	settings_page.py \
 	calendar.py \
 	indicator.py \
-	jalali_date_persian_numbers.py \
-	plugin_manager.py 
+	plugin_manager.py
 
+# appkhayyamdir = $(pythondir)/gahshomar/khayyam/
+
+# appkhayyam_PYTHON = \
+# 	khayyam/algorithms.py \
+# 	khayyam/compat.py \
+# 	khayyam/constants.py \
+# 	khayyam/helpers.py \
+# 	khayyam/__init__.py \
+# 	khayyam/jalali_date.py \
+# 	khayyam/jalali_datetime.py \
+# 	khayyam/tehran_timezone.py
