@@ -21,9 +21,9 @@ IT_PROG_INTLTOOL(0.26)
 
 YELP_HELP_INIT
 
-AC_PROG_CC
-AM_PROG_CC_C_O
-LT_INIT([disable-static])
+dnl AC_PROG_CC
+dnl AM_PROG_CC_C_O
+dnl LT_INIT([disable-static])
 
 dnl LIBGD_INIT([main-view revealer gir tagged-entry])
 
@@ -31,7 +31,7 @@ PKG_PROG_PKG_CONFIG([0.22])
 
 GLIB_GSETTINGS
 GOBJECT_INTROSPECTION_REQUIRE([1.35.9])
-PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= 3.12])
+dnl PKG_CHECK_MODULES([GTK], [gtk+-3.0 >= 3.12])
 dnl PKG_CHECK_MODULES(MEDIAART, [libmediaart-1.0])
 
 GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`
