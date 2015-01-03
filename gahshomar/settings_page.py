@@ -37,7 +37,7 @@ class Handler(object):
         self.app = app
 
     @log
-    def on_StartupSwitch_state_set(self, startup_switch, data=None):
+    def on_StartupSwitch_notify_active(self, startup_switch, data=None):
         if startup_switch.get_state():
             try:
                 os.remove(AUTOSTART_DESKTOPFILE_PATH)

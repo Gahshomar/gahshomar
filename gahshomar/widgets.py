@@ -181,20 +181,18 @@ class CalendarWidget(Gtk.Box):
         self.app = app
         self.app.handler.updateables.append(self)
 
-        logger.debug('Gtk.Builder calendar-widget.ui')
         self.ui = Gtk.Builder()
-        logger.debug('Gtk.Builder calendar-widget.ui')
         self.ui.add_from_resource('/org/gahshomar/Gahshomar/calendar-widget.ui')
-        logger.debug('Gtk.Builder calendar-widget.ui')
         calendar_widget = self.ui.get_object('CalendarWidget')
-        logger.debug('Gtk.Builder calendar-widget.ui ' + str(calendar_widget))
         self.pack_start(calendar_widget, True, True, 0)
-        logger.debug('Gtk.Builder calendar-widget.ui done')
 
         self.MonthMenuButton = self.ui.get_object('MonthMenuButton')
         self.MonthMenuButton.set_size_request(150, -1)
         self.MonthMenuButton.connect('toggled', self.display_months)
-        self.popover = Gtk.Popover.new(self.MonthMenuButton)
+        try:
+            self.popover = Gtk.Popover.new(self.MonthMenuButton)
+        except AttributeError:
+            logger.error(_('You need at least Gtk 3.12!'), exc_info=True)
         self.MonthMenuButton.set_popover(self.popover)
         self.popover.add(self.months_widget)
 
