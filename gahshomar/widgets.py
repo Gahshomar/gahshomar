@@ -206,6 +206,11 @@ class CalendarWidget(Gtk.Box):
         rtl = -1 if self.rtl else 1
         self.week_days = self.get_week_days()[::rtl]
 
+        self.days_button_list = []
+        for i in range(1, 43):
+            button = self.ui.get_object('button{}'.format(i))
+            self.days_button_list.append(button)
+
         self.update()
 
     @log
@@ -227,28 +232,27 @@ class CalendarWidget(Gtk.Box):
     @log
     def setup_days_grid(self):
         self.gen_grid_mat()
-        self.grid = self.ui.get_object('DaysGrid')
-        for j in range(7):
-            try:
-                self.grid.remove_column(0)
-            except Exception:
-                logger.debug('failed to remove columns from grid')
-                logger.exception(Exception)
-        self.button_list = []
+        for button in self.days_button_list:
+            button.hide()
         for j, row in enumerate(self.grid_mat):
             for i, (date, day) in enumerate(row):
+                if date.month == self.date.month:
+                    text = '<span fgcolor="black">{}</span>'
+                else:
+                    text = '<span fgcolor="gray">{}</span>'
+                text = text.format(day)
+                button = self.days_button_list[j * 7 + i]
                 label = Gtk.Label()
-                label.set_markup(day)
-                button = Gtk.Button()
+                label.set_markup(text)
+                button.set_label('')
+                button.set_always_show_image(True)
                 button.set_image(label)
                 button.set_relief(Gtk.ReliefStyle.NONE)
                 if date == self.date:
                     button.set_relief(Gtk.ReliefStyle.HALF)
-                self.grid.attach(button, i, j+1, 1, 1)
-                self.button_list.append((button, date, i, j))
                 button.connect("clicked",
                                self.date_button_pressed, (i, j, date))
-        self.grid.show_all()
+                button.show()
 
     @log
     def setup_weekdays(self):

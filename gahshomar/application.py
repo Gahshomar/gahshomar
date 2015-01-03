@@ -86,6 +86,35 @@ class Application(Gtk.Application):
         quitAction.connect('activate', self.quit)
         self.add_action(quitAction)
 
+    # @log
+    # def do_dbus_register(self, connection, object_path):
+    #     Gtk.Application.do_dbus_register(self, connection, object_path)
+    #     print(self.list_actions())
+    #     connection.export_action_group('/Actions', self.list_actions())
+
+    def setup_dbus(self):
+        # if self.get_is_registered():
+            # logger.debug('app is registered.')
+        from gahshomar.dbus_service import IndicatorBus
+        import dbus.mainloop.glib
+        dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+        # dbus_connection = self.get_dbus_connection()
+        # self.dbus_object = IndicatorBus(conn=dbus_connection,
+        #                                 object_path='/IndicatorBus',
+        #                                 app=self)
+        import dbus
+        self.session_bus = dbus.SessionBus()
+        logger.debug('self.session_bus: '+str(self.session_bus))
+        self.dbus_name = dbus.service.BusName("org.gahshomar.GahshomarService",
+                                              self.session_bus)
+        logger.debug('self.dbus_name: '+str(self.dbus_name))
+        self.dbus_object = IndicatorBus(conn=self.session_bus,
+                                        object_path='/IndicatorBus',
+                                        bus_name=self.dbus_name, app=self)
+        logger.debug('self.dbus_object: '+str(self.dbus_object))
+
+        # else:
+        #     logger.debug('app is not registered.')
     @log
     def help(self, action, param):
         Gtk.show_uri(None, "help:gahshomar", Gdk.CURRENT_TIME)
@@ -118,6 +147,7 @@ class Application(Gtk.Application):
         Gtk.Application.do_startup(self)
         # Notify.init(_("Gahshomar"))
         self.build_app_menu()
+        self.setup_dbus()
 
     @log
     def do_activate(self):

@@ -19,7 +19,7 @@
 import calendar
 from calendar import Calendar, monthrange
 import datetime
-from gettext import gettext as _
+# from gettext import gettext as _
 
 import gahshomar.khayyam as khayyam
 from gahshomar import log
@@ -96,10 +96,10 @@ def add_months(date, months):
     if months == 0:
         return date
     elif months > 0:
-        for _ in range(months):
+        for __ in range(months):
             date = add_one_month(date)
     else:
-        for _ in range(abs(months)):
+        for __ in range(abs(months)):
             date = subtract_one_month(date)
     return date
 
@@ -128,9 +128,9 @@ class MyCalendar(Calendar):
             rows = 5
 
         self.grid_mat = []  # 5 or 6 row, 7 column
-        for _ in range(rows):
+        for __ in range(rows):
             row = []
-            for _ in range(7):
+            for __ in range(7):
                 row.append([])
             self.grid_mat.append(row)
         delta = - (self.get_first_day_month() + self.date.day) + 1
@@ -142,10 +142,11 @@ class MyCalendar(Calendar):
                 else:
                     delta_time = datetime.timedelta(days=i+j*7+delta)
                 date = self.date+delta_time
-                if date.month == self.date.month:
-                    text = '<span fgcolor="black">{}</span>'
-                else:
-                    text = '<span fgcolor="gray">{}</span>'
+                # if date.month == self.date.month:
+                #     text = '<span fgcolor="black">{}</span>'
+                # else:
+                #     text = '<span fgcolor="gray">{}</span>'
+                text = '{}'
                 d = date.strftime('%d')
                 if d[0] == '0' or d[0] == '۰':
                     d = d[1:]
