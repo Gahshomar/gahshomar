@@ -176,10 +176,10 @@ class PersianCalendar(MyCalendar):
 
     @log
     def get_week_days(self):
-        return [(_('ش'), _('شنبه')), (_('۱ش'), _('یک‌شنبه')),
-                (_('۲ش'), _('دو‌شنبه')), (_('۳ش'), _('سه‌شنبه')),
-                (_('۴ش'), _('چهار‌شنبه')), (_('۵ش'), _('پنج‌شنبه')),
-                (_('آ'), _('آدینه'))]
+        return [('ش', 'شنبه'), ('۱ش', 'یک‌شنبه'),
+                ('۲ش', 'دو‌شنبه'), ('۳ش', 'سه‌شنبه'),
+                ('۴ش', 'چهار‌شنبه'), ('۵ش', 'پنج‌شنبه'),
+                ('آ', 'آدینه')]
 
     @log
     def get_months(self):
@@ -208,10 +208,10 @@ class GeorgianCalendar(MyCalendar):
 
     @log
     def get_week_days(self):
-        return [(_('Mon'), _('Monday')), (_('Tue'), _('Tuesday')),
-                (_('Wed'), _('Wednesday')), (_('Thu'), _('Thursday')),
-                (_('Fri'), _('Friday')), (_('Sat'), _('Saturday')),
-                (_('Sun'), _('Sunday'))]
+        return [('Mon', 'Monday'), ('Tue', 'Tuesday'),
+                ('Wed', 'Wednesday'), ('Thu', 'Thursday'),
+                ('Fri', 'Friday'), ('Sat', 'Saturday'),
+                ('Sun', 'Sunday')]
 
     @log
     def get_months(self):

@@ -54,7 +54,7 @@ class DayWidget(Gtk.Box):
         text = self.date.strftime(self.date_format)
         # self.ui.get_object('DayWidgetLabel').set_label(_(text))
         self.ui.get_object('DayWidgetLabel').set_markup(
-            "<span size='large'>"+_(text)+'</span>')
+            "<span size='large'>"+text+'</span>')
         self.show_all()
 
 
@@ -136,7 +136,7 @@ class MonthsWidget(Gtk.Box):
             date = self.date
         self.date = self.get_date(date)
         for button, month, i in self.button_list:
-            button.set_label(_(month))
+            button.set_label(month)
             if i == self.date.month:
                 button.set_relief(Gtk.ReliefStyle.HALF)
                 self.grid.set_focus_child(button)
@@ -215,7 +215,7 @@ class CalendarWidget(Gtk.Box):
         self.date = self.get_date(date)
 
         month_label = self.get_months()[self.date.month-1]
-        self.MonthLabel.set_label(_(month_label))
+        self.MonthLabel.set_label(month_label)
 
         self.YearEntry.set_text(_(self.date.strftime('%Y')))
 
@@ -260,7 +260,7 @@ class CalendarWidget(Gtk.Box):
             label = self.ui.get_object('WeekDay{}'.format(j))
             label.set_markup(
                 "<span foreground='#4A90D9'>" +  # background='#4A90D9'
-                _(week_day) + '</span>')
+                week_day + '</span>')
             label.set_tooltip_markup(tooltip)
 
     @log
