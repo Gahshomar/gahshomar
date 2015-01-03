@@ -44,6 +44,7 @@ AC_CONFIG_FILES([
   help/Makefile
   data/AboutDialog.ui
   gahshomar/Makefile
+  gahshomar/khayyam/Makefile
   po/Makefile.in
 ])
 AC_OUTPUT
