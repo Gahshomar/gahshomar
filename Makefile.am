@@ -1,67 +1,32 @@
-# ACLOCAL_AMFLAGS = -I m4
-NULL =
+## Process this file with automake to produce Makefile.in
+## Created by Anjuta
 
-bin_SCRIPTS = gah-shomar
+ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = gahshomar data po help
+SUBDIRS = src po data frontend/applet/gnome-shell help
+
+dist_doc_DATA = \
+	README \
+	COPYING \
+	AUTHORS \
+	ChangeLog \
+	INSTALL \
+	NEWS
+
+
+INTLTOOL_FILES = intltool-extract.in \
+	intltool-merge.in \
+	intltool-update.in
 
 EXTRA_DIST = \
-	gah-shomar.in
-	$(NULL)
+	$(INTLTOOL_FILES)
 
-CLEANFILES = \
-	$(bin_SCRIPTS)
-	$(NULL)
+DISTCLEANFILES = intltool-extract \
+	intltool-merge \
+	intltool-update \
+	po/.intltool-merge-cache
 
-MAINTAINERCLEANFILES = \
-	$(srcdir)/AUTHORS \
-	$(srcdir)/INSTALL \
-	$(srcdir)/aclocal.m4 \
-	$(srcdir)/autoscan.log \
-	$(srcdir)/compile \
-	$(srcdir)/config.guess \
-	$(srcdir)/config.h.in \
-	$(srcdir)/config.sub \
-	$(srcdir)/configure.scan \
-	$(srcdir)/depcomp \
-	$(srcdir)/install-sh \
-	$(srcdir)/ltmain.sh \
-	$(srcdir)/missing \
-	$(srcdir)/mkinstalldirs \
-	$(NULL)
 
-GITIGNOREFILES = \
-	m4 \
-	$(NULL)
-
-# dist-hook: gen-AUTHORS
-
-# gen-AUTHORS:
-# 	$(AM_V_GEN)if test -d $(srcdir)/.git; then                      \
-# 	   out="`cd $(srcdir) && git log --pretty=format:'%aN <%aE>' | sort -u`" && \
-# 	   perl -p -e "s/#authorslist#// and print '$$out'"            \
-# 	     < $(srcdir)/AUTHORS.in > $(distdir)/AUTHORS-tmp &&        \
-# 	   mv -f $(distdir)/AUTHORS-tmp $(distdir)/AUTHORS ;           \
-# 	fi
-
-gah-shomar: gah-shomar.in Makefile
-	$(AM_V_GEN)sed						\
-		-e s!\@srcdir\@!$(abs_top_srcdir)!	\
-		-e s!\@prefix\@!$(prefix)!		\
-		-e s!\@datadir\@!$(datadir)!		\
-		-e s!\@pkgdatadir\@!$(pkgdatadir)!	\
-		-e s!\@libexecdir\@!$(libexecdir)!	\
-		-e s!\@libdir\@!$(libdir)!		\
-		-e s!\@pkglibdir\@!$(pkglibdir)!	\
-		-e s!\@localedir\@!$(localedir)!	\
-		-e s!\@pythondir\@!$(pythondir)!	\
-		-e s!\@pyexecdir\@!$(pyexecdir)!	\
-		-e s!\@PACKAGE\@!$(PACKAGE)!		\
-		-e s!\@VERSION\@!$(VERSION)!		\
-		< $< > $@
-	chmod a+x $@
-
-all-local: gah-shomar
-
--include $(top_srcdir)/git.mk
-
+# Remove doc directory on uninstall
+uninstall-local:
+	-rm -r $(docdir)

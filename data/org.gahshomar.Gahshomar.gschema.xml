@@ -11,6 +11,16 @@
             <summary>Georgian date format</summary>
             <description>The way that full date is displayed.</description>
         </key>
+        <key type="s" name="enabled-plugins">
+            <default>""</default>
+            <summary>Enabled Plugins</summary>
+            <description>List of the plugin names that are enabled.</description>
+        </key>
+        <key type="b" name="app-crashed">
+            <default>false</default>
+            <summary>Application Crash Flag</summary>
+            <description>A flag to check if application crashed last time.</description>
+        </key>
         <key type="ai" name="window-size">
             <default>[768, 600]</default>
             <summary>Window size</summary>

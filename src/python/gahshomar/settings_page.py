@@ -20,12 +20,12 @@ from gettext import gettext as _
 import logging
 logger = logging.getLogger(__name__)
 
-from gi.repository import Gtk
+from gi.repository import Gtk, GLib, PeasGtk
 
-from gahshomar import log
+from . import log
 
-AUTOSTART_DESKTOPFILE_PATH = os.path.expanduser(
-    '~/.config/autostart/gahshomar.desktop')
+AUTOSTART_DESKTOPFILE_PATH = os.path.join(GLib.get_user_config_dir(),
+                                          'autostart/gahshomar.desktop')
 
 
 class Handler(object):
@@ -37,13 +37,13 @@ class Handler(object):
         self.app = app
 
     @log
-    def on_StartupSwitch_state_set(self, startup_switch, data=None):
-        if startup_switch.get_state():
+    def on_StartupSwitch_notify_active(self, startup_switch, data=None):
+        if not startup_switch.get_active():
             try:
                 os.remove(AUTOSTART_DESKTOPFILE_PATH)
             except Exception:
-                # logger.warning('', exc_info=True)
-                logger.exception(Exception)
+                pass
+            startup_switch.set_active(False)
         else:
             try:
                 with open(AUTOSTART_DESKTOPFILE_PATH, 'w') as f:
@@ -51,7 +51,7 @@ class Handler(object):
 Name=Gahshomar
 Comment=View Georgian and Persian calendars
 Icon=gahshomar
-Exec=gah-shomar -m
+Exec=gahshomar -m
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Productivty;Calendar;
@@ -59,26 +59,36 @@ StartupNotify=true
 ''')
             except Exception:
                 logger.warning('', exc_info=True)
+            startup_switch.set_active(True)
+        return True
 
 
-class SettingsWindow(Gtk.Window):
+class SettingsWindow(Gtk.Dialog):
     """docstring for SettingsWindow"""
     @log
     def __init__(self, app):
-        super().__init__(title=_('Gahshomar Preferences'))
+        super().__init__(title=_('Gahshomar Preferences'), use_header_bar=True)
         self.app = app
         self.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
-        self.resize(600, 300)
+        self.resize(600, 480)
 
         builder = Gtk.Builder()
-        builder.add_from_resource('/org/gahshomar/Gahshomar/settings-page.ui')
+        builder.add_from_resource('/org/gahshomar/Gahshomar/prefs.ui')
         self.nb = builder.get_object('PreferencesNotebook')
-        self.add(self.nb)
+        self.get_children()[0].pack_start(self.nb, True, True, 0)
         self.nb.show()
+        builder.get_object('GeneralTabAlign').show()
         builder.get_object('GeneralTabBox').show()
         builder.get_object('StartupBox').show_all()
         self.startup_switch = builder.get_object('StartupSwitch')
 
+        # add the plugin manager
+        builder.get_object('PluginTabAlign').show()
+        builder.get_object('PluginTabBox').show()
+        self.PluginTabBox = builder.get_object('PluginTabBox')
+        manager = PeasGtk.PluginManager()
+        manager.show_all()
+        self.PluginTabBox.pack_start(manager, True, True, 0)
         # read the settings and update
         self.refresh()
 
@@ -88,6 +98,6 @@ class SettingsWindow(Gtk.Window):
     @log
     def refresh(self):
         if os.path.isfile(AUTOSTART_DESKTOPFILE_PATH):
-            self.startup_switch.set_state(True)
+            self.startup_switch.set_active(True)
         else:
-            self.startup_switch.set_state(False)
+            self.startup_switch.set_active(False)

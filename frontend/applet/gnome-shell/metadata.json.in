@@ -1,0 +1,14 @@
+{
+ "extension-id": "gahshomar",
+ "uuid": "@uuid@",
+  "description": "Gahshomar's Gnome Shell Applet.", 
+  "original-authors": "Amir Mohammadi", 
+  "name": "Gahshomar", 
+  "shell-version": [
+    "3.12",
+    "3.14"
+  ], 
+ "localedir": "@LOCALEDIR@",
+ "url": "@url@"
+  "version": 1
+}

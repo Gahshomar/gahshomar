@@ -3,3 +3,5 @@ Overview of changes in 4.0.0
 
 * Application uses make now
 * UI is re-written
+* some parts of the app are written in C now.
+* added plugin management using libpeas

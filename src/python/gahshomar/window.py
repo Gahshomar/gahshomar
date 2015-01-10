@@ -23,8 +23,8 @@ logger = logging.getLogger(__name__)
 from gi.repository import Gtk, Gio, GLib
 
 import gahshomar.widgets as Widgets
-# from gahshomar.plugin_manager import GSPluginManager
-from gahshomar import log
+# from .plugin_manager import GSPluginManager
+from . import log
 
 
 class Window(Gtk.ApplicationWindow):
@@ -75,6 +75,10 @@ class Window(Gtk.ApplicationWindow):
         else:
             self.visible = True
             self.show()
+
+        self.todayAction = Gio.SimpleAction.new('today', None)
+        self.todayAction.connect('activate', self.set_today)
+        self.add_action(self.todayAction)
 
     @log
     def _on_configure_event(self, widget, event):
@@ -140,7 +144,10 @@ class Window(Gtk.ApplicationWindow):
     def setup_header_bar(self):
         # xdg_current_desktop = self.xdg_current_desktop
         today_button = Gtk.Button(label=_('Today'))
-        today_button.connect("clicked", self.set_today)
+        self.today_button = today_button
+        # today_button.connect("clicked", self.set_today)
+        today_button.set_action_name('win.today')
+
         # close_button = Gtk.Button.new_from_icon_name(
         #     'window-close-symbolic', Gtk.IconSize.BUTTON)
         # close_button.connect('clicked', self.toggle_main_win)
@@ -194,10 +201,7 @@ class Window(Gtk.ApplicationWindow):
                 Gtk.IconTheme(),
                 'gahshomar',
                 512, 0)
+            self.set_icon(icon)
         except Exception:
-            # logger.exception(Exception)
-            icon = Gtk.IconTheme.load_icon(
-                Gtk.IconTheme(),
-                'persian-calendar',
-                512, 0)
-        self.set_icon(icon)
+            logger.exception(Exception)
+        return True

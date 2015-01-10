@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gresources>
   <gresource prefix="/org/gahshomar/Gahshomar">
-    <file preprocess="xml-stripblanks">AboutDialog.ui</file>
+    <file preprocess="xml-stripblanks">window.ui</file>
     <file preprocess="xml-stripblanks">app-menu.ui</file>
-    <!-- <file>application.css</file> -->
+    <file preprocess="xml-stripblanks">prefs.ui</file>
     <file preprocess="xml-stripblanks">day-widget.ui</file>
-    <file preprocess="xml-stripblanks">calendar-widget.ui</file>
     <file preprocess="xml-stripblanks">months-widget.ui</file>
-    <file preprocess="xml-stripblanks">settings-page.ui</file>
+    <file preprocess="xml-stripblanks">calendar-widget.ui</file>
+    <file preprocess="xml-stripblanks">AboutDialog.ui</file>
   </gresource>
 </gresources>

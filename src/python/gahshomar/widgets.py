@@ -23,9 +23,9 @@ logger = logging.getLogger(__name__)
 from gi.repository import Gtk, GLib, Gio
 import khayyam
 
-from gahshomar.calendar import PersianCalendar, GeorgianCalendar, \
+from .calendar import PersianCalendar, GeorgianCalendar, \
     add_months, add_years
-from gahshomar import log
+from . import log
 
 
 class DayWidget(Gtk.Box):
@@ -209,7 +209,7 @@ class CalendarWidget(Gtk.Box):
         self.days_button_list = []
         for i in range(1, 43):
             button = self.ui.get_object('button{}'.format(i))
-            self.days_button_list.append(button)
+            self.days_button_list.append([button, None])
 
         self.update()
 
@@ -232,7 +232,7 @@ class CalendarWidget(Gtk.Box):
     @log
     def setup_days_grid(self):
         self.gen_grid_mat()
-        for button in self.days_button_list:
+        for button, __ in self.days_button_list:
             button.hide()
         for j, row in enumerate(self.grid_mat):
             for i, (date, day) in enumerate(row):
@@ -241,7 +241,7 @@ class CalendarWidget(Gtk.Box):
                 else:
                     text = '<span fgcolor="gray">{}</span>'
                 text = text.format(day)
-                button = self.days_button_list[j * 7 + i]
+                button, sig_id = self.days_button_list[j * 7 + i]
                 label = Gtk.Label()
                 label.set_markup(text)
                 button.set_label('')
@@ -250,8 +250,11 @@ class CalendarWidget(Gtk.Box):
                 button.set_relief(Gtk.ReliefStyle.NONE)
                 if date == self.date:
                     button.set_relief(Gtk.ReliefStyle.HALF)
-                button.connect("clicked",
-                               self.date_button_pressed, (i, j, date))
+                if sig_id is not None:
+                    button.disconnect(sig_id)
+                sig_id = button.connect("clicked",
+                                        self.date_button_pressed, (i, j, date))
+                self.days_button_list[j * 7 + i][1] = sig_id
                 button.show()
 
     @log

@@ -1,0 +1,10 @@
+[Plugin]
+Module=main
+Builtin=true
+Loader=python3
+Name=Main Plugin
+Description=This is the base plugin and should be enabled at all times.
+Authors=Amir Mohammadi <183.amir@gmail.com>
+Copyright=Copyright © 2015 Amir Mohammadi
+Website=https://gahshomar.github.io/gahshomar/
+Help=https://gahshomar.github.com/Gahshomar/wiki/

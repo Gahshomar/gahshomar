@@ -55,3 +55,5 @@ docs/_build/
 # package and install script
 package_install.sh
 gahshomar/khayyam
+gahshomar/dbus_service_dbus.py
+gahshomar/plugin_manager_peas.py

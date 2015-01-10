@@ -22,7 +22,7 @@ import datetime
 # from gettext import gettext as _
 
 import gahshomar.khayyam as khayyam
-from gahshomar import log
+from . import log
 
 
 @log
