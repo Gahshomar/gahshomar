@@ -1,9 +1,9 @@
-resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --sourcedir=$(builddir) --generate-dependencies $(builddir)/gahshomar.gresource.xml) 
-gahshomar.gresource: gahshomar.gresource.xml $(resource_files)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --sourcedir=$(builddir) $<
+# resource_files = $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --sourcedir=$(builddir) --generate-dependencies $(builddir)/gahshomar.gresource.xml) 
+# gahshomar.gresource: gahshomar.gresource.xml $(resource_files)
+# 	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --sourcedir=$(builddir) $<
 
-resourcedir = $(pkgdatadir)
-resource_DATA = gahshomar.gresource
+# resourcedir = $(pkgdatadir)
+# resource_DATA = gahshomar.gresource
 
 appsdir = $(datadir)/applications
 apps_DATA = gahshomar.desktop

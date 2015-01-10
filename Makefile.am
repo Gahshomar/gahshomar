@@ -1,10 +1,8 @@
 ## Process this file with automake to produce Makefile.in
-## Created by Anjuta
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = src po data frontend/applet/gnome-shell help
-
+SUBDIRS = src/c src/python/gahshomar po data frontend/applet/gnome-shell help plugins/main plugins/noheaderbar plugins/appindicator
 dist_doc_DATA = \
 	README \
 	COPYING \

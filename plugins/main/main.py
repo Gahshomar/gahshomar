@@ -12,6 +12,17 @@ except ImportError:
     gahshomar = None
 
 
+class EventsHandler(object):
+    """docstring for EventsHandler"""
+    def __init__(self):
+        super().__init__()
+        self.updateables = list()
+
+    def update_everything(self, **kwargs):
+        for instance in self.updateables:
+            instance.update(**kwargs)
+
+
 class MainPlugin(GObject.Object, Peas.Activatable):
     __gtype_name__ = 'MainPlugin'
 
@@ -23,7 +34,6 @@ class MainPlugin(GObject.Object, Peas.Activatable):
             self.info = Peas.Engine.get_plugin_info(Peas.Engine.get_default(),
                                                     'main')
             sys.path.insert(0, abspath(join(self.info.get_module_dir(), '..')))
-        from gahshomar.application import EventsHandler
         from gahshomar.window import Window
         self.object._window = None
         self.object.setting_win = None
@@ -41,11 +51,11 @@ class MainPlugin(GObject.Object, Peas.Activatable):
 
         self.object.aboutAction = Gio.SimpleAction.new('about', None)
         self.object.aboutAction.connect('activate', self.about)
-        self.add_action(self.object.aboutAction)
+        self.object.add_action(self.object.aboutAction)
 
         self.object.helpAction = Gio.SimpleAction.new('help', None)
         self.object.helpAction.connect('activate', self.help)
-        self.add_action(self.object.helpAction)
+        self.object.add_action(self.object.helpAction)
 
         self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
         try:
@@ -79,9 +89,12 @@ class MainPlugin(GObject.Object, Peas.Activatable):
         builder = Gtk.Builder()
         builder.add_from_resource('/org/gahshomar/Gahshomar/AboutDialog.ui')
         about = builder.get_object('about_dialog')
-        about.set_transient_for(self._window)
+        about.set_transient_for(self.object._window)
         about.connect("response", self.about_response)
         about.show()
+
+    def about_response(self, dialog, response):
+        dialog.destroy()
 
     def load_plugins(self):
         engine = Peas.Engine.get_default()

@@ -5,7 +5,7 @@
 #include <gtk/gtk.h>
 
 #include "gahshomar.h"
-#include "gahshomarwin.h"
+// #include "gahshomarwin.h"
 // #include "gahshomarprefs.h"
 #include "gahshomarapi.h"
 
@@ -111,7 +111,7 @@ static void
 on_extension_added (PeasExtensionSet *set,
                     PeasPluginInfo   *info,
                     PeasExtension    *exten,
-                    GahshomarWindow       *win)
+                    Gahshomar       *app)
 {
   peas_activatable_activate (PEAS_ACTIVATABLE (exten));
 }
@@ -120,7 +120,7 @@ static void
 on_extension_removed (PeasExtensionSet *set,
                       PeasPluginInfo   *info,
                       PeasExtension    *exten,
-                      GahshomarWindow       *win)
+                      Gahshomar       *app)
 {
   peas_activatable_deactivate (PEAS_ACTIVATABLE (exten));
 }

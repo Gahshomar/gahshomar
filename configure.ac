@@ -2,6 +2,7 @@ dnl Process this file with autoconf to produce a configure script.
 
 AC_INIT(gahshomar, 4.0)
 
+AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
 
 AM_INIT_AUTOMAKE([1.11])
@@ -22,7 +23,11 @@ IT_PROG_INTLTOOL([0.35.0])
 
 GETTEXT_PACKAGE=gahshomar
 AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [GETTEXT package name])
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
+                   [The prefix for our gettext translation domains.])
+dnl IT_PROG_INTLTOOL(0.26)
+
+YELP_HELP_INIT
 
 AM_GLIB_GNU_GETTEXT
 
@@ -67,21 +72,24 @@ GLIB_GSETTINGS
 GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`
 AC_SUBST(GLIB_COMPILE_RESOURCES)
 
+AM_PATH_PYTHON([3.3])
+
 dnl GTK_DOC_CHECK([1.0])
 
 
-AC_OUTPUT([
+AC_CONFIG_FILES([
 Makefile
-src/Makefile
 src/c/Makefile
 src/python/gahshomar/Makefile
-src/python/gahshomar/khayyam/Makefile.am
+src/python/gahshomar/khayyam/Makefile
 data/Makefile
+data/AboutDialog.ui
 help/Makefile
 po/Makefile.in
 frontend/applet/gnome-shell/Makefile
-plugins/Makefile.am
-plugins/main/Makefile.am
-plugins/noheaderbar/Makefile.am
-plugins/appindicator/Makefile.am
+plugins/main/Makefile
+plugins/noheaderbar/Makefile
+plugins/appindicator/Makefile
 ])
+
+AC_OUTPUT

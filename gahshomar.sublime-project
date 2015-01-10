@@ -4,14 +4,6 @@
 		{
 			"follow_symlinks": true,
 			"path": "."
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/home/amir/.local/share/gahshomar/plugins"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/home/amir/.local/share/gnome-shell/extensions/gahshomar@org.gahshomar.gahshomar"
 		}
 	]
 }

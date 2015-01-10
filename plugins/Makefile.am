@@ -1,1 +1,0 @@
-SUBDIRS = appindicator main noheaderbar

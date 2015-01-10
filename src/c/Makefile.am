@@ -52,16 +52,16 @@ BUILT_SOURCES = 				\
 	resources.c 				\
 	gschemas.compiled
 
-resources.c: gahshomar.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(topdir)/data --generate-dependencies $(topdir)/data/gahshomar.gresource.xml)
-	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) $(topdir)/data/gahshomar.gresource.xml \
-		--target=$@ --sourcedir=$(topdir)/data --generate-source
+resources.c: ../../data/gahshomar.gresource.xml $(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=../../data --generate-dependencies ../../data/gahshomar.gresource.xml)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) ../../data/gahshomar.gresource.xml \
+		--target=$@ --sourcedir=../../data --generate-source
 
 gsettings_SCHEMAS = 				\
-	org.gahshomar.Gahshomar.gschema.xml
+	../../data/org.gahshomar.Gahshomar.gschema.xml
 
 @GSETTINGS_RULES@
 
-gschemas.compiled: org.gahshomar.Gahshomar.gschema.xml
+gschemas.compiled: ../../data/org.gahshomar.Gahshomar.gschema.xml
 	$(GLIB_COMPILE_SCHEMAS) .
 
 EXTRA_DIST = 					\

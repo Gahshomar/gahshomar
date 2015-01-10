@@ -18,12 +18,14 @@ main (int argc, char *argv[])
     textdomain (GETTEXT_PACKAGE);
 #endif
 
+  // DEBUG
   /* Since this example is running uninstalled,
    * we have to help it find its schema. This
    * is *not* necessary in properly installed
    * application.
    */
-  g_setenv ("GSETTINGS_SCHEMA_DIR", "src", FALSE);
+  // g_setenv ("GSETTINGS_SCHEMA_DIR", "src", FALSE);
+  // DEBUG
 
   engine = peas_engine_get_default ();
   // /home/amir/.local/share/gahshomar/plugins
