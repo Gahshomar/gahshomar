@@ -81,7 +81,7 @@ if __name__ == "__main__":
     Gio.Resource._register(resource)
 
     from gahshomar.application import Application
-    app = Application(args.no_main_window)
+    app = Application(args.no_main_window, pkgdatadir)
     signal.signal(signal.SIGINT, signal.SIG_DFL)
     exit_status = app.run(unknown)
     sys.exit(exit_status)

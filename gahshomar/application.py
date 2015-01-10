@@ -20,10 +20,12 @@ from gettext import gettext as _
 import logging
 logger = logging.getLogger(__name__)
 
-from gahshomar.window import Window
-from gahshomar.indicator import Indicator
 from gahshomar import log
+from gahshomar.window import Window
 from gahshomar.settings_page import SettingsWindow
+from gahshomar.indicator import Indicator
+from gahshomar.dbus_service import IndicatorBus
+from gahshomar.plugin_manager_peas import GahshomarPluginEngine
 
 
 class EventsHandler(object):
@@ -39,10 +41,11 @@ class EventsHandler(object):
 
 class Application(Gtk.Application):
     @log
-    def __init__(self, minimized=False):
+    def __init__(self, minimized=False, pkgdatadir=None):
         Gtk.Application.__init__(self,
                                  application_id='org.gahshomar.Gahshomar',
-                                 flags=Gio.ApplicationFlags.FLAGS_NONE)
+                                 flags=Gio.ApplicationFlags.FLAGS_NONE,
+                                 register_session=True)
         GLib.set_application_name(_("Gahshomar"))
         GLib.set_prgname('gahshomar')
         self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
@@ -57,6 +60,7 @@ class Application(Gtk.Application):
 
         self._window = None
         self.minimized = minimized
+        self.pkgdatadir = pkgdatadir
         self.handler = EventsHandler()
         # the appindicator
         self.appind = None
@@ -86,38 +90,38 @@ class Application(Gtk.Application):
         quitAction.connect('activate', self.quit)
         self.add_action(quitAction)
 
-    # @log
-    # def do_dbus_register(self, connection, object_path):
-    #     Gtk.Application.do_dbus_register(self, connection, object_path)
-    #     print(self.list_actions())
-    #     connection.export_action_group('/Actions', self.list_actions())
+    @log
+    def do_dbus_register(self, connection, object_path):
+        ret_value = Gtk.Application.do_dbus_register(self,
+                                                     connection, object_path)
+        # register your own objects
+        self.indicator_bus = IndicatorBus(app=self)
+        # xml = self.indicator_bus.introspection_xml
+        # introspection_data = Gio.DBusNodeInfo.new_for_xml(xml)
+        # vtable = IndicatorVTable()
+        # # vtable.set_property(method_call=handle_method_call)
+        # # register_object(object_path, interface_info, vtable, user_data,
+        # #                 user_data_free_func)
+        # self.reg_id_ind = connection.register_object(
+        #     '/org/gahshomar/Gahshomar',
+        #     introspection_data.interfaces[0],
+        #     vtable,
+        #     id(self.indicator_bus),
+        #     print)
+        return ret_value
 
-    def setup_dbus(self):
-        # if self.get_is_registered():
-            # logger.debug('app is registered.')
-        from gahshomar.dbus_service import IndicatorBus
-        import dbus.mainloop.glib
-        dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
-        # dbus_connection = self.get_dbus_connection()
-        # self.dbus_object = IndicatorBus(conn=dbus_connection,
-        #                                 object_path='/IndicatorBus',
-        #                                 app=self)
-        import dbus
-        self.session_bus = dbus.SessionBus()
-        logger.debug('self.session_bus: '+str(self.session_bus))
-        self.dbus_name = dbus.service.BusName("org.gahshomar.GahshomarService",
-                                              self.session_bus)
-        logger.debug('self.dbus_name: '+str(self.dbus_name))
-        self.dbus_object = IndicatorBus(conn=self.session_bus,
-                                        object_path='/IndicatorBus',
-                                        bus_name=self.dbus_name, app=self)
-        logger.debug('self.dbus_object: '+str(self.dbus_object))
+    @log
+    def do_dbus_unregister(self, connection, object_path):
+        # unregister your own objects
+        # connection.unregister_object(self.reg_id_ind)
+        ret_value = Gtk.Application.do_dbus_unregister(self,
+                                                       connection, object_path)
+        return ret_value
 
-        # else:
-        #     logger.debug('app is not registered.')
     @log
     def help(self, action, param):
         Gtk.show_uri(None, "help:gahshomar", Gdk.CURRENT_TIME)
+        return 'help activated!'
 
     @log
     def about(self, action, param):
@@ -147,7 +151,9 @@ class Application(Gtk.Application):
         Gtk.Application.do_startup(self)
         # Notify.init(_("Gahshomar"))
         self.build_app_menu()
-        self.setup_dbus()
+        self.appind = Indicator(app=self)
+        self.engine = GahshomarPluginEngine(app=self)
+        self.engine.setup_app_extension_set()
 
     @log
     def do_activate(self):
@@ -163,7 +169,3 @@ class Application(Gtk.Application):
                 self.minimized = False
         else:
             self._window.present()
-
-        # the appindicator
-        if not self.appind:
-            self.appind = Indicator(self)
