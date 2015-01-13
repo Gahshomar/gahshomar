@@ -151,7 +151,7 @@ const Gahshomar = new Lang.Class({
 
 let _indicator;
 
-function init(metadata) {
+function init(extensionMeta) {
   gahshomarUserExtensionLocalePath = extensionMeta.path + '/locale';
 }
 
