@@ -51,7 +51,7 @@ class Handler(object):
 Name=Gahshomar
 Comment=View Georgian and Persian calendars
 Icon=gahshomar
-Exec=gahshomar -m
+Exec=gahshomar
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Productivty;Calendar;
