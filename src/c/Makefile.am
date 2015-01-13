@@ -27,7 +27,7 @@ gahshomar_CFLAGS = \
 	-DPEAS_PREFIX="\"$(prefix)\""
 
 # gahshomar_LDADD = $(GAHSHOMAR_LIBS) /usr/lib/libjalali.la
-gahshomar_LDADD = $(GAHSHOMAR_LIBS)
+gahshomar_LDADD = $(GAHSHOMAR_LIBS) -ljalali
 # libjalali_LIBADD = libjalali.la
 gahshomar_SOURCES = 				\
 	main.c 					\
@@ -35,7 +35,8 @@ gahshomar_SOURCES = 				\
 	gahshomarapi.c gahshomarapi.h 	\
 	resources.c
 
-gahshomar_LDFLAGS =  -ljalali 
+# gahshomar_LDFLAGS =  -ljalali 
+gahshomar_LDFLAGS = 
 # gahshomar_LDFLAGS = -I/usr/include/jalali/ -L/usr/lib/ -ljalali
 
 

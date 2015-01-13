@@ -76,6 +76,12 @@ AM_PATH_PYTHON([3.3])
 
 dnl GTK_DOC_CHECK([1.0])
 
+dnl ***************************************************************************
+dnl check for libjalali
+dnl ***************************************************************************
+AC_CHECK_LIB([jalali], [jstrftime], [],
+  [ echo "*** ERROR: libjalali is not functional"; exit -1])
+
 
 AC_CONFIG_FILES([
 Makefile
