@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
  <id type="desktop">gahshomar.desktop</id>
- <licence>CC0</licence>
+ <licence>GPL3</licence>
  <_name>Gahshomar</_name>
  <_summary>A Persian/Jalali/Farsi calendar</_summary>
  <description>
