@@ -142,44 +142,28 @@ class Window(Gtk.ApplicationWindow):
 
     @log
     def setup_header_bar(self):
-        # xdg_current_desktop = self.xdg_current_desktop
         today_button = Gtk.Button(label=_('Today'))
         self.today_button = today_button
-        # today_button.connect("clicked", self.set_today)
-        today_button.set_action_name('win.today')
+        hb_flag = bool(self.settings.get_value('header-bar'))
 
-        # close_button = Gtk.Button.new_from_icon_name(
-        #     'window-close-symbolic', Gtk.IconSize.BUTTON)
-        # close_button.connect('clicked', self.toggle_main_win)
-
-        if False:  # 'unity' in xdg_current_desktop:
-            toolbar = Gtk.Toolbar()
-            sep = Gtk.SeparatorToolItem()
-            sep.set_expand(True)
-            sep.set_draw(False)
-            toolbar.add(sep)
-            tb_today = Gtk.ToolButton.new(today_button)
-            tb_today.connect("clicked", self.set_today)
-            toolbar.add(tb_today)
-            # tb_close = Gtk.ToolButton.new(close_button)
-            # tb_close.connect('clicked', self.toggle_main_win)
-            # toolbar.add(tb_close)
-            self.main_grid.attach(toolbar, 0, 0, 2, 1)
-        else:
+        if hb_flag:
+            today_button.set_action_name('win.today')
             # set header bar
             self.hb = Gtk.HeaderBar()
             self.hb.props.title = _('Gahshomar')
             self.hb.props.show_close_button = True
-
-            # if USE_IND:
-            #     self.hb.props.show_close_button = False
-            #     self.hb.pack_end(close_button)
-            # else:
-            #     self.hb.props.show_close_button = True
-
             self.hb.pack_start(today_button)
             self.hb.show_all()
             self.set_titlebar(self.hb)
+        else:
+            toolbar = Gtk.Toolbar()
+            tb_today = Gtk.ToolButton.new(today_button)
+            tb_today.set_action_name('win.today')
+            # tb_today.connect("clicked", self.set_today)
+            toolbar.add(tb_today)
+            toolbar.show_all()
+            self.main_grid.insert_row(0)
+            self.main_grid.attach(toolbar, 0, 0, 2, 1)
 
     @log
     def set_today(self, *args):

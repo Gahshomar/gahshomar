@@ -66,15 +66,15 @@ gsettings_SCHEMAS = 				\
 gschemas.compiled: ../../data/org.gahshomar.Gahshomar.gschema.xml
 	$(GLIB_COMPILE_SCHEMAS) .
 
-EXTRA_DIST = 					\
-	# window.ui 				\
-	app-menu.ui 				\
-	prefs.ui 				\
-	day-widget.ui 				\
-	months-widget.ui 				\
-	calendar-widget.ui 				\
-	gahshomar.gresource.xml 		\
-	org.gahshomar.Gahshomar.gschema.xml
+EXTRA_DIST = \
+    ../../data/app-menu.ui \
+    ../../data/prefs.ui \
+    ../../data/day-widget.ui \
+    ../../data/months-widget.ui \
+    ../../data/calendar-widget.ui \
+    ../../data/AboutDialog.ui \
+	../../data/gahshomar.gresource.xml 		\
+	../../data/org.gahshomar.Gahshomar.gschema.xml
 
 CLEANFILES = 					\
 	gschemas.compiled

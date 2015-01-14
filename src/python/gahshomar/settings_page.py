@@ -20,7 +20,7 @@ from gettext import gettext as _
 import logging
 logger = logging.getLogger(__name__)
 
-from gi.repository import Gtk, GLib, PeasGtk
+from gi.repository import Gtk, GLib, Gio, PeasGtk
 
 from . import log
 
@@ -62,6 +62,24 @@ StartupNotify=true
             startup_switch.set_active(True)
         return True
 
+    @log
+    def on_HeaderBarSwitch_active_notify(self, switch, data=None):
+        self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        if switch.get_active():
+            self.settings.set_value('header-bar',
+                                    GLib.Variant.new_boolean(True))
+        else:
+            self.settings.set_value('header-bar',
+                                    GLib.Variant.new_boolean(False))
+        warnmsg = Gtk.MessageDialog(
+            text=_('You may need to restart the application for changes'
+                   ' to take effect'),
+            message_type=Gtk.MessageType.WARNING,
+            buttons=Gtk.ButtonsType.CLOSE,
+            transient_for=self.app.setting_win)
+        warnmsg.run()
+        warnmsg.destroy()
+
 
 class SettingsWindow(Gtk.Dialog):
     """docstring for SettingsWindow"""
@@ -80,7 +98,9 @@ class SettingsWindow(Gtk.Dialog):
         builder.get_object('GeneralTabAlign').show()
         builder.get_object('GeneralTabBox').show()
         builder.get_object('StartupBox').show_all()
+        builder.get_object('HeaderBarBox').show_all()
         self.startup_switch = builder.get_object('StartupSwitch')
+        self.header_bar_switch = builder.get_object('HeaderBarSwitch')
 
         # add the plugin manager
         builder.get_object('PluginTabAlign').show()
@@ -90,6 +110,7 @@ class SettingsWindow(Gtk.Dialog):
         manager.show_all()
         self.PluginTabBox.pack_start(manager, True, True, 0)
         # read the settings and update
+        self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
         self.refresh()
 
         # connect the signals
@@ -101,3 +122,8 @@ class SettingsWindow(Gtk.Dialog):
             self.startup_switch.set_active(True)
         else:
             self.startup_switch.set_active(False)
+
+        if bool(self.settings.get_value('header-bar')):
+            self.header_bar_switch.set_active(True)
+        else:
+            self.header_bar_switch.set_active(False)

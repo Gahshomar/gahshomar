@@ -1,7 +1,8 @@
 from os.path import abspath, join
 import sys
+from gettext import gettext as _
 import logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 from gi.repository import GObject, Peas, Gtk, Gio, GLib, Gdk
@@ -77,7 +78,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
 
     def preferences(self, action=None, param=None):
         from gahshomar.settings_page import SettingsWindow
-        self.object.setting_win = SettingsWindow(self)
+        self.object.setting_win = SettingsWindow(self.object)
         self.object.setting_win.set_transient_for(self.object._window)
         self.object.setting_win.show()
 
@@ -105,11 +106,11 @@ class MainPlugin(GObject.Object, Peas.Activatable):
             names.remove('')
         if crashed:
             if names:
-                logging.warn('Disabling all the plugins since '
-                             'the app crashed last time!')
+                logging.warn(_('Disabling all the plugins since '
+                               'the app crashed last time!'))
                 warnmsg = Gtk.MessageDialog(
-                    text='Disabling all the plugins since the app crashed last '
-                         'time!',
+                    text=_('Disabling all the plugins since the app crashed '
+                           'last time!'),
                     message_type=Gtk.MessageType.WARNING,
                     buttons=Gtk.ButtonsType.CLOSE,
                     transient_for=self.object._window)
