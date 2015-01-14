@@ -26,6 +26,16 @@
             <summary>Whether to use a headerbar</summary>
             <description>Enabling this will the app to show a header-bar. Otherwise, it will show a tool-bar.</description>
         </key>
+        <key type="b" name="start-minimized">
+            <default>false</default>
+            <summary>Whether to start minimized</summary>
+            <description>Enabling this will start the app minimized. This is useful if you want to add the application to startup. Remember, you should the "-m" command line argument if you want to start the app minimized.</description>
+        </key>
+        <key type="b" name="verbose">
+            <default>false</default>
+            <summary>Whether to output debugging info</summary>
+            <description>Enabling this will output debugging info. Remember, you should the "-v" command line argument if you want to enable this.</description>
+        </key>
         <key type="ai" name="window-size">
             <default>[768, 600]</default>
             <summary>Window size</summary>

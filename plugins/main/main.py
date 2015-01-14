@@ -1,11 +1,18 @@
 from os.path import abspath, join
 import sys
 from gettext import gettext as _
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 from gi.repository import GObject, Peas, Gtk, Gio, GLib, Gdk
+
+settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+verbose = bool(settings.get_value('verbose'))
+
+import logging
+if verbose:
+    logging.basicConfig(level=logging.DEBUG)
+else:
+    logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 try:
     import gahshomar
@@ -39,16 +46,12 @@ class MainPlugin(GObject.Object, Peas.Activatable):
         if gahshomar is None:
             self.info = Peas.Engine.get_plugin_info(Peas.Engine.get_default(),
                                                     'main')
-            sys.path.insert(0, abspath(join(self.info.get_module_dir(), '..')))
+            sys.path.insert(0, abspath(join(self.info.get_module_dir(),
+                                            '..',
+                                            '..')))
         from gahshomar.window import Window
-        self.object._window = None
-        self.object.setting_win = None
         self.object.handler = EventsHandler()
-        if not self.object._window:
-            self.object._window = Window(self.object)
-            self.object.add_window(self.object._window)
-        else:
-            self.object._window.present()
+        self.object._window = Window(self.object)
 
         self.object.preferencesAction = Gio.SimpleAction.new('preferences',
                                                              None)

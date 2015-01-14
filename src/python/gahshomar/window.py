@@ -29,7 +29,7 @@ from . import log
 class Window(Gtk.ApplicationWindow):
 
     @log
-    def __init__(self, app, minimized=False):
+    def __init__(self, app):
         self.app = app
         Gtk.ApplicationWindow.__init__(self,
                                        application=app,
@@ -60,11 +60,14 @@ class Window(Gtk.ApplicationWindow):
         self.connect('style-set', self.set_icon_)
         self._setup_view()
 
+        minimized = bool(self.settings.get_value('start-minimized'))
+        logger.info('minimized is: {}'.format(minimized))
         if minimized:
             self.visible = False
         else:
             self.visible = True
             self.show()
+            self.present()
 
         self.todayAction = Gio.SimpleAction.new('today', None)
         self.todayAction.connect('activate', self.set_today)

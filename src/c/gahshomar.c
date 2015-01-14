@@ -197,6 +197,18 @@ gah_shomar_startup (GApplication *app)
   g_signal_connect (exten_set, "extension-removed",
                     G_CALLBACK (on_extension_removed), app);
 
+  if (minimized){
+    g_settings_set_value(settings, "start-minimized", g_variant_new_boolean(TRUE));
+  } else {
+    g_settings_set_value(settings, "start-minimized", g_variant_new_boolean(FALSE));
+  }
+
+  if (verbose){
+    g_settings_set_value(settings, "verbose", g_variant_new_boolean(TRUE));
+  } else {
+    g_settings_set_value(settings, "verbose", g_variant_new_boolean(FALSE));
+  }
+
   // activate the main plugin
   peas_engine_load_plugin (peas_engine_get_default (),
    peas_engine_get_plugin_info(peas_engine_get_default (), "main"));
@@ -215,9 +227,15 @@ static void
 gah_shomar_activate (GApplication *app)
 {
   GtkWindow *win;
-
-  win = gtk_application_get_active_window (GTK_APPLICATION (app));
-  gtk_window_present (win);
+  // printf("%s\n", minimized);
+  if (minimized){
+    // printf("minimized: True\n");
+    minimized = FALSE;
+  } else {
+    // printf("minimized: False\n");
+    win = gtk_application_get_active_window (GTK_APPLICATION (app));
+    gtk_window_present (win);    
+  }
 }
 
 static void

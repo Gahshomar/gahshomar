@@ -20,5 +20,8 @@ typedef struct _GahshomarClass  GahshomarClass;
 GType           gah_shomar_get_type    (void);
 Gahshomar     *gah_shomar_new         (void);
 
+/* Command line argument variables*/
+extern gboolean verbose;
+extern gboolean minimized;
 
 #endif /* __GAHSHOMAR_H */
