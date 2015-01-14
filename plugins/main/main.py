@@ -9,16 +9,20 @@ from gi.repository import GObject, Peas, Gtk, Gio, GLib, Gdk
 
 try:
     import gahshomar
+    from gahshomar import log
 except ImportError:
     gahshomar = None
+    log = lambda x: x
 
 
 class EventsHandler(object):
     """docstring for EventsHandler"""
+    @log
     def __init__(self):
         super().__init__()
         self.updateables = list()
 
+    @log
     def update_everything(self, **kwargs):
         for instance in self.updateables:
             instance.update(**kwargs)
@@ -29,6 +33,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
 
     object = GObject.property(type=GObject.Object)
 
+    @log
     def do_activate(self):
         global gahshomar
         if gahshomar is None:
@@ -69,23 +74,28 @@ class MainPlugin(GObject.Object, Peas.Activatable):
         self.load_plugins()
         self.connect_plugin_signals()
 
+    @log
     def do_deactivate(self):
         self.object.remove_window(self.object._window)
         self.disconnect_plugin_signals()
 
+    @log
     def do_update_state(self):
         self.object.handler.update_everything()
 
+    @log
     def preferences(self, action=None, param=None):
         from gahshomar.settings_page import SettingsWindow
         self.object.setting_win = SettingsWindow(self.object)
         self.object.setting_win.set_transient_for(self.object._window)
         self.object.setting_win.show()
 
+    @log
     def help(self, action, param):
         Gtk.show_uri(None, "help:gahshomar", Gdk.CURRENT_TIME)
         return 'help activated!'
 
+    @log
     def about(self, action, param):
         builder = Gtk.Builder()
         builder.add_from_resource('/org/gahshomar/Gahshomar/AboutDialog.ui')
@@ -94,9 +104,11 @@ class MainPlugin(GObject.Object, Peas.Activatable):
         about.connect("response", self.about_response)
         about.show()
 
+    @log
     def about_response(self, dialog, response):
         dialog.destroy()
 
+    @log
     def load_plugins(self):
         engine = Peas.Engine.get_default()
         crashed = bool(self.settings.get_value('app-crashed'))
@@ -129,6 +141,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
             if info is not None:
                 engine.load_plugin(info)
 
+    @log
     def connect_plugin_signals(self):
         engine = Peas.Engine.get_default()
         self.id_load = engine.connect_after('load-plugin',
@@ -136,11 +149,13 @@ class MainPlugin(GObject.Object, Peas.Activatable):
         self.id_unload = engine.connect_after('unload-plugin',
                                               self.plugin_unloaded, None)
 
+    @log
     def disconnect_plugin_signals(self):
         engine = Peas.Engine.get_default()
         engine.disconnect(self.id_load)
         engine.disconnect(self.id_unload)
 
+    @log
     def plugin_loaded(self, engine, plugin_info, data=None):
         name = plugin_info.get_module_name()
         if name == 'main':
@@ -157,6 +172,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
             self.settings.set_value('enabled-plugins',
                                     GLib.Variant('s', ';'.join(names)))
 
+    @log
     def plugin_unloaded(self, engine, plugin_info, data=None):
         name = plugin_info.get_module_name()
         if name == 'main':
@@ -170,6 +186,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
             self.settings.set_value('enabled-plugins',
                                     GLib.Variant('s', ';'.join(names)))
 
+    @log
     def do_get_day(self):
         from gahshomar.khayyam import JalaliDate
         day = JalaliDate.today().strftime('%d')
@@ -177,6 +194,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
             day = day[1:]
         return day
 
+    @log
     def do_get_date(self):
         from gahshomar.khayyam import JalaliDate
         return JalaliDate.today().strftime(self.date_format)
@@ -185,5 +203,6 @@ class MainPlugin(GObject.Object, Peas.Activatable):
 # class MainConfigurable(GObject.Object, PeasGtk.Configurable):
 #     __gtype_name__ = 'MainConfigurable'
 
+#     @log
 #     def do_create_configure_widget(self):
 #         return Gtk.Label.new("Main plugin configure widget")
