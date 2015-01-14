@@ -2,7 +2,7 @@ from os.path import abspath, join
 import sys
 from gettext import gettext as _
 import logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 from gi.repository import GObject, Peas, Gtk, Gio, GLib, Gdk

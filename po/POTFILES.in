@@ -1,6 +1,11 @@
 # List of source files containing translatable strings.
 
 src/c/main.c
+src/python/gahshomar/indicator.py
+src/python/gahshomar/settings_page.py
+src/python/gahshomar/widgets.py
+src/python/gahshomar/window.py
+plugins/appindicator/appindicator.py
 data/AboutDialog.ui
 data/app-menu.ui
 data/calendar-widget.ui
@@ -9,11 +14,3 @@ data/gahshomar.appdata.xml.in
 data/gahshomar.desktop.in
 data/months-widget.ui
 data/prefs.ui
-plugins/appindicator/appindicator.py
-plugins/noheaderbar/noheaderbar.py
-src/python/gahshomar/indicator.py
-src/python/gahshomar/settings_page.py
-src/python/gahshomar/widgets.py
-src/python/gahshomar/window.py
-
-
