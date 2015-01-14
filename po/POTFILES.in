@@ -5,6 +5,7 @@ src/python/gahshomar/indicator.py
 src/python/gahshomar/settings_page.py
 src/python/gahshomar/widgets.py
 src/python/gahshomar/window.py
+plugins/main/main.py
 plugins/appindicator/appindicator.py
 data/AboutDialog.ui
 data/app-menu.ui
