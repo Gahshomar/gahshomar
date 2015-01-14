@@ -94,7 +94,6 @@ help/Makefile
 po/Makefile.in
 frontend/applet/gnome-shell/Makefile
 plugins/main/Makefile
-plugins/noheaderbar/Makefile
 plugins/appindicator/Makefile
 ])
 

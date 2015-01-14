@@ -23,7 +23,6 @@ logger = logging.getLogger(__name__)
 from gi.repository import Gtk, Gio, GLib
 
 import gahshomar.widgets as Widgets
-# from .plugin_manager import GSPluginManager
 from . import log
 
 
@@ -36,16 +35,7 @@ class Window(Gtk.ApplicationWindow):
                                        application=app,
                                        title=_("Gahshomar"))
         self.date = datetime.date.today()
-        # self.connect('focus-in-event', self._windows_focus_cb)
         self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
-        # self.add_action(self.settings.create_action('repeat'))
-        # selectAll = Gio.SimpleAction.new('selectAll', None)
-        # app.add_accelerator('<Primary>a', 'win.selectAll', None)
-        # selectAll.connect('activate', self._on_select_all)
-        # self.add_action(selectAll)
-        # selectNone = Gio.SimpleAction.new('selectNone', None)
-        # selectNone.connect('activate', self._on_select_none)
-        # self.add_action(selectNone)
         self.set_size_request(200, 100)
         self.set_icon_name('gahshomar')
 
@@ -121,32 +111,15 @@ class Window(Gtk.ApplicationWindow):
             self.main_grid.attach(v, i, 1 + self.offset, 1, 1)
 
         self.main_grid.show()
-        # setup appindicator
-        # self.setup_appindicator()
-
-        # check if unity is running
-        # import os
-        # xdg_current_desktop = os.environ.get('XDG_CURRENT_DESKTOP').lower()
-        # self.xdg_current_desktop = xdg_current_desktop
         self.setup_header_bar()
-
-        # update interface every 5 seconds
-        # GLib.timeout_add_seconds(int(self.config['Global']['ping_frequency']),
-        #                          self.handler.update_everything)
-
-        # # finally load the plugins
-        # try:
-        #     self.plugin_manager = GSPluginManager(self)
-        # except Exception:
-        #     logger.exception(Exception)
 
     @log
     def setup_header_bar(self):
-        today_button = Gtk.Button(label=_('Today'))
-        self.today_button = today_button
         hb_flag = bool(self.settings.get_value('header-bar'))
 
         if hb_flag:
+            today_button = Gtk.Button(label=_('Today'))
+            self.today_button = today_button
             today_button.set_action_name('win.today')
             # set header bar
             self.hb = Gtk.HeaderBar()
@@ -157,9 +130,8 @@ class Window(Gtk.ApplicationWindow):
             self.set_titlebar(self.hb)
         else:
             toolbar = Gtk.Toolbar()
-            tb_today = Gtk.ToolButton.new(today_button)
+            tb_today = Gtk.ToolButton(label=_('Today'))
             tb_today.set_action_name('win.today')
-            # tb_today.connect("clicked", self.set_today)
             toolbar.add(tb_today)
             toolbar.show_all()
             self.main_grid.insert_row(0)
@@ -174,18 +146,19 @@ class Window(Gtk.ApplicationWindow):
         self.hide()
         return True
 
-    # def setup_appindicator(self):
-    #     self.ind = GahShomarIndicator(self, self.date)
-
     @log
     def set_icon_(self, *args):
         # day = khayyam.JalaliDate.today().day
         try:
-            icon = Gtk.IconTheme.load_icon(
-                Gtk.IconTheme(),
-                'gahshomar',
-                512, 0)
-            self.set_icon(icon)
+            icon_theme = Gtk.IconTheme.get_default()
+            sizes = icon_theme.get_icon_sizes('gahshomar')
+            icon_list = [icon_theme.load_icon('gahshomar', s, 0) for s in sizes]
+            self.set_default_icon_list(icon_list)
+            # icon = Gtk.IconTheme.load_icon(
+            #     Gtk.IconTheme(),
+            #     'gahshomar',
+            #     512, 0)
+            # self.set_icon(icon)
         except Exception:
             logger.exception(Exception)
         return True

@@ -72,7 +72,7 @@ StartupNotify=true
             self.settings.set_value('header-bar',
                                     GLib.Variant.new_boolean(False))
         warnmsg = Gtk.MessageDialog(
-            text=_('You may need to restart the application for changes'
+            text=_('You need to restart the application for changes'
                    ' to take effect'),
             message_type=Gtk.MessageType.WARNING,
             buttons=Gtk.ButtonsType.CLOSE,
