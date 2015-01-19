@@ -14,7 +14,7 @@ AM_PROG_LIBTOOL
 AC_PROG_CPP
 AC_PROG_CXX
 
-AC_CONFIG_MACRO_DIRS([m4])
+dnl AC_CONFIG_MACRO_DIRS([m4])
 
 dnl ***************************************************************************
 dnl Internationalization
