@@ -1,0 +1,5 @@
+language: c
+compiler:
+  - gcc
+# Change this to your needs
+script: ./autogen.sh && make
