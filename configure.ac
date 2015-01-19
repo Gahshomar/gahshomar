@@ -59,7 +59,7 @@ AM_CONDITIONAL(NATIVE_WIN32, test x"$native_win32" = "xyes")
 LT_INIT([win32-dll])
 
 
-PKG_CHECK_MODULES(GAHSHOMAR, [gtk+-3.0 >= 3.12.0, glib-2.0, libpeas-1.0, libpeas-gtk-1.0])
+PKG_CHECK_MODULES(GAHSHOMAR, [gtk+-3.0, glib-2.0, libpeas-1.0, libpeas-gtk-1.0])
 
 dnl ***************************************************************************
 dnl GLIB_GSETTINGS and GLIB_COMPILE_RESOURCES
