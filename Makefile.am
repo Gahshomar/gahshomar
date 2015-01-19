@@ -16,8 +16,18 @@ INTLTOOL_FILES = intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in
 
+DEBIAN_FILES = \
+	debian/changelog \
+	debian/compat \
+	debian/control \
+	debian/copyright \
+	debian/rules \
+	debian/source/format 
+
+
 EXTRA_DIST = \
-	$(INTLTOOL_FILES)
+	$(INTLTOOL_FILES) \
+	$(DEBIAN_FILES)
 
 DISTCLEANFILES = intltool-extract \
 	intltool-merge \
