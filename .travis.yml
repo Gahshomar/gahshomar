@@ -3,3 +3,6 @@ compiler:
   - gcc
 # Change this to your needs
 script: ./autogen.sh && make
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y libjalali-dev libgtk-3-dev libpeas-dev libglib2.0-dev
