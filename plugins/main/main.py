@@ -1,6 +1,7 @@
 from os.path import abspath, join
 import sys
-from gettext import gettext as _
+import gettext
+gettext.install('gahshomar')
 
 from gi.repository import GObject, Peas, Gtk, Gio, GLib, Gdk
 
@@ -114,28 +115,28 @@ class MainPlugin(GObject.Object, Peas.Activatable):
     @log
     def load_plugins(self):
         engine = Peas.Engine.get_default()
-        crashed = bool(self.settings.get_value('app-crashed'))
+        # crashed = bool(self.settings.get_value('app-crashed'))
         names = str(self.settings.get_value('enabled-plugins')).replace("'", "")
         names = names.split(';')
         if '' in names:
             names.remove('')
-        if crashed:
-            if names:
-                logging.warn(_('Disabling all the plugins since '
-                               'the app crashed last time!'))
-                warnmsg = Gtk.MessageDialog(
-                    text=_('Disabling all the plugins since the app crashed '
-                           'last time!'),
-                    message_type=Gtk.MessageType.WARNING,
-                    buttons=Gtk.ButtonsType.CLOSE,
-                    transient_for=self.object._window)
-                warnmsg.run()
-                warnmsg.destroy()
-            self.settings.set_value('enabled-plugins',
-                                    GLib.Variant('s', ''))
-            self.settings.set_value('app-crashed',
-                                    GLib.Variant.new_boolean(False))
-            return
+        # if crashed:
+        #     if names:
+        #         logging.warn(_('Disabling all the plugins since '
+        #                        'the app crashed last time!'))
+        #         warnmsg = Gtk.MessageDialog(
+        #             text=_('Disabling all the plugins since the app crashed '
+        #                    'last time!'),
+        #             message_type=Gtk.MessageType.WARNING,
+        #             buttons=Gtk.ButtonsType.CLOSE,
+        #             transient_for=self.object._window)
+        #         warnmsg.run()
+        #         warnmsg.destroy()
+        #     self.settings.set_value('enabled-plugins',
+        #                             GLib.Variant('s', ''))
+        #     self.settings.set_value('app-crashed',
+        #                             GLib.Variant.new_boolean(False))
+        #     return
 
         self.settings.set_value('app-crashed',
                                 GLib.Variant.new_boolean(True))

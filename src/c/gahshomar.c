@@ -157,8 +157,10 @@ gah_shomar_startup (GApplication *app)
 {
   GtkBuilder *builder;
   GMenuModel *app_menu;
+#if (GTK_MINOR_VERSION > 10)
   const gchar *quit_accels[2] = { "<Ctrl>Q", NULL };
   const gchar *today_accels[2] = { "<Ctrl>T", NULL };
+#endif
   PeasExtensionSet *exten_set;
 
   G_APPLICATION_CLASS (gah_shomar_parent_class)->startup (app);
@@ -169,6 +171,7 @@ gah_shomar_startup (GApplication *app)
   g_action_map_add_action_entries (G_ACTION_MAP (app),
                                    app_entries, G_N_ELEMENTS (app_entries),
                                    app);
+#if (GTK_MINOR_VERSION > 10)
   gtk_application_set_accels_for_action (GTK_APPLICATION (app),
                                          "app.quit",
                                          quit_accels);
@@ -176,7 +179,7 @@ gah_shomar_startup (GApplication *app)
   gtk_application_set_accels_for_action (GTK_APPLICATION (app),
                                          "win.today",
                                          today_accels);
-
+#endif
   builder = gtk_builder_new_from_resource ("/org/gahshomar/Gahshomar/app-menu.ui");
   app_menu = G_MENU_MODEL (gtk_builder_get_object (builder, "appmenu"));
   gtk_application_set_app_menu (GTK_APPLICATION (app), app_menu);

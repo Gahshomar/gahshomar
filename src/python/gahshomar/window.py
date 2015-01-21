@@ -30,10 +30,11 @@ class Window(Gtk.ApplicationWindow):
 
     @log
     def __init__(self, app):
-        self.app = app
         Gtk.ApplicationWindow.__init__(self,
                                        application=app,
                                        title=_("Gahshomar"))
+        self.app = app
+        self.app._window = self
         self.date = datetime.date.today()
         self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
         self.set_size_request(200, 100)
@@ -119,11 +120,11 @@ class Window(Gtk.ApplicationWindow):
     @log
     def setup_header_bar(self):
         hb_flag = bool(self.settings.get_value('header-bar'))
+        today_button = Gtk.Button(label=_('Today'))
+        self.today_button = today_button
+        today_button.set_action_name('win.today')
 
         if hb_flag:
-            today_button = Gtk.Button(label=_('Today'))
-            self.today_button = today_button
-            today_button.set_action_name('win.today')
             # set header bar
             self.hb = Gtk.HeaderBar()
             self.hb.props.title = _('Gahshomar')
@@ -133,7 +134,7 @@ class Window(Gtk.ApplicationWindow):
             self.set_titlebar(self.hb)
         else:
             toolbar = Gtk.Toolbar()
-            tb_today = Gtk.ToolButton(label=_('Today'))
+            tb_today = Gtk.ToolButton(icon_widget=today_button)
             tb_today.set_action_name('win.today')
             toolbar.add(tb_today)
             toolbar.show_all()

@@ -1,7 +1,6 @@
 # List of source files containing translatable strings.
 
 src/c/main.c
-src/python/gahshomar/indicator.py
 src/python/gahshomar/settings_page.py
 src/python/gahshomar/widgets.py
 src/python/gahshomar/window.py

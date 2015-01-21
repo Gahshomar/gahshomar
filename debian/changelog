@@ -1,5 +1,5 @@
-gahshomar (4.1.0-1) UNRELEASED; urgency=medium
+gahshomar (4.2.6-1~trusty) trusty; urgency=low
 
-  * Initial release.
+  * Initial release
 
- -- Amir Mohammadi <183.amir@gmail.com>  Tue, 13 Jan 2015 23:54:52 +0200
+ -- Amir Mohammadi <183.amir@gmail.com>  Mon, 19 Jan 2015 18:28:01 +0200

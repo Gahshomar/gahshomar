@@ -85,7 +85,7 @@ class SettingsWindow(Gtk.Dialog):
     """docstring for SettingsWindow"""
     @log
     def __init__(self, app):
-        super().__init__(title=_('Gahshomar Preferences'), use_header_bar=True)
+        super().__init__(title=_('Gahshomar Preferences'))
         self.app = app
         self.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.resize(600, 480)

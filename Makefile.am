@@ -12,22 +12,23 @@ dist_doc_DATA = \
 	NEWS
 
 
-INTLTOOL_FILES = intltool-extract.in \
-	intltool-merge.in \
-	intltool-update.in
+# INTLTOOL_FILES = intltool-extract.in
+# 	intltool-merge.in
+# 	intltool-update.in
 
-DEBIAN_FILES = \
-	debian/changelog \
-	debian/compat \
-	debian/control \
-	debian/copyright \
-	debian/rules \
-	debian/source/format 
+# DEBIAN_FILES =
+# 	debian/changelog
+# 	debian/compat
+# 	debian/control
+# 	debian/copyright
+# 	debian/rules
+# 	debian/docs
+# 	debian/source/format 
 
 
-EXTRA_DIST = \
-	$(INTLTOOL_FILES) \
-	$(DEBIAN_FILES)
+# EXTRA_DIST = 
+# 	$(DEBIAN_FILES)
+# 	$(INTLTOOL_FILES)
 
 DISTCLEANFILES = intltool-extract \
 	intltool-merge \

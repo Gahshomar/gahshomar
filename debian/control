@@ -1,9 +1,12 @@
 Source: gahshomar
-Maintainer: Amir Mohammadi <183.amir@gmail.com>
 Section: misc
 Priority: optional
+Maintainer: Amir Mohammadi <183.amir@gmail.com>
+Build-Depends: debhelper (>= 9.0.0), autotools-dev, dh-python, intltool, itstool, libxml2-utils, libjalali-dev, libgtk-3-dev, libpeas-dev, libglib2.0-dev (>= 2.34), yelp, yelp-tools, libtool, libgirepository1.0-dev
 Standards-Version: 3.9.5
-Build-Depends: debhelper (>= 9)
+Homepage: http://gahshomar.github.io/gahshomar
+#Vcs-Git: git://git.debian.org/collab-maint/gahshomar.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/gahshomar.git;a=summary
 
 Package: gahshomar
 Architecture: any

@@ -55,3 +55,4 @@ docs/_build/
 # package and install script
 package_install.sh
 gahshomar/khayyam
+push-to-virtual.sh

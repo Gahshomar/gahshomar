@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(gahshomar, 4.1.0)
+AC_INIT(gahshomar, 4.2.6)
 
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
@@ -19,13 +19,12 @@ dnl AC_CONFIG_MACRO_DIRS([m4])
 dnl ***************************************************************************
 dnl Internationalization
 dnl ***************************************************************************
-IT_PROG_INTLTOOL([0.35.0])
+IT_PROG_INTLTOOL([0.35])
 
 GETTEXT_PACKAGE=gahshomar
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
                    [The prefix for our gettext translation domains.])
-dnl IT_PROG_INTLTOOL(0.26)
 
 YELP_HELP_INIT
 
@@ -59,7 +58,7 @@ AM_CONDITIONAL(NATIVE_WIN32, test x"$native_win32" = "xyes")
 LT_INIT([win32-dll])
 
 
-PKG_CHECK_MODULES(GAHSHOMAR, [gtk+-3.0, glib-2.0, libpeas-1.0, libpeas-gtk-1.0])
+PKG_CHECK_MODULES(GAHSHOMAR, [gtk+-3.0 >= 3.10.0, glib-2.0 >= 2.34, libpeas-1.0, libpeas-gtk-1.0])
 
 dnl ***************************************************************************
 dnl GLIB_GSETTINGS and GLIB_COMPILE_RESOURCES
@@ -72,7 +71,7 @@ GLIB_GSETTINGS
 GLIB_COMPILE_RESOURCES=`$PKG_CONFIG --variable glib_compile_resources gio-2.0`
 AC_SUBST(GLIB_COMPILE_RESOURCES)
 
-AM_PATH_PYTHON([3])
+AM_PATH_PYTHON([3.3])
 
 dnl GTK_DOC_CHECK([1.0])
 

@@ -21,8 +21,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 from gi.repository import Gtk, GLib, Gio
-import khayyam
 
+from . import khayyam
 from .calendar import PersianCalendar, GeorgianCalendar, \
     add_months, add_years
 from . import log
@@ -189,14 +189,32 @@ class CalendarWidget(Gtk.Box):
         self.MonthMenuButton = self.ui.get_object('MonthMenuButton')
         self.MonthMenuButton.set_size_request(150, -1)
         self.MonthMenuButton.connect('toggled', self.display_months)
+        self.MonthLabel = self.ui.get_object('MonthLabel')
         try:
             self.popover = Gtk.Popover.new(self.MonthMenuButton)
+            self.MonthMenuButton.set_popover(self.popover)
+            self.popover.add(self.months_widget)
         except AttributeError:
-            logger.error(_('You need at least Gtk 3.12!'), exc_info=True)
-        self.MonthMenuButton.set_popover(self.popover)
-        self.popover.add(self.months_widget)
-
-        self.MonthLabel = self.ui.get_object('MonthLabel')
+            logger.warn(_('You need at least Gtk 3.12 for cool ui features!'))
+            # create a button
+            self.MonthButton = Gtk.Button(relief=Gtk.ReliefStyle.NORMAL)
+            self.MonthButton.set_size_request(150, -1)
+            self.MonthLabel = Gtk.Label()
+            self.MonthButton.set_image(self.MonthLabel)
+            self.MonthButton.connect('clicked', self.display_months)
+            # remove the menu button
+            self.ui.get_object('MonthYearHeader').remove(self.MonthMenuButton)
+            self.MonthMenuButton.destroy()
+            self.MonthMenuButton = None
+            # add button instead
+            self.ui.get_object('MonthYearHeader').pack_start(self.MonthButton,
+                                                             False, False, 0)
+            self.popover = Gtk.Window(
+                transient_for=self.app._window,
+                window_position=Gtk.WindowPosition.MOUSE,
+                modal=True,
+                decorated=False)
+            self.popover.add(self.months_widget)
 
         self.YearEntry = self.ui.get_object('YearEntry')
         self.YearEntry.set_alignment(0.5)
@@ -295,10 +313,14 @@ class CalendarWidget(Gtk.Box):
 
     @log
     def display_months(self, *args):
-        if self.MonthMenuButton.get_active():
-            self.popover.show_all()
+        if self.MonthMenuButton is not None:
+            if self.MonthMenuButton.get_active():
+                self.popover.show_all()
+            else:
+                self.popover.hide()
         else:
-            self.popover.hide()
+            self.popover.show_all()
+
     #     win = Gtk.Window(Gtk.WindowType.TOPLEVEL)  # POPUP or TOPLEVEL
     #     win.set_transient_for(self.parent)
     #     months = self.MonthWidget(date)

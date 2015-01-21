@@ -6,7 +6,7 @@ logger = logging.getLogger(__name__)
 from gi.repository import GObject, Peas, Gtk, Gio, GLib
 
 from gahshomar import log
-from gahshomar import khayyam
+import gahshomar.khayyam as khayyam
 
 
 class AppindicatorPlugin(GObject.Object, Peas.Activatable):
