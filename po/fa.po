@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-01 22:35+0200\n"
+"POT-Creation-Date: 2015-01-22 13:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,47 +17,55 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:1
-msgid "Persian date format"
-msgstr "فرمت تاریخ فارسی"
+#: ../src/c/main.c:15
+msgid "Be verbose"
+msgstr ""
 
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:2
-msgid "The way that full date is displayed."
-msgstr "طوری که تاریخ کامل نمایش داده می شود."
+#: ../src/c/main.c:16
+msgid "Start minimized"
+msgstr ""
 
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:3
-msgid "Georgian date format"
-msgstr "فرمت تاریخ میلادی"
+#: ../src/c/main.c:37
+msgid "- Gahshomar, an Iranian Calendar"
+msgstr ""
 
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:4
-msgid "Window size"
-msgstr "اندازه پنجره"
+#: ../src/python/gahshomar/settings_page.py:75
+msgid "You need to restart the application for changes to take effect"
+msgstr ""
 
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:5
-msgid "Window size (width and height)."
-msgstr "اندازه پنجره (عرض و ارتفاع)."
+#: ../src/python/gahshomar/settings_page.py:88
+#, fuzzy
+msgid "Gahshomar Preferences"
+msgstr "تنظیمات"
 
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:6
-msgid "Window position"
-msgstr "موقعیت پنجره"
+#: ../src/python/gahshomar/widgets.py:198
+msgid "You need at least Gtk 3.12 for cool ui features!"
+msgstr ""
 
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:7
-msgid "Window position (x and y)."
-msgstr "موقعیت پنجره (x و y)."
-
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:8
-msgid "Window maximized"
-msgstr "پنجره تمام صفحه"
-
-#: ../data/org.gahshomar.Gahshomar.gschema.xml.h:9
-msgid "Window maximized state."
-msgstr "حالت پنجره تمام صفحه"
-
-#: ../data/gahshomar.desktop.in.h:1 ../data/gahshomar.appdata.xml.in.h:1
-#: ../gahshomar/application.py:45 ../gahshomar/window.py:37
-#: ../gahshomar/window.py:162 ../data/AboutDialog.ui.in.h:1
+#: ../src/python/gahshomar/window.py:35 ../src/python/gahshomar/window.py:130
+#: ../plugins/appindicator/appindicator.py:82
+#: ../data/gahshomar.appdata.xml.in.h:1 ../data/gahshomar.desktop.in.h:1
 msgid "Gahshomar"
 msgstr "گاه شمار"
+
+#: ../src/python/gahshomar/window.py:123
+#: ../plugins/appindicator/appindicator.py:53
+msgid "Today"
+msgstr "امروز"
+
+#: ../plugins/appindicator/appindicator.py:57
+#, fuzzy
+msgid "Quit"
+msgstr "_خروج"
+
+#: ../data/gahshomar.appdata.xml.in.h:2
+msgid "A Persian/Jalali/Farsi calendar"
+msgstr "تقویم فارسی / جلالی / فارسی"
+
+#: ../data/gahshomar.appdata.xml.in.h:3
+msgid ""
+"Gahshomar makes it easy for you to keep track of two different calendars."
+msgstr "گاهشمار برای شما پیگیری دو تقویم متفاوت را آسان می کند."
 
 #: ../data/gahshomar.desktop.in.h:2
 msgid "Calendar"
@@ -71,291 +79,168 @@ msgstr "مشاهده تقویم میلادی  و فارسی"
 msgid "Calendar;Persian;Gahshomar;Jalali;"
 msgstr "تقویم. فارسی. گاهشمار . جلالی."
 
-#: ../data/gahshomar.appdata.xml.in.h:2
-msgid "A Persian/Jalali/Farsi calendar"
-msgstr "تقویم فارسی / جلالی / فارسی"
-
-#: ../data/gahshomar.appdata.xml.in.h:3
-msgid ""
-"Gahshomar makes it easy for you to keep track of two different calendars."
-msgstr "گاهشمار برای شما پیگیری دو تقویم متفاوت را آسان می کند."
-
-#: ../gahshomar/calendar.py:179
-msgid "ش"
-msgstr ""
-
-#: ../gahshomar/calendar.py:179
-msgid "شنبه"
-msgstr ""
-
-#: ../gahshomar/calendar.py:179
-msgid "۱ش"
-msgstr ""
-
-#: ../gahshomar/calendar.py:179
-msgid "یک‌شنبه"
-msgstr ""
-
-#: ../gahshomar/calendar.py:180
-msgid "۲ش"
-msgstr ""
-
-#: ../gahshomar/calendar.py:180
-msgid "دو‌شنبه"
-msgstr ""
-
-#: ../gahshomar/calendar.py:180
-msgid "۳ش"
-msgstr ""
-
-#: ../gahshomar/calendar.py:180
-msgid "سه‌شنبه"
-msgstr ""
-
-#: ../gahshomar/calendar.py:181
-msgid "۴ش"
-msgstr ""
-
-#: ../gahshomar/calendar.py:181
-msgid "چهار‌شنبه"
-msgstr ""
-
-#: ../gahshomar/calendar.py:181
-msgid "۵ش"
-msgstr ""
-
-#: ../gahshomar/calendar.py:181
-msgid "پنج‌شنبه"
-msgstr ""
-
-#: ../gahshomar/calendar.py:182
-msgid "آ"
-msgstr ""
-
-#: ../gahshomar/calendar.py:182
-msgid "آدینه"
-msgstr ""
-
-#: ../gahshomar/calendar.py:211 ../data/calendar-widget.ui.h:3
-msgid "Mon"
-msgstr "۲ش"
-
-#: ../gahshomar/calendar.py:211
-msgid "Monday"
-msgstr ""
-
-#: ../gahshomar/calendar.py:211 ../data/calendar-widget.ui.h:4
-msgid "Tue"
-msgstr "۳ش"
-
-#: ../gahshomar/calendar.py:211
-msgid "Tuesday"
-msgstr ""
-
-#: ../gahshomar/calendar.py:212 ../data/calendar-widget.ui.h:5
-msgid "Wed"
-msgstr "۴ش"
-
-#: ../gahshomar/calendar.py:212
-msgid "Wednesday"
-msgstr ""
-
-#: ../gahshomar/calendar.py:212 ../data/calendar-widget.ui.h:6
-msgid "Thu"
-msgstr "۵ش"
-
-#: ../gahshomar/calendar.py:212
-msgid "Thursday"
-msgstr ""
-
-#: ../gahshomar/calendar.py:213 ../data/calendar-widget.ui.h:7
-msgid "Fri"
-msgstr "آ"
-
-#: ../gahshomar/calendar.py:213
-msgid "Friday"
-msgstr ""
+#~ msgid "Persian date format"
+#~ msgstr "فرمت تاریخ فارسی"
 
-#: ../gahshomar/calendar.py:213 ../data/calendar-widget.ui.h:8
-msgid "Sat"
-msgstr "ش"
+#~ msgid "The way that full date is displayed."
+#~ msgstr "طوری که تاریخ کامل نمایش داده می شود."
 
-#: ../gahshomar/calendar.py:213
-msgid "Saturday"
-msgstr ""
+#~ msgid "Georgian date format"
+#~ msgstr "فرمت تاریخ میلادی"
 
-#: ../gahshomar/calendar.py:214 ../data/calendar-widget.ui.h:9
-msgid "Sun"
-msgstr "۱ش"
+#~ msgid "Window size"
+#~ msgstr "اندازه پنجره"
 
-#: ../gahshomar/calendar.py:214
-msgid "Sunday"
-msgstr ""
+#~ msgid "Window size (width and height)."
+#~ msgstr "اندازه پنجره (عرض و ارتفاع)."
 
-#. xdg_current_desktop = self.xdg_current_desktop
-#: ../gahshomar/window.py:140
-msgid "Today"
-msgstr "امروز"
-
-#: ../data/AboutDialog.ui.in.h:2
-msgid "Copyright © 2014 Gahshomar Developers"
-msgstr "کپی رایت © 2014 گاهشمار توسعه دهندگان"
-
-#: ../data/AboutDialog.ui.in.h:3
-msgid "A Persian/Jalali/Farsi calendar application."
-msgstr "نرم افزار تقویم فارسی / جلالی / فارسی."
-
-#: ../data/AboutDialog.ui.in.h:4
-msgid "Visit Gahshomar website"
-msgstr "وب سایت مشاهده گاهشمار"
-
-#: ../data/calendar-widget.ui.h:1 ../data/months-widget.ui.h:11
-msgid "November"
-msgstr "نوامبر"
-
-#: ../data/calendar-widget.ui.h:2
-msgid "2014"
-msgstr "۲۰۱۴"
-
-#: ../data/day-widget.ui.h:1
-msgid "Thursday, November 13, 2014"
-msgstr "پنجشنبه ، 2014 نوامبر 13"
-
-#: ../data/months-widget.ui.h:1
-msgid "January"
-msgstr "ژانویه"
-
-#: ../data/months-widget.ui.h:2
-msgid "February"
-msgstr "فوریه"
-
-#: ../data/months-widget.ui.h:3
-msgid "March"
-msgstr "مارس"
-
-#: ../data/months-widget.ui.h:4
-msgid "April"
-msgstr "آوریل"
-
-#: ../data/months-widget.ui.h:5
-msgid "May"
-msgstr "مه"
-
-#: ../data/months-widget.ui.h:6
-msgid "June"
-msgstr "ژوئن"
-
-#: ../data/months-widget.ui.h:7
-msgid "July"
-msgstr "جولای"
-
-#: ../data/months-widget.ui.h:8
-msgid "August"
-msgstr "اوت"
-
-#: ../data/months-widget.ui.h:9
-msgid "September"
-msgstr "سپتامبر"
-
-#: ../data/months-widget.ui.h:10
-msgid "October"
-msgstr "اکتبر"
-
-#: ../data/months-widget.ui.h:12
-msgid "December"
-msgstr "دسامبر"
-
-#: ../data/settings_page.ui.h:1
-msgid "Dark"
-msgstr "تاریک"
-
-#: ../data/settings_page.ui.h:2
-msgid "Light"
-msgstr "روشن "
-
-#: ../data/settings_page.ui.h:3
-msgid "SYSTEM SERVICES"
-msgstr "خدمات سیستم"
-
-#: ../data/settings_page.ui.h:4
-msgid "APPLICATION STATUS"
-msgstr "وضعیت درخواست"
-
-#: ../data/settings_page.ui.h:5
-msgid "COMMUNICATIONS"
-msgstr "ارتباطات"
-
-#: ../data/settings_page.ui.h:6
-msgid "HARDWARE"
-msgstr "سخت افزار"
-
-#: ../data/settings_page.ui.h:7
-msgid "OTHER"
-msgstr "دیگر"
-
-#: ../data/settings_page.ui.h:8
-msgid "Preferences"
-msgstr "تنظیمات"
-
-#: ../data/settings_page.ui.h:9
-msgid "Restore to default settings"
-msgstr "بازگرداندن به تنظیمات پیش فرض"
-
-#: ../data/settings_page.ui.h:10
-msgid ""
-"How often should the app update its date (in Seconds). 5 should be a good "
-"value."
-msgstr ""
-"چند وقت یکبار باید برنامه تاریخ به روز رسانی آن (در ثانیه). 5 باید مقدار "
-"خوبی باشد."
-
-#: ../data/settings_page.ui.h:11
-msgid "Update Frequency"
-msgstr " فرکانس به روز رسانی"
-
-#: ../data/settings_page.ui.h:12
-msgid "0"
-msgstr "٠"
-
-#: ../data/settings_page.ui.h:13
-msgid "Output Debugging Info"
-msgstr "خروجی اشکال زدایی اطلاعات"
-
-#: ../data/settings_page.ui.h:14
-msgid "Global"
-msgstr "جهانی"
-
-#: ../data/settings_page.ui.h:15
-msgid "Icon Color"
-msgstr "رنگ آیکون"
-
-#: ../data/settings_page.ui.h:16
-msgid "Date Format"
-msgstr "فرمت  تاریخ"
-
-#: ../data/settings_page.ui.h:17
-msgid "Indicator Category"
-msgstr "رده شاخص"
-
-#: ../data/settings_page.ui.h:18
-msgid "AppIndicator"
-msgstr "AppIndicator"
-
-#: ../data/app-menu.ui.h:1
-msgid "_Preferences"
-msgstr "_تنظیمات "
-
-#: ../data/app-menu.ui.h:2
-msgid "_Help"
-msgstr "_کمک"
-
-#: ../data/app-menu.ui.h:3
-msgid "_About"
-msgstr "_درباره"
-
-#: ../data/app-menu.ui.h:4
-msgid "_Quit"
-msgstr "_خروج"
+#~ msgid "Window position"
+#~ msgstr "موقعیت پنجره"
+
+#~ msgid "Window position (x and y)."
+#~ msgstr "موقعیت پنجره (x و y)."
+
+#~ msgid "Window maximized"
+#~ msgstr "پنجره تمام صفحه"
+
+#~ msgid "Window maximized state."
+#~ msgstr "حالت پنجره تمام صفحه"
+
+#~ msgid "Mon"
+#~ msgstr "۲ش"
+
+#~ msgid "Tue"
+#~ msgstr "۳ش"
+
+#~ msgid "Wed"
+#~ msgstr "۴ش"
+
+#~ msgid "Thu"
+#~ msgstr "۵ش"
+
+#~ msgid "Fri"
+#~ msgstr "آ"
+
+#~ msgid "Sat"
+#~ msgstr "ش"
+
+#~ msgid "Sun"
+#~ msgstr "۱ش"
+
+#~ msgid "Copyright © 2014 Gahshomar Developers"
+#~ msgstr "کپی رایت © 2014 گاهشمار توسعه دهندگان"
+
+#~ msgid "A Persian/Jalali/Farsi calendar application."
+#~ msgstr "نرم افزار تقویم فارسی / جلالی / فارسی."
+
+#~ msgid "Visit Gahshomar website"
+#~ msgstr "وب سایت مشاهده گاهشمار"
+
+#~ msgid "November"
+#~ msgstr "نوامبر"
+
+#~ msgid "2014"
+#~ msgstr "۲۰۱۴"
+
+#~ msgid "Thursday, November 13, 2014"
+#~ msgstr "پنجشنبه ، 2014 نوامبر 13"
+
+#~ msgid "January"
+#~ msgstr "ژانویه"
+
+#~ msgid "February"
+#~ msgstr "فوریه"
+
+#~ msgid "March"
+#~ msgstr "مارس"
+
+#~ msgid "April"
+#~ msgstr "آوریل"
+
+#~ msgid "May"
+#~ msgstr "مه"
+
+#~ msgid "June"
+#~ msgstr "ژوئن"
+
+#~ msgid "July"
+#~ msgstr "جولای"
+
+#~ msgid "August"
+#~ msgstr "اوت"
+
+#~ msgid "September"
+#~ msgstr "سپتامبر"
+
+#~ msgid "October"
+#~ msgstr "اکتبر"
+
+#~ msgid "December"
+#~ msgstr "دسامبر"
+
+#~ msgid "Dark"
+#~ msgstr "تاریک"
+
+#~ msgid "Light"
+#~ msgstr "روشن "
+
+#~ msgid "SYSTEM SERVICES"
+#~ msgstr "خدمات سیستم"
+
+#~ msgid "APPLICATION STATUS"
+#~ msgstr "وضعیت درخواست"
+
+#~ msgid "COMMUNICATIONS"
+#~ msgstr "ارتباطات"
+
+#~ msgid "HARDWARE"
+#~ msgstr "سخت افزار"
+
+#~ msgid "OTHER"
+#~ msgstr "دیگر"
+
+#~ msgid "Restore to default settings"
+#~ msgstr "بازگرداندن به تنظیمات پیش فرض"
+
+#~ msgid ""
+#~ "How often should the app update its date (in Seconds). 5 should be a good "
+#~ "value."
+#~ msgstr ""
+#~ "چند وقت یکبار باید برنامه تاریخ به روز رسانی آن (در ثانیه). 5 باید مقدار "
+#~ "خوبی باشد."
+
+#~ msgid "Update Frequency"
+#~ msgstr " فرکانس به روز رسانی"
+
+#~ msgid "0"
+#~ msgstr "٠"
+
+#~ msgid "Output Debugging Info"
+#~ msgstr "خروجی اشکال زدایی اطلاعات"
+
+#~ msgid "Global"
+#~ msgstr "جهانی"
+
+#~ msgid "Icon Color"
+#~ msgstr "رنگ آیکون"
+
+#~ msgid "Date Format"
+#~ msgstr "فرمت  تاریخ"
+
+#~ msgid "Indicator Category"
+#~ msgstr "رده شاخص"
+
+#~ msgid "AppIndicator"
+#~ msgstr "AppIndicator"
+
+#~ msgid "_Preferences"
+#~ msgstr "_تنظیمات "
+
+#~ msgid "_Help"
+#~ msgstr "_کمک"
+
+#~ msgid "_About"
+#~ msgstr "_درباره"
 
 #~ msgid "button"
 #~ msgstr "دکمه"

@@ -11,5 +11,6 @@ Homepage: http://gahshomar.github.io/gahshomar
 Package: gahshomar
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: gir1.2-appindicator3-0.1
 Description: A Persian/Jalali/Farsi Calendar
  Provides a calendar interface which can be used to easily convert the dates.
