@@ -1,9 +1,9 @@
 [Plugin]
-Module=appindicator
+Module=statusicon
 Loader=python3
 Depends=main
-Name=Appindicator
-Description=Provides an Appindicator which is supported on most Linux desktops.
+Name=Status Icon
+Description=Provides a status icon which is supported on most desktops.
 Authors=Amir Mohammadi <183.amir@gmail.com>
 Copyright=Copyright © 2015 Amir Mohammadi
 Website=https://gahshomar.github.io/gahshomar/

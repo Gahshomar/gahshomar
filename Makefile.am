@@ -2,7 +2,17 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = src/c src/python/gahshomar po data frontend/applet/gnome-shell help plugins/main plugins/appindicator
+SUBDIRS = \
+	src/c \
+	src/python/gahshomar \
+	po \
+	data \
+	frontend/applet/gnome-shell \
+	help \
+	plugins/main \
+	plugins/appindicator \
+	plugins/statusicon
+
 dist_doc_DATA = \
 	README \
 	COPYING \

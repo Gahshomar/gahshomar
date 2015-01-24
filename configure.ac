@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-AC_INIT(gahshomar, 4.2.6)
+AC_INIT(gahshomar, 4.3.0)
 
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
@@ -94,6 +94,7 @@ po/Makefile.in
 frontend/applet/gnome-shell/Makefile
 plugins/main/Makefile
 plugins/appindicator/Makefile
+plugins/statusicon/Makefile
 ])
 
 AC_OUTPUT
