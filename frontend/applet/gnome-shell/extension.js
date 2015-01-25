@@ -115,6 +115,9 @@ const Gahshomar = new Lang.Class({
 
     _update: function() {
         text = this._proxy.GetDaySync()[0]
+        if (text[0] == '۰') {
+            text = text.slice(1);
+        }
         this.label.set_text(text)
         text = this._proxy.GetDateSync()[0]
         this.popopMenuItemDate.label.set_text(text)
