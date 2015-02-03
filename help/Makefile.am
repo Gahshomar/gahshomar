@@ -11,3 +11,5 @@ HELP_MEDIA = \
         figures/gahshomar.png
 
 HELP_LINGUAS = 
+
+-include $(top_srcdir)/git.mk

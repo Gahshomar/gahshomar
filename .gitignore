@@ -1,58 +1,49 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-
-# C extensions
-*.so
-
-# Distribution / packaging
-.Python
-env/
-bin/
-build/
-develop-eggs/
-dist/
-eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.cache
-nosetests.xml
-coverage.xml
-
-# Translations
-*.mo
-
-# Mr Developer
-.mr.developer.cfg
-.project
-.pydevproject
-
-# Rope
-.ropeproject
-
-# Django stuff:
-*.log
-*.pot
-
-# Sphinx documentation
-docs/_build/
-
-# package and install script
-package_install.sh
-gahshomar/khayyam
-push-to-virtual.sh
+/*.bak
+/*.lo
+/*.o
+/*.orig
+/*.rej
+/*.tab.c
+/*~
+/.*.sw[nop]
+/.deps
+/.dirstamp
+/.gitignore
+/.libs
+/GPATH
+/GRTAGS
+/GSYMS
+/GTAGS
+/ID
+/Makefile
+/Makefile.in
+/TAGS
+/_libs
+/autom4te.cache
+/config.cache
+/config.h
+/config.log
+/config.lt
+/config.status
+/config.status.lineno
+/configure
+/configure.lineno
+/intltool-extract
+/intltool-extract.in
+/intltool-merge
+/intltool-merge.in
+/intltool-update
+/intltool-update.in
+/libtool
+/po/*.gmo
+/po/*.mo
+/po/.intltool-merge-cache
+/po/Makefile
+/po/Makefile.in
+/po/Makefile.in.in
+/po/POTFILES
+/po/gahshomar.pot
+/po/stamp-it
+/so_locations
+/stamp-h1
+/tags

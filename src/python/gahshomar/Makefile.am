@@ -8,3 +8,5 @@ app_PYTHON = \
 	settings_page.py \
 	widgets.py \
 	window.py
+
+-include $(top_srcdir)/git.mk

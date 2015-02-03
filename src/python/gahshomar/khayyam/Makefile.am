@@ -9,3 +9,5 @@ appkhayyam_PYTHON = \
 	jalali_date.py \
 	jalali_datetime.py \
 	tehran_timezone.py
+
+-include $(top_srcdir)/git.mk

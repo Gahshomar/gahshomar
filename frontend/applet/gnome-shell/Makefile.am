@@ -16,3 +16,5 @@ metadata.json: metadata.json.in $(top_builddir)/config.status
 	    -e "s|[@]url@|$(extensionurl)|" $< > $@
 
 CLEANFILES = metadata.json
+
+-include $(top_srcdir)/git.mk

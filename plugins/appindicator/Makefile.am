@@ -6,3 +6,5 @@ plugin_PYTHON = \
 plugin_DATA = appindicator.plugin
 
 EXTRA_DIST = $(plugin_DATA)
+
+-include $(top_srcdir)/git.mk
