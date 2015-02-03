@@ -1,14 +1,23 @@
 dnl Process this file with autoconf to produce a configure script.
-
-AC_INIT(gahshomar, 4.3.2)
+AC_PREREQ(2.63)
+AC_INIT([org.gahshomar.Gahshomar], [4.3.2],
+        [183.amir@gmail.com],
+        [gahshomar],
+        [https://gahshomar.github.io/gahshomar/])
 
 AC_CONFIG_SRCDIR([Makefile.am])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 
-AM_INIT_AUTOMAKE([1.11])
+AM_INIT_AUTOMAKE([1.11 dist-xz no-dist-gzip foreign tar-ustar no-define -Wno-portability])
 
-AM_SILENT_RULES([yes])
+# revert automake using PACKAGE_TARNAME instead of PACKAGE_NAME
+AC_SUBST([PACKAGE], [$PACKAGE_NAME])
+
+PACKAGE_DBUS_PATH=/`echo $PACKAGE_NAME | sed 's,\.,/,g'`
+AC_SUBST([PACKAGE_DBUS_PATH], [$PACKAGE_DBUS_PATH])
+
+m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 
 AC_PROG_CC
 AM_PROG_LIBTOOL
@@ -22,7 +31,6 @@ dnl Internationalization
 dnl ***************************************************************************
 IT_PROG_INTLTOOL([0.35])
 
-GETTEXT_PACKAGE=gahshomar
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
                    [The prefix for our gettext translation domains.])
