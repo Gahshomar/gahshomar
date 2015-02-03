@@ -22,7 +22,7 @@
             <description>A flag to check if application crashed last time.</description>
         </key>
         <key type="b" name="header-bar">
-            <default>true</default>
+            <default>false</default>
             <summary>Whether to use a headerbar</summary>
             <description>Enabling this will the app to show a header-bar. Otherwise, it will show a tool-bar.</description>
         </key>
