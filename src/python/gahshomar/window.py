@@ -103,6 +103,7 @@ class Window(Gtk.ApplicationWindow):
         self.handler = self.app.handler
 
         self.main_grid = Gtk.Grid()
+        self.main_grid.set_halign(Gtk.Align.START)
         self.add(self.main_grid)
         self.main_grid.set_column_homogeneous(True)
         self.main_grid.set_column_spacing(spacing=18)
