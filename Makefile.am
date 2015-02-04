@@ -16,9 +16,10 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/missing \
 	$(srcdir)/mkinstalldirs \
 	$(srcdir)/py-compile \
-	$(srcdir)/plugins/main/__pycache__/
-	$(srcdir)/src/python/gahshomar/__pycache__/
+	$(srcdir)/plugins/main/__pycache__/ \ 
+	$(srcdir)/src/python/gahshomar/__pycache__/ \
 	$(srcdir)/src/python/gahshomar/khayyam/__pycache__/
+
 
 
 GITIGNOREFILES = m4/ 
