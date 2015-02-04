@@ -16,6 +16,7 @@
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+from os.path import split
 from gettext import gettext as _
 import logging
 logger = logging.getLogger(__name__)
@@ -46,6 +47,11 @@ class Handler(object):
             startup_switch.set_active(False)
         else:
             try:
+                fldr = split(AUTOSTART_DESKTOPFILE_PATH)[0]
+                try:
+                    os.makedirs(fldr)
+                except Exception:
+                    logger.debug('', exc_info=True)
                 with open(AUTOSTART_DESKTOPFILE_PATH, 'w') as f:
                     f.write('''[Desktop Entry]
 Name=Gahshomar
