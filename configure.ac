@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ(2.63)
-AC_INIT([org.gahshomar.Gahshomar], [4.3.3],
+AC_INIT([org.gahshomar.Gahshomar], [4.3.4],
         [183.amir@gmail.com],
         [gahshomar],
         [https://gahshomar.github.io/gahshomar/])

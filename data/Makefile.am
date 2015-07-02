@@ -28,7 +28,8 @@ hicolor_icon24_DATA = icons/hicolor/24x24/apps/gahshomar.png
 hicolor_icon32dir = $(datadir)/icons/hicolor/32x32/apps
 hicolor_icon32_DATA = icons/hicolor/32x32/apps/gahshomar.png
 hicolor_icon48dir = $(datadir)/icons/hicolor/48x48/apps
-hicolor_icon48_DATA = icons/hicolor/48x48/apps/gahshomar.png
+hicolor_icon48_DATA = icons/hicolor/48x48/apps/gahshomar.png \
+	icons/hicolor/48x48/apps/gahshomar-no-icon.png
 hicolor_icon64dir = $(datadir)/icons/hicolor/64x64/apps
 hicolor_icon64_DATA = icons/hicolor/64x64/apps/gahshomar.png
 hicolor_icon96dir = $(datadir)/icons/hicolor/96x96/apps
