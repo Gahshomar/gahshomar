@@ -1,4 +1,4 @@
-Gahshomar (گاه‌شمار)
+Gahshomar (گاه‌شمار) [![Build Status](https://travis-ci.org/Gahshomar/gahshomar.svg?branch=master)](https://travis-ci.org/Gahshomar/gahshomar)
 ================
 A Persian (Jalali/Farsi) calendar. The calendar provides a main interface for easily
 converting dates between Iranian and Georgian calendar. Also, an appindicator and a
