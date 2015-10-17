@@ -6,4 +6,4 @@ compiler:
 script: ./autogen.sh && make
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y libjalali-dev libgtk-3-dev libpeas-dev libglib2.0-dev intltool python3
+  - sudo apt-get install -y libjalali-dev libgtk-3-dev libpeas-dev libglib2.0-dev intltool python3 gnome-common
