@@ -24,6 +24,7 @@ from gi.repository import Gtk, Gio, GLib
 
 import gahshomar.widgets as Widgets
 from . import log
+from .calendar import date_to_georgian
 
 
 class Window(Gtk.ApplicationWindow):
@@ -74,6 +75,8 @@ class Window(Gtk.ApplicationWindow):
         self.todayAction.connect('activate', self.set_today)
         self.add_action(self.todayAction)
 
+        self.today_button.set_sensitive(False)
+
     @log
     def _on_configure_event(self, widget, event):
         size = widget.get_size()
@@ -101,6 +104,7 @@ class Window(Gtk.ApplicationWindow):
         self.calendars = [pcal, gcal]
 
         self.handler = self.app.handler
+        self.handler.updateables.append(self)
 
         self.main_grid = Gtk.Grid()
         self.main_grid.set_halign(Gtk.Align.START)
@@ -167,3 +171,15 @@ class Window(Gtk.ApplicationWindow):
         except Exception:
             logger.exception(Exception)
         return True
+
+    @log
+    def update(self, date=None, **kwargs):
+        if date is None:
+            date = self.date
+        else:
+            date = date_to_georgian(date)
+        if date == datetime.date.today():
+            self.today_button.set_sensitive(False)
+        else:
+            self.today_button.set_sensitive(True)
+        self.date = date
