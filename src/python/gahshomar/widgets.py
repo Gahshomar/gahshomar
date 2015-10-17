@@ -25,7 +25,7 @@ from gi.repository import Gtk, GLib, Gio
 from . import khayyam
 from .calendar import PersianCalendar, GeorgianCalendar, \
     add_months, add_years
-from . import log
+from . import log, calendar
 
 
 class DayWidget(Gtk.Box):
@@ -51,7 +51,7 @@ class DayWidget(Gtk.Box):
             date = self.date
         self.date = self.get_date(date)
         # change the label
-        text = self.date.strftime(self.date_format)
+        text = calendar.glib_strftime(self.date_format, self.date)
         # self.ui.get_object('DayWidgetLabel').set_label(_(text))
         self.ui.get_object('DayWidgetLabel').set_markup(
             "<span size='large'>"+text+'</span>')
@@ -69,7 +69,7 @@ class PersianDayWidget(DayWidget, PersianCalendar):
             self.date_format = self.date_format.replace("'", "")
         except Exception:
             logger.exception(Exception)
-            self.date_format = '%A، %d %B %Y'
+            self.date_format = _('%A، %d %B %Y')
             self.settings.set_value('persian-date-format',
                                     GLib.Variant.new_string(self.date_format))
         # logger.debug((type(self.date_format), self.date_format))
@@ -88,7 +88,7 @@ class GeorgianDayWidget(DayWidget, GeorgianCalendar):
             self.date_format = self.date_format.replace("'", "")
         except Exception:
             logger.exception(Exception)
-            self.date_format = '%A, %d %B %Y'
+            self.date_format = _('%A, %d %B %Y')
             self.settings.set_value('georgian-date-format',
                                     GLib.Variant.new_string(self.date_format))
         GeorgianCalendar.__init__(self, date)
@@ -240,7 +240,7 @@ class CalendarWidget(Gtk.Box):
         month_label = self.get_months()[self.date.month-1]
         self.MonthLabel.set_label(month_label)
 
-        self.YearEntry.set_text(_(self.date.strftime('%Y')))
+        self.YearEntry.set_text(calendar.glib_strftime(_('%Y'), self.date))
 
         self.setup_weekdays()
 

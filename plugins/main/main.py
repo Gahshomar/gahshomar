@@ -1,8 +1,9 @@
 from os.path import abspath, join
 import sys
 import gettext
-gettext.install('gahshomar')
-
+gettext.bindtextdomain('gahshomar')
+gettext.textdomain('gahshomar')
+_ = gettext.gettext
 from gi.repository import GObject, Peas, Gtk, Gio, GLib, Gdk
 
 settings = Gio.Settings.new('org.gahshomar.Gahshomar')
@@ -17,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 try:
     import gahshomar
-    from gahshomar import log
+    from gahshomar import log, calendar
 except ImportError:
     gahshomar = None
     log = lambda x: x
@@ -74,7 +75,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
             self.date_format = self.date_format.replace("'", "")
         except Exception:
             logger.exception(Exception)
-            self.date_format = '%A، %d %B %Y'
+            self.date_format = _('%A، %d %B %Y')
         self.load_plugins()
         self.connect_plugin_signals()
 
@@ -193,7 +194,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
     @log
     def do_get_day(self):
         from gahshomar.khayyam import JalaliDate
-        day = JalaliDate.today().strftime('%d')
+        day = calendar.glib_strftime(_('%d'), JalaliDate.today())
         if day[0] == '۰':
             day = day[1:]
         return day
@@ -201,7 +202,7 @@ class MainPlugin(GObject.Object, Peas.Activatable):
     @log
     def do_get_date(self):
         from gahshomar.khayyam import JalaliDate
-        return JalaliDate.today().strftime(self.date_format)
+        return calendar.glib_strftime(self.date_format, JalaliDate.today())
 
 
 # class MainConfigurable(GObject.Object, PeasGtk.Configurable):

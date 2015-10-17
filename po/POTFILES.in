@@ -1,17 +1,21 @@
 # List of source files containing translatable strings.
 
-src/c/main.c
-src/python/gahshomar/settings_page.py
-src/python/gahshomar/widgets.py
-src/python/gahshomar/window.py
-plugins/main/main.py
-plugins/appindicator/appindicator.py
-plugins/statusicon/statusicon.py
 data/AboutDialog.ui
 data/app-menu.ui
 data/calendar-widget.ui
 data/day-widget.ui
 data/gahshomar.appdata.xml.in
+data/gahshomar.appdata.xml.in.h
 data/gahshomar.desktop.in
+data/gahshomar.desktop.in.h
 data/months-widget.ui
 data/prefs.ui
+frontend/applet/gnome-shell/extension.js
+plugins/appindicator/appindicator.py
+plugins/main/main.py
+plugins/statusicon/statusicon.py
+src/c/main.c
+src/python/gahshomar/calendar.py
+src/python/gahshomar/settings_page.py
+src/python/gahshomar/widgets.py
+src/python/gahshomar/window.py

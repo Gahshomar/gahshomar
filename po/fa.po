@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-22 13:53+0200\n"
+"POT-Creation-Date: 2015-10-17 15:02+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/c/main.c:15
-msgid "Be verbose"
-msgstr ""
-
-#: ../src/c/main.c:16
-msgid "Start minimized"
-msgstr ""
-
-#: ../src/c/main.c:37
-msgid "- Gahshomar, an Iranian Calendar"
-msgstr ""
-
-#: ../src/python/gahshomar/settings_page.py:75
-msgid "You need to restart the application for changes to take effect"
-msgstr ""
-
-#: ../src/python/gahshomar/settings_page.py:88
-#, fuzzy
-msgid "Gahshomar Preferences"
-msgstr "تنظیمات"
-
-#: ../src/python/gahshomar/widgets.py:198
-msgid "You need at least Gtk 3.12 for cool ui features!"
-msgstr ""
-
-#: ../src/python/gahshomar/window.py:35 ../src/python/gahshomar/window.py:130
-#: ../plugins/appindicator/appindicator.py:82
 #: ../data/gahshomar.appdata.xml.in.h:1 ../data/gahshomar.desktop.in.h:1
+#: ../plugins/appindicator/appindicator.py:83
+#: ../src/python/gahshomar/window.py:36 ../src/python/gahshomar/window.py:135
 msgid "Gahshomar"
 msgstr "گاه شمار"
-
-#: ../src/python/gahshomar/window.py:123
-#: ../plugins/appindicator/appindicator.py:53
-msgid "Today"
-msgstr "امروز"
-
-#: ../plugins/appindicator/appindicator.py:57
-#, fuzzy
-msgid "Quit"
-msgstr "_خروج"
 
 #: ../data/gahshomar.appdata.xml.in.h:2
 msgid "A Persian/Jalali/Farsi calendar"
@@ -78,6 +43,182 @@ msgstr "مشاهده تقویم میلادی  و فارسی"
 #: ../data/gahshomar.desktop.in.h:4
 msgid "Calendar;Persian;Gahshomar;Jalali;"
 msgstr "تقویم. فارسی. گاهشمار . جلالی."
+
+#. add popopMenuItem
+#: ../frontend/applet/gnome-shell/extension.js:39
+#: ../frontend/applet/gnome-shell/extension.js:94
+#, fuzzy
+msgid "Open Gahshomar"
+msgstr "گاه شمار"
+
+#. text = this._proxy.GetQuitStringSync()[0]
+#: ../frontend/applet/gnome-shell/extension.js:125
+#: ../plugins/appindicator/appindicator.py:57
+#: ../plugins/statusicon/statusicon.py:69
+#, fuzzy
+msgid "Quit"
+msgstr "_خروج"
+
+#: ../plugins/appindicator/appindicator.py:53
+#: ../plugins/statusicon/statusicon.py:65 ../src/python/gahshomar/window.py:128
+msgid "Today"
+msgstr "امروز"
+
+#: ../plugins/appindicator/appindicator.py:83 ../plugins/main/main.py:197
+#: ../plugins/statusicon/statusicon.py:97
+#: ../src/python/gahshomar/calendar.py:162
+#, python-format
+msgid "%d"
+msgstr "%Od"
+
+#: ../plugins/main/main.py:78 ../src/python/gahshomar/widgets.py:72
+msgid "%A، %d %B %Y"
+msgstr "%A، %Od %B %OY"
+
+#: ../src/c/main.c:15
+msgid "Be verbose"
+msgstr "اطلاعات اضافی نشان بده"
+
+#: ../src/c/main.c:16
+msgid "Start minimized"
+msgstr "بدون صفحه اصلی شروع کن"
+
+#: ../src/c/main.c:37
+msgid "- Gahshomar, an Iranian Calendar"
+msgstr "- گاه‌شمار، یک تقویم ایرانی"
+
+#: ../src/python/gahshomar/calendar.py:191
+msgid "ش"
+msgstr "ش"
+
+#: ../src/python/gahshomar/calendar.py:191
+msgid "شنبه"
+msgstr "شنبه"
+
+#: ../src/python/gahshomar/calendar.py:191
+msgid "۱ش"
+msgstr "۱ش"
+
+#: ../src/python/gahshomar/calendar.py:191
+msgid "یک‌شنبه"
+msgstr "یک‌شنبه"
+
+#: ../src/python/gahshomar/calendar.py:192
+msgid "۲ش"
+msgstr "۲ش"
+
+#: ../src/python/gahshomar/calendar.py:192
+msgid "دو‌شنبه"
+msgstr "دو‌شنبه"
+
+#: ../src/python/gahshomar/calendar.py:192
+msgid "۳ش"
+msgstr "۳ش"
+
+#: ../src/python/gahshomar/calendar.py:192
+msgid "سه‌شنبه"
+msgstr "سه‌شنبه"
+
+#: ../src/python/gahshomar/calendar.py:193
+msgid "۴ش"
+msgstr "۴ش"
+
+#: ../src/python/gahshomar/calendar.py:193
+msgid "چهار‌شنبه"
+msgstr "چهار‌شنبه"
+
+#: ../src/python/gahshomar/calendar.py:193
+msgid "۵ش"
+msgstr "۵ش"
+
+#: ../src/python/gahshomar/calendar.py:193
+msgid "پنج‌شنبه"
+msgstr "پنج‌شنبه"
+
+#: ../src/python/gahshomar/calendar.py:194
+msgid "آ"
+msgstr "آ"
+
+#: ../src/python/gahshomar/calendar.py:194
+msgid "آدینه"
+msgstr "آدینه"
+
+#: ../src/python/gahshomar/calendar.py:223
+msgid "Mon"
+msgstr "۲ش"
+
+#: ../src/python/gahshomar/calendar.py:223
+msgid "Monday"
+msgstr "دوشنبه"
+
+#: ../src/python/gahshomar/calendar.py:223
+msgid "Tue"
+msgstr "۳ش"
+
+#: ../src/python/gahshomar/calendar.py:223
+msgid "Tuesday"
+msgstr "سه‌شنبه"
+
+#: ../src/python/gahshomar/calendar.py:224
+msgid "Wed"
+msgstr "۴ش"
+
+#: ../src/python/gahshomar/calendar.py:224
+msgid "Wednesday"
+msgstr "چهارشنبه"
+
+#: ../src/python/gahshomar/calendar.py:224
+msgid "Thu"
+msgstr "۵ش"
+
+#: ../src/python/gahshomar/calendar.py:224
+msgid "Thursday"
+msgstr "پنج‌شنبه"
+
+#: ../src/python/gahshomar/calendar.py:225
+msgid "Fri"
+msgstr "آ"
+
+#: ../src/python/gahshomar/calendar.py:225
+msgid "Friday"
+msgstr "آدینه"
+
+#: ../src/python/gahshomar/calendar.py:225
+msgid "Sat"
+msgstr "ش"
+
+#: ../src/python/gahshomar/calendar.py:225
+msgid "Saturday"
+msgstr "شنبه"
+
+#: ../src/python/gahshomar/calendar.py:226
+msgid "Sun"
+msgstr "۱ش"
+
+#: ../src/python/gahshomar/calendar.py:226
+msgid "Sunday"
+msgstr "یکشنبه"
+
+#: ../src/python/gahshomar/settings_page.py:81
+msgid "You need to restart the application for changes to take effect"
+msgstr "باید برنامه را مجدد اجرا کنید تا تغییرات اعمال بشوند."
+
+#: ../src/python/gahshomar/settings_page.py:94
+#, fuzzy
+msgid "Gahshomar Preferences"
+msgstr "تنظیمات"
+
+#: ../src/python/gahshomar/widgets.py:91
+msgid "%A, %d %B %Y"
+msgstr "%A, %Od %B %OY"
+
+#: ../src/python/gahshomar/widgets.py:198
+msgid "You need at least Gtk 3.12 for cool ui features!"
+msgstr "شما به ‌Gtk 3.12 حداقل نیاز دارید برای امکانات بهتر!"
+
+#: ../src/python/gahshomar/widgets.py:243
+msgid "%Y"
+msgstr "%OY"
 
 #~ msgid "Persian date format"
 #~ msgstr "فرمت تاریخ فارسی"
@@ -105,27 +246,6 @@ msgstr "تقویم. فارسی. گاهشمار . جلالی."
 
 #~ msgid "Window maximized state."
 #~ msgstr "حالت پنجره تمام صفحه"
-
-#~ msgid "Mon"
-#~ msgstr "۲ش"
-
-#~ msgid "Tue"
-#~ msgstr "۳ش"
-
-#~ msgid "Wed"
-#~ msgstr "۴ش"
-
-#~ msgid "Thu"
-#~ msgstr "۵ش"
-
-#~ msgid "Fri"
-#~ msgstr "آ"
-
-#~ msgid "Sat"
-#~ msgstr "ش"
-
-#~ msgid "Sun"
-#~ msgstr "۱ش"
 
 #~ msgid "Copyright © 2014 Gahshomar Developers"
 #~ msgstr "کپی رایت © 2014 گاهشمار توسعه دهندگان"
@@ -205,8 +325,7 @@ msgstr "تقویم. فارسی. گاهشمار . جلالی."
 #~ msgid ""
 #~ "How often should the app update its date (in Seconds). 5 should be a good "
 #~ "value."
-#~ msgstr ""
-#~ "چند وقت یکبار باید برنامه تاریخ به روز رسانی آن (در ثانیه). 5 باید مقدار "
+#~ msgstr "چند وقت یکبار باید برنامه تاریخ به روز رسانی آن (در ثانیه). 5 باید مقدار "
 #~ "خوبی باشد."
 
 #~ msgid "Update Frequency"

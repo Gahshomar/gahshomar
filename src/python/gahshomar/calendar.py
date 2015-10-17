@@ -16,14 +16,26 @@
 # You should have received a copy of the GNU General Public License along
 # with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
+logger = logging.getLogger(__name__)
 import calendar
 from calendar import Calendar, monthrange
 import datetime
-# from gettext import gettext as _
+from gi.repository import GLib
+from gettext import gettext as _
 
 import gahshomar.khayyam as khayyam
 from . import log
 
+
+@log
+def glib_strftime(frm, odate):
+    if isinstance(odate, datetime.date):
+        date = GLib.DateTime.new_local(odate.year, odate.month, odate.day,
+                                       0, 0, 0)
+        return date.format(_(frm))
+    else:
+        return odate.strftime(frm.replace('O', ''))
 
 @log
 def add_years(date, years):
@@ -147,7 +159,7 @@ class MyCalendar(Calendar):
                 # else:
                 #     text = '<span fgcolor="gray">{}</span>'
                 text = '{}'
-                d = date.strftime('%d')
+                d = glib_strftime(_('%d'), date)
                 if d[0] == '0' or d[0] == '۰':
                     d = d[1:]
                 self.grid_mat[j][i] = (date, text.format(d))
@@ -162,7 +174,6 @@ class PersianCalendar(MyCalendar):
         if date is None:
             date = khayyam.JalaliDate.today()
         date = self.get_date(date)
-        # print(date, date.strftime('%d'))
         self.date = date
         self.first_week_day_offset = 2
 
@@ -177,10 +188,10 @@ class PersianCalendar(MyCalendar):
 
     @log
     def get_week_days(self):
-        return [('ش', 'شنبه'), ('۱ش', 'یک‌شنبه'),
-                ('۲ش', 'دو‌شنبه'), ('۳ش', 'سه‌شنبه'),
-                ('۴ش', 'چهار‌شنبه'), ('۵ش', 'پنج‌شنبه'),
-                ('آ', 'آدینه')]
+        return [(_('ش'), _('شنبه')), (_('۱ش'), _('یک‌شنبه')),
+                (_('۲ش'), _('دو‌شنبه')), (_('۳ش'), _('سه‌شنبه')),
+                (_('۴ش'), _('چهار‌شنبه')), (_('۵ش'), _('پنج‌شنبه')),
+                (_('آ'), _('آدینه'))]
 
     @log
     def get_months(self):
@@ -209,10 +220,10 @@ class GeorgianCalendar(MyCalendar):
 
     @log
     def get_week_days(self):
-        return [('Mon', 'Monday'), ('Tue', 'Tuesday'),
-                ('Wed', 'Wednesday'), ('Thu', 'Thursday'),
-                ('Fri', 'Friday'), ('Sat', 'Saturday'),
-                ('Sun', 'Sunday')]
+        return [(_('Mon'), _('Monday')), (_('Tue'), _('Tuesday')),
+                (_('Wed'), _('Wednesday')), (_('Thu'), _('Thursday')),
+                (_('Fri'), _('Friday')), (_('Sat'), _('Saturday')),
+                (_('Sun'), _('Sunday'))]
 
     @log
     def get_months(self):

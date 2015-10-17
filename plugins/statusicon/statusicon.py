@@ -7,7 +7,7 @@ from gi.repository import GObject, Peas, Gtk, Gio, GLib
 # , Gdk
 # import cairo
 
-from gahshomar import log
+from gahshomar import log, calendar
 import gahshomar.khayyam as khayyam
 
 
@@ -78,7 +78,8 @@ class StatusIconPlugin(GObject.Object, Peas.Activatable):
     def get_date_formatted(self, frmt=None):
         if frmt is None:
             frmt = self.date_format
-        text = khayyam.JalaliDate.from_date(self.date).strftime(frmt)
+        text = calendar.glib_strftime(frmt,
+                                      khayyam.JalaliDate.from_date(self.date))
         if text[0] == '0' or text[0] == '۰':
             text = text[1:]
         return text
@@ -93,7 +94,7 @@ class StatusIconPlugin(GObject.Object, Peas.Activatable):
         date_formatted = self.get_date_formatted()
         self.statusicon.set_tooltip_text(date_formatted)
         self.today_item.set_label(date_formatted)
-        day = self.get_date_formatted('%d')
+        day = self.get_date_formatted(_('%d'))
         # pixbuf = self.put_text(self.pixbuf, str(int(day)), 7, 3)
         # self.statusicon.set_from_pixbuf(pixbuf)
 

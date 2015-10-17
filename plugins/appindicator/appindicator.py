@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 
 from gi.repository import GObject, Peas, Gtk, Gio, GLib
 
-from gahshomar import log
+from gahshomar import log, calendar
 import gahshomar.khayyam as khayyam
 
 
@@ -66,7 +66,8 @@ class AppindicatorPlugin(GObject.Object, Peas.Activatable):
     def get_date_formatted(self, frmt=None):
         if frmt is None:
             frmt = self.date_format
-        text = khayyam.JalaliDate.from_date(self.date).strftime(frmt)
+        text = calendar.glib_strftime(frmt,
+                                      khayyam.JalaliDate.from_date(self.date))
         if text[0] == '0' or text[0] == '۰':
             text = text[1:]
         return text
@@ -79,7 +80,7 @@ class AppindicatorPlugin(GObject.Object, Peas.Activatable):
     def update(self):
         self.date = datetime.date.today()
         self.today_item.set_label(_(self.get_date_formatted()))
-        self.ind.set_label(_(self.get_date_formatted('%d')), _('Gahshomar'))
+        self.ind.set_label(_(self.get_date_formatted(_('%d'))), _('Gahshomar'))
 
         # make sure to return True so that it keeps updating
         return True
