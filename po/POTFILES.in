@@ -5,12 +5,10 @@ data/app-menu.ui
 data/calendar-widget.ui
 data/day-widget.ui
 data/gahshomar.appdata.xml.in
-data/gahshomar.appdata.xml.in.h
 data/gahshomar.desktop.in
-data/gahshomar.desktop.in.h
 data/months-widget.ui
 data/prefs.ui
-frontend/applet/gnome-shell/extension.js
+frontend/applet/gnome-shell/extension.js.in
 plugins/appindicator/appindicator.py
 plugins/main/main.py
 plugins/statusicon/statusicon.py

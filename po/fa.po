@@ -47,7 +47,6 @@ msgstr "تقویم. فارسی. گاهشمار . جلالی."
 #. add popopMenuItem
 #: ../frontend/applet/gnome-shell/extension.js:39
 #: ../frontend/applet/gnome-shell/extension.js:94
-#, fuzzy
 msgid "Open Gahshomar"
 msgstr "گاه شمار"
 
@@ -55,9 +54,8 @@ msgstr "گاه شمار"
 #: ../frontend/applet/gnome-shell/extension.js:125
 #: ../plugins/appindicator/appindicator.py:57
 #: ../plugins/statusicon/statusicon.py:69
-#, fuzzy
 msgid "Quit"
-msgstr "_خروج"
+msgstr "خروج"
 
 #: ../plugins/appindicator/appindicator.py:53
 #: ../plugins/statusicon/statusicon.py:65 ../src/python/gahshomar/window.py:128
@@ -204,9 +202,8 @@ msgid "You need to restart the application for changes to take effect"
 msgstr "باید برنامه را مجدد اجرا کنید تا تغییرات اعمال بشوند."
 
 #: ../src/python/gahshomar/settings_page.py:94
-#, fuzzy
 msgid "Gahshomar Preferences"
-msgstr "تنظیمات"
+msgstr "تنظیمات گاه‌شمار"
 
 #: ../src/python/gahshomar/widgets.py:91
 msgid "%A, %d %B %Y"

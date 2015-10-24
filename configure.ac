@@ -101,6 +101,7 @@ data/AboutDialog.ui
 help/Makefile
 po/Makefile.in
 frontend/applet/gnome-shell/Makefile
+frontend/applet/gnome-shell/extension.js
 plugins/main/Makefile
 plugins/appindicator/Makefile
 plugins/statusicon/Makefile

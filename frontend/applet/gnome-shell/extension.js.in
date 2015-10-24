@@ -157,7 +157,7 @@ let _indicator;
 
 function init(extensionMeta) {
   // gahshomarUserExtensionLocalePath = extensionMeta.path + '/locale';
-  gahshomarUserExtensionLocalePath = '${prefix}/share/locale';
+  gahshomarUserExtensionLocalePath = '@localedir@';
 }
 
 function enable() {
