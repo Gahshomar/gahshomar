@@ -1,7 +1,7 @@
 # Maintainer: Amir Mohammadi <183.amir@gmail.com>
 pkgname=gahshomar
-pkgver=4.3.4
-pkgrel=2
+pkgver=4.4.0
+pkgrel=1
 pkgdesc="A Persian (Jalali/Farsi) calendar"
 arch=(i686 x86_64)
 url="https://gahshomar.github.io/gahshomar/"
@@ -14,7 +14,7 @@ optdepends=('libappindicator-gtk3: for the app indicator plugin'
 			'gnome-shell: for the gnome-shell extension')
 install=gahshomar.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/Gahshomar/gahshomar/releases/download/v$pkgver/gahshomar-$pkgver.tar.gz)
-md5sums=('a00a62769064db1b4baba708c1710989')
+md5sums=('de24df8aabd349d407745be3ecb0a38b')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
