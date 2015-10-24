@@ -1,14 +1,23 @@
 Name:           gahshomar
 Version:        4.4.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Persian (Jalali/Farsi) calendar
 
 License:        GPLv3+
 URL:            https://gahshomar.github.io/gahshomar/
 Source:         %{name}-%{version}.tar.gz
 
-BuildRequires:  yelp-tools gcc intltool itstool gtk+-devel glib2-devel libpeas-devel libjalali-devel python3-devel
-Requires:       libpeas libjalali python3-gobject
+BuildRequires:  yelp-tools gcc intltool itstool libpeas-devel libjalali-devel python3-devel
+BuildRequires:  pkgconfig(glib-2.0) >= 2.34.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
+# not really required but skips errors in opensuse build system.
+BuildRequires:  gnome-shell
+Requires:       libpeas python3-gobject
+%if 0%{?suse_version}
+Requires:       libjalali0
+%else
+Requires:       libjalali
+%endif
 Recommends:	libappindicator-gtk3
 
 
@@ -30,7 +39,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%doc README COPYING ChangeLog AUTHORS NEWS
+/usr/share/doc/gahshomar/
 %{_bindir}/*
 %{_mandir}/man1/*
 %{_datadir}/appdata/%{name}.appdata.xml
@@ -39,6 +48,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/gnome-shell/extensions/%{name}@org.gahshomar.gahshomar/
 %{_datadir}/help/C/%{name}/
 %{_datadir}/icons/*/*/apps/*
+%{_datadir}/icons/HighContrast/64x64
+%{_datadir}/icons/HighContrast/96x96
 %{_datadir}/locale/*/LC_MESSAGES/*
 %{_libdir}/%{name}/
 %{python3_sitelib}/%{name}/
