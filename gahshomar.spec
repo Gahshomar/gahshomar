@@ -1,6 +1,6 @@
 Name:           gahshomar
-Version:        4.4.0
-Release:        2%{?dist}
+Version:        4.4.1
+Release:        0%{?dist}
 Summary:        A Persian (Jalali/Farsi) calendar
 
 License:        GPLv3+
