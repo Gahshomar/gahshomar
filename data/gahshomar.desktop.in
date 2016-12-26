@@ -6,6 +6,6 @@ Icon=gahshomar
 Exec=gahshomar
 Terminal=false
 Type=Application
-Categories=Accessories;Productivty;Calendar;
+Categories=X-Accessories;X-Productivty;Calendar;
 _Keywords=Calendar;Persian;Gahshomar;Jalali;
 StartupNotify=true
