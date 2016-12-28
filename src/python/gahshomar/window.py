@@ -160,8 +160,12 @@ class Window(Gtk.ApplicationWindow):
         # day = khayyam.JalaliDate.today().day
         try:
             icon_theme = Gtk.IconTheme.get_default()
-            sizes = icon_theme.get_icon_sizes('gahshomar')
-            icon_list = [icon_theme.load_icon('gahshomar', s, 0) for s in sizes]
+            try:
+                sizes = icon_theme.get_icon_sizes('gahshomar')
+                icon_list = [icon_theme.load_icon('gahshomar', s, 0) for s in sizes]
+            except Exception:
+                sizes = icon_theme.get_icon_sizes('org.gahshomar.Gahshomar')
+                icon_list = [icon_theme.load_icon('org.gahshomar.Gahshomar', s, 0) for s in sizes]
             self.set_default_icon_list(icon_list)
             # icon = Gtk.IconTheme.load_icon(
             #     Gtk.IconTheme(),
