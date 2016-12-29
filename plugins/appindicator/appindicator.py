@@ -36,7 +36,7 @@ class AppindicatorPlugin(GObject.Object, Peas.Activatable):
 
         self.ind = appindicator.Indicator.new(
             "GahShomar-indicator",
-            'gahshomar-no-icon',
+            'org.gahshomar.Gahshomar-no-icon',
             appindicator.IndicatorCategory.APPLICATION_STATUS)
         self.ind.set_status(appindicator.IndicatorStatus.ACTIVE)
 
