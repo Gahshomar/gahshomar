@@ -28,6 +28,30 @@ from . import log
 AUTOSTART_DESKTOPFILE_PATH = os.path.join(GLib.get_user_config_dir(),
                                           'autostart/gahshomar.desktop')
 
+DESKTOP_FILE = '''[Desktop Entry]
+Name=Gahshomar
+Comment=View Georgian and Persian calendars
+Icon=gahshomar
+Exec=gahshomar -m
+Terminal=false
+Type=Application
+Categories=X-Accessories;X-Productivty;Calendar;
+StartupNotify=true
+'''
+if 'flatpak' in os.environ.get('_', ''):
+    AUTOSTART_DESKTOPFILE_PATH = os.path.join(GLib.get_user_config_dir(),
+                                              'autostart/org.gahshomar.Gahshomar.desktop')
+    DESKTOP_FILE = '''[Desktop Entry]
+Name=Gahshomar
+Comment=View Georgian and Persian calendars
+Icon=org.gahshomar.Gahshomar
+Exec=flatpak run --command=gahshomar org.gahshomar.Gahshomar -m
+Terminal=false
+Type=Application
+Categories=X-Accessories;X-Productivty;Calendar;
+StartupNotify=true
+'''
+
 
 class Handler(object):
     """docstring for Handler"""
@@ -53,16 +77,7 @@ class Handler(object):
                 except Exception:
                     logger.debug('', exc_info=True)
                 with open(AUTOSTART_DESKTOPFILE_PATH, 'w') as f:
-                    f.write('''[Desktop Entry]
-Name=Gahshomar
-Comment=View Georgian and Persian calendars
-Icon=gahshomar
-Exec=gahshomar -m
-Terminal=false
-Type=Application
-Categories=GNOME;GTK;Productivty;Calendar;
-StartupNotify=true
-''')
+                    f.write(DESKTOP_FILE)
             except Exception:
                 logger.warning('', exc_info=True)
             startup_switch.set_active(True)
