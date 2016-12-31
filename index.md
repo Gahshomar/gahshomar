@@ -13,7 +13,9 @@ Screenshot
 Feaures
 ================
 A main interface useful for converting dates between calendars.
+
 Several front-ends for displaying the current date on your desktop:
+
   * A Gnome Shell extension (Must be activated after installation in Gnome tweak tool).
   * An Appindicator icon to be used in enviornments like Unity or KDE (Must be activated after installation in preferences of Gahshomar).
   * A Systray icon to be used in enviornments like XFCE or Mate (Must be activated after installation in preferences of Gahshomar).
@@ -25,4 +27,4 @@ See the [Wiki](https://github.com/Gahshomar/gahshomar/wiki/Installation)
 
 Support or Contact
 ================
-Having troubles? Fill an issue at *https://github.com/Gahshomar/gahshomar/issues*.
+Having troubles? [Fill an issue](https://github.com/Gahshomar/gahshomar/issues).
