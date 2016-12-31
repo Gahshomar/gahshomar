@@ -1,13 +1,14 @@
 Gahshomar (گاه‌شمار)
 ================
 A Persian (Jalali/Farsi) calendar. The calendar provides a main interface for easily
-converting dates between Iranian and Georgian calendar. Also, an appindicator and a
-Gnome-shell extension is provided to keep track of the date in Iranian calendar system.
+converting dates between Iranian and Gregorian calendar. Also, an appindicator and a
+Gnome-shell extension is provided to keep track of the date in the Iranian calendar system.
 
 
 Screenshot
 ================
-![screenshot](https://raw.githubusercontent.com/Gahshomar/gahshomar/master/data/Screenshot.png)
+![Gnome](https://raw.githubusercontent.com/Gahshomar/gahshomar/master/data/Screenshot-Gnome.png)
+![Unity](https://raw.githubusercontent.com/Gahshomar/gahshomar/master/data/Screenshot-Unity.png)
 
 Feaures
 ================
