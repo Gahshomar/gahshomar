@@ -1,0 +1,198 @@
+{
+    "app-id": "org.gahshomar.Gahshomar",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "3.22",
+    "sdk": "org.gnome.Sdk",
+    "command": "gahshomar",
+    "rename-icon": "gahshomar",
+    "copy-icon": true,
+    "rename-desktop-file": "gahshomar.desktop",
+    "rename-appdata-file": "gahshomar.appdata.xml",
+    "desktop-file-name-suffix": " (Flatpak)",
+    "finish-args": [
+        /* X11 + XShm access */
+        "--share=ipc", "--socket=x11",
+        /* Wayland access */
+        "--socket=wayland",
+        /* libappindicator access */
+        "--socket=session-bus",
+        /* Needed for autostart to work */
+        "--filesystem=xdg-config/autostart:create",        
+        /* Needed for dconf to work */
+        "--filesystem=xdg-run/dconf", "--filesystem=~/.config/dconf:ro",
+        "--talk-name=ca.desrt.dconf", "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {
+            "V": "1"
+        }
+    },
+    "cleanup": ["/include", "/lib/pkgconfig",
+                "/share/pkgconfig", "/share/aclocal",
+                "/man", "/share/man", "/share/gtk-doc",
+                "/share/vala",
+                "*.la", "*.a"],
+    "modules": [
+        {
+            "name": "gahshomar",
+            "sources": [
+                {
+                    "type": "git",
+                    "path": "."
+                }
+            ],
+            "modules": [
+                {
+                    "name": "jcal",
+                    "subdir": "sources",
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/ashkang/jcal.git"
+                        }
+                    ]
+                },
+                {
+                    "name": "libpeas",
+                    "cleanup": [ "/bin/*", "/lib/peas-demo" ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://download.gnome.org/sources/libpeas/1.20/libpeas-1.20.0.tar.xz",
+                            "sha256": "f392fffe2dc00072a51bb2a1b274224a06bdc5f9c3b3c0ac4816909e9933d354"
+                        }
+                    ]
+                },
+                {
+                    "name": "libappindicator",
+                    "config-opts": [ "-disable-static", "--disable-tests", "--disable-gtk-doc", "--enable-introspection=yes", "--with-gtk=3"],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://launchpad.net/libappindicator/12.10/12.10.0/+download/libappindicator-12.10.0.tar.gz",
+                            "sha256": "d5907c1f98084acf28fd19593cb70672caa0ca1cf82d747ba6f4830d4cc3b49f"
+                        }
+                    ],
+                    "modules": [
+                        {
+                            "name": "gnome-doc-utils",
+                            "sources": [
+                                {
+                                    "type": "archive",
+                                    "url": "http://ftp.gnome.org/pub/GNOME/sources/gnome-doc-utils/0.20/gnome-doc-utils-0.20.10.tar.xz",
+                                    "sha256": "cb0639ffa9550b6ddf3b62f3b1add92fb92ab4690d351f2353cffe668be8c4a6"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "libdbusmenu",
+                            "config-opts": [ "--with-gtk=3", "-disable-static", "--disable-tests", "--disable-gtk-doc", "--disable-doc", "--disable-dumper", "--enable-introspection=no", "--disable-vala"],
+                            "build-options" : {
+                                "env": {
+                                    "HAVE_VALGRIND_TRUE": "'#'",
+                                    "HAVE_VALGRIND_FALSE": "''"
+                                }
+                            },
+                            "sources": [
+                                {
+                                    "type": "archive",
+                                    "url": "https://launchpad.net/libdbusmenu/12.10/12.10.2/+download/libdbusmenu-12.10.2.tar.gz",
+                                    "sha256": "9d6ad4a0b918b342ad2ee9230cce8a095eb601cb0cee6ddc1122d0481f9d04c9"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "libindicator",
+                            "config-opts": [ "--with-gtk=3", "-disable-static", "--disable-tests", "--disable-gtk-doc"],
+                            "sources": [
+                                {
+                                    "type": "archive",
+                                    "url": "https://launchpad.net/libindicator/12.10/12.10.1/+download/libindicator-12.10.1.tar.gz",
+                                    "sha256": "b2d2e44c10313d5c9cd60db455d520f80b36dc39562df079a3f29495e8f9447f"
+                                },
+                                {
+                                    "type": "shell",
+                                    "commands": [
+                                          "sed '/-Werror/s/$/ -Wno-deprecated-declarations/' -i libindicator/Makefile.{am,in}",
+                                          "sed 's/LIBINDICATOR_LIBS+=\"$LIBM\"/LIBINDICATOR_LIBS+=\" $LIBM\"/g' -i configure",
+                                          "sed 's/LIBM=\"-lmw\"/LIBM=\" -lmw\"/g' -i configure",
+                                          "sed 's/LIBM=\"-lm\"/LIBM=\" -lm\"/g' -i configure",
+                                          "sed 's/LIBS=\"-lm  $LIBS\"/LIBS=\" -lm  $LIBS\"/g' -i configure",
+                                          "sed 's/LIBS=\"-lmw  $LIBS\"/LIBS=\" -lmw  $LIBS\"/g' -i configure"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "name": "dee",
+                            "sources": [
+                                {
+                                    "type": "archive",
+                                    "url": "https://launchpad.net/dee/1.0/1.2.7/+download/dee-1.2.7.tar.gz",
+                                    "sha256": "1bf0336ce684aa0f48d6eae2469628c1a9b43695a77443bc31a5790aa673bf8a"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "dbus-glib",
+                            "config-opts": [ "--disable-static", "--disable-gtk-doc" ],
+                            "sources": [
+                                {
+                                    "type": "git",
+                                    "url": "git://anongit.freedesktop.org/dbus/dbus-glib"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "py2cairo",
+                            "rm-configure": true,
+                            "sources": [
+                                {
+                                    "type": "archive",
+                                    "url": "http://cairographics.org/releases/py2cairo-1.10.0.tar.bz2",
+                                    "sha256": "d30439f06c2ec1a39e27464c6c828b6eface3b22ee17b2de05dc409e429a7431"
+                                },
+                                {
+                                    "type": "script",
+                                    "commands": [
+                                        "libtoolize --force",
+                                        "aclocal",
+                                        "autoheader",
+                                        "automake --force-missing --add-missing --foreign",
+                                        "autoconf"
+                                    ],
+                                    "dest-filename": "autogen.sh"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "pygobject",
+                            "config-opts": [ "--disable-introspection" ],
+                            "cleanup": [ "/bin", "/share/pygobject/2.0/codegen" ],
+                            "sources": [
+                                {
+                                    "type": "archive",
+                                    "url": "http://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.6.tar.xz",
+                                    "sha256": "fb8a1d4f665130a125011659bd347c7339c944232163dbb9a34fd0686577adb8"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "pygtk",
+                            "cleanup": [ "/bin", "/lib/pygtk" ],
+                            "sources": [
+                                {
+                                    "type": "archive",
+                                    "url": "http://ftp.gnome.org/pub/GNOME/sources/pygtk/2.24/pygtk-2.24.0.tar.gz",
+                                    "sha256": "6e3e54fa6e65a69ac60bd58cb2e60a57f3346ac52efe995f3d10b6c38c972fd8"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
