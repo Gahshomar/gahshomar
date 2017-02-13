@@ -1,5 +1,5 @@
 Name:           gahshomar
-Version:        4.4.1
+Version:        4.5.0
 Release:        0%{?dist}
 Summary:        A Persian (Jalali/Farsi) calendar
 
