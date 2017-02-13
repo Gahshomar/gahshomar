@@ -6,6 +6,11 @@
             <summary>Persian date format</summary>
             <description>The way that full date is displayed.</description>
         </key>
+        <key type="s" name="afghan-date-format">
+            <default>"%A، %d %G %Y"</default>
+            <summary>Afghan date format</summary>
+            <description>The way that full date is displayed.</description>
+        </key>
         <key type="s" name="georgian-date-format">
             <default>"%A, %d %B %Y"</default>
             <summary>Georgian date format</summary>
@@ -25,6 +30,11 @@
             <default>true</default>
             <summary>Whether to use a headerbar</summary>
             <description>Enabling this will the app to show a header-bar. Otherwise, it will show a tool-bar.</description>
+        </key>
+        <key type="b" name="afghan-month">
+            <default>false</default>
+            <summary>Whether to use Afghan month names</summary>
+            <description>Enabling this will show the month names in Dari (Afghan Persian).</description>
         </key>
         <key type="b" name="start-minimized">
             <default>false</default>

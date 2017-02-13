@@ -31,7 +31,10 @@ class AppindicatorPlugin(GObject.Object, Peas.Activatable):
         self.app = self.object
 
         self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
-        self.date_format = str(self.settings.get_value('persian-date-format'))
+        if bool(self.settings.get_value('afghan-month')):
+            self.date_format = str(self.settings.get_value('afghan-date-format'))
+        else:
+            self.date_format = str(self.settings.get_value('persian-date-format'))
         self.date_format = self.date_format.replace("'", "")
 
         self.ind = appindicator.Indicator.new(

@@ -31,82 +31,75 @@ const Gahshomar = new Lang.Class({
         this._interface_name = 'org.gahshomar.Api';
         this._alive = false;
         // add day label
-        this.label = new St.Label({y_expand: true,
-                                   y_align: Clutter.ActorAlign.CENTER });
+        this.label = new St.Label({
+            y_expand: true,
+            y_align: Clutter.ActorAlign.CENTER
+        });
         this.actor.add_actor(this.label);
 
         // add popopMenuItem
         this.popopMenuItemDate = new PopupMenu.PopupMenuItem(_('Open Gahshomar'));
-	    this.popopMenuItemDate.connect('activate', Lang.bind(this, this._onDatePressed));
+        _popopMenuItemDateId = this.popopMenuItemDate.connect('activate', Lang.bind(this, this._onDatePressed));
         this.menu.addMenuItem(this.popopMenuItemDate);
 
         this.popopMenuItemQuit = new PopupMenu.PopupMenuItem('');
-	    this.popopMenuItemQuit.connect('activate', Lang.bind(this, this._onQuitPressed));
+        _popopMenuItemQuitId = this.popopMenuItemQuit.connect('activate', Lang.bind(this, this._onQuitPressed));
         this.menu.addMenuItem(this.popopMenuItemQuit);
 
         this.actor.connect('destroy', Lang.bind(this, this._onDestroy));
 
-        MainLoop.timeout_add(1000,
+        this._connectId = MainLoop.timeout_add(1000,
             Lang.bind(this, this._connect));
     },
 
-    _connect: function(){
-    	try {
-	        Gio.DBus.session.watch_name(this._bus_name,
-	            Gio.BusNameWatcherFlags.NONE, // no auto launch
-	            Lang.bind(this, this._onGahshomarAppeared),
-	            Lang.bind(this, this._onGahshomarVanished));
-	        return false
-    	}
-    	catch(err){
-    		return true
-    	}
-
-    },
-
-    _start: function()
-    {
-    if (! this._alive)
-    {
-        // this._proxy = Gio.DBusProxy.new_for_bus_sync(Gio.BusType.SESSION,
-        // 	Gio.DBusProxyFlags.NONE, null, this._bus_name, this._object_path,
-        // 	this._interface_name, null)
-		this._proxy = new ApiProxy(Gio.DBus.session, this._bus_name,
-			this._object_path);
-        this._actions_proxy = new ActionsProxy(Gio.DBus.session, this._bus_name,
-            this._object_path);
-        this._app_proxy = new AppProxy(Gio.DBus.session, this._bus_name,
-            this._object_path);
-        this._alive = true;
-        this._timeoutId = MainLoop.timeout_add(5000,
-            Lang.bind(this, this._update));
-        this._update()
-    }
-    },
-
-    _stop: function()
-    {
-        if (this._alive)
-        {
-         MainLoop.source_remove(this._timeoutId);
-         this._alive = false;
-         this.label.set_text('')
-         this.popopMenuItemDate.label.set_text(_('Open Gahshomar'))
-         this.popopMenuItemQuit.label.set_text('')
+    _connect: function() {
+        try {
+            Gio.DBus.session.watch_name(this._bus_name,
+                Gio.BusNameWatcherFlags.NONE, // no auto launch
+                Lang.bind(this, this._onGahshomarAppeared),
+                Lang.bind(this, this._onGahshomarVanished));
+            return false
+        } catch (err) {
+            return true
         }
-     },
+
+    },
+
+    _start: function() {
+        if (!this._alive) {
+            this._proxy = new ApiProxy(Gio.DBus.session, this._bus_name,
+                this._object_path);
+            this._actions_proxy = new ActionsProxy(Gio.DBus.session, this._bus_name,
+                this._object_path);
+            this._app_proxy = new AppProxy(Gio.DBus.session, this._bus_name,
+                this._object_path);
+            this._alive = true;
+            this._timeoutId = MainLoop.timeout_add(5000,
+                Lang.bind(this, this._update));
+            this._update()
+        }
+    },
+
+    _stop: function() {
+        if (this._alive) {
+            MainLoop.source_remove(this._timeoutId);
+            this._alive = false;
+            this.label.set_text('')
+            this.popopMenuItemDate.label.set_text(_('Open Gahshomar'))
+            this.popopMenuItemQuit.label.set_text('')
+        }
+    },
 
     _onGahshomarAppeared: function(owner) {
-    	this._start();
+        this._start();
     },
 
     _onGahshomarVanished: function(oldOwner) {
-    	this._stop();
+        this._stop();
     },
 
     _onTimer: function() {
-        if (! this._alive)
-        {
+        if (!this._alive) {
             return false;
         }
         this._update()
@@ -121,52 +114,49 @@ const Gahshomar = new Lang.Class({
         this.label.set_text(text)
         text = this._proxy.GetDateSync()[0]
         this.popopMenuItemDate.label.set_text(text)
-        // text = this._proxy.GetQuitStringSync()[0]
         this.popopMenuItemQuit.label.set_text(_('Quit'))
-        // this.popopMenuItemQuit.label.set_text(gahshomarUserExtensionLocalePath)
     },
 
-    _onDestroy: function() 
-    {
-		this._stop();
-		this._destroy();
+    _onDestroy: function() {
+        this._stop();
+        this._destroy();
     },
 
     _destroy: function() {
-		this._proxy = null;
+        this._proxy = null;
+        this.popopMenuItemDate.disconnect(_popopMenuItemDateId);
+        this.popopMenuItemQuit.disconnect(_popopMenuItemQuitId);
+        MainLoop.source_remove(this._connectId);
         this.actor.destroy();
     },
 
     _onDatePressed: function() {
-        if (! this._alive)
-        {
+        if (!this._alive) {
             return false;
-        }
-        else
-        {
+        } else {
             this._app_proxy.ActivateSync({})
         }
     },
 
     _onQuitPressed: function() {
-    	this._actions_proxy.ActivateSync('quit', [], {})
+        this._actions_proxy.ActivateSync('quit', [], {})
     },
 });
 
 let _indicator;
+let _popopMenuItemDateId;
+let _popopMenuItemQuitId;
 
 function init(extensionMeta) {
-  // gahshomarUserExtensionLocalePath = extensionMeta.path + '/locale';
-  gahshomarUserExtensionLocalePath = '@localedir@';
+    Gettext.bindtextdomain("gahshomar", '');
+    Gettext.textdomain("gahshomar");
 }
 
 function enable() {
-  Gettext.bindtextdomain("gahshomar", '');
-  Gettext.textdomain("gahshomar");
-  _indicator = new Gahshomar;
-  Main.panel.addToStatusArea('gahshomar-applet', _indicator);
+    _indicator = new Gahshomar;
+    Main.panel.addToStatusArea('gahshomar-applet', _indicator);
 }
 
 function disable() {
-  _indicator.destroy();
+    _indicator.destroy();
 }

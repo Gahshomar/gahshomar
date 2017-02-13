@@ -101,6 +101,24 @@ class Handler(object):
         warnmsg.run()
         warnmsg.destroy()
 
+    @log
+    def on_AfghanMonthSwitch_active_notify(self, switch, data=None):
+        self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        if switch.get_active():
+            self.settings.set_value('afghan-month',
+                                    GLib.Variant.new_boolean(True))
+        else:
+            self.settings.set_value('afghan-month',
+                                    GLib.Variant.new_boolean(False))
+        warnmsg = Gtk.MessageDialog(
+            text=_('You need to restart the application for changes'
+                   ' to take effect'),
+            message_type=Gtk.MessageType.WARNING,
+            buttons=Gtk.ButtonsType.CLOSE,
+            transient_for=self.app.setting_win)
+        warnmsg.run()
+        warnmsg.destroy()
+
 
 class SettingsWindow(Gtk.Dialog):
     """docstring for SettingsWindow"""
@@ -120,8 +138,10 @@ class SettingsWindow(Gtk.Dialog):
         builder.get_object('GeneralTabBox').show()
         builder.get_object('StartupBox').show_all()
         builder.get_object('HeaderBarBox').show_all()
+        builder.get_object('AfghanMonthBox').show_all()
         self.startup_switch = builder.get_object('StartupSwitch')
         self.header_bar_switch = builder.get_object('HeaderBarSwitch')
+        self.afghan_month_switch = builder.get_object('AfghanMonthSwitch')
 
         # add the plugin manager
         builder.get_object('PluginTabAlign').show()
@@ -148,3 +168,8 @@ class SettingsWindow(Gtk.Dialog):
             self.header_bar_switch.set_active(True)
         else:
             self.header_bar_switch.set_active(False)
+
+        if bool(self.settings.get_value('afghan-month')):
+            self.afghan_month_switch.set_active(True)
+        else:
+            self.afghan_month_switch.set_active(False)

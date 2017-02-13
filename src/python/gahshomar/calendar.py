@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 import calendar
 from calendar import Calendar, monthrange
 import datetime
-from gi.repository import GLib
+from gi.repository import GLib, Gio
 from gettext import gettext as _
 
 import gahshomar.khayyam as khayyam
@@ -195,7 +195,11 @@ class PersianCalendar(MyCalendar):
 
     @log
     def get_months(self):
-        return list(khayyam.jalali_date.PERSIAN_MONTH_NAMES.values())
+        settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        if bool(settings.get_value('afghan-month')):
+            return list(khayyam.AFGHAN_MONTH_NAMES.values())
+        else:
+            return list(khayyam.PERSIAN_MONTH_NAMES.values())
 
 
 class GeorgianCalendar(MyCalendar):

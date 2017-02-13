@@ -17,6 +17,8 @@ from .constants import MAXYEAR, \
     PERSIAN_MONTH_NAMES, \
     PERSIAN_WEEKDAY_ABBRS, \
     PERSIAN_WEEKDAY_NAMES, \
+    AFGHAN_MONTH_ABBRS, \
+    AFGHAN_MONTH_NAMES, \
     SATURDAY
 
 
@@ -186,6 +188,8 @@ Directive    Meaning
 %A           Locale’s full weekday name.     
 %b           Locale’s abbreviated month name.     
 %B           Locale’s full month name.     
+%g           Afghan’s abbreviated month name.
+%G           Afghan’s full month name.
 %d           Day of the month as a decimal number [01,31].     
 %j           Day of the year as a decimal number [001,366].     
 %m           Month as a decimal number [01,12].     
@@ -209,6 +213,9 @@ Directive    Meaning
 
         result = replace_if_match(result, '%b', self.monthabbr)
         result = replace_if_match(result, '%B', self.monthname)
+
+        result = replace_if_match(result, '%g', self.afghanmonthabbr)
+        result = replace_if_match(result, '%G', self.afghanmonthname)
 
         result = replace_if_match(result, '%x', self.localformat)
 
@@ -235,6 +242,12 @@ Directive    Meaning
 
     def monthabbr(self):
         return PERSIAN_MONTH_ABBRS[self.month]
+
+    def afghanmonthname(self):
+        return AFGHAN_MONTH_NAMES[self.month]
+
+    def afghanmonthabbr(self):
+        return AFGHAN_MONTH_ABBRS[self.month]
 
     def localformat(self):
         return '%s %s %s %s' % (self.weekdayname(), self.day, self.monthname(), self.year)
