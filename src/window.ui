@@ -7,13 +7,13 @@
     <property name="default_width">600</property>
     <property name="default_height">300</property>
     <child>
-      <object class="GtkGrid" id="main_grid">
+      <object class="GtkGrid" id="grid">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="column_spacing">18</property>
         <property name="column_homogeneous">True</property>
         <child>
-          <object class="GtkBox" id="persian_main_box">
+          <object class="GtkBox" id="persian_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>
@@ -30,7 +30,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="gregorian_main_box">
+          <object class="GtkBox" id="gregorian_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="orientation">vertical</property>

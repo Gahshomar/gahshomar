@@ -32,6 +32,21 @@ gahshomar_sources = [
   'window.py',
   'date.py',
   'widgets.py',
+  'calendar.py',
 ]
 
 install_data(gahshomar_sources, install_dir: moduledir)
+
+khayyamdir = join_paths(moduledir, 'khayyam')
+khayyam_sources = [
+  'khayyam/algorithms.py',
+  'khayyam/compat.py',
+  'khayyam/constants.py',
+  'khayyam/helpers.py',
+  'khayyam/__init__.py',
+  'khayyam/jalali_date.py',
+  'khayyam/jalali_datetime.py',
+  'khayyam/tehran_timezone.py',
+]
+
+install_data(khayyam_sources, install_dir: khayyamdir)

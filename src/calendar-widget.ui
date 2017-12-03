@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.20.2 -->
 <interface>
-  <requires lib="gtk+" version="3.10"/>
+  <requires lib="gtk+" version="3.20"/>
   <template class="CalendarWidget" parent="GtkBox">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
@@ -12,10 +12,11 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkMenuButton" id="month_menu_button">
+          <object class="GtkMenuButton" id="months_button">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="popover">popover</property>
             <child>
               <object class="GtkLabel" id="month_label">
                 <property name="visible">True</property>
@@ -710,4 +711,11 @@
       </packing>
     </child>
   </template>
+  <object class="GtkPopover" id="popover">
+    <property name="can_focus">False</property>
+    <property name="relative_to">months_button</property>
+    <child>
+      <placeholder/>
+    </child>
+  </object>
 </interface>

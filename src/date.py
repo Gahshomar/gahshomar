@@ -1,6 +1,7 @@
 from gi.repository import GObject
 import datetime
 
+
 class Date(GObject.GObject):
     """The class for representing dates in Gahshomar
     """
@@ -17,6 +18,7 @@ class Date(GObject.GObject):
     @date.setter
     def date(self, value):
         self._date = value
+
 
 # define today
 TODAY = Date(datetime.date.today())
