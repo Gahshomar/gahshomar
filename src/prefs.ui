@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.20.0 -->
+<interface>
+  <requires lib="gtk+" version="3.0"/>
+  <object class="GtkNotebook" id="PreferencesNotebook">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <child>
+      <object class="GtkAlignment" id="GeneralTabAlign">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="top_padding">6</property>
+        <property name="bottom_padding">6</property>
+        <property name="left_padding">6</property>
+        <property name="right_padding">6</property>
+        <child>
+          <object class="GtkBox" id="GeneralTabBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <property name="spacing">12</property>
+            <child>
+              <object class="GtkBox" id="StartupBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="spacing">18</property>
+                <child>
+                  <object class="GtkLabel" id="StartupLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Start Gahshomar at runtime</property>
+                    <property name="ellipsize">middle</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="StartupSwitch">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <signal name="notify::active" handler="on_StartupSwitch_notify_active" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="pack_type">end</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="HeaderBarBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="spacing">18</property>
+                <child>
+                  <object class="GtkLabel" id="HeaderBarLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Enable the header bar</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="HeaderBarSwitch">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <signal name="notify::active" handler="on_HeaderBarSwitch_active_notify" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="pack_type">end</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkBox" id="AfghanMonthBox">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="spacing">18</property>
+                <child>
+                  <object class="GtkLabel" id="AfghanMonthLabel">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">Use Afghan month names</property>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkSwitch" id="AfghanMonthSwitch">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <signal name="notify::active" handler="on_AfghanMonthSwitch_active_notify" swapped="no"/>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="pack_type">end</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="tab_expand">True</property>
+      </packing>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel" id="GeneralTabLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">General</property>
+      </object>
+      <packing>
+        <property name="tab_fill">False</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkAlignment" id="PluginTabAlign">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="top_padding">6</property>
+        <property name="bottom_padding">6</property>
+        <property name="left_padding">6</property>
+        <property name="right_padding">6</property>
+        <child>
+          <object class="GtkBox" id="PluginTabBox">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="orientation">vertical</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+        </child>
+      </object>
+      <packing>
+        <property name="position">1</property>
+        <property name="tab_expand">True</property>
+      </packing>
+    </child>
+    <child type="tab">
+      <object class="GtkLabel" id="PluginTabLabel">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Plugins</property>
+      </object>
+      <packing>
+        <property name="position">1</property>
+        <property name="tab_fill">False</property>
+      </packing>
+    </child>
+  </object>
+</interface>

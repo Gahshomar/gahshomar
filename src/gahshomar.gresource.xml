@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/Gahshomar">
+    <file>window.ui</file>
+    <file>day-widget.ui</file>
+    <file>months-widget.ui</file>
+    <file>calendar-widget.ui</file>
+  </gresource>
+</gresources>
