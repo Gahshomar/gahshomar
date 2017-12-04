@@ -18,17 +18,14 @@
 
 import logging
 import calendar
-from calendar import Calendar, monthrange
 import datetime
 from gi.repository import GLib, Gio, GObject
 from gettext import gettext as _
 
 import gahshomar.khayyam as khayyam
-from . import log
 logger = logging.getLogger(__name__)
 
 
-@log
 def glib_strftime(frm, odate):
     if isinstance(odate, datetime.date):
         date = GLib.DateTime.new_local(odate.year, odate.month, odate.day,
@@ -38,7 +35,6 @@ def glib_strftime(frm, odate):
         return odate.strftime(frm.replace('O', ''))
 
 
-@log
 def add_years(date, years):
     while True:
         try:
@@ -47,21 +43,18 @@ def add_years(date, years):
             date -= datetime.timedelta(days=1)
 
 
-@log
 def date_to_georgian(date):
     if isinstance(date, khayyam.JalaliDate):
         return date.to_date()
     return date
 
 
-@log
 def date_to_jalali(date):
     if isinstance(date, khayyam.JalaliDate):
         return date
     return khayyam.JalaliDate.from_date(date)
 
 
-@log
 def add_one_month(t):
     """Return a `datetime.date` or `datetime.datetime` (as given) that is
     one month earlier.
@@ -86,7 +79,6 @@ def add_one_month(t):
     return one_month_later
 
 
-@log
 def subtract_one_month(t):
     """Return a `datetime.date` or `datetime.datetime` (as given) that is
     one month later.
@@ -105,7 +97,6 @@ def subtract_one_month(t):
     return one_month_earlier
 
 
-@log
 def add_months(date, months):
     '''http://code.activestate.com/recipes/
     577274-subtract-or-add-a-month-to-a-datetimedate-or-datet/
@@ -122,10 +113,9 @@ def add_months(date, months):
     return date
 
 
-class Date(GObject.GObject, Calendar):
+class Date(GObject.GObject):
     """The class for representing dates in Gahshomar
     """
-    __gtype_name__ = 'GahshomarDate'
 
     def __init__(self, date=None, **kwargs):
         self._date = date
@@ -137,10 +127,7 @@ class Date(GObject.GObject, Calendar):
 
     @date.setter
     def date(self, value):
-        self._date = date_to_georgian(value)
-
-    def on_date_changed(self, object):
-        self.date = object.date
+        self._date = self.to_correct_date(value)
 
     @property
     def first_day_month(self):
@@ -159,12 +146,12 @@ class Date(GObject.GObject, Calendar):
         else:
             rows = 5
 
-        self.grid_mat = []  # 5 or 6 row, 7 column
+        grid_mat = []  # 5 or 6 row, 7 column
         for __ in range(rows):
             row = []
             for __ in range(7):
                 row.append([])
-            self.grid_mat.append(row)
+            grid_mat.append(row)
         delta = - (self.first_day_month + self.date.day) + 1
         for j in range(rows):
             for i in range(7):
@@ -177,11 +164,47 @@ class Date(GObject.GObject, Calendar):
                 d = glib_strftime(_('%d'), date)
                 if d[0] == '0' or d[0] == '۰':
                     d = d[1:]
-                self.grid_mat[j][i] = (date, text.format(d))
+                grid_mat[j][i] = (date, text.format(d))
+        return grid_mat
+
+    @property
+    def year(self):
+        return self.date.year
+
+    @property
+    def month(self):
+        return self.date.month
+
+    @property
+    def day(self):
+        return self.date.day
 
     @property
     def full_date(self):
-        return calendar.glib_strftime(self.date_format, self.date)
+        return glib_strftime(self.date_format, self.date)
+
+    def strftime(self, date_format):
+        return glib_strftime(date_format, self.date)
+
+    def today(self):
+        return self.to_correct_date(datetime.date.today())
+
+    def add_months(self, n):
+        return add_months(self.date, n)
+
+    def add_years(self, n):
+        return add_years(self.date, n)
+
+    def replace(self, *args, **kwargs):
+        return self.date.replace(*args, **kwargs)
+
+    def on_date_changed(self, object, *args):
+        self.date = object.date
+
+    def on_update_to_today(self, *args):
+        self.date = self.today()
+        # return True so the timeout keeps continuing
+        return True
 
 
 class GeorgianDate(Date):
@@ -190,14 +213,14 @@ class GeorgianDate(Date):
         date = date_to_georgian(date or datetime.date.today())
         self.first_week_day_offset = 0
         self.rtl = False
-        settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        settings = Gio.Settings.new('org.gnome.Gahshomar')
         self.date_format = str(settings.get_value('georgian-date-format'))
         self.date_format = self.date_format.replace("'", "")
         super().__init__(date, *args, **kwargs)
 
     @property
     def days_in_month(self):
-        return monthrange(self.date.year, self.date.month)[1]
+        return calendar.monthrange(self.date.year, self.date.month)[1]
 
     @property
     def week_days(self):
@@ -210,6 +233,9 @@ class GeorgianDate(Date):
     def months(self):
         return list(calendar.month_name[1:])
 
+    def to_correct_date(self, date):
+        return date_to_georgian(date)
+
 
 class PersianDate(Date):
 
@@ -217,21 +243,13 @@ class PersianDate(Date):
         date = date_to_jalali(date or datetime.date.today())
         self.first_week_day_offset = 2
         self.rtl = True
-        settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        settings = Gio.Settings.new('org.gnome.Gahshomar')
         if bool(settings.get_value('afghan-month')):
             self.date_format = str(settings.get_value('afghan-date-format'))
         else:
             self.date_format = str(settings.get_value('persian-date-format'))
         self.date_format = self.date_format.replace("'", "")
         super().__init__(date, *args, **kwargs)
-
-    @GObject.Property
-    def date(self):
-        return self._date
-
-    @date.setter
-    def date(self, value):
-        self._date = date_to_jalali(value)
 
     @property
     def days_in_month(self):
@@ -246,11 +264,14 @@ class PersianDate(Date):
 
     @property
     def months(self):
-        settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        settings = Gio.Settings.new('org.gnome.Gahshomar')
         if bool(settings.get_value('afghan-month')):
             return list(khayyam.AFGHAN_MONTH_NAMES.values())
         else:
             return list(khayyam.PERSIAN_MONTH_NAMES.values())
+
+    def to_correct_date(self, date):
+        return date_to_jalali(date)
 
 
 GREGORIAN_DATE = GeorgianDate()
@@ -265,3 +286,12 @@ interface. You can connect to its signal to see if selected date has changed:
 """
 # connect the current Persian date to the current Gregorian date
 GREGORIAN_DATE.connect("notify::date", PERSIAN_DATE.on_date_changed)
+
+TODAY = GeorgianDate()
+"""This object represents today in Gahshomar's interface.
+You can connect to its signal to see if today has changed:
+``TODAY.connect("notify::date", on_today_changed)``
+"""
+# update today every 10 seconds
+GLib.timeout_add_seconds(priority=GLib.PRIORITY_DEFAULT,
+                         interval=10, function=TODAY.on_update_to_today)

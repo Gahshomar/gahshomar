@@ -26,7 +26,7 @@
             </child>
           </object>
           <packing>
-            <property name="expand">False</property>
+            <property name="expand">True</property>
             <property name="fill">True</property>
             <property name="position">0</property>
           </packing>
@@ -36,9 +36,12 @@
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="text" translatable="yes">2014</property>
+            <property name="xalign">0.5</property>
             <property name="primary_icon_name">list-remove-symbolic</property>
             <property name="secondary_icon_name">list-add-symbolic</property>
             <property name="input_purpose">number</property>
+            <signal name="activate" handler="on_year_entry_activate" swapped="no"/>
+            <signal name="icon-press" handler="on_year_entry_icon_press" swapped="no"/>
           </object>
           <packing>
             <property name="expand">False</property>
