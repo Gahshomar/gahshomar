@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-  input: 'org.gnome.Gahshomar.desktop.in',
-  output: 'org.gnome.Gahshomar.desktop',
+  input: 'org.gahshomar.Gahshomar.desktop.in',
+  output: 'org.gahshomar.Gahshomar.desktop',
   type: 'desktop',
   po_dir: '../po',
   install: true,
@@ -15,8 +15,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'org.gnome.Gahshomar.appdata.xml.in',
-  output: 'org.gnome.Gahshomar.appdata.xml',
+  input: 'org.gahshomar.Gahshomar.appdata.xml.in',
+  output: 'org.gahshomar.Gahshomar.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
@@ -29,7 +29,7 @@ if appstream_util.found()
   )
 endif
 
-install_data('org.gnome.Gahshomar.gschema.xml',
+install_data('org.gahshomar.Gahshomar.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
 )
 

@@ -2,9 +2,11 @@
 
 from gi.repository import Gtk
 from .gi_composites import GtkTemplate
+import logging
+logger = logging.getLogger(__name__)
 
 
-@GtkTemplate(ui='/org/gnome/Gahshomar/day-widget.ui')
+@GtkTemplate(ui='/org/gahshomar/Gahshomar/day-widget.ui')
 class DayWidget(Gtk.Box):
     __gtype_name__ = 'DayWidget'
 
@@ -15,17 +17,19 @@ class DayWidget(Gtk.Box):
         self.init_template()
         self.calendar = calendar
         self.calendar.connect("notify::date", self.update)
+        self.calendar.connect("notify::date-format", self.update)
         self.update(self.calendar)
 
     def __del__(self):
         self.calendar.disconnect_by_func(self.update)
 
     def update(self, calendar, *args):
+        logger.debug('DayWidget is updating %s', args)
         self.label.set_markup(
             "<span size='large'>" + calendar.full_date + '</span>')
 
 
-@GtkTemplate(ui='/org/gnome/Gahshomar/months-widget.ui')
+@GtkTemplate(ui='/org/gahshomar/Gahshomar/months-widget.ui')
 class MonthsWidget(Gtk.Box):
     __gtype_name__ = 'MonthsWidget'
 
@@ -37,7 +41,15 @@ class MonthsWidget(Gtk.Box):
         self.ref_calendar = ref_calendar
         self.calendar = calendar
         self.button_list = self.grid.get_children()[::-1]
-        self.month_list = []
+        self.calendar.connect("notify::date", self.update)
+        self.calendar.connect("notify::date-format", self.update)
+        self.update(self.calendar)
+
+    def __del__(self):
+        self.calendar.disconnect_by_func(self.update)
+
+    def update(self, calendar, *args):
+        month_list = []
         for i, month in enumerate(calendar.months):
             if calendar.rtl:
                 if i % 3 == 0:
@@ -49,16 +61,13 @@ class MonthsWidget(Gtk.Box):
             else:
                 j = i
             button = self.button_list[j]
-            self.month_list.append((button, month, i + 1))
+            month_list.append((button, month, i + 1))
+            try:
+                button.disconnect_by_func(self.month_button_pressed)
+            except TypeError:
+                pass
             button.connect("clicked", self.month_button_pressed, i + 1)
-        self.calendar.connect("notify::date", self.update)
-        self.update(self.calendar)
-
-    def __del__(self):
-        self.calendar.disconnect_by_func(self.update)
-
-    def update(self, calendar, *args):
-        for button, month, i in self.month_list:
+        for button, month, i in month_list:
             button.set_label(month)
             if i == calendar.month:
                 button.set_relief(Gtk.ReliefStyle.HALF)
@@ -73,7 +82,7 @@ class MonthsWidget(Gtk.Box):
         self.ref_calendar.date = self.calendar.date
 
 
-@GtkTemplate(ui='/org/gnome/Gahshomar/calendar-widget.ui')
+@GtkTemplate(ui='/org/gahshomar/Gahshomar/calendar-widget.ui')
 class CalendarWidget(Gtk.Box):
     __gtype_name__ = 'CalendarWidget'
 
@@ -89,12 +98,11 @@ class CalendarWidget(Gtk.Box):
         super().__init__(**kwargs)
         self.init_template()
         self.days_buttons = self.days_grid.get_children()[::-1]
-        self.days_buttons = list(zip(self.days_buttons,
-                                     [None] * len(self.days_buttons)))
         self.week_labels = self.week_days.get_children()
         self.ref_calendar = ref_calendar
         self.calendar = calendar
         self.calendar.connect("notify::date", self.update)
+        self.calendar.connect("notify::date-format", self.update)
         self.update(self.calendar)
 
     def __del__(self):
@@ -110,7 +118,7 @@ class CalendarWidget(Gtk.Box):
 
     def setup_days_grid(self):
         # hide buttons since they might not be needed.
-        for button, __ in self.days_buttons:
+        for button in self.days_buttons:
             button.hide()
         for j, row in enumerate(self.calendar.grid_mat):
             for i, (date, day) in enumerate(row):
@@ -119,7 +127,7 @@ class CalendarWidget(Gtk.Box):
                 else:
                     text = '<span fgcolor="gray">{}</span>'
                 text = text.format(day)
-                button, sig_id = self.days_buttons[j * 7 + i]
+                button = self.days_buttons[j * 7 + i]
                 label = Gtk.Label()
                 label.set_markup(text)
                 button.set_label('')
@@ -128,12 +136,13 @@ class CalendarWidget(Gtk.Box):
                 button.set_relief(Gtk.ReliefStyle.NONE)
                 if date == self.calendar.date:
                     button.set_relief(Gtk.ReliefStyle.HALF)
-                if sig_id is not None:
-                    button.disconnect(sig_id)
-                sig_id = button.connect("clicked",
-                                        self.date_button_pressed,
-                                        (i, j, date))
-                self.days_buttons[j * 7 + i] = (button, sig_id)
+                try:
+                    button.disconnect_by_func(self.date_button_pressed)
+                except TypeError:
+                    pass
+                button.connect("clicked",
+                               self.date_button_pressed,
+                               (i, j, date))
                 button.show()
 
     def setup_weekdays(self):

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="gahshomar">
-    <schema path="/org/gnome/Gahshomar/" id="org.gnome.Gahshomar">
+    <schema path="/org/gahshomar/Gahshomar/" id="org.gahshomar.Gahshomar">
         <key type="s" name="persian-date-format">
             <default>"%A، %d %B %Y"</default>
             <summary>Persian date format</summary>

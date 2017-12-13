@@ -6,7 +6,7 @@ from .widgets import DayWidget, MonthsWidget, CalendarWidget
 from .calendar import GREGORIAN_DATE, PERSIAN_DATE, TODAY
 
 
-@GtkTemplate(ui='/org/gnome/Gahshomar/window.ui')
+@GtkTemplate(ui='/org/gahshomar/Gahshomar/window.ui')
 class GahshomarWindow(Gtk.ApplicationWindow):
     __gtype_name__ = 'GahshomarWindow'
 

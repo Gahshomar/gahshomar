@@ -127,7 +127,16 @@ class Date(GObject.GObject):
 
     @date.setter
     def date(self, value):
-        self._date = self.to_correct_date(value)
+        self._date = self._to_correct_date(value)
+
+    @GObject.Property(type=str)
+    def date_format(self):
+        return self._date_format
+
+    @date_format.setter
+    def date_format(self, value):
+        logger.debug("date_format changed to %s", value)
+        self._date_format = str(value).replace("'", "")
 
     @property
     def first_day_month(self):
@@ -183,11 +192,15 @@ class Date(GObject.GObject):
     def full_date(self):
         return glib_strftime(self.date_format, self.date)
 
+    @property
+    def day_str(self):
+        return glib_strftime('%d', self.date)
+
     def strftime(self, date_format):
         return glib_strftime(date_format, self.date)
 
     def today(self):
-        return self.to_correct_date(datetime.date.today())
+        return self._to_correct_date(datetime.date.today())
 
     def add_months(self, n):
         return add_months(self.date, n)
@@ -211,12 +224,13 @@ class GeorgianDate(Date):
 
     def __init__(self, date=None, *args, **kwargs):
         date = date_to_georgian(date or datetime.date.today())
+        super().__init__(date, *args, **kwargs)
         self.first_week_day_offset = 0
         self.rtl = False
-        settings = Gio.Settings.new('org.gnome.Gahshomar')
-        self.date_format = str(settings.get_value('georgian-date-format'))
-        self.date_format = self.date_format.replace("'", "")
-        super().__init__(date, *args, **kwargs)
+        settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        settings.bind('georgian-date-format', self,
+                      'date_format',
+                      Gio.SettingsBindFlags.DEFAULT)
 
     @property
     def days_in_month(self):
@@ -233,7 +247,7 @@ class GeorgianDate(Date):
     def months(self):
         return list(calendar.month_name[1:])
 
-    def to_correct_date(self, date):
+    def _to_correct_date(self, date):
         return date_to_georgian(date)
 
 
@@ -241,15 +255,34 @@ class PersianDate(Date):
 
     def __init__(self, date=None, *args, **kwargs):
         date = date_to_jalali(date or datetime.date.today())
+        super().__init__(date, *args, **kwargs)
         self.first_week_day_offset = 2
         self.rtl = True
-        settings = Gio.Settings.new('org.gnome.Gahshomar')
-        if bool(settings.get_value('afghan-month')):
-            self.date_format = str(settings.get_value('afghan-date-format'))
+        settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        settings.bind('afghan-month', self,
+                      'afghan_month',
+                      Gio.SettingsBindFlags.DEFAULT)
+
+    @GObject.Property(type=bool, default=False)
+    def afghan_month(self):
+        logger.debug("afghan_month accessed {}".format(self._afghan_month))
+        return self._afghan_month
+
+    @afghan_month.setter
+    def afghan_month(self, value):
+        self._afghan_month = value
+        logger.debug("afghan_month set {}".format(self._afghan_month))
+        self._set_date_format()
+
+    def _set_date_format(self, *args):
+        if self.afghan_month:
+            date_format = 'afghan-date-format'
         else:
-            self.date_format = str(settings.get_value('persian-date-format'))
-        self.date_format = self.date_format.replace("'", "")
-        super().__init__(date, *args, **kwargs)
+            date_format = 'persian-date-format'
+        settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        settings.bind(date_format, self,
+                      'date_format',
+                      Gio.SettingsBindFlags.DEFAULT)
 
     @property
     def days_in_month(self):
@@ -264,13 +297,12 @@ class PersianDate(Date):
 
     @property
     def months(self):
-        settings = Gio.Settings.new('org.gnome.Gahshomar')
-        if bool(settings.get_value('afghan-month')):
+        if self.afghan_month:
             return list(khayyam.AFGHAN_MONTH_NAMES.values())
         else:
             return list(khayyam.PERSIAN_MONTH_NAMES.values())
 
-    def to_correct_date(self, date):
+    def _to_correct_date(self, date):
         return date_to_jalali(date)
 
 
@@ -295,3 +327,6 @@ You can connect to its signal to see if today has changed:
 # update today every 10 seconds
 GLib.timeout_add_seconds(priority=GLib.PRIORITY_DEFAULT,
                          interval=10, function=TODAY.on_update_to_today)
+
+TODAY_PERSIAN = PersianDate()
+TODAY.connect("notify::date", TODAY_PERSIAN.on_date_changed)

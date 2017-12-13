@@ -1,3 +1,5 @@
 .flatpak-builder/
 *~
 __pycache__
+gahshomar.sublime-workspace
+gahshomar.sublime-project

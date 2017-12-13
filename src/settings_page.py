@@ -40,12 +40,12 @@ StartupNotify=true
 '''
 if 'flatpak' in os.environ.get('_', ''):
     AUTOSTART_DESKTOPFILE_PATH = os.path.join(GLib.get_user_config_dir(),
-                                              'autostart/org.gnome.Gahshomar.desktop')
+                                              'autostart/org.gahshomar.Gahshomar.desktop')
     DESKTOP_FILE = '''[Desktop Entry]
 Name=Gahshomar
 Comment=View Georgian and Persian calendars
-Icon=org.gnome.Gahshomar
-Exec=flatpak run --command=gahshomar org.gnome.Gahshomar -m
+Icon=org.gahshomar.Gahshomar
+Exec=flatpak run --command=gahshomar org.gahshomar.Gahshomar -m
 Terminal=false
 Type=Application
 Categories=X-Accessories;X-Productivty;Calendar;
@@ -85,7 +85,7 @@ class Handler(object):
 
     @log
     def on_HeaderBarSwitch_active_notify(self, switch, data=None):
-        self.settings = Gio.Settings.new('org.gnome.Gahshomar')
+        self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
         if switch.get_active():
             self.settings.set_value('header-bar',
                                     GLib.Variant.new_boolean(True))
@@ -103,7 +103,7 @@ class Handler(object):
 
     @log
     def on_AfghanMonthSwitch_active_notify(self, switch, data=None):
-        self.settings = Gio.Settings.new('org.gnome.Gahshomar')
+        self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
         if switch.get_active():
             self.settings.set_value('afghan-month',
                                     GLib.Variant.new_boolean(True))
@@ -130,7 +130,7 @@ class SettingsWindow(Gtk.Dialog):
         self.resize(600, 480)
 
         builder = Gtk.Builder()
-        builder.add_from_resource('/org/gnome/Gahshomar/prefs.ui')
+        builder.add_from_resource('/org/gahshomar/Gahshomar/prefs.ui')
         self.nb = builder.get_object('PreferencesNotebook')
         self.get_children()[0].pack_start(self.nb, True, True, 0)
         self.nb.show()
@@ -151,7 +151,7 @@ class SettingsWindow(Gtk.Dialog):
         manager.show_all()
         self.PluginTabBox.pack_start(manager, True, True, 0)
         # read the settings and update
-        self.settings = Gio.Settings.new('org.gnome.Gahshomar')
+        self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
         self.refresh()
 
         # connect the signals

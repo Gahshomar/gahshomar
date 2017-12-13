@@ -1,6 +1,6 @@
-data/org.gnome.Gahshomar.desktop.in
-data/org.gnome.Gahshomar.appdata.xml.in
-data/org.gnome.Gahshomar.gschema.xml
+data/org.gahshomar.Gahshomar.desktop.in
+data/org.gahshomar.Gahshomar.appdata.xml.in
+data/org.gahshomar.Gahshomar.gschema.xml
 src/window.ui
 src/day-widget.ui
 src/months-widget.ui
