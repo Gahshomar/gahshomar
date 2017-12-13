@@ -1,7 +1,15 @@
 [Desktop Entry]
-Name=gahshomar
+Name=Gahshomar
+Name[fa]=گاه شمار
+GenericName=Calendar
+GenericName[fa]=تقویم
+Comment=View Gregorian and Persian calendars
+Comment[fa]=مشاهده تقویم میلادی  و فارسی
+Icon=org.gahshomar.Gahshomar
 Exec=gahshomar
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=X-Accessories;X-Productivty;Calendar;
+Keywords=Calendar;Persian;Gahshomar;Jalali;
+Keywords[fa]=تقویم. فارسی. گاهشمار . جلالی.
 StartupNotify=true

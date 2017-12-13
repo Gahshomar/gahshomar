@@ -1,20 +1,4 @@
-#!/usr/bin/env python3
 # -*- Mode: Python; coding: utf-8; indent-tabs-mode: s; tab-width: 4 -*-
-#
-# Copyright (C) 2014 Amir Mohammadi <183.amir@gmail.com>
-#
-# Gahshomar is free software: you can redistribute it and/or modify it
-# under the terms of the GNU General Public License as published by the
-# Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Gahshomar is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-# See the GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License along
-# with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
 import calendar
@@ -43,7 +27,7 @@ def add_years(date, years):
             date -= datetime.timedelta(days=1)
 
 
-def date_to_georgian(date):
+def date_to_gregorian(date):
     if isinstance(date, khayyam.JalaliDate):
         return date.to_date()
     return date
@@ -220,15 +204,15 @@ class Date(GObject.GObject):
         return True
 
 
-class GeorgianDate(Date):
+class GregorianDate(Date):
 
     def __init__(self, date=None, *args, **kwargs):
-        date = date_to_georgian(date or datetime.date.today())
+        date = date_to_gregorian(date or datetime.date.today())
         super().__init__(date, *args, **kwargs)
         self.first_week_day_offset = 0
         self.rtl = False
         settings = Gio.Settings.new('org.gahshomar.Gahshomar')
-        settings.bind('georgian-date-format', self,
+        settings.bind('gregorian-date-format', self,
                       'date_format',
                       Gio.SettingsBindFlags.DEFAULT)
 
@@ -248,7 +232,7 @@ class GeorgianDate(Date):
         return list(calendar.month_name[1:])
 
     def _to_correct_date(self, date):
-        return date_to_georgian(date)
+        return date_to_gregorian(date)
 
 
 class PersianDate(Date):
@@ -306,7 +290,7 @@ class PersianDate(Date):
         return date_to_jalali(date)
 
 
-GREGORIAN_DATE = GeorgianDate()
+GREGORIAN_DATE = GregorianDate()
 """This object represents the current selected Gregorian date in Gahshomar's
 interface. You can connect to its signal to see if selected date has changed:
 ``GREGORIAN_DATE.connect("notify::date", on_date_changed)``
@@ -319,7 +303,7 @@ interface. You can connect to its signal to see if selected date has changed:
 # connect the current Persian date to the current Gregorian date
 GREGORIAN_DATE.connect("notify::date", PERSIAN_DATE.on_date_changed)
 
-TODAY = GeorgianDate()
+TODAY = GregorianDate()
 """This object represents today in Gahshomar's interface.
 You can connect to its signal to see if today has changed:
 ``TODAY.connect("notify::date", on_today_changed)``

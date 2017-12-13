@@ -1,3 +1,5 @@
+subdir ('icons')
+
 desktop_file = i18n.merge_file(
   input: 'org.gahshomar.Gahshomar.desktop.in',
   output: 'org.gahshomar.Gahshomar.desktop',

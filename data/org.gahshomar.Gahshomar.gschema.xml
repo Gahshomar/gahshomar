@@ -11,9 +11,9 @@
             <summary>Afghan date format</summary>
             <description>The way that full date is displayed.</description>
         </key>
-        <key type="s" name="georgian-date-format">
+        <key type="s" name="gregorian-date-format">
             <default>"%A, %d %B %Y"</default>
-            <summary>Georgian date format</summary>
+            <summary>Gregorian date format</summary>
             <description>The way that full date is displayed.</description>
         </key>
         <key type="s" name="enabled-plugins">

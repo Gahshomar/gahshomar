@@ -1,3 +1,5 @@
+# -*- Mode: Python; coding: utf-8; indent-tabs-mode: s; tab-width: 4 -*-
+
 from gi.repository import Gtk, Gio
 from .gi_composites import GtkTemplate
 import logging

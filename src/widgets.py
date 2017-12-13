@@ -77,9 +77,8 @@ class MonthsWidget(Gtk.Box):
 
     def month_button_pressed(self, *args):
         month = args[-1]
-        self.calendar.date = self.calendar.add_months(
+        self.ref_calendar.date = self.calendar.add_months(
             month - self.calendar.month)
-        self.ref_calendar.date = self.calendar.date
 
 
 @GtkTemplate(ui='/org/gahshomar/Gahshomar/calendar-widget.ui')

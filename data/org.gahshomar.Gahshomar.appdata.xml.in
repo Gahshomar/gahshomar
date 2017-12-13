@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
 	<id>org.gahshomar.Gahshomar.desktop</id>
-	<licence>CC0</licence>
-	<description>
-	</description>
+	<licence>GPL3</licence>
+    <name>Gahshomar</name>
+    <name xml:lang="fa">گاه شمار</name>
+    <summary>A Persian/Jalali/Farsi calendar</summary>
+    <summary xml:lang="fa">تقویم فارسی / جلالی / فارسی</summary>
+    <description>
+        <p>Gahshomar makes it easy for you to keep track of two different calendars.</p>
+        <p xml:lang="fa">گاهشمار برای شما پیگیری دو تقویم متفاوت را آسان می کند.</p>
+    </description>
+    <screenshots>
+        <screenshot width="1348" type="default" height="647">https://github.com/Gahshomar/gahshomar/raw/master/data/Screenshot-Gnome.png</screenshot>
+    </screenshots>
+    <url type="homepage">http://gahshomar.github.io/gahshomar</url>
+    <updatecontact>183.amir@gmail.com</updatecontact>
 </component>

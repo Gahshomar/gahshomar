@@ -1,3 +1,5 @@
+# -*- Mode: Python; coding: utf-8; indent-tabs-mode: s; tab-width: 4 -*-
+
 from .calendar import TODAY_PERSIAN
 from gi.repository import Gio, GLib
 

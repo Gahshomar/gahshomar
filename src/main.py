@@ -1,19 +1,4 @@
-# main.py
-#
-# Copyright (C) 2017 Amir MOHAMMADI
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# -*- Mode: Python; coding: utf-8; indent-tabs-mode: s; tab-width: 4 -*-
 
 import logging
 import sys
@@ -81,7 +66,8 @@ class Application(Gtk.Application):
 
 
 def main(version):
-    logging.basicConfig(level=logging.DEBUG)
+    log_format = '%(name)s@%(asctime)s -- %(levelname)s: %(message)s'
+    logging.basicConfig(format=log_format, level=logging.DEBUG)
     # logger = logging.getLogger(__name__)
     # logger.setLevel(logging.DEBUG)
     # root_logger.addHandler(logging.StreamHandler())
