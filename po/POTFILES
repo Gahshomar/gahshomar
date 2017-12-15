@@ -6,5 +6,5 @@ src/calendar-widget.ui
 src/calendar.py
 src/day-widget.ui
 src/months-widget.ui
-src/prefrences.ui
+src/preferences.ui
 src/window.ui

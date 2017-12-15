@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-14 11:30+0100\n"
+"POT-Creation-Date: 2017-12-15 21:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,164 +77,87 @@ msgstr ""
 msgid "Enabling this will show the month names in Dari (Afghan Persian)."
 msgstr ""
 
+#: data/org.gahshomar.Gahshomar.gschema.xml:26
+msgid "Whether to enable the appindicator"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:27
+msgid ""
+"Enabling this will show an appindicator in the desktop environment if it is "
+"supported by the environment."
+msgstr ""
+
+#: src/appindicator.py:48 src/window.ui:59
+msgid "Today"
+msgstr ""
+
+#: src/appindicator.py:52
+msgid "Quit"
+msgstr ""
+
 #: src/calendar-widget.ui:24 src/months-widget.ui:139
 msgid "November"
 msgstr ""
 
-#: src/calendar-widget.ui:38
-msgid "2014"
-msgstr ""
-
-#: src/calendar-widget.ui:70
+#: src/calendar-widget.ui:70 src/calendar.py:223
 msgid "Mon"
 msgstr ""
 
-#: src/calendar-widget.ui:82
+#: src/calendar-widget.ui:82 src/calendar.py:223
 msgid "Tue"
 msgstr ""
 
-#: src/calendar-widget.ui:94
+#: src/calendar-widget.ui:94 src/calendar.py:224
 msgid "Wed"
 msgstr ""
 
-#: src/calendar-widget.ui:106
+#: src/calendar-widget.ui:106 src/calendar.py:224
 msgid "Thu"
 msgstr ""
 
-#: src/calendar-widget.ui:118
+#: src/calendar-widget.ui:118 src/calendar.py:225
 msgid "Fri"
 msgstr ""
 
-#: src/calendar-widget.ui:130
+#: src/calendar-widget.ui:130 src/calendar.py:227
 msgid "Sat"
 msgstr ""
 
-#: src/calendar-widget.ui:142
+#: src/calendar-widget.ui:142 src/calendar.py:227
 msgid "Sun"
 msgstr ""
 
-#: src/calendar-widget.ui:165 src/calendar-widget.ui:568
-msgid "26"
+#: src/calendar.py:157
+#, python-format
+msgid "%d"
 msgstr ""
 
-#: src/calendar-widget.ui:178 src/calendar-widget.ui:581
-msgid "27"
+#: src/calendar.py:223
+msgid "Monday"
 msgstr ""
 
-#: src/calendar-widget.ui:191 src/calendar-widget.ui:594
-msgid "28"
+#: src/calendar.py:223
+msgid "Tuesday"
 msgstr ""
 
-#: src/calendar-widget.ui:204 src/calendar-widget.ui:607
-msgid "29"
+#: src/calendar.py:224
+msgid "Wednesday"
 msgstr ""
 
-#: src/calendar-widget.ui:217 src/calendar-widget.ui:620
-msgid "30"
+#: src/calendar.py:225
+msgid "Thursday"
 msgstr ""
 
-#: src/calendar-widget.ui:230
-msgid "31"
+#: src/calendar.py:226
+msgid "Friday"
 msgstr ""
 
-#: src/calendar-widget.ui:243 src/calendar-widget.ui:633
-msgid "1"
+#: src/calendar.py:227
+msgid "Saturday"
 msgstr ""
 
-#: src/calendar-widget.ui:256 src/calendar-widget.ui:646
-msgid "2"
-msgstr ""
-
-#: src/calendar-widget.ui:269 src/calendar-widget.ui:659
-msgid "3"
-msgstr ""
-
-#: src/calendar-widget.ui:282 src/calendar-widget.ui:672
-msgid "4"
-msgstr ""
-
-#: src/calendar-widget.ui:295 src/calendar-widget.ui:685
-msgid "5"
-msgstr ""
-
-#: src/calendar-widget.ui:308 src/calendar-widget.ui:698
-msgid "6"
-msgstr ""
-
-#: src/calendar-widget.ui:321
-msgid "7"
-msgstr ""
-
-#: src/calendar-widget.ui:334
-msgid "8"
-msgstr ""
-
-#: src/calendar-widget.ui:347
-msgid "9"
-msgstr ""
-
-#: src/calendar-widget.ui:360
-msgid "10"
-msgstr ""
-
-#: src/calendar-widget.ui:373
-msgid "11"
-msgstr ""
-
-#: src/calendar-widget.ui:386
-msgid "12"
-msgstr ""
-
-#: src/calendar-widget.ui:399
-msgid "13"
-msgstr ""
-
-#: src/calendar-widget.ui:412
-msgid "14"
-msgstr ""
-
-#: src/calendar-widget.ui:425
-msgid "15"
-msgstr ""
-
-#: src/calendar-widget.ui:438
-msgid "16"
-msgstr ""
-
-#: src/calendar-widget.ui:451
-msgid "17"
-msgstr ""
-
-#: src/calendar-widget.ui:464
-msgid "18"
-msgstr ""
-
-#: src/calendar-widget.ui:477
-msgid "19"
-msgstr ""
-
-#: src/calendar-widget.ui:490
-msgid "20"
-msgstr ""
-
-#: src/calendar-widget.ui:503
-msgid "21"
-msgstr ""
-
-#: src/calendar-widget.ui:516
-msgid "22"
-msgstr ""
-
-#: src/calendar-widget.ui:529
-msgid "23"
-msgstr ""
-
-#: src/calendar-widget.ui:542
-msgid "24"
-msgstr ""
-
-#: src/calendar-widget.ui:555
-msgid "25"
+#: src/calendar.py:227
+msgid "Sunday"
 msgstr ""
 
 #: src/day-widget.ui:13
@@ -285,6 +208,18 @@ msgstr ""
 msgid "December"
 msgstr ""
 
-#: src/window.ui:59
-msgid "Today"
+#: src/preferences.ui:7
+msgid "Gahshomar Preferences"
+msgstr ""
+
+#: src/preferences.ui:41
+msgid "Use Afghan month names"
+msgstr ""
+
+#: src/preferences.ui:76
+msgid "Enable the appindicator"
+msgstr ""
+
+#: src/preferences.ui:104
+msgid "Gnome shell extension"
 msgstr ""

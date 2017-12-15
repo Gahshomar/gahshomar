@@ -35,7 +35,7 @@
           <object class="GtkEntry" id="year_entry">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="text" translatable="yes">2014</property>
+            <property name="text">2014</property>
             <property name="xalign">0.5</property>
             <property name="primary_icon_name">list-remove-symbolic</property>
             <property name="secondary_icon_name">list-add-symbolic</property>
@@ -162,7 +162,7 @@
         <property name="column_homogeneous">True</property>
         <child>
           <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">26</property>
+            <property name="label">26</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -175,7 +175,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button2">
-            <property name="label" translatable="yes">27</property>
+            <property name="label">27</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -188,7 +188,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button3">
-            <property name="label" translatable="yes">28</property>
+            <property name="label">28</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -201,7 +201,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button4">
-            <property name="label" translatable="yes">29</property>
+            <property name="label">29</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -214,7 +214,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button5">
-            <property name="label" translatable="yes">30</property>
+            <property name="label">30</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -227,7 +227,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button6">
-            <property name="label" translatable="yes">31</property>
+            <property name="label">31</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -240,7 +240,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button7">
-            <property name="label" translatable="yes">1</property>
+            <property name="label">1</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -253,7 +253,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button8">
-            <property name="label" translatable="yes">2</property>
+            <property name="label">2</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -266,7 +266,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button9">
-            <property name="label" translatable="yes">3</property>
+            <property name="label">3</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -279,7 +279,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button10">
-            <property name="label" translatable="yes">4</property>
+            <property name="label">4</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -292,7 +292,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button11">
-            <property name="label" translatable="yes">5</property>
+            <property name="label">5</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -305,7 +305,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button12">
-            <property name="label" translatable="yes">6</property>
+            <property name="label">6</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -318,7 +318,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button13">
-            <property name="label" translatable="yes">7</property>
+            <property name="label">7</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -331,7 +331,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button14">
-            <property name="label" translatable="yes">8</property>
+            <property name="label">8</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -344,7 +344,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button15">
-            <property name="label" translatable="yes">9</property>
+            <property name="label">9</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -357,7 +357,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button16">
-            <property name="label" translatable="yes">10</property>
+            <property name="label">10</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -370,7 +370,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button17">
-            <property name="label" translatable="yes">11</property>
+            <property name="label">11</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -383,7 +383,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button18">
-            <property name="label" translatable="yes">12</property>
+            <property name="label">12</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -396,7 +396,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button19">
-            <property name="label" translatable="yes">13</property>
+            <property name="label">13</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -409,7 +409,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button20">
-            <property name="label" translatable="yes">14</property>
+            <property name="label">14</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -422,7 +422,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button21">
-            <property name="label" translatable="yes">15</property>
+            <property name="label">15</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -435,7 +435,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button22">
-            <property name="label" translatable="yes">16</property>
+            <property name="label">16</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -448,7 +448,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button23">
-            <property name="label" translatable="yes">17</property>
+            <property name="label">17</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -461,7 +461,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button24">
-            <property name="label" translatable="yes">18</property>
+            <property name="label">18</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -474,7 +474,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button25">
-            <property name="label" translatable="yes">19</property>
+            <property name="label">19</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -487,7 +487,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button26">
-            <property name="label" translatable="yes">20</property>
+            <property name="label">20</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -500,7 +500,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button27">
-            <property name="label" translatable="yes">21</property>
+            <property name="label">21</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -513,7 +513,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button28">
-            <property name="label" translatable="yes">22</property>
+            <property name="label">22</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -526,7 +526,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button29">
-            <property name="label" translatable="yes">23</property>
+            <property name="label">23</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -539,7 +539,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button30">
-            <property name="label" translatable="yes">24</property>
+            <property name="label">24</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -552,7 +552,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button31">
-            <property name="label" translatable="yes">25</property>
+            <property name="label">25</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -565,7 +565,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button32">
-            <property name="label" translatable="yes">26</property>
+            <property name="label">26</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -578,7 +578,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button33">
-            <property name="label" translatable="yes">27</property>
+            <property name="label">27</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -591,7 +591,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button34">
-            <property name="label" translatable="yes">28</property>
+            <property name="label">28</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -604,7 +604,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button35">
-            <property name="label" translatable="yes">29</property>
+            <property name="label">29</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -617,7 +617,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button36">
-            <property name="label" translatable="yes">30</property>
+            <property name="label">30</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -630,7 +630,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button37">
-            <property name="label" translatable="yes">1</property>
+            <property name="label">1</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -643,7 +643,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button38">
-            <property name="label" translatable="yes">2</property>
+            <property name="label">2</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -656,7 +656,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button39">
-            <property name="label" translatable="yes">3</property>
+            <property name="label">3</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -669,7 +669,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button40">
-            <property name="label" translatable="yes">4</property>
+            <property name="label">4</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -682,7 +682,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button41">
-            <property name="label" translatable="yes">5</property>
+            <property name="label">5</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
@@ -695,7 +695,7 @@
         </child>
         <child>
           <object class="GtkButton" id="button42">
-            <property name="label" translatable="yes">6</property>
+            <property name="label">6</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>

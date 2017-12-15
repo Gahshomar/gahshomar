@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-14 00:29+0100\n"
+"POT-Creation-Date: 2017-12-15 21:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,11 +45,11 @@ msgstr "مشاهده تقویم میلادی  و فارسی"
 
 #: data/org.gahshomar.Gahshomar.desktop.in:6
 msgid "org.gahshomar.Gahshomar"
-msgstr ""
+msgstr "org.gahshomar.Gahshomar"
 
 #: data/org.gahshomar.Gahshomar.desktop.in:11
 msgid "Calendar;Persian;Gahshomar;Jalali;"
-msgstr "تقویم. فارسی. گاهشمار . جلالی."
+msgstr "تقویم؛ فارسی؛ گاه‌شمار؛ جلالی؛"
 
 #: data/org.gahshomar.Gahshomar.gschema.xml:6
 msgid "Persian date format"
@@ -71,181 +71,155 @@ msgstr "فرمت تاریخ میلادی"
 
 #: data/org.gahshomar.Gahshomar.gschema.xml:21
 msgid "Whether to use Afghan month names"
-msgstr ""
+msgstr "آیا از نام های ماه افغان استفاده شود"
 
 #: data/org.gahshomar.Gahshomar.gschema.xml:22
 msgid "Enabling this will show the month names in Dari (Afghan Persian)."
+msgstr "با فعال سازی این نام های ماه را در زبان دری نشان می دهد."
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:26
+msgid "Whether to enable the appindicator"
+msgstr "این که آیا نشانگر برنامه را فعال کنید"
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:27
+msgid ""
+"Enabling this will show an appindicator in the desktop environment if it is "
+"supported by the environment."
 msgstr ""
+"در صورت فعال بودن این، نشانگر برنامه در محیط دسک تاپ نشان داده می شود، اگر  "
+"محیط از آن پشتیبانی می کند."
+
+#: src/appindicator.py:48 src/window.ui:59
+msgid "Today"
+msgstr "امروز"
+
+#: src/appindicator.py:52
+msgid "Quit"
+msgstr "خروج"
 
 #: src/calendar-widget.ui:24 src/months-widget.ui:139
 msgid "November"
 msgstr "نوامبر"
 
-#: src/calendar-widget.ui:38
-msgid "2014"
-msgstr "۲۰۱۴"
-
-#: src/calendar-widget.ui:70
+#: src/calendar-widget.ui:70 src/calendar.py:223
 msgid "Mon"
 msgstr "۲ش"
 
-#: src/calendar-widget.ui:82
+#: src/calendar-widget.ui:82 src/calendar.py:223
 msgid "Tue"
 msgstr "۳ش"
 
-#: src/calendar-widget.ui:94
+#: src/calendar-widget.ui:94 src/calendar.py:224
 msgid "Wed"
 msgstr "۴ش"
 
-#: src/calendar-widget.ui:106
+#: src/calendar-widget.ui:106 src/calendar.py:224
 msgid "Thu"
 msgstr "۵ش"
 
-#: src/calendar-widget.ui:118
+#: src/calendar-widget.ui:118 src/calendar.py:225
 msgid "Fri"
 msgstr "آ"
 
-#: src/calendar-widget.ui:130
+#: src/calendar-widget.ui:130 src/calendar.py:227
 msgid "Sat"
 msgstr "ش"
 
-#: src/calendar-widget.ui:142
+#: src/calendar-widget.ui:142 src/calendar.py:227
 msgid "Sun"
 msgstr "۱ش"
 
-#: src/calendar-widget.ui:165 src/calendar-widget.ui:568
-msgid "26"
-msgstr ""
+#: src/calendar.py:157
+msgid "%d"
+msgstr "%Od"
 
-#: src/calendar-widget.ui:178 src/calendar-widget.ui:581
-msgid "27"
-msgstr ""
+#: src/calendar.py:223
+msgid "Monday"
+msgstr "دوشنبه"
 
-#: src/calendar-widget.ui:191 src/calendar-widget.ui:594
-msgid "28"
-msgstr ""
+#: src/calendar.py:223
+msgid "Tuesday"
+msgstr "سه‌شنبه"
 
-#: src/calendar-widget.ui:204 src/calendar-widget.ui:607
-msgid "29"
-msgstr ""
+#: src/calendar.py:224
+msgid "Wednesday"
+msgstr "چهارشنبه"
 
-#: src/calendar-widget.ui:217 src/calendar-widget.ui:620
-#, fuzzy
-msgid "30"
-msgstr "٠"
+#: src/calendar.py:225
+msgid "Thursday"
+msgstr "پنج‌شنبه"
 
-#: src/calendar-widget.ui:230
-msgid "31"
-msgstr ""
+#: src/calendar.py:226
+msgid "Friday"
+msgstr "آدینه"
 
-#: src/calendar-widget.ui:243 src/calendar-widget.ui:633
-msgid "1"
-msgstr ""
+#: src/calendar.py:227
+msgid "Saturday"
+msgstr "شنبه"
 
-#: src/calendar-widget.ui:256 src/calendar-widget.ui:646
-msgid "2"
-msgstr ""
+#: src/calendar.py:227
+msgid "Sunday"
+msgstr "یکشنبه"
 
-#: src/calendar-widget.ui:269 src/calendar-widget.ui:659
-msgid "3"
-msgstr ""
+#: src/calendar.py:273
+msgid "ش"
+msgstr "ش"
 
-#: src/calendar-widget.ui:282 src/calendar-widget.ui:672
-msgid "4"
-msgstr ""
+#: src/calendar.py:273
+msgid "شنبه"
+msgstr "شنبه"
 
-#: src/calendar-widget.ui:295 src/calendar-widget.ui:685
-msgid "5"
-msgstr ""
+#: src/calendar.py:273
+msgid "۱ش"
+msgstr "۱ش"
 
-#: src/calendar-widget.ui:308 src/calendar-widget.ui:698
-msgid "6"
-msgstr ""
+#: src/calendar.py:273
+msgid "یک‌شنبه"
+msgstr "یک‌شنبه"
 
-#: src/calendar-widget.ui:321
-msgid "7"
-msgstr ""
+#: src/calendar.py:273
+msgid "۲ش"
+msgstr "۲ش"
 
-#: src/calendar-widget.ui:334
-msgid "8"
-msgstr ""
+#: src/calendar.py:274
+msgid "دو‌شنبه"
+msgstr "دو‌شنبه"
 
-#: src/calendar-widget.ui:347
-msgid "9"
-msgstr ""
+#: src/calendar.py:275
+msgid "۳ش"
+msgstr "۳ش"
 
-#: src/calendar-widget.ui:360
-#, fuzzy
-msgid "10"
-msgstr "٠"
+#: src/calendar.py:275
+msgid "سه‌شنبه"
+msgstr "سه‌شنبه"
 
-#: src/calendar-widget.ui:373
-msgid "11"
-msgstr ""
+#: src/calendar.py:275
+msgid "۴ش"
+msgstr "۴ش"
 
-#: src/calendar-widget.ui:386
-msgid "12"
-msgstr ""
+#: src/calendar.py:275
+msgid "چهار‌شنبه"
+msgstr "چهار‌شنبه"
 
-#: src/calendar-widget.ui:399
-msgid "13"
-msgstr ""
+#: src/calendar.py:276
+msgid "۵ش"
+msgstr "۵ش"
 
-#: src/calendar-widget.ui:412
-#, fuzzy
-msgid "14"
-msgstr "۲۰۱۴"
+#: src/calendar.py:276
+msgid "پنج‌شنبه"
+msgstr "پنج‌شنبه"
 
-#: src/calendar-widget.ui:425
-msgid "15"
-msgstr ""
+#: src/calendar.py:276
+msgid "آ"
+msgstr "آ"
 
-#: src/calendar-widget.ui:438
-msgid "16"
-msgstr ""
-
-#: src/calendar-widget.ui:451
-msgid "17"
-msgstr ""
-
-#: src/calendar-widget.ui:464
-msgid "18"
-msgstr ""
-
-#: src/calendar-widget.ui:477
-msgid "19"
-msgstr ""
-
-#: src/calendar-widget.ui:490
-#, fuzzy
-msgid "20"
-msgstr "٠"
-
-#: src/calendar-widget.ui:503
-#, fuzzy
-msgid "21"
-msgstr "۲۰۱۴"
-
-#: src/calendar-widget.ui:516
-msgid "22"
-msgstr ""
-
-#: src/calendar-widget.ui:529
-msgid "23"
-msgstr ""
-
-#: src/calendar-widget.ui:542
-#, fuzzy
-msgid "24"
-msgstr "۲۰۱۴"
-
-#: src/calendar-widget.ui:555
-msgid "25"
-msgstr ""
+#: src/calendar.py:276
+msgid "آدینه"
+msgstr "آدینه"
 
 #: src/day-widget.ui:13
 msgid "Thursday, November 13, 2014"
-msgstr "پنجشنبه ، 2014 نوامبر 13"
+msgstr "پنجشنبه، ۱۳ نوامبر ۲۰۱۴"
 
 #: src/months-widget.ui:19
 msgid "January"
@@ -291,17 +265,117 @@ msgstr "اکتبر"
 msgid "December"
 msgstr "دسامبر"
 
-#: src/window.ui:59
-msgid "Today"
-msgstr "امروز"
+#: src/preferences.ui:7
+msgid "Gahshomar Preferences"
+msgstr "تنظیمات گاه‌شمار"
 
-#, fuzzy
-#~ msgid "Whether to start minimized"
-#~ msgstr "بدون صفحه اصلی شروع کن"
+#: src/preferences.ui:41
+msgid "Use Afghan month names"
+msgstr "از نام های ماه افغان استفاده کن"
 
-#, fuzzy
-#~ msgid "Whether to output debugging info"
-#~ msgstr "خروجی اشکال زدایی اطلاعات"
+#: src/preferences.ui:76
+msgid "Enable the appindicator"
+msgstr "نشانگر برنامه را فعال کن"
+
+#: src/preferences.ui:104
+msgid "Gnome shell extension"
+msgstr "افزونه Gnome shell"
+
+#~ msgid "2014"
+#~ msgstr "۲۰۱۴"
+
+#~ msgid "26"
+#~ msgstr "۲۶"
+
+#~ msgid "27"
+#~ msgstr "۲۷"
+
+#~ msgid "28"
+#~ msgstr "۲۸"
+
+#~ msgid "29"
+#~ msgstr "۲۹"
+
+#~ msgid "30"
+#~ msgstr "۳۰"
+
+#~ msgid "31"
+#~ msgstr "۳۱"
+
+#~ msgid "1"
+#~ msgstr "۱"
+
+#~ msgid "2"
+#~ msgstr "۲"
+
+#~ msgid "3"
+#~ msgstr "۳"
+
+#~ msgid "4"
+#~ msgstr "۴"
+
+#~ msgid "5"
+#~ msgstr "۵"
+
+#~ msgid "6"
+#~ msgstr "۶"
+
+#~ msgid "7"
+#~ msgstr "۷"
+
+#~ msgid "8"
+#~ msgstr "۸"
+
+#~ msgid "9"
+#~ msgstr "۹"
+
+#~ msgid "10"
+#~ msgstr "۱۰"
+
+#~ msgid "11"
+#~ msgstr "۱۱"
+
+#~ msgid "12"
+#~ msgstr "۱۲"
+
+#~ msgid "13"
+#~ msgstr "۱۳"
+
+#~ msgid "14"
+#~ msgstr "۱۴"
+
+#~ msgid "15"
+#~ msgstr "۱۵"
+
+#~ msgid "16"
+#~ msgstr "۱۶"
+
+#~ msgid "17"
+#~ msgstr "۱۷"
+
+#~ msgid "18"
+#~ msgstr "۱۸"
+
+#~ msgid "19"
+#~ msgstr "۱۹"
+
+#~ msgid "20"
+#~ msgstr "۲۰"
+
+#~ msgid "21"
+#~ msgstr "۲۱"
+
+#~ msgid "22"
+#~ msgstr "۲۲"
+
+#~ msgid "23"
+#~ msgstr "۲۳"
+
+#~ msgid "24"
+#~ msgstr "۲۴"
+
+#~ msgid "25"
+#~ msgstr "۲۵"
 
 #~ msgid "Window size"
 #~ msgstr "اندازه پنجره"
@@ -324,12 +398,6 @@ msgstr "امروز"
 #~ msgid "Open Gahshomar"
 #~ msgstr "گاه شمار"
 
-#~ msgid "Quit"
-#~ msgstr "خروج"
-
-#~ msgid "%d"
-#~ msgstr "%Od"
-
 #~ msgid "%A، %d %B %Y"
 #~ msgstr "%A، %Od %B %OY"
 
@@ -339,74 +407,8 @@ msgstr "امروز"
 #~ msgid "- Gahshomar, an Iranian Calendar"
 #~ msgstr "- گاه‌شمار، یک تقویم ایرانی"
 
-#~ msgid "ش"
-#~ msgstr "ش"
-
-#~ msgid "شنبه"
-#~ msgstr "شنبه"
-
-#~ msgid "۱ش"
-#~ msgstr "۱ش"
-
-#~ msgid "یک‌شنبه"
-#~ msgstr "یک‌شنبه"
-
-#~ msgid "۲ش"
-#~ msgstr "۲ش"
-
-#~ msgid "دو‌شنبه"
-#~ msgstr "دو‌شنبه"
-
-#~ msgid "۳ش"
-#~ msgstr "۳ش"
-
-#~ msgid "سه‌شنبه"
-#~ msgstr "سه‌شنبه"
-
-#~ msgid "۴ش"
-#~ msgstr "۴ش"
-
-#~ msgid "چهار‌شنبه"
-#~ msgstr "چهار‌شنبه"
-
-#~ msgid "۵ش"
-#~ msgstr "۵ش"
-
-#~ msgid "پنج‌شنبه"
-#~ msgstr "پنج‌شنبه"
-
-#~ msgid "آ"
-#~ msgstr "آ"
-
-#~ msgid "آدینه"
-#~ msgstr "آدینه"
-
-#~ msgid "Monday"
-#~ msgstr "دوشنبه"
-
-#~ msgid "Tuesday"
-#~ msgstr "سه‌شنبه"
-
-#~ msgid "Wednesday"
-#~ msgstr "چهارشنبه"
-
-#~ msgid "Thursday"
-#~ msgstr "پنج‌شنبه"
-
-#~ msgid "Friday"
-#~ msgstr "آدینه"
-
-#~ msgid "Saturday"
-#~ msgstr "شنبه"
-
-#~ msgid "Sunday"
-#~ msgstr "یکشنبه"
-
 #~ msgid "You need to restart the application for changes to take effect"
 #~ msgstr "باید برنامه را مجدد اجرا کنید تا تغییرات اعمال بشوند."
-
-#~ msgid "Gahshomar Preferences"
-#~ msgstr "تنظیمات گاه‌شمار"
 
 #~ msgid "%A, %d %B %Y"
 #~ msgstr "%A, %Od %B %OY"
