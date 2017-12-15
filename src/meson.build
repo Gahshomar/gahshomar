@@ -35,6 +35,7 @@ gnome.compile_resources('gahshomar',
 gahshomar_sources = [
   '__init__.py',
   'api.py',
+  'appindicator.py',
   'calendar.py',
   'date.py',
   'gi_composites.py',

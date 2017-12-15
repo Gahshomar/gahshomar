@@ -33,8 +33,8 @@ class GahshomarWindow(Gtk.ApplicationWindow):
 
         # Add calendar widgets
         self.persian_calendar = CalendarWidget(GREGORIAN_DATE, PERSIAN_DATE)
-        self.gregorian_calendar = CalendarWidget(
-            GREGORIAN_DATE, GREGORIAN_DATE)
+        self.gregorian_calendar = CalendarWidget(GREGORIAN_DATE,
+                                                 GREGORIAN_DATE)
         self.persian_box.pack_start(self.persian_calendar, True, True, 0)
         self.gregorian_box.pack_start(self.gregorian_calendar, True, True, 0)
 

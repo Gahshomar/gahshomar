@@ -12,8 +12,8 @@ logger = logging.getLogger(__name__)
 
 def glib_strftime(frm, odate):
     if isinstance(odate, datetime.date):
-        date = GLib.DateTime.new_local(odate.year, odate.month, odate.day,
-                                       0, 0, 0)
+        date = GLib.DateTime.new_local(odate.year, odate.month, odate.day, 0,
+                                       0, 0)
         return date.format(_(frm))
     else:
         return odate.strftime(frm.replace('O', ''))
@@ -145,7 +145,7 @@ class Date(GObject.GObject):
             for __ in range(7):
                 row.append([])
             grid_mat.append(row)
-        delta = - (self.first_day_month + self.date.day) + 1
+        delta = -(self.first_day_month + self.date.day) + 1
         for j in range(rows):
             for i in range(7):
                 if self.rtl:
@@ -205,15 +205,13 @@ class Date(GObject.GObject):
 
 
 class GregorianDate(Date):
-
     def __init__(self, date=None, *args, **kwargs):
         date = date_to_gregorian(date or datetime.date.today())
         super().__init__(date, *args, **kwargs)
         self.first_week_day_offset = 0
         self.rtl = False
         settings = Gio.Settings.new('org.gahshomar.Gahshomar')
-        settings.bind('gregorian-date-format', self,
-                      'date_format',
+        settings.bind('gregorian-date-format', self, 'date_format',
                       Gio.SettingsBindFlags.DEFAULT)
 
     @property
@@ -223,9 +221,10 @@ class GregorianDate(Date):
     @property
     def week_days(self):
         return [(_('Mon'), _('Monday')), (_('Tue'), _('Tuesday')),
-                (_('Wed'), _('Wednesday')), (_('Thu'), _('Thursday')),
-                (_('Fri'), _('Friday')), (_('Sat'), _('Saturday')),
-                (_('Sun'), _('Sunday'))]
+                (_('Wed'), _('Wednesday')), (_('Thu'),
+                                             _('Thursday')), (_('Fri'),
+                                                              _('Friday')),
+                (_('Sat'), _('Saturday')), (_('Sun'), _('Sunday'))]
 
     @property
     def months(self):
@@ -236,15 +235,13 @@ class GregorianDate(Date):
 
 
 class PersianDate(Date):
-
     def __init__(self, date=None, *args, **kwargs):
         date = date_to_jalali(date or datetime.date.today())
         super().__init__(date, *args, **kwargs)
         self.first_week_day_offset = 2
         self.rtl = True
         settings = Gio.Settings.new('org.gahshomar.Gahshomar')
-        settings.bind('afghan-month', self,
-                      'afghan_month',
+        settings.bind('afghan-month', self, 'afghan_month',
                       Gio.SettingsBindFlags.DEFAULT)
 
     @GObject.Property(type=bool, default=False)
@@ -264,8 +261,7 @@ class PersianDate(Date):
         else:
             date_format = 'persian-date-format'
         settings = Gio.Settings.new('org.gahshomar.Gahshomar')
-        settings.bind(date_format, self,
-                      'date_format',
+        settings.bind(date_format, self, 'date_format',
                       Gio.SettingsBindFlags.DEFAULT)
 
     @property
@@ -274,10 +270,10 @@ class PersianDate(Date):
 
     @property
     def week_days(self):
-        return [(_('ش'), _('شنبه')), (_('۱ش'), _('یک‌شنبه')),
-                (_('۲ش'), _('دو‌شنبه')), (_('۳ش'), _('سه‌شنبه')),
-                (_('۴ش'), _('چهار‌شنبه')), (_('۵ش'), _('پنج‌شنبه')),
-                (_('آ'), _('آدینه'))]
+        return [(_('ش'), _('شنبه')), (_('۱ش'), _('یک‌شنبه')), (_('۲ش'),
+                                                               _('دو‌شنبه')),
+                (_('۳ش'), _('سه‌شنبه')), (_('۴ش'), _('چهار‌شنبه')),
+                (_('۵ش'), _('پنج‌شنبه')), (_('آ'), _('آدینه'))]
 
     @property
     def months(self):
@@ -309,8 +305,10 @@ You can connect to its signal to see if today has changed:
 ``TODAY.connect("notify::date", on_today_changed)``
 """
 # update today every 10 seconds
-GLib.timeout_add_seconds(priority=GLib.PRIORITY_DEFAULT,
-                         interval=10, function=TODAY.on_update_to_today)
+GLib.timeout_add_seconds(
+    priority=GLib.PRIORITY_DEFAULT,
+    interval=10,
+    function=TODAY.on_update_to_today)
 
 TODAY_PERSIAN = PersianDate()
 TODAY.connect("notify::date", TODAY_PERSIAN.on_date_changed)

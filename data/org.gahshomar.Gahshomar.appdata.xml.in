@@ -1,18 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- ​Copyright 2017 Amir Mohammadi <183.amir@gmail.com> -->
 <component type="desktop">
-	<id>org.gahshomar.Gahshomar.desktop</id>
-	<licence>GPL3</licence>
-    <name>Gahshomar</name>
-    <name xml:lang="fa">گاه شمار</name>
-    <summary>A Persian/Jalali/Farsi calendar</summary>
-    <summary xml:lang="fa">تقویم فارسی / جلالی / فارسی</summary>
-    <description>
-        <p>Gahshomar makes it easy for you to keep track of two different calendars.</p>
-        <p xml:lang="fa">گاهشمار برای شما پیگیری دو تقویم متفاوت را آسان می کند.</p>
-    </description>
-    <screenshots>
-        <screenshot width="1348" type="default" height="647">https://github.com/Gahshomar/gahshomar/raw/master/data/Screenshot-Gnome.png</screenshot>
-    </screenshots>
-    <url type="homepage">http://gahshomar.github.io/gahshomar</url>
-    <updatecontact>183.amir@gmail.com</updatecontact>
+  <id>org.gahshomar.Gahshomar.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <name>Gahshomar</name>
+  <summary>A Persian/Jalali/Farsi calendar</summary>
+  <description>
+    <p>
+      Gahshomar makes it easy for you to keep track of two different calendars.
+    </p>
+  </description>
+  <kudos>
+    <kudo>AppMenu</kudo>
+    <kudo>HiDpiIcon</kudo>
+    <kudo>ModernToolkit</kudo>
+  </kudos>
+  <categories>
+    <category>Office</category>
+    <category>Calendar</category>
+  </categories>
+  <update_contact>183.amir@gmail.com</update_contact>
+  <url type="homepage">https://gahshomar.github.io/gahshomar/</url>
+  <url type="bugtracker">https://github.com/Gahshomar/gahshomar/issues</url>
+  <url type="help">https://github.com/Gahshomar/gahshomar/wiki</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Gahshomar's main window under Gnome</caption>
+      <image>https://github.com/Gahshomar/gahshomar/raw/master/data/Screenshot-Gnome.png</image>
+    </screenshot>
+  </screenshots>
+  <translation type="gettext">gahshomar</translation>
 </component>

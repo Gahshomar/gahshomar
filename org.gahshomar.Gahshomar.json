@@ -34,6 +34,7 @@
     "*.a"
   ],
   "modules": [
+    "libappindicator.json",
     {
       "name": "gahshomar",
       "buildsystem": "meson",

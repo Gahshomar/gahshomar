@@ -33,7 +33,6 @@ class JalaliDate(object):
         self.day = int(day)
         self.validate()
 
-
     ##################
     ### Properties ###
     ##################
@@ -91,7 +90,7 @@ class JalaliDate(object):
         """
         Return the datetime corresponding to the proleptic Shamsi ordinal, where Farvardin 1 of year 1 has ordinal 1. ValueError is raised unless 1 <= ordinal <= :func:`datetime.max.toordinal()`.
         """
-        return cls.min + datetime.timedelta(days=ordinal-1)
+        return cls.min + datetime.timedelta(days=ordinal - 1)
 
     @classmethod
     def strptime(cls, date_string, frmt):
@@ -100,17 +99,13 @@ class JalaliDate(object):
         '1387/4/12'
         '%Y/%m/%d'
         """
-        valid_codes = {'%Y': (4, 'year'),
-                       '%m': (2, 'month'),
-                       '%d': (2, 'day')}
+        valid_codes = {'%Y': (4, 'year'), '%m': (2, 'month'), '%d': (2, 'day')}
 
         return parse(cls, date_string, frmt, valid_codes)
-
 
     ########################
     ### Instance Methods ###
     ########################
-
 
     def validate(self):
         if self.year < MINYEAR or self.year > MAXYEAR:
@@ -142,6 +137,7 @@ class JalaliDate(object):
     def todate(self):
         arr = gregorian_date_from_julian_day(self.tojulianday())
         return datetime.date(int(arr[0]), int(arr[1]), int(arr[2]))
+
     to_date = todate
 
     def toordinal(self):
@@ -221,7 +217,8 @@ Directive    Meaning
 
         result = replace_if_match(result, '%j', self.dayofyear)
 
-        result = replace_if_match(result, '%W', lambda: self.weekofyear(SATURDAY))
+        result = replace_if_match(result, '%W',
+                                  lambda: self.weekofyear(SATURDAY))
 
         result = replace_if_match(result, '%w', self.weekday)
 
@@ -250,7 +247,8 @@ Directive    Meaning
         return AFGHAN_MONTH_ABBRS[self.month]
 
     def localformat(self):
-        return '%s %s %s %s' % (self.weekdayname(), self.day, self.monthname(), self.year)
+        return '%s %s %s %s' % (self.weekdayname(), self.day, self.monthname(),
+                                self.year)
 
     def firstdayofyear(self):
         return JalaliDate(self.year, 1, 1)
@@ -279,7 +277,8 @@ Directive    Meaning
             days = self.tojulianday() + x.days
             return JalaliDate.from_julian_days(days)
 
-        raise ValueError('JalaliDate object can added by timedelta or JalaliDate object')
+        raise ValueError(
+            'JalaliDate object can added by timedelta or JalaliDate object')
 
     def __sub__(self, x):
         if isinstance(x, datetime.timedelta):
@@ -289,32 +288,39 @@ Directive    Meaning
             days = self.tojulianday() - x.tojulianday()
             return datetime.timedelta(days=days)
 
-        raise ValueError('JalaliDate object can added by timedelta or JalaliDate object')
+        raise ValueError(
+            'JalaliDate object can added by timedelta or JalaliDate object')
 
     def __lt__(self, x):
-        assert isinstance(x, JalaliDate), 'Comparison just allow with JalaliDate'
+        assert isinstance(x,
+                          JalaliDate), 'Comparison just allow with JalaliDate'
         return self.tojulianday() < x.tojulianday()
 
     def __le__(self, x):
-        assert isinstance(x, JalaliDate), 'Comparison just allow with JalaliDate'
+        assert isinstance(x,
+                          JalaliDate), 'Comparison just allow with JalaliDate'
         return self.tojulianday() <= x.tojulianday()
 
     def __eq__(self, x):
         if not x:
             return False
-        assert isinstance(x, JalaliDate), 'Comparison just allow with JalaliDate'
+        assert isinstance(x,
+                          JalaliDate), 'Comparison just allow with JalaliDate'
         return self.tojulianday() == x.tojulianday()
 
     def __ne__(self, x):
-        assert isinstance(x, JalaliDate), 'Comparison just allow with JalaliDate'
+        assert isinstance(x,
+                          JalaliDate), 'Comparison just allow with JalaliDate'
         return self.tojulianday() != x.tojulianday()
 
     def __gt__(self, x):
-        assert isinstance(x, JalaliDate), 'Comparison just allow with JalaliDate'
+        assert isinstance(x,
+                          JalaliDate), 'Comparison just allow with JalaliDate'
         return self.tojulianday() > x.tojulianday()
 
     def __ge__(self, x):
-        assert isinstance(x, JalaliDate), 'Comparison just allow with JalaliDate'
+        assert isinstance(x,
+                          JalaliDate), 'Comparison just allow with JalaliDate'
         return self.tojulianday() >= x.tojulianday()
 
 

@@ -5,18 +5,21 @@ import sys
 import gi
 
 gi.require_version('Gtk', '3.0')
+gi.require_version('AppIndicator3', '0.1')
 
-from gi.repository import Gtk, Gio
-
+from gi.repository import Gtk, Gio, AppIndicator3
 from .window import GahshomarWindow
 from .preferences import GahshomarPreferences
 from .api import GahshomarApi
+from .calendar import TODAY_PERSIAN
+from .appindicator import AppIndicator
 
 
 class Application(Gtk.Application):
     def __init__(self):
-        super().__init__(application_id='org.gahshomar.Gahshomar',
-                         flags=Gio.ApplicationFlags.FLAGS_NONE)
+        super().__init__(
+            application_id='org.gahshomar.Gahshomar',
+            flags=Gio.ApplicationFlags.FLAGS_NONE)
 
     def do_activate(self):
         win = self.props.active_window
@@ -27,6 +30,7 @@ class Application(Gtk.Application):
     def do_startup(self):
         Gtk.Application.do_startup(self)
 
+        # setup actions
         action = Gio.SimpleAction.new("about", None)
         action.connect("activate", self.on_about)
         self.add_action(action)
@@ -39,9 +43,13 @@ class Application(Gtk.Application):
         action.connect("activate", self.on_preferences)
         self.add_action(action)
 
+        # setup the app-menu
         builder = Gtk.Builder.new_from_resource(
             '/org/gahshomar/Gahshomar/app-menu.ui')
         self.set_app_menu(builder.get_object("app-menu"))
+
+        # setup the appIndicator
+        self.ind = AppIndicator(self, TODAY_PERSIAN)
 
     def on_about(self, action, param):
         builder = Gtk.Builder.new_from_resource(

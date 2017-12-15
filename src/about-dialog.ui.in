@@ -6,12 +6,12 @@
     <property name="modal">True</property>
     <property name="program_name" translatable="yes">Gahshomar</property>
     <property name="version">@VERSION@</property>
-    <property name="copyright" translatable="yes">Copyright © 2014 Gahshomar Developers</property>
+    <property name="copyright" translatable="yes">Copyright © 2018 Gahshomar Developers</property>
     <property name="comments" translatable="yes">A Persian/Jalali/Farsi calendar application.</property>
     <property name="website">@URL@</property>
     <property name="website_label" translatable="yes">Visit Gahshomar website</property>
     <property name="license_type">gpl-3-0</property>
     <property name="authors">Amir Mohammadi &lt;183.amir@gmail.com&gt;</property>
-    <property name="logo_icon_name">gahshomar</property>
+    <property name="logo_icon_name">org.gahshomar.Gahshomar</property>
   </object>
 </interface>

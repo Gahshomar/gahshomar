@@ -19,21 +19,16 @@ class Server(object):
                 method_inargs[method.name] = tuple(
                     arg.signature for arg in method.in_args)
 
-            con.register_object(object_path=path,
-                                interface_info=interface,
-                                method_call_closure=self.on_method_call)
+            con.register_object(
+                object_path=path,
+                interface_info=interface,
+                method_call_closure=self.on_method_call)
 
         self.method_inargs = method_inargs
         self.method_outargs = method_outargs
 
-    def on_method_call(self,
-                       connection,
-                       sender,
-                       object_path,
-                       interface_name,
-                       method_name,
-                       parameters,
-                       invocation):
+    def on_method_call(self, connection, sender, object_path, interface_name,
+                       method_name, parameters, invocation):
 
         args = list(parameters.unpack())
         for i, sig in enumerate(self.method_inargs[method_name]):
@@ -47,7 +42,7 @@ class Server(object):
         # out_args is atleast (signature1). We therefore always wrap the result
         # as a tuple. Refer to
         # https://bugzilla.gnome.org/show_bug.cgi?id=765603
-        result = (result,)
+        result = (result, )
 
         out_args = self.method_outargs[method_name]
         if out_args != '()':

@@ -139,8 +139,7 @@ class CalendarWidget(Gtk.Box):
                     button.disconnect_by_func(self.date_button_pressed)
                 except TypeError:
                     pass
-                button.connect("clicked",
-                               self.date_button_pressed,
+                button.connect("clicked", self.date_button_pressed,
                                (i, j, date))
                 button.show()
 
@@ -150,8 +149,8 @@ class CalendarWidget(Gtk.Box):
             week_days = week_days[::-1]
         for i, (week_day, tooltip) in enumerate(week_days):
             label = self.week_labels[i]
-            label.set_markup("<span foreground='#4A90D9'>" + week_day +
-                             '</span>')
+            label.set_markup(
+                "<span foreground='#4A90D9'>" + week_day + '</span>')
             label.set_tooltip_markup(tooltip)
 
     def date_button_pressed(self, *args):

@@ -16,50 +16,15 @@
             <summary>Gregorian date format</summary>
             <description>The way that full date is displayed.</description>
         </key>
-        <key type="s" name="enabled-plugins">
-            <default>""</default>
-            <summary>Enabled Plugins</summary>
-            <description>List of the plugin names that are enabled.</description>
-        </key>
-        <key type="b" name="app-crashed">
-            <default>false</default>
-            <summary>Application Crash Flag</summary>
-            <description>A flag to check if application crashed last time.</description>
-        </key>
-        <key type="b" name="header-bar">
-            <default>true</default>
-            <summary>Whether to use a headerbar</summary>
-            <description>Enabling this will the app to show a header-bar. Otherwise, it will show a tool-bar.</description>
-        </key>
         <key type="b" name="afghan-month">
             <default>false</default>
             <summary>Whether to use Afghan month names</summary>
             <description>Enabling this will show the month names in Dari (Afghan Persian).</description>
         </key>
-        <key type="b" name="start-minimized">
+        <key type="b" name="appindicator">
             <default>false</default>
-            <summary>Whether to start minimized</summary>
-            <description>Enabling this will start the app minimized. This is useful if you want to add the application to startup. Remember, you should the "-m" command line argument if you want to start the app minimized.</description>
-        </key>
-        <key type="b" name="verbose">
-            <default>false</default>
-            <summary>Whether to output debugging info</summary>
-            <description>Enabling this will output debugging info. Remember, you should the "-v" command line argument if you want to enable this.</description>
-        </key>
-        <key type="ai" name="window-size">
-            <default>[768, 600]</default>
-            <summary>Window size</summary>
-            <description>Window size (width and height).</description>
-        </key>
-        <key type="ai" name="window-position">
-            <default>[]</default>
-            <summary>Window position</summary>
-            <description>Window position (x and y).</description>
-        </key>
-        <key type="b" name="window-maximized">
-            <default>true</default>
-            <summary>Window maximized</summary>
-            <description>Window maximized state.</description>
+            <summary>Whether to enable the appindicator</summary>
+            <description>Enabling this will show an appindicator in the desktop environment if it is supported by the environment.</description>
         </key>
     </schema>
 </schemalist>
