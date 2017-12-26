@@ -66,6 +66,21 @@
           </packing>
         </child>
         <child>
+          <object class="GtkLinkButton" id="extension_link">
+            <property name="label" translatable="yes">Gnome shell extension</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <property name="relief">none</property>
+            <property name="uri">https://extensions.gnome.org/extension/1157/gahshomar/</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+        <child>
           <object class="GtkBox" id="appindicator_box">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -96,22 +111,41 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
+            <property name="position">2</property>
           </packing>
         </child>
         <child>
-          <object class="GtkLinkButton" id="extension_link">
-            <property name="label" translatable="yes">Gnome shell extension</property>
+          <object class="GtkBox" id="statusicon_box">
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="relief">none</property>
-            <property name="uri">https://extensions.gnome.org/extension/1157/gahshomar/</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkLabel" id="statusicon_label">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="label" translatable="yes">Enable the status icon</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkSwitch" id="statusicon_switch">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">3</property>
+            <property name="position">4</property>
           </packing>
         </child>
       </object>

@@ -26,5 +26,10 @@
             <summary>Whether to enable the appindicator</summary>
             <description>Enabling this will show an appindicator in the desktop environment if it is supported by the environment.</description>
         </key>
+        <key type="b" name="statusicon">
+            <default>false</default>
+            <summary>Whether to enable the statusicon</summary>
+            <description>Enabling this will show an statusicon in the desktop environment if it is supported by the environment.</description>
+        </key>
     </schema>
 </schemalist>

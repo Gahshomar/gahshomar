@@ -36,11 +36,13 @@ gahshomar_sources = [
   '__init__.py',
   'api.py',
   'appindicator.py',
+  'applet.py',
   'calendar.py',
   'date.py',
   'gi_composites.py',
   'main.py',
   'preferences.py',
+  'statusicon.py',
   'widgets.py',
   'window.py',
 ]

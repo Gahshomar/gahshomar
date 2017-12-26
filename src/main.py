@@ -13,6 +13,7 @@ from .preferences import GahshomarPreferences
 from .api import GahshomarApi
 from .calendar import TODAY_PERSIAN
 from .appindicator import AppIndicator
+from .statusicon import StatusIcon
 
 
 class Application(Gtk.Application):
@@ -48,8 +49,11 @@ class Application(Gtk.Application):
             '/org/gahshomar/Gahshomar/app-menu.ui')
         self.set_app_menu(builder.get_object("app-menu"))
 
-        # setup the appIndicator
+        # setup the AppIndicator
         self.ind = AppIndicator(self, TODAY_PERSIAN)
+
+        # setup the StatusIcon
+        self.statusicon = StatusIcon(self, TODAY_PERSIAN)
 
         # increase ref count so the app does not go away. This enables the app
         # to run as a service. We do this because we provide a d-bus api.

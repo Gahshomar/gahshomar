@@ -1,0 +1,24 @@
+<page xmlns="http://projectmallard.org/1.0/"
+      xmlns:its="http://www.w3.org/2005/11/its"
+      type="guide" id="index">
+
+  <info>
+    <title type="link">Gahshomar</title>
+    <title type="text">Gahshomar</title>
+    <revision pkgversion="5.0.0" date="2018-01-01" status="review"/>
+
+    <credit type="author">
+      <name>Amir Mohammadi</name>
+      <email its:translate="no">183.amir@gmail.com</email>
+      <years>2015</years>
+    </credit>
+    <include href="legal.xml" xmlns="http://www.w3.org/2001/XInclude"/>
+  </info>
+
+  <title>
+  <media type="image" mime="image/png" src="figures/gahshomar.png"
+  its:translate="no"/>
+  Gahshomar
+  </title>
+
+</page>

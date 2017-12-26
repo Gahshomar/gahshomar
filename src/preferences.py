@@ -12,6 +12,7 @@ class GahshomarPreferences(Gtk.Dialog):
 
     afghan_month_switch = GtkTemplate.Child()
     appindicator_switch = GtkTemplate.Child()
+    statusicon_switch = GtkTemplate.Child()
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -25,4 +26,9 @@ class GahshomarPreferences(Gtk.Dialog):
         # bind the appindicator setting to its switch
         self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
         self.settings.bind("appindicator", self.appindicator_switch, "active",
+                           Gio.SettingsBindFlags.DEFAULT)
+
+        # bind the statusicon setting to its switch
+        self.settings = Gio.Settings.new('org.gahshomar.Gahshomar')
+        self.settings.bind("statusicon", self.statusicon_switch, "active",
                            Gio.SettingsBindFlags.DEFAULT)
