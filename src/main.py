@@ -51,6 +51,10 @@ class Application(Gtk.Application):
         # setup the appIndicator
         self.ind = AppIndicator(self, TODAY_PERSIAN)
 
+        # increase ref count so the app does not go away. This enables the app
+        # to run as a service. We do this because we provide a d-bus api.
+        self.hold()
+
     def on_about(self, action, param):
         builder = Gtk.Builder.new_from_resource(
             '/org/gahshomar/Gahshomar/about-dialog.ui')

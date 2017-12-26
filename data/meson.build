@@ -41,3 +41,8 @@ if compile_schemas.found()
     args: ['--strict', '--dry-run', meson.current_source_dir()]
   )
 endif
+
+# The dbus service: https://wiki.gnome.org/HowDoI/DBusApplicationLaunching
+install_data('org.gahshomar.Gahshomar.service',
+  install_dir: join_paths(get_option('datadir'), 'dbus-1', 'services')
+)

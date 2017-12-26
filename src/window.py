@@ -44,9 +44,6 @@ class GahshomarWindow(Gtk.ApplicationWindow):
         self.persian_calendar.popover.add(self.persian_month)
         self.gregorian_calendar.popover.add(self.gregorian_month)
 
-        # minimize on close button
-        self.connect("delete-event", self.hide_win)
-
         # the icon
         self.set_default_icon_name("org.gahshomar.Gahshomar")
 
@@ -61,7 +58,3 @@ class GahshomarWindow(Gtk.ApplicationWindow):
     @GtkTemplate.Callback
     def on_today_button_clicked(self, *args):
         self.calendar.date = self.calendar.today()
-
-    def hide_win(self, *args):
-        self.hide()
-        return True
