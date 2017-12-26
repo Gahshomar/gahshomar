@@ -45,7 +45,7 @@
       "sources": [
         {
           "type": "git",
-          "url": "file:///home/amir/Projects/gahshomar"
+          "url": "."
         }
       ]
     }
