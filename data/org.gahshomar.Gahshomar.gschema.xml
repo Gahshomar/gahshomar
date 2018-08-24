@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gahshomar">
+    <schema path="/org/gahshomar/Gahshomar/" id="org.gahshomar.Gahshomar">
+        <key type="s" name="persian-date-format">
+            <default>"%A، %d %B %Y"</default>
+            <summary>Persian date format</summary>
+            <description>The way that full date is displayed.</description>
+        </key>
+        <key type="s" name="afghan-date-format">
+            <default>"%A، %d %G %Y"</default>
+            <summary>Afghan date format</summary>
+            <description>The way that full date is displayed.</description>
+        </key>
+        <key type="s" name="gregorian-date-format">
+            <default>"%A, %d %B %Y"</default>
+            <summary>Gregorian date format</summary>
+            <description>The way that full date is displayed.</description>
+        </key>
+        <key type="b" name="afghan-month">
+            <default>false</default>
+            <summary>Whether to use Afghan month names</summary>
+            <description>Enabling this will show the month names in Dari (Afghan Persian).</description>
+        </key>
+        <key type="b" name="appindicator">
+            <default>false</default>
+            <summary>Whether to enable the appindicator</summary>
+            <description>Enabling this will show an appindicator in the desktop environment if it is supported by the environment.</description>
+        </key>
+        <key type="b" name="statusicon">
+            <default>false</default>
+            <summary>Whether to enable the statusicon</summary>
+            <description>Enabling this will show an statusicon in the desktop environment if it is supported by the environment.</description>
+        </key>
+    </schema>
+</schemalist>

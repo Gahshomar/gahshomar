@@ -1,0 +1,225 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-15 21:51+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/org.gahshomar.Gahshomar.appdata.xml.in:7
+#: data/org.gahshomar.Gahshomar.desktop.in:3
+msgid "Gahshomar"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.appdata.xml.in:8
+msgid "A Persian/Jalali/Farsi calendar"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.appdata.xml.in:10
+msgid ""
+"Gahshomar makes it easy for you to keep track of two different calendars."
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.appdata.xml.in:29
+msgid "Gahshomar's main window under Gnome"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.desktop.in:4
+msgid "Calendar"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.desktop.in:5
+msgid "View Gregorian and Persian calendars"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.desktop.in:6
+msgid "org.gahshomar.Gahshomar"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.desktop.in:11
+msgid "Calendar;Persian;Gahshomar;Jalali;"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:6
+msgid "Persian date format"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:7
+#: data/org.gahshomar.Gahshomar.gschema.xml:12
+#: data/org.gahshomar.Gahshomar.gschema.xml:17
+msgid "The way that full date is displayed."
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:11
+msgid "Afghan date format"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:16
+msgid "Gregorian date format"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:21
+msgid "Whether to use Afghan month names"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:22
+msgid "Enabling this will show the month names in Dari (Afghan Persian)."
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:26
+msgid "Whether to enable the appindicator"
+msgstr ""
+
+#: data/org.gahshomar.Gahshomar.gschema.xml:27
+msgid ""
+"Enabling this will show an appindicator in the desktop environment if it is "
+"supported by the environment."
+msgstr ""
+
+#: src/appindicator.py:48 src/window.ui:59
+msgid "Today"
+msgstr ""
+
+#: src/appindicator.py:52
+msgid "Quit"
+msgstr ""
+
+#: src/calendar-widget.ui:24 src/months-widget.ui:139
+msgid "November"
+msgstr ""
+
+#: src/calendar-widget.ui:70 src/calendar.py:223
+msgid "Mon"
+msgstr ""
+
+#: src/calendar-widget.ui:82 src/calendar.py:223
+msgid "Tue"
+msgstr ""
+
+#: src/calendar-widget.ui:94 src/calendar.py:224
+msgid "Wed"
+msgstr ""
+
+#: src/calendar-widget.ui:106 src/calendar.py:224
+msgid "Thu"
+msgstr ""
+
+#: src/calendar-widget.ui:118 src/calendar.py:225
+msgid "Fri"
+msgstr ""
+
+#: src/calendar-widget.ui:130 src/calendar.py:227
+msgid "Sat"
+msgstr ""
+
+#: src/calendar-widget.ui:142 src/calendar.py:227
+msgid "Sun"
+msgstr ""
+
+#: src/calendar.py:157
+#, python-format
+msgid "%d"
+msgstr ""
+
+#: src/calendar.py:223
+msgid "Monday"
+msgstr ""
+
+#: src/calendar.py:223
+msgid "Tuesday"
+msgstr ""
+
+#: src/calendar.py:224
+msgid "Wednesday"
+msgstr ""
+
+#: src/calendar.py:225
+msgid "Thursday"
+msgstr ""
+
+#: src/calendar.py:226
+msgid "Friday"
+msgstr ""
+
+#: src/calendar.py:227
+msgid "Saturday"
+msgstr ""
+
+#: src/calendar.py:227
+msgid "Sunday"
+msgstr ""
+
+#: src/day-widget.ui:13
+msgid "Thursday, November 13, 2014"
+msgstr ""
+
+#: src/months-widget.ui:19
+msgid "January"
+msgstr ""
+
+#: src/months-widget.ui:31
+msgid "February"
+msgstr ""
+
+#: src/months-widget.ui:43
+msgid "March"
+msgstr ""
+
+#: src/months-widget.ui:55
+msgid "April"
+msgstr ""
+
+#: src/months-widget.ui:67
+msgid "May"
+msgstr ""
+
+#: src/months-widget.ui:79
+msgid "June"
+msgstr ""
+
+#: src/months-widget.ui:91
+msgid "July"
+msgstr ""
+
+#: src/months-widget.ui:103
+msgid "August"
+msgstr ""
+
+#: src/months-widget.ui:115
+msgid "September"
+msgstr ""
+
+#: src/months-widget.ui:127
+msgid "October"
+msgstr ""
+
+#: src/months-widget.ui:151
+msgid "December"
+msgstr ""
+
+#: src/preferences.ui:7
+msgid "Gahshomar Preferences"
+msgstr ""
+
+#: src/preferences.ui:41
+msgid "Use Afghan month names"
+msgstr ""
+
+#: src/preferences.ui:76
+msgid "Enable the appindicator"
+msgstr ""
+
+#: src/preferences.ui:104
+msgid "Gnome shell extension"
+msgstr ""

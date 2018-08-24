@@ -1,0 +1,5 @@
+5.0.0:
+  Complete re-write of the app using only Python and new technologies such as
+  flatpak and meson.
+4.5.1:
+  Added support for Afghan month names

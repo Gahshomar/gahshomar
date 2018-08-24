@@ -1,0 +1,10 @@
+data/org.gahshomar.Gahshomar.appdata.xml.in
+data/org.gahshomar.Gahshomar.desktop.in
+data/org.gahshomar.Gahshomar.gschema.xml
+src/appindicator.py
+src/calendar-widget.ui
+src/calendar.py
+src/day-widget.ui
+src/months-widget.ui
+src/preferences.ui
+src/window.ui

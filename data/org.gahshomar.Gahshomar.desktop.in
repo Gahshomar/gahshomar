@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Gahshomar
+GenericName=Calendar
+Comment=View Gregorian and Persian calendars
+Icon=org.gahshomar.Gahshomar
+Exec=gahshomar
+DBusActivatable=true
+Terminal=false
+Type=Application
+Categories=Office;Calendar;
+Keywords=Calendar;Persian;Gahshomar;Jalali;
+StartupNotify=true
