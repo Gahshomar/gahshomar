@@ -44,10 +44,10 @@ class Application(Gtk.Application):
         action.connect("activate", self.on_preferences)
         self.add_action(action)
 
-        # setup the app-menu
-        builder = Gtk.Builder.new_from_resource(
-            '/org/gahshomar/Gahshomar/app-menu.ui')
-        self.set_app_menu(builder.get_object("app-menu"))
+        # keyboard shortcuts
+        self.set_accels_for_action("app.preferences", ["<Control>p"])
+        self.set_accels_for_action("app.help", ["F1"])
+        self.set_accels_for_action("app.quit", ["<Control>q"])
 
         # setup the AppIndicator
         self.ind = AppIndicator(self, TODAY_PERSIAN)

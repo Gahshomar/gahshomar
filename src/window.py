@@ -12,6 +12,7 @@ class GahshomarWindow(Gtk.ApplicationWindow):
 
     header_bar = GtkTemplate.Child()
     today_button = GtkTemplate.Child()
+    menu_button = GtkTemplate.Child()
     grid = GtkTemplate.Child()
     persian_box = GtkTemplate.Child()
     gregorian_box = GtkTemplate.Child()
@@ -46,6 +47,11 @@ class GahshomarWindow(Gtk.ApplicationWindow):
 
         # the icon
         self.set_default_icon_name("org.gahshomar.Gahshomar")
+
+        # hamburger menu
+        builder = Gtk.Builder.new_from_resource(
+            '/org/gahshomar/Gahshomar/app-menu.ui')
+        self.menu_button.set_menu_model(builder.get_object("app-menu"))
 
         self.update()
 

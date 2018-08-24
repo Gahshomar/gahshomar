@@ -10,7 +10,7 @@ import gahshomar.khayyam as khayyam
 logger = logging.getLogger(__name__)
 
 
-def glib_strftime(frm, odate):
+def strftime(frm, odate):
     if isinstance(odate, datetime.date):
         date = GLib.DateTime.new_local(odate.year, odate.month, odate.day, 0,
                                        0, 0)
@@ -154,7 +154,7 @@ class Date(GObject.GObject):
                     delta_time = datetime.timedelta(days=i + j * 7 + delta)
                 date = self.date + delta_time
                 text = '{}'
-                d = glib_strftime(_('%d'), date)
+                d = strftime(_('%d'), date)
                 if d[0] == '0' or d[0] == '۰':
                     d = d[1:]
                 grid_mat[j][i] = (date, text.format(d))
@@ -174,14 +174,17 @@ class Date(GObject.GObject):
 
     @property
     def full_date(self):
-        return glib_strftime(self.date_format, self.date)
+        return strftime(self.date_format, self.date)
 
     @property
     def day_str(self):
-        return glib_strftime('%d', self.date)
+        day = strftime('%d', self.date)
+        if day and day[0] == '۰':
+            day = day[1:]
+        return day
 
     def strftime(self, date_format):
-        return glib_strftime(date_format, self.date)
+        return strftime(date_format, self.date)
 
     def today(self):
         return self._to_correct_date(datetime.date.today())

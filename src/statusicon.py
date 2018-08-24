@@ -37,16 +37,15 @@ class StatusIcon(Applet):
 
     def update(self, calendar, *args):
         super().update(calendar, *args)
-        date_formatted = self.calendar.full_date
-        self.statusicon.set_tooltip_text(date_formatted)
+        self.statusicon.set_tooltip_text(self.calendar.full_date)
         day = '<span fgcolor="#bebebe">{}</span>'.format(self.calendar.day_str)
         self.day_label.set_markup(day)
 
-    def draw_complete_event(self, window, event):
-        self.statusicon.set_from_pixbuf(window.get_pixbuf())
-
     def right_click_event(self, statusicon, button, activate_time):
         self.menu.popup(None, None, None, None, button, activate_time)
+
+    def draw_complete_event(self, window, event):
+        self.statusicon.set_from_pixbuf(window.get_pixbuf())
 
     def draw(self, widget, cr, userdata=None):
         cr.set_source_rgba(1, 1, 1, 0)

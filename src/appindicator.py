@@ -1,6 +1,5 @@
 from .applet import Applet
-from gettext import gettext as _
-from gi.repository import Gtk, Gio, AppIndicator3
+from gi.repository import AppIndicator3
 import logging
 logger = logging.getLogger(__name__)
 
