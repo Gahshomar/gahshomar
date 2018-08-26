@@ -12,7 +12,6 @@
     </p>
   </description>
   <kudos>
-    <kudo>AppMenu</kudo>
     <kudo>HiDpiIcon</kudo>
     <kudo>ModernToolkit</kudo>
   </kudos>
@@ -31,4 +30,14 @@
     </screenshot>
   </screenshots>
   <translation type="gettext">gahshomar</translation>
+  <releases>
+    <release version="5.0.0.rc0" date="2018-08-25">
+      <description>
+        <ul>
+            <li>A complete re-write of the application.</li>
+        </ul>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1" />
 </component>
