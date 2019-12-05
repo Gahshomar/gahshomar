@@ -32,7 +32,7 @@ class Server(object):
 
         args = list(parameters.unpack())
         for i, sig in enumerate(self.method_inargs[method_name]):
-            if sig is 'h':
+            if sig == 'h':
                 msg = invocation.get_message()
                 fd_list = msg.get_unix_fd_list()
                 args[i] = fd_list.get(args[i])
