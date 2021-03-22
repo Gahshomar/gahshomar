@@ -31,6 +31,13 @@
   </screenshots>
   <translation type="gettext">gahshomar</translation>
   <releases>
+    <release version="5.0.2" date="2020-03-22">
+      <description>
+        <ul>
+            <li>Happy new year! Updated to Gnome 3.38 runtime.</li>
+        </ul>
+      </description>
+    </release>
     <release version="5.0.0.rc0" date="2018-08-25">
       <description>
         <ul>

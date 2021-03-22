@@ -1,5 +1,5 @@
 project('gahshomar',
-  version: '5.0.0',
+  version: '5.0.2',
   meson_version: '>= 0.50.0',
 )
 i18n = import('i18n')

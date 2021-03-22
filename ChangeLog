@@ -1,3 +1,5 @@
+5.0.2:
+  Updated to Gnome runtime 3.38.
 5.0.0:
   Complete re-write of the app using only Python and new technologies such as
   flatpak and meson.
