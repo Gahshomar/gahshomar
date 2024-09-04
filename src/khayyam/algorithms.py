@@ -30,10 +30,11 @@ def get_julian_day_from_gregorian(year, month, day):
     return floor(365.25 * (y + 4716)) + floor(
         30.6001 * (m + 1)) + d + (2 - a + floor(a / 4)) - 1524.5
 
+LEAP_REMINDERS = [1, 5, 9, 13, 17, 22, 26, 30]
 
 def is_leap_year(year):
-    return (((((
-        (year - [473, 474][year > 0]) % 2820) + 474) + 38) * 682) % 2816) < 682
+    remainder = year - (year // 33) * 33
+    return remainder in LEAP_REMINDERS
 
 
 def days_in_month(year, month):
