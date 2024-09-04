@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ​Copyright 2017 Amir Mohammadi <183.amir@gmail.com> -->
-<component type="desktop">
+<component type="desktop-application">
   <id>org.gahshomar.Gahshomar.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0+</project_license>
@@ -15,13 +15,11 @@
     <kudo>HiDpiIcon</kudo>
     <kudo>ModernToolkit</kudo>
   </kudos>
-  <categories>
-    <category>Office</category>
-    <category>Calendar</category>
-  </categories>
   <update_contact>183.amir@gmail.com</update_contact>
+  <developer_name>Amir Mohammadi</developer_name>
   <url type="homepage">https://gahshomar.github.io/gahshomar/</url>
   <url type="bugtracker">https://github.com/Gahshomar/gahshomar/issues</url>
+  <url type="vcs-browser">https://github.com/Gahshomar/gahshomar</url>
   <url type="help">https://github.com/Gahshomar/gahshomar/wiki</url>
   <screenshots>
     <screenshot type="default">
@@ -30,6 +28,7 @@
     </screenshot>
   </screenshots>
   <translation type="gettext">gahshomar</translation>
+  <launchable type="desktop-id">org.gahshomar.Gahshomar.desktop</launchable>
   <releases>
     <release version="5.0.2" date="2020-03-22">
       <description>
