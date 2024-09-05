@@ -1,27 +1,18 @@
 {
-    "app-id" : "org.gahshomar.Gahshomar",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.38",
-    "sdk" : "org.gnome.Sdk",
-    "command" : "gahshomar",
-    "finish-args" : [
+    "app-id": "org.gahshomar.Gahshomar",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "46",
+    "sdk": "org.gnome.Sdk",
+    "command": "gahshomar",
+    "finish-args": [
         "--share=network",
         "--share=ipc",
-        "--socket=x11",
+        "--device=dri",
+        "--socket=fallback-x11",
         "--socket=wayland",
-        "--filesystem=xdg-run/dconf",
-        "--filesystem=~/.config/dconf:ro",
-        "--talk-name=ca.desrt.dconf",
-        "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+        "--metadata=X-DConf=migrate-path=/org/gahshomar/Gahshomar/"
     ],
-    "build-options" : {
-        "cflags" : "-O2 -g",
-        "cxxflags" : "-O2 -g",
-        "env" : {
-            "V" : "1"
-        }
-    },
-    "cleanup" : [
+    "cleanup": [
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -32,20 +23,23 @@
         "*.la",
         "*.a"
     ],
-    "modules" : [
+    "modules": [
         "shared-modules/libappindicator/libappindicator-gtk3-introspection-12.10.json",
         {
-            "name" : "gahshomar",
-            "buildsystem" : "meson",
-            "config-opts" : [
+            "name": "gahshomar",
+            "buildsystem": "meson",
+            "config-opts": [
                 "--libdir=lib"
             ],
-            "builddir" : true,
-            "sources" : [
+            "builddir": true,
+            "sources": [
                 {
-                    "type" : "git",
-                    "url" : "."
+                    "type": "git",
+                    "url": "."
                 }
+            ],
+            "post-install": [
+                "rm ${FLATPAK_DEST}/share/icons/hicolor/48x48/apps/org.gahshomar.Gahshomar-no-icon.png"
             ]
         }
     ]
