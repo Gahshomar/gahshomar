@@ -56,6 +56,7 @@ khayyam_sources = [
   'khayyam/compat.py',
   'khayyam/constants.py',
   'khayyam/helpers.py',
+  'khayyam/jalaali.py',
   'khayyam/jalali_date.py',
   'khayyam/jalali_datetime.py',
   'khayyam/tehran_timezone.py',

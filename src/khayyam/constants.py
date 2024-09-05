@@ -2,7 +2,7 @@
 __author__ = 'vahid'
 
 MINYEAR = 1
-MAXYEAR = 3178
+MAXYEAR = 3177
 
 PERSIAN_WEEKDAY_NAMES = {
     0: u'شنبه',
