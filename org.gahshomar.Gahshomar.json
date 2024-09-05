@@ -12,6 +12,13 @@
         "--socket=wayland",
         "--metadata=X-DConf=migrate-path=/org/gahshomar/Gahshomar/"
     ],
+    "build-options": {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {
+            "V": "1"
+        }
+    },
     "cleanup": [
         "/include",
         "/lib/pkgconfig",
